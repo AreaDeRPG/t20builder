@@ -19,6 +19,26 @@
             >
               {{ habilidade.nome }}
             </div>
+            <div
+              class="d-flex justify-content-left align-items-center"
+              style="width: 100%"
+            >
+              {{
+                ficha.biografia.getHabilidades(
+                  ficha.biografia.habilidadeSelect1
+                )
+              }}
+            </div>
+            <div
+              class="d-flex justify-content-left align-items-center"
+              style="width: 100%"
+            >
+              {{
+                ficha.biografia.getHabilidades(
+                  ficha.biografia.habilidadeSelect2
+                )
+              }}
+            </div>
           </b-row>
           <b-row>
             <div

@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Navbar />
-
     <b-row>
       <b-col cols="3">
         <b-card class="d-flex justify-content-center" style="margin: 1em">

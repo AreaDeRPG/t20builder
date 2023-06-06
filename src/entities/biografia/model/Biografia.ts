@@ -37,7 +37,18 @@ export default class Biografia {
   public get habilidadeSelect1(): Habilidade {
     return this._habilidadeSelect1;
   }
+  public set habilidadeSelect1(value: Habilidade) {
+    this._habilidadeSelect1 = value;
+  }
+
   public get habilidadeSelect2(): Habilidade {
     return this._habilidadeSelect2;
+  }
+  public set habilidadeSelect2(value: Habilidade) {
+    this._habilidadeSelect2 = value;
+  }
+
+  public getHabilidades(value?: Habilidade): Habilidade[] {
+    return this.habilidades.filter((val) => val !== value);
   }
 }
