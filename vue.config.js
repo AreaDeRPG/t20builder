@@ -10,5 +10,5 @@ module.exports = defineConfig({
         return options;
       });
   },
-  outputDir: 'docs',
+  outputDir: "docs",
 });

@@ -2,148 +2,12 @@ import { Fonte } from "../fonte/fonte";
 import Habilidade from "./model/Habilidades";
 
 interface ListaHabilidadesRaca {
-  humano: Habilidade[];
-  anao: Habilidade[];
-  dahllan: Habilidade[];
-  elfo: Habilidade[];
-  goblin: Habilidade[];
-  lefou: Habilidade[];
-  minotauro: Habilidade[];
-  qareen: Habilidade[];
-  golem: Habilidade[];
-  hynne: Habilidade[];
-  kliren: Habilidade[];
-  medusa: Habilidade[];
-  osteon: Habilidade[];
-  sereiatritao: Habilidade[];
-  silfide: Habilidade[];
-  suraggelaggelus: Habilidade[];
-  suraggelsulfure: Habilidade[];
-  trog: Habilidade[];
+  [key: string]: Habilidade[];
 }
+
 interface ListaHabilidadesClasse {
-  arcanista: Habilidade[][];
-  barbaro: Habilidade[][];
-  bardo: Habilidade[][];
-  bucaneiro: Habilidade[][];
-  cacador: Habilidade[][];
-  cavaleiro: Habilidade[][];
-  clerigo: Habilidade[][];
-  druida: Habilidade[][];
-  guerreiro: Habilidade[][];
-  inventor: Habilidade[][];
-  ladino: Habilidade[][];
-  lutador: Habilidade[][];
-  nobre: Habilidade[][];
-  paladino: Habilidade[][];
+  [key: string]: Habilidade[][];
 }
-
-const habilidadesHumano = [new Habilidade(1, "Versatil", Fonte.BASICO, [])];
-
-const habilidadesAnao = [
-  new Habilidade(1, "Conhecimento das Rochas", Fonte.BASICO, []),
-  new Habilidade(1, "Devagar e Sempre", Fonte.BASICO, []),
-  new Habilidade(1, "Duro como Pedra", Fonte.BASICO, []),
-  new Habilidade(1, "Tradição de Heredrimm", Fonte.BASICO, []),
-];
-
-const habilidadesDahllan = [
-  new Habilidade(1, "Amiga das Plantas", Fonte.BASICO, []),
-  new Habilidade(1, "Armadura de Allihanna", Fonte.BASICO, []),
-  new Habilidade(1, "Empatia Selvagem", Fonte.BASICO, []),
-];
-
-const habilidadesElfo = [
-  new Habilidade(1, "Graça de Glórienn", Fonte.BASICO, []),
-  new Habilidade(1, "Sangue Mágico", Fonte.BASICO, []),
-  new Habilidade(1, "Sentidos Élficos", Fonte.BASICO, []),
-];
-
-const habilidadesGoblin = [
-  new Habilidade(1, "Engenhoso", Fonte.BASICO, []),
-  new Habilidade(1, "Espelunqueiro", Fonte.BASICO, []),
-  new Habilidade(1, "Peste Esguia", Fonte.BASICO, []),
-  new Habilidade(1, "Rato das Ruas", Fonte.BASICO, []),
-];
-
-const habilidadesLefou = [
-  new Habilidade(1, "Cria da Tormenta", Fonte.BASICO, []),
-  new Habilidade(1, "Deformidade", Fonte.BASICO, []),
-];
-
-const habilidadesMinotauro = [
-  new Habilidade(1, "Chifres", Fonte.BASICO, []),
-  new Habilidade(1, "Couro Rígido", Fonte.BASICO, []),
-  new Habilidade(1, "Faro", Fonte.BASICO, []),
-];
-
-const habilidadesQareen = [
-  new Habilidade(1, "Desejos", Fonte.BASICO, []),
-  new Habilidade(1, "Resistencia Elemental", Fonte.BASICO, []),
-  new Habilidade(1, "Tatuagem Mágica", Fonte.BASICO, []),
-];
-
-const habilidadesGolem = [
-  new Habilidade(1, "Chassi", Fonte.BASICO, []),
-  new Habilidade(1, "Criatura Artificial", Fonte.BASICO, []),
-  new Habilidade(1, "Propósito de Criação", Fonte.BASICO, []),
-  new Habilidade(1, "Fonte Elemental", Fonte.BASICO, []),
-];
-
-const habilidadesHynne = [
-  new Habilidade(1, "Arremessador", Fonte.BASICO, []),
-  new Habilidade(1, "Pequeno e Rechonchudo", Fonte.BASICO, []),
-  new Habilidade(1, "Sorte Salvadora", Fonte.BASICO, []),
-];
-
-const habilidadesKliren = [
-  new Habilidade(1, "Híbrido", Fonte.BASICO, []),
-  new Habilidade(1, "Engenhosidade", Fonte.BASICO, []),
-  new Habilidade(1, "Ossos Frágeis", Fonte.BASICO, []),
-  new Habilidade(1, "Vanguardista", Fonte.BASICO, []),
-];
-
-const habilidadesMedusa = [
-  new Habilidade(1, "Cria de Megalokk", Fonte.BASICO, []),
-  new Habilidade(1, "Natureza Venenosa", Fonte.BASICO, []),
-  new Habilidade(1, "Olhar Atordoante", Fonte.BASICO, []),
-];
-
-const habilidadesOsteon = [
-  new Habilidade(1, "Armadurra Óssea", Fonte.BASICO, []),
-  new Habilidade(1, "Memória Póstuma", Fonte.BASICO, []),
-  new Habilidade(1, "Tatuagem Natureza Esquelética", Fonte.BASICO, []),
-  new Habilidade(1, "Preço da Não-Vida", Fonte.BASICO, []),
-];
-
-const habilidadesSereiaTritão = [
-  new Habilidade(1, "Canção dos Mares", Fonte.BASICO, []),
-  new Habilidade(1, "Mestre dos Tridentes", Fonte.BASICO, []),
-  new Habilidade(1, "Transformação Anfíbia", Fonte.BASICO, []),
-];
-
-const habilidadesSilfide = [
-  new Habilidade(1, "Asas de Borboleta", Fonte.BASICO, []),
-  new Habilidade(1, "Espírito da Natureza", Fonte.BASICO, []),
-  new Habilidade(1, "Magia das Fadas", Fonte.BASICO, []),
-];
-
-const habilidadesSuraggelAggelus = [
-  new Habilidade(1, "Herança Divina", Fonte.BASICO, []),
-  new Habilidade(1, "Luz Sagrada", Fonte.BASICO, []),
-];
-
-const habilidadesSuraggelSulfure = [
-  new Habilidade(1, "Herança Divina", Fonte.BASICO, []),
-  new Habilidade(1, "Sombras Profanas", Fonte.BASICO, []),
-];
-
-const habilidadesTrog = [
-  new Habilidade(1, "Mau Cheiro", Fonte.BASICO, []),
-  new Habilidade(1, "Mordida", Fonte.BASICO, []),
-  new Habilidade(1, "Reptiliano", Fonte.BASICO, []),
-  new Habilidade(1, "Sangue Frio", Fonte.BASICO, []),
-];
 
 const habilidadesComum = [
   new Habilidade(1, "Magias (1º Circulo)", Fonte.BASICO, []),
@@ -256,24 +120,95 @@ const habilidadesBarbaro: Habilidade[][] = [
 ];
 
 export const habilidadesRaca: ListaHabilidadesRaca = {
-  humano: habilidadesHumano,
-  anao: habilidadesAnao,
-  dahllan: habilidadesDahllan,
-  elfo: habilidadesElfo,
-  goblin: habilidadesGoblin,
-  lefou: habilidadesLefou,
-  minotauro: habilidadesMinotauro,
-  qareen: habilidadesQareen,
-  golem: habilidadesGolem,
-  hynne: habilidadesHynne,
-  kliren: habilidadesKliren,
-  medusa: habilidadesMedusa,
-  osteon: habilidadesOsteon,
-  sereiatritao: habilidadesSereiaTritão,
-  silfide: habilidadesSilfide,
-  suraggelaggelus: habilidadesSuraggelAggelus,
-  suraggelsulfure: habilidadesSuraggelSulfure,
-  trog: habilidadesTrog,
+  humano: [new Habilidade(1, "Versatil", Fonte.BASICO, [])],
+  anao: [
+    new Habilidade(1, "Conhecimento das Rochas", Fonte.BASICO, []),
+    new Habilidade(1, "Devagar e Sempre", Fonte.BASICO, []),
+    new Habilidade(1, "Duro como Pedra", Fonte.BASICO, []),
+    new Habilidade(1, "Tradição de Heredrimm", Fonte.BASICO, []),
+  ],
+  dahllan: [
+    new Habilidade(1, "Amiga das Plantas", Fonte.BASICO, []),
+    new Habilidade(1, "Armadura de Allihanna", Fonte.BASICO, []),
+    new Habilidade(1, "Empatia Selvagem", Fonte.BASICO, []),
+  ],
+  elfo: [
+    new Habilidade(1, "Graça de Glórienn", Fonte.BASICO, []),
+    new Habilidade(1, "Sangue Mágico", Fonte.BASICO, []),
+    new Habilidade(1, "Sentidos Élficos", Fonte.BASICO, []),
+  ],
+  goblin: [
+    new Habilidade(1, "Engenhoso", Fonte.BASICO, []),
+    new Habilidade(1, "Espelunqueiro", Fonte.BASICO, []),
+    new Habilidade(1, "Peste Esguia", Fonte.BASICO, []),
+    new Habilidade(1, "Rato das Ruas", Fonte.BASICO, []),
+  ],
+  lefou: [
+    new Habilidade(1, "Cria da Tormenta", Fonte.BASICO, []),
+    new Habilidade(1, "Deformidade", Fonte.BASICO, []),
+  ],
+  minotauro: [
+    new Habilidade(1, "Chifres", Fonte.BASICO, []),
+    new Habilidade(1, "Couro Rígido", Fonte.BASICO, []),
+    new Habilidade(1, "Faro", Fonte.BASICO, []),
+  ],
+  qareen: [
+    new Habilidade(1, "Desejos", Fonte.BASICO, []),
+    new Habilidade(1, "Resistencia Elemental", Fonte.BASICO, []),
+    new Habilidade(1, "Tatuagem Mágica", Fonte.BASICO, []),
+  ],
+  golem: [
+    new Habilidade(1, "Chassi", Fonte.BASICO, []),
+    new Habilidade(1, "Criatura Artificial", Fonte.BASICO, []),
+    new Habilidade(1, "Propósito de Criação", Fonte.BASICO, []),
+    new Habilidade(1, "Fonte Elemental", Fonte.BASICO, []),
+  ],
+  hynne: [
+    new Habilidade(1, "Arremessador", Fonte.BASICO, []),
+    new Habilidade(1, "Pequeno e Rechonchudo", Fonte.BASICO, []),
+    new Habilidade(1, "Sorte Salvadora", Fonte.BASICO, []),
+  ],
+  kliren: [
+    new Habilidade(1, "Híbrido", Fonte.BASICO, []),
+    new Habilidade(1, "Engenhosidade", Fonte.BASICO, []),
+    new Habilidade(1, "Ossos Frágeis", Fonte.BASICO, []),
+    new Habilidade(1, "Vanguardista", Fonte.BASICO, []),
+  ],
+  medusa: [
+    new Habilidade(1, "Cria de Megalokk", Fonte.BASICO, []),
+    new Habilidade(1, "Natureza Venenosa", Fonte.BASICO, []),
+    new Habilidade(1, "Olhar Atordoante", Fonte.BASICO, []),
+  ],
+  osteon: [
+    new Habilidade(1, "Armadurra Óssea", Fonte.BASICO, []),
+    new Habilidade(1, "Memória Póstuma", Fonte.BASICO, []),
+    new Habilidade(1, "Tatuagem Natureza Esquelética", Fonte.BASICO, []),
+    new Habilidade(1, "Preço da Não-Vida", Fonte.BASICO, []),
+  ],
+  sereiatritao: [
+    new Habilidade(1, "Canção dos Mares", Fonte.BASICO, []),
+    new Habilidade(1, "Mestre dos Tridentes", Fonte.BASICO, []),
+    new Habilidade(1, "Transformação Anfíbia", Fonte.BASICO, []),
+  ],
+  silfide: [
+    new Habilidade(1, "Asas de Borboleta", Fonte.BASICO, []),
+    new Habilidade(1, "Espírito da Natureza", Fonte.BASICO, []),
+    new Habilidade(1, "Magia das Fadas", Fonte.BASICO, []),
+  ],
+  suraggelaggelus: [
+    new Habilidade(1, "Herança Divina", Fonte.BASICO, []),
+    new Habilidade(1, "Luz Sagrada", Fonte.BASICO, []),
+  ],
+  suraggelsulfure: [
+    new Habilidade(1, "Herança Divina", Fonte.BASICO, []),
+    new Habilidade(1, "Sombras Profanas", Fonte.BASICO, []),
+  ],
+  trog: [
+    new Habilidade(1, "Mau Cheiro", Fonte.BASICO, []),
+    new Habilidade(1, "Mordida", Fonte.BASICO, []),
+    new Habilidade(1, "Reptiliano", Fonte.BASICO, []),
+    new Habilidade(1, "Sangue Frio", Fonte.BASICO, []),
+  ],
 };
 
 export const habilidadesClasse: ListaHabilidadesClasse = {
