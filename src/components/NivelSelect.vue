@@ -154,10 +154,12 @@ export default defineComponent({
     update(habilidade: Habilidade): void {
       switch (this.poderselect) {
         case 1:
+          // eslint-disable-next-line
           this.ficha.biografia.habilidadeSelect1 = habilidade;
           this.$set(this.ficha, 1, habilidade);
           break;
         case 2:
+          // eslint-disable-next-line
           this.ficha.biografia.habilidadeSelect2 = habilidade;
           break;
       }

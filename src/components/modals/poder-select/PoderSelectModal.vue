@@ -1,5 +1,11 @@
 <template>
-  <b-modal id="poderselect" title="Escolher Habilidade" size="xl" centered scrollable>
+  <b-modal
+    id="poderselect"
+    title="Escolher Habilidade"
+    size="xl"
+    centered
+    scrollable
+  >
     <!--
     <b-row>
       <b-nav tabs>
