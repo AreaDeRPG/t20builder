@@ -1,6 +1,10 @@
 import PatchNote from "./model/PatchNotes";
 
 export const patches: PatchNote[] = [
+  new PatchNote(3, "v0.7.3", [
+    "Adicionada lista de habilidades das biografias (bônus ainda não implementados)",
+    "Adicionada seleção das habilidades das biografias",
+  ]),
   new PatchNote(2, "v0.7.2", [
     "mudança na UI para adicionar link para o servidor Área de RPG (modelo atual sujeito a alterações quando iniciar a versão de update de UI)",
     "adicionado nome das habilidades de raça das raças do livro básico",

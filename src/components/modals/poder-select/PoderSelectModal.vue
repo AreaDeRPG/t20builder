@@ -1,5 +1,6 @@
 <template>
-  <b-modal id="poderselect" size="xl" centered scrollable>
+  <b-modal id="poderselect" title="Escolher Habilidade" size="xl" centered scrollable>
+    <!--
     <b-row>
       <b-nav tabs>
         <b-nav-item :active="activeBook == 'Todos'" @click="activate('Todos')">
@@ -17,6 +18,7 @@
         <b-nav-item disabled>???</b-nav-item>
       </b-nav>
     </b-row>
+    -->
     <b-row>
       <b-col cols="3">
         <b-nav vertical justified pills>
