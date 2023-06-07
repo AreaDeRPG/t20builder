@@ -23,21 +23,45 @@
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
             >
-              {{
-                ficha.biografia.getHabilidades(
-                  ficha.biografia.habilidadeSelect1
-                )
-              }}
+              <b-button
+                v-b-modal.poderselect
+                @click="
+                  set(
+                    1,
+                    ficha.biografia.habilidadeSelect1,
+                    ficha.biografia.getHabilidades(
+                      ficha.biografia.habilidadeSelect2
+                    )
+                  )
+                "
+              >
+                {{
+                  ficha.biografia.habilidadeSelect1?.nome ??
+                  "Habilidade de Biografia 1"
+                }}
+              </b-button>
             </div>
             <div
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
             >
-              {{
-                ficha.biografia.getHabilidades(
-                  ficha.biografia.habilidadeSelect2
-                )
-              }}
+              <b-button
+                v-b-modal.poderselect
+                @click="
+                  set(
+                    2,
+                    ficha.biografia.habilidadeSelect2,
+                    ficha.biografia.getHabilidades(
+                      ficha.biografia.habilidadeSelect1
+                    )
+                  )
+                "
+              >
+                {{
+                  ficha.biografia.habilidadeSelect2?.nome ??
+                  "Habilidade de Biografia 2"
+                }}
+              </b-button>
             </div>
           </b-row>
           <b-row>
@@ -64,7 +88,11 @@
         </b-card>
       </div>
     </div>
-    <PoderSelectModal :habilidades="select" />
+    <PoderSelectModal
+      :habilidades="select"
+      :active="activeChild"
+      :update="update"
+    />
   </div>
 </template>
 
@@ -79,7 +107,10 @@ export default defineComponent({
   name: "NivelSelect",
   data() {
     return {
-      select: undefined as unknown as Habilidade,
+      select: undefined as unknown as Habilidade[],
+      activeChild: null as unknown as Habilidade,
+      poderselect: 0 as number,
+      habilidadeSelect: undefined as unknown as Habilidade,
     };
   },
   props: {
@@ -93,10 +124,10 @@ export default defineComponent({
     },
   },
   methods: {
-    getHeaderTitle(i: number) {
+    getHeaderTitle(i: number): string {
       return `Nível ` + i;
     },
-    filterHabilidades(i: number) {
+    filterHabilidades(i: number): Habilidade[] {
       const classe = this.ficha.classes[i - 1];
       if (classe && classe.habilidades) {
         const count = this.ficha.classes
@@ -109,10 +140,27 @@ export default defineComponent({
           }, 0);
         return classe.habilidades[count - 1];
       }
-      return null;
+      return [];
     },
-    selectHabilidade(habilidades: Habilidade, habilidade: Habilidade) {
+    selectHabilidade(habilidades: Habilidade, habilidade: Habilidade): void {
       habilidades.habilidadeSelect = habilidade;
+    },
+    set(code: number, habilidade: Habilidade, habilidades: Habilidade[]): void {
+      //console.log(code, habilidade, habilidades)
+      this.poderselect = code;
+      this.activeChild = habilidade;
+      this.select = habilidades;
+    },
+    update(habilidade: Habilidade): void {
+      switch (this.poderselect) {
+        case 1:
+          this.ficha.biografia.habilidadeSelect1 = habilidade;
+          this.$set(this.ficha, 1, habilidade);
+          break;
+        case 2:
+          this.ficha.biografia.habilidadeSelect2 = habilidade;
+          break;
+      }
     },
   },
   components: { PoderSelectModal },

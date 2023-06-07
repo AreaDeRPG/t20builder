@@ -21,9 +21,9 @@
       <b-col cols="3">
         <b-nav vertical justified pills>
           <b-nav-item
-            v-for="(habilidade, index) in habilidades?.habilidades"
+            v-for="(habilidade, index) in habilidades"
             :key="index"
-            :active="habilidade == active"
+            :active="habilidade === activeLocal"
             @click="setHabilidade(habilidade)"
             class="text-center"
           >
@@ -43,26 +43,33 @@ export default defineComponent({
   data: () => {
     return {
       activeBook: "Todos",
-      active: undefined as unknown as Habilidade,
+      activeLocal: undefined as unknown as Habilidade | undefined,
     };
   },
   components: {},
   props: {
     habilidades: {
+      type: Array as PropType<Habilidade[]>,
+    },
+    active: {
       type: Object as PropType<Habilidade>,
+    },
+    update: {
+      type: Function,
+    },
+  },
+  watch: {
+    active(value: Habilidade | undefined) {
+      this.activeLocal = value;
     },
   },
   methods: {
     activate(newActive: string): void {
       this.activeBook = newActive;
-      console.log(this.habilidades);
     },
-    setHabilidade(habilidade: Habilidade) {
-      if (this.habilidades) {
-        this.active = habilidade;
-        // eslint-disable-next-line
-        this.habilidades.habilidadeSelect = habilidade;
-      }
+    setHabilidade(habilidade: Habilidade): void {
+      this.activeLocal = habilidade;
+      if (this.update) this.update(habilidade);
     },
   },
 });
