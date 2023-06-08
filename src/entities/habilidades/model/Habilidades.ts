@@ -1,3 +1,4 @@
+import Buff from "@/entities/buff/model/Buff";
 import { Fonte } from "@/entities/fonte/fonte";
 
 export default class Habilidade {
@@ -6,16 +7,19 @@ export default class Habilidade {
   private _fonte: Fonte;
   private _habilidades: Habilidade[];
   private _habilidadeSelect?: Habilidade;
+  private _buffs?: Buff[];
   constructor(
     id: number,
     nome: string,
     fonte: Fonte,
-    habilidades: Habilidade[]
+    habilidades: Habilidade[],
+    buffs: Buff[] | undefined
   ) {
     this.id = id;
     this._nome = nome;
     this._fonte = fonte;
     this._habilidades = habilidades;
+    this._buffs = buffs;
   }
 
   public get nome(): string {
@@ -48,5 +52,9 @@ export default class Habilidade {
 
   public set habilidadeSelect(value: Habilidade | undefined) {
     this._habilidadeSelect = value;
+  }
+
+  public get buffs(): Buff[] {
+    return this._buffs ?? [];
   }
 }

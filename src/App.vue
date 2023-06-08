@@ -78,7 +78,6 @@ import BiografiaModal from "./components/modals/biografia/BiografiaModal.vue";
 import FichaInfoTab from "./components/FichaInfoTab.vue";
 import NivelSelect from "./components/NivelSelect.vue";
 import Habilidade from "./entities/habilidades/model/Habilidades";
-import { habilidadesRaca } from "./entities/habilidades";
 
 export default defineComponent({
   name: "App",

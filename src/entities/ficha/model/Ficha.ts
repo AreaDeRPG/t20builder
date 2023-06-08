@@ -5,6 +5,9 @@ import { Tamanho } from "@/entities/Tamanho/model/Tamanho";
 import { Atributos } from "@/entities/atributos";
 import Pericia from "@/entities/pericias/model/Pericia";
 import Biografia from "@/entities/biografia/model/Biografia";
+import Habilidade from "@/entities/habilidades/model/Habilidades";
+import Buff from "@/entities/buff/model/Buff";
+import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 
 export default class Ficha {
   public readonly id: number;
@@ -51,12 +54,14 @@ export default class Ficha {
   public set raca(value: Raca) {
     this._raca = value;
   }
+
   public get modificadores(): Modificador[] {
     return this._modificadores;
   }
   public set modificadores(value: Modificador[]) {
     this._modificadores = value;
   }
+
   public get classes(): Classe[] {
     return this._classes;
   }
@@ -66,54 +71,63 @@ export default class Ficha {
   public setClasse(i: number, value: Classe) {
     this._classes[i] = value;
   }
+
   public get nivel(): number {
     return this._nivel;
   }
   public set nivel(value: number) {
     this._nivel = value;
   }
+
   public get defesa(): number {
     return this._defesa;
   }
   public set defesa(value: number) {
     this._defesa = value;
   }
+
   public get pv(): number {
     return this._pv;
   }
   private set pv(value: number) {
     this._pv = value;
   }
+
   public get pm(): number {
     return this._pm;
   }
   private set pm(value: number) {
     this._pm = value;
   }
+
   public get velocidade(): number {
     return this._velocidade;
   }
   public set velocidade(value: number) {
     this._velocidade = value;
   }
+
   public get xp(): number {
     return this._xp;
   }
   public set xp(value: number) {
     this._xp = value;
   }
+
   public get nome(): string {
     return this._nome;
   }
   public set nome(value: string) {
     this._nome = value;
   }
+
   public get tamanho(): Tamanho {
     return this._tamanho;
   }
   public set tamanho(value: Tamanho) {
     this._tamanho = value;
   }
+
   public get pericias(): Pericia[] {
     return this._pericias;
   }
@@ -124,7 +138,6 @@ export default class Ficha {
   public get biografia(): Biografia {
     return this._biografia;
   }
-
   public set biografia(biografia: Biografia) {
     this._biografia = biografia;
   }
@@ -194,27 +207,70 @@ export default class Ficha {
     );
   }
 
-  calcularPV(): void {
-    const pvInicial = this.classes[0]?.pvInicial ?? 0;
-    let pv: number = pvInicial;
+  getHabilidades() {
+    let habilidades: Habilidade[] = [];
+    habilidades = habilidades.concat(this.raca.habilidades);
+    habilidades.push(this.biografia.habilidadeSelect1);
+    habilidades.push(this.biografia.habilidadeSelect2);
+    return habilidades.filter((el) => el !== undefined);
+  }
 
-    for (let i = 1; i < this.nivel; i++) {
-      const classe = this.classes[i];
-      const pvNivel = classe?.pvNivel ?? 0;
-      pv += pvNivel;
+  getBuffs() {
+    const habilidades = this.getHabilidades();
+    const buffs: Buff[] = [];
+    console.log(habilidades);
+    for (let i = 0; i < habilidades.length; i++) {
+      const habilidade = habilidades[i];
+      if (habilidade && habilidade.buffs) {
+        buffs.push(...habilidade.buffs);
+      }
     }
+    return buffs;
+  }
 
-    const modificadoresTotal = this.modificadores[2]?.getTotal() ?? 0;
-    pv += this.nivel * modificadoresTotal;
-    this._pv = pv;
+  calcularPV(): void {
+    if (this.classes[0]) {
+      const modcon = this.modificadores[2]?.getTotal() ?? 0;
+      const pvInicial = this.classes[0].pvInicial + modcon;
+
+      let pv: number = pvInicial;
+      const buffs: Buff[] = this.getBuffs().filter(
+        (el: Buff) => el.caracteristica == Caracteristica.PV
+      );
+      const sum = buffs.reduce(
+        (accumulator, currentValue) =>
+          accumulator + currentValue.getBonus(this.nivel),
+        0
+      );
+      for (let i = 1; i < this.nivel; i++) {
+        const classe = this.classes[i];
+        if (classe) {
+          const pvNivel = Math.max(classe.pvNivel + modcon, 1);
+          pv += pvNivel;
+        }
+      }
+      pv += sum;
+      this._pv = pv;
+    }
   }
 
   calcularPM(): void {
     let pm = 0;
+    const buffs: Buff[] = this.getBuffs().filter(
+      (el: Buff) => el.caracteristica == Caracteristica.PM
+    );
     for (let i = 0; i < this.nivel; i++) {
-      pm += this.classes[i]?.pmNivel ?? 0;
+      const classe = this.classes[i];
+      if (classe) {
+        pm += classe.pmNivel;
+      }
     }
-    this._pm = pm;
+    const sum = buffs.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.getBonus(this.nivel),
+      0
+    );
+    this._pm = pm + sum;
   }
 
   render(): void {

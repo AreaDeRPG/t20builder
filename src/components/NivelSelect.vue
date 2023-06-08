@@ -161,6 +161,7 @@ export default defineComponent({
         case 2:
           // eslint-disable-next-line
           this.ficha.biografia.habilidadeSelect2 = habilidade;
+          this.$set(this.ficha, 2, habilidade);
           break;
       }
     },
