@@ -23,6 +23,7 @@ export default class Pericia {
     this._modificador = modificador;
     this._treino = Treinamento.Destreinado;
     this._bonus = [];
+    
     this._caracteristica = caracteristica;
   }
 
