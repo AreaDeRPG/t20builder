@@ -1,3 +1,6 @@
+import Buff from "../buff/model/Buff";
+import { BuffType } from "../buff/model/BuffType";
+import { Caracteristica } from "../caracteristica/model/Caracteristica";
 import { Fonte } from "../fonte/fonte";
 import Habilidade from "../habilidades/model/Habilidades";
 import Biografia from "./model/Biografia";
@@ -9,7 +12,16 @@ export const biografias = [
     new Habilidade(1, "Vontade", Fonte.BASICO, [], []),
     new Habilidade(1, "Medicina", Fonte.BASICO, [], []),
     new Habilidade(1, "Membro da Igreja", Fonte.BASICO, [], []),
-    new Habilidade(1, "Vontade de Ferro", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Vontade de Ferro",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.VONTADE, 2, BuffType.BASE),
+        new Buff(Caracteristica.PM, 0, BuffType.BYHALFLEVEL),
+      ]
+    ),
   ]),
   new Biografia(2, "Amigo dos Animais", Fonte.BASICO, [
     new Habilidade(1, "Cavalgar", Fonte.BASICO, [], []),
@@ -45,7 +57,14 @@ export const biografias = [
   new Biografia(8, "Assistente de Laboratório", Fonte.BASICO, [
     new Habilidade(1, "Oficio (Alquimista)", Fonte.BASICO, [], []),
     new Habilidade(1, "Misticismo", Fonte.BASICO, [], []),
-    new Habilidade(1, "Esse Cheiro...", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Esse Cheiro...",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.FORTITUDE, 2, BuffType.BASE)]
+    ),
+
     new Habilidade(1, "Venefício", Fonte.BASICO, [], []),
     new Habilidade(1, "Um poder da Tormenta", Fonte.BASICO, [], []),
   ]),
