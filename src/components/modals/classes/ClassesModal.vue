@@ -67,6 +67,7 @@ export default defineComponent({
       this.ficha.classes[this.nivel - 1] = classe;
       this.$set(this.ficha.classes, this.nivel - 1, classe);
       this.ficha.render();
+      this.ficha.getBuffs();
     },
     filter(): Classe[] {
       if (this.activeBook === "Todos") {

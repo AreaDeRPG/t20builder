@@ -64,11 +64,20 @@ export default defineComponent({
             new PericiasData(
               el.treino.charAt(0),
               el.nome,
-              el.getBonus(nivel),
+              el.getBonus(
+                nivel,
+                this.ficha!.getBuffs().filter(
+                  (el_) => el_.caracteristica == el.caracteristica
+                )
+              ),
               meioNivel,
               el.modificador.getTotal(),
               el.getBonusTreinamento(nivel),
-              el.sumBonus()
+              el.sumBonus(
+                this.ficha!.getBuffs().filter(
+                  (el_) => el_.caracteristica == el.caracteristica
+                )
+              )
             )
           )
         );

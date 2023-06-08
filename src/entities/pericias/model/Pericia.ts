@@ -1,6 +1,8 @@
 import Utils from "@/entities/util";
 import { Treinamento } from "./Treinamento";
 import Modificador from "@/entities/modificadores/model/Modificador";
+import Buff from "@/entities/buff/model/Buff";
+import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 
 export default class Pericia {
   public readonly id: number;
@@ -8,13 +10,20 @@ export default class Pericia {
   private _modificador: Modificador;
   private _treino: Treinamento;
   private _bonus: number[];
+  private _caracteristica: Caracteristica;
 
-  constructor(id: number, nome: string, modificador: Modificador) {
+  constructor(
+    id: number,
+    nome: string,
+    modificador: Modificador,
+    caracteristica: Caracteristica
+  ) {
     this.id = id;
     this._nome = nome;
     this._modificador = modificador;
     this._treino = Treinamento.Destreinado;
     this._bonus = [];
+    this._caracteristica = caracteristica;
   }
 
   public get nome(): string {
@@ -49,6 +58,10 @@ export default class Pericia {
     this._bonus = value;
   }
 
+  public get caracteristica(): Caracteristica {
+    return this._caracteristica;
+  }
+
   public getBonusTreinamento(nivel: number): number {
     if (this._treino === Treinamento.Destreinado) return 0;
     if (nivel < 7) {
@@ -60,15 +73,19 @@ export default class Pericia {
     }
   }
 
-  public sumBonus(): number {
-    return this._bonus.reduce((sum, el) => sum + el, 0);
+  public sumBonus(buffs: Buff[]): number {
+    return (
+      this._bonus.reduce((sum, el) => sum + el, 0) +
+      buffs.reduce((sum, el) => sum + el.bonus, 0)
+    );
   }
 
-  public getBonus(nivel: number): number {
+  public getBonus(nivel: number, buffs: Buff[]): number {
     const mod =
       this.getBonusTreinamento(nivel) +
       Utils.meioNivel(nivel) +
-      this._modificador.getTotal();
+      this._modificador.getTotal() +
+      this.sumBonus(buffs);
     return mod;
   }
 }

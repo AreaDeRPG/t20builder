@@ -156,13 +156,35 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
       [],
       [new Buff(Caracteristica.PM, 0, BuffType.BYLEVEL)]
     ),
-    new Habilidade(1, "Sentidos Élficos", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Sentidos Élficos",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.PERCEPCAO, 2, BuffType.BASE),
+        new Buff(Caracteristica.MISTICISMO, 2, BuffType.BASE),
+        new Buff(Caracteristica.VISAONAPENUMBRA, 0, BuffType.BASE),
+      ]
+    ),
   ],
   goblin: [
     new Habilidade(1, "Engenhoso", Fonte.BASICO, [], []),
-    new Habilidade(1, "Espelunqueiro", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Espelunqueiro",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.VISAONOESCURO, 0, BuffType.BASE)]
+    ),
     new Habilidade(1, "Peste Esguia", Fonte.BASICO, [], []),
-    new Habilidade(1, "Rato das Ruas", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Rato das Ruas",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.FORTITUDE, 2, BuffType.BASE)]
+    ),
   ],
   lefou: [
     new Habilidade(1, "Cria da Tormenta", Fonte.BASICO, [], []),
@@ -170,7 +192,13 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
   ],
   minotauro: [
     new Habilidade(1, "Chifres", Fonte.BASICO, [], []),
-    new Habilidade(1, "Couro Rígido", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Couro Rígido",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
+    ),
     new Habilidade(1, "Faro", Fonte.BASICO, [], []),
   ],
   qareen: [
@@ -179,14 +207,29 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
     new Habilidade(1, "Tatuagem Mágica", Fonte.BASICO, [], []),
   ],
   golem: [
-    new Habilidade(1, "Chassi", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Chassi",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DEFESA, 2, BuffType.BASE),
+        new Buff(Caracteristica.PENALIDADEARMADURA, 2, BuffType.BASE),
+      ]
+    ),
     new Habilidade(1, "Criatura Artificial", Fonte.BASICO, [], []),
     new Habilidade(1, "Propósito de Criação", Fonte.BASICO, [], []),
     new Habilidade(1, "Fonte Elemental", Fonte.BASICO, [], []),
   ],
   hynne: [
     new Habilidade(1, "Arremessador", Fonte.BASICO, [], []),
-    new Habilidade(1, "Pequeno e Rechonchudo", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Pequeno e Rechonchudo",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE)]
+    ),
     new Habilidade(1, "Sorte Salvadora", Fonte.BASICO, [], []),
   ],
   kliren: [
@@ -217,17 +260,41 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
     new Habilidade(1, "Magia das Fadas", Fonte.BASICO, [], []),
   ],
   suraggelaggelus: [
-    new Habilidade(1, "Herança Divina", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Herança Divina",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DIPLOMACIA, 2, BuffType.BASE),
+        new Buff(Caracteristica.INTUICAO, 2, BuffType.BASE),
+      ]
+    ),
     new Habilidade(1, "Luz Sagrada", Fonte.BASICO, [], []),
   ],
   suraggelsulfure: [
     new Habilidade(1, "Herança Divina", Fonte.BASICO, [], []),
-    new Habilidade(1, "Sombras Profanas", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Sombras Profanas",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE),
+        new Buff(Caracteristica.FURTIVIDADE, 2, BuffType.BASE),
+      ]
+    ),
   ],
   trog: [
     new Habilidade(1, "Mau Cheiro", Fonte.BASICO, [], []),
     new Habilidade(1, "Mordida", Fonte.BASICO, [], []),
-    new Habilidade(1, "Reptiliano", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Reptiliano",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
+    ),
     new Habilidade(1, "Sangue Frio", Fonte.BASICO, [], []),
   ],
 };

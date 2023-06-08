@@ -80,7 +80,12 @@ export default class Ficha {
   }
 
   public get defesa(): number {
-    return this._defesa;
+    return (
+      this._defesa +
+      this.getBuffs()
+        .filter((el) => el.caracteristica == Caracteristica.DEFESA)
+        .reduce((sum, el) => sum + el.bonus, 0)
+    );
   }
   public set defesa(value: number) {
     this._defesa = value;
