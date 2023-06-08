@@ -223,7 +223,7 @@ export default class Ficha {
   getBuffs() {
     const habilidades = this.getHabilidades();
     const buffs: Buff[] = [];
-    console.log(habilidades);
+    //console.log(habilidades);
     for (let i = 0; i < habilidades.length; i++) {
       const habilidade = habilidades[i];
       if (habilidade && habilidade.buffs) {
