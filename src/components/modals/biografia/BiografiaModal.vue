@@ -69,7 +69,9 @@ export default defineComponent({
     },
     escolherBiografia(biografia: Biografia): void {
       // eslint-disable-next-line
-      this.ficha.biografia = biografia;
+      var clone: Biografia = Object.assign({}, biografia)
+      console.log(clone.getHabilidades())
+      this.ficha.biografia = clone;
       this.ficha.render();
     },
     biografiaId(): number {
