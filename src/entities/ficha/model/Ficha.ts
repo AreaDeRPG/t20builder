@@ -8,6 +8,9 @@ import Biografia from "@/entities/biografia/model/Biografia";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import Buff from "@/entities/buff/model/Buff";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
+import { BuffType } from "@/entities/buff/model/BuffType";
+import { Treinamento } from "@/entities/pericias/model/Treinamento";
+import Utils from "@/entities/util";
 
 export default class Ficha {
   public readonly id: number;
@@ -17,8 +20,6 @@ export default class Ficha {
   private _classes: Classe[];
   private _nivel: number;
   private _defesa: number;
-  private _pv: number;
-  private _pm: number;
   private _velocidade: number;
   private _xp: number;
   private _nome: string;
@@ -39,8 +40,6 @@ export default class Ficha {
     this._classes = [];
     this._nivel = 1;
     this._defesa = 10;
-    this._pv = 0;
-    this._pm = 0;
     this._velocidade = 9;
     this._xp = 0;
     this._nome = "";
@@ -65,9 +64,6 @@ export default class Ficha {
   public get classes(): Classe[] {
     return this._classes;
   }
-  private set classes(classes: Classe[]) {
-    this._classes = classes;
-  }
   public setClasse(i: number, value: Classe) {
     this._classes[i] = value;
   }
@@ -87,22 +83,48 @@ export default class Ficha {
         .reduce((sum, el) => sum + el.bonus, 0)
     );
   }
-  public set defesa(value: number) {
-    this._defesa = value;
-  }
 
   public get pv(): number {
-    return this._pv;
-  }
-  private set pv(value: number) {
-    this._pv = value;
+    let pv_ = 0;
+    const modcon = this.modificadores[2]?.getTotal() ?? 0;
+    if (this.classes[0]) {
+      pv_ = this.classes[0].pvInicial + modcon;
+    }
+    for (let i = 1; i < this.nivel; i++) {
+      const classe = this.classes[i];
+      if (classe) {
+        const pvNivel = Math.max(classe.pvNivel + modcon, 1);
+        pv_ += pvNivel;
+      }
+    }
+    const buffs: Buff[] = this.getBuffs().filter(
+      (el: Buff) => el.caracteristica == Caracteristica.PV
+    );
+    const sum = buffs.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.getBonus(this.nivel),
+      0
+    );
+    return pv_ + sum;
   }
 
   public get pm(): number {
-    return this._pm;
-  }
-  private set pm(value: number) {
-    this._pm = value;
+    let pm_ = 0;
+    const buffs: Buff[] = this.getBuffs().filter(
+      (el: Buff) => el.caracteristica == Caracteristica.PM
+    );
+    for (let i = 0; i < this.nivel; i++) {
+      const classe = this.classes[i];
+      if (classe) {
+        pm_ += classe.pmNivel;
+      }
+    }
+    const sum = buffs.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.getBonus(this.nivel),
+      0
+    );
+    return pm_ + sum;
   }
 
   public get velocidade(): number {
@@ -135,9 +157,6 @@ export default class Ficha {
 
   public get pericias(): Pericia[] {
     return this._pericias;
-  }
-  public set pericias(value: Pericia[]) {
-    this._pericias = value;
   }
 
   public get biografia(): Biografia {
@@ -223,7 +242,6 @@ export default class Ficha {
   getBuffs() {
     const habilidades = this.getHabilidades();
     const buffs: Buff[] = [];
-    //console.log(habilidades);
     for (let i = 0; i < habilidades.length; i++) {
       const habilidade = habilidades[i];
       if (habilidade && habilidade.buffs) {
@@ -231,55 +249,5 @@ export default class Ficha {
       }
     }
     return buffs;
-  }
-
-  calcularPV(): void {
-    if (this.classes[0]) {
-      const modcon = this.modificadores[2]?.getTotal() ?? 0;
-      const pvInicial = this.classes[0].pvInicial + modcon;
-
-      let pv: number = pvInicial;
-      const buffs: Buff[] = this.getBuffs().filter(
-        (el: Buff) => el.caracteristica == Caracteristica.PV
-      );
-      const sum = buffs.reduce(
-        (accumulator, currentValue) =>
-          accumulator + currentValue.getBonus(this.nivel),
-        0
-      );
-      for (let i = 1; i < this.nivel; i++) {
-        const classe = this.classes[i];
-        if (classe) {
-          const pvNivel = Math.max(classe.pvNivel + modcon, 1);
-          pv += pvNivel;
-        }
-      }
-      pv += sum;
-      this._pv = pv;
-    }
-  }
-
-  calcularPM(): void {
-    let pm = 0;
-    const buffs: Buff[] = this.getBuffs().filter(
-      (el: Buff) => el.caracteristica == Caracteristica.PM
-    );
-    for (let i = 0; i < this.nivel; i++) {
-      const classe = this.classes[i];
-      if (classe) {
-        pm += classe.pmNivel;
-      }
-    }
-    const sum = buffs.reduce(
-      (accumulator, currentValue) =>
-        accumulator + currentValue.getBonus(this.nivel),
-      0
-    );
-    this._pm = pm + sum;
-  }
-
-  render(): void {
-    this.calcularPV();
-    this.calcularPM();
   }
 }

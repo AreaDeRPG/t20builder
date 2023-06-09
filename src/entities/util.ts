@@ -35,4 +35,14 @@ export default class Utils {
   static meioNivel(value: number): number {
     return Math.floor(value / 2);
   }
+
+  static clone(obj: any, clones = new WeakMap()): any {
+    if (!obj || typeof obj !== "object") {
+      return obj;
+    }
+
+    const isArray = Array.isArray(obj) ? [] : {};
+
+    return Object.assign(isArray, ...obj);
+  }
 }

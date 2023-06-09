@@ -26,6 +26,8 @@ export default class Buff {
         return this.getBonusPlusHalfLevel(level);
       case BuffType.BYRANK:
         return this.getBonusPlusRank(level);
+      case BuffType.PROFICIENCY:
+        return 0;
     }
   }
 

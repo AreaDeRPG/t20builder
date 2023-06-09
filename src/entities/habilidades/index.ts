@@ -2,6 +2,7 @@ import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
 import { Fonte } from "../fonte/fonte";
+import { pericias } from "../pericias";
 import Habilidade from "./model/Habilidades";
 
 interface ListaHabilidadesRaca {
@@ -129,7 +130,10 @@ const habilidadesBarbaro: Habilidade[][] = [
 ];
 
 export const habilidadesRaca: ListaHabilidadesRaca = {
-  humano: [new Habilidade(1, "Versatil", Fonte.BASICO, [], [])],
+  humano: [
+    new Habilidade(1, "Versátil", Fonte.BASICO, [], []),
+    new Habilidade(1, "Versátil", Fonte.BASICO, [], []),
+  ],
   anao: [
     new Habilidade(1, "Conhecimento das Rochas", Fonte.BASICO, [], []),
     new Habilidade(1, "Devagar e Sempre", Fonte.BASICO, [], []),

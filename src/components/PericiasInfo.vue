@@ -5,7 +5,11 @@
 </template>
 
 <script lang="ts">
+import Buff from "@/entities/buff/model/Buff";
+import { BuffType } from "@/entities/buff/model/BuffType";
 import Ficha from "@/entities/ficha/model/Ficha";
+import Pericia from "@/entities/pericias/model/Pericia";
+import { Treinamento } from "@/entities/pericias/model/Treinamento";
 import { defineComponent, type PropType } from "vue";
 
 class PericiasData {
@@ -59,7 +63,23 @@ export default defineComponent({
       if (this.ficha) {
         var nivel: number = this.ficha.nivel;
         var meioNivel: number = this.ficha.getMeioNivel();
-        this.ficha.pericias.forEach((el) =>
+        var pericias: Pericia[] = this.ficha.pericias;
+        console.log(1)
+        pericias.forEach((el) => (el.treino = Treinamento.Destreinado));
+        console.log(2)
+        const buffs: Buff[] = this.ficha
+          .getBuffs()
+          .filter((el) => el.buffType == BuffType.PROFICIENCY);
+        console.log(3)
+        pericias.forEach((el) =>
+          buffs.forEach((el_) => {
+            if (el_.caracteristica == el.caracteristica)
+              el.treino = Treinamento.Treinado;
+          })
+        );
+        console.log(4)
+
+        pericias.forEach((el) => {
           res.push(
             new PericiasData(
               el.treino.charAt(0),
@@ -79,8 +99,8 @@ export default defineComponent({
                 )
               )
             )
-          )
-        );
+          );
+        });
       }
       return res;
     },

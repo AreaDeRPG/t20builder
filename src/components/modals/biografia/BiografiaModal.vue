@@ -40,6 +40,7 @@ import { defineComponent, type PropType } from "vue";
 import type Ficha from "@/entities/ficha/model/Ficha";
 import { biografias } from "@/entities/biografia";
 import Biografia from "@/entities/biografia/model/Biografia";
+import Utils from "@/entities/util";
 export default defineComponent({
   name: "BiografiaModal",
   data: () => {
@@ -69,10 +70,7 @@ export default defineComponent({
     },
     escolherBiografia(biografia: Biografia): void {
       // eslint-disable-next-line
-      var clone: Biografia = Object.assign({}, biografia)
-      console.log(clone.getHabilidades())
-      this.ficha.biografia = clone;
-      this.ficha.render();
+      this.ficha.biografia = Utils.clone(biografia);
     },
     biografiaId(): number {
       return this.ficha.biografia.id;

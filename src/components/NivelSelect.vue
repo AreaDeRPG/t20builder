@@ -18,6 +18,11 @@
               style="width: 100%"
             >
               {{ habilidade.nome }}
+              <div v-for="(j, index) in habilidade.habilidades" :key="index">
+                <b-button v-b-modal.poder-select>
+                  {{ habilidade.nome }}
+                </b-button>
+              </div>
             </div>
             <div
               class="d-flex justify-content-left align-items-center"
@@ -145,8 +150,12 @@ export default defineComponent({
     selectHabilidade(habilidades: Habilidade, habilidade: Habilidade): void {
       habilidades.habilidadeSelect = habilidade;
     },
-    set(code: number, habilidade: Habilidade, habilidades: Habilidade[]): void {
-      //console.log(code, habilidade, habilidades)
+    set(
+      code: number,
+      habilidade: Habilidade,
+      habilidades: Habilidade[],
+      pos?: number
+    ): void {
       this.poderselect = code;
       this.activeChild = habilidade;
       this.select = habilidades;
@@ -162,6 +171,8 @@ export default defineComponent({
           // eslint-disable-next-line
           this.ficha.biografia.habilidadeSelect2 = habilidade;
           this.$set(this.ficha, 2, habilidade);
+          break;
+        case 3:
           break;
       }
     },
