@@ -1,5 +1,6 @@
 import { Atributos } from "./atributos";
-
+// eslint-disable-next-line
+var _ = require("lodash");
 export default class Utils {
   static getAbreviacao(atributo: Atributos): string {
     switch (atributo) {
@@ -34,5 +35,9 @@ export default class Utils {
 
   static meioNivel(value: number): number {
     return Math.floor(value / 2);
+  }
+
+  static deepClone(obj: any): any {
+    _.cloneDeep(obj);
   }
 }

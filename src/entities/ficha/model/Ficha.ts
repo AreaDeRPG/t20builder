@@ -242,12 +242,12 @@ export default class Ficha {
   getBuffs() {
     const habilidades = this.getHabilidades();
     const buffs: Buff[] = [];
-    for (let i = 0; i < habilidades.length; i++) {
-      const habilidade = habilidades[i];
-      if (habilidade && habilidade.buffs) {
-        buffs.push(...habilidade.buffs);
+    habilidades.forEach((el) => {
+      buffs.push(...el.buffs);
+      if (el.habilidadeSelect) {
+        buffs.push(...el.habilidadeSelect.buffs);
       }
-    }
-    return buffs;
+    });
+    return buffs.filter((el) => el !== undefined);
   }
 }

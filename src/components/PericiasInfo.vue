@@ -88,6 +88,7 @@ export default defineComponent({
             )
           );
         });
+        console.log(this.ficha.getBuffs());
       }
       return res;
     },

@@ -68,7 +68,9 @@ export default class Pericia {
 
   isTreinado(buffs: Buff[]): boolean {
     const buff = buffs.filter(
-      (el) => el.caracteristica == this.caracteristica && el.buffType == BuffType.PROFICIENCY
+      (el) =>
+        el.caracteristica == this.caracteristica &&
+        el.buffType == BuffType.PROFICIENCY
     )[0];
     if (
       buff &&

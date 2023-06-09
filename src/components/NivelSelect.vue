@@ -17,12 +17,12 @@
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
             >
-              {{ habilidade.nome }}
-              <div v-for="(j, index) in habilidade.habilidades" :key="index">
-                <b-button v-b-modal.poder-select>
-                  {{ habilidade.nome }}
-                </b-button>
-              </div>
+              <b-button
+                v-b-modal.poderselect
+                @click="set(3, habilidade, habilidade.habilidades)"
+              >
+                {{ habilidade.habilidadeSelect?.nome ?? habilidade.nome }}
+              </b-button>
             </div>
             <div
               class="d-flex justify-content-left align-items-center"
@@ -150,17 +150,13 @@ export default defineComponent({
     selectHabilidade(habilidades: Habilidade, habilidade: Habilidade): void {
       habilidades.habilidadeSelect = habilidade;
     },
-    set(
-      code: number,
-      habilidade: Habilidade,
-      habilidades: Habilidade[],
-      pos?: number
-    ): void {
+    set(code: number, habilidade: Habilidade, habilidades: Habilidade[]): void {
       this.poderselect = code;
       this.activeChild = habilidade;
       this.select = habilidades;
     },
     update(habilidade: Habilidade): void {
+      //console.log(this.ficha);
       switch (this.poderselect) {
         case 1:
           // eslint-disable-next-line
@@ -173,6 +169,8 @@ export default defineComponent({
           this.$set(this.ficha, 2, habilidade);
           break;
         case 3:
+          this.activeChild.habilidadeSelect = habilidade;
+          this.$set(this.ficha, 3, habilidade);
           break;
       }
     },

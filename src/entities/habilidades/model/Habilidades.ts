@@ -6,7 +6,7 @@ export default class Habilidade {
   private _nome: string;
   private _fonte: Fonte;
   private _habilidades: Habilidade[];
-  private _habilidadeSelect?: Habilidade | Habilidade[];
+  private _habilidadeSelect?: Habilidade;
   private _buffs?: Buff[];
   constructor(
     id: number,
@@ -46,11 +46,11 @@ export default class Habilidade {
     this._habilidades = habilidades;
   }
 
-  public get habilidadeSelect(): Habilidade | Habilidade[] | undefined {
+  public get habilidadeSelect(): Habilidade | undefined {
     return this._habilidadeSelect;
   }
 
-  public set habilidadeSelect(value: Habilidade | Habilidade[] | undefined) {
+  public set habilidadeSelect(value: Habilidade | undefined) {
     this._habilidadeSelect = value;
   }
 

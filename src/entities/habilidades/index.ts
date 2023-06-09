@@ -1,3 +1,4 @@
+import { treinamentoPericias } from "../biografia";
 import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
@@ -131,7 +132,7 @@ const habilidadesBarbaro: Habilidade[][] = [
 
 export const habilidadesRaca: ListaHabilidadesRaca = {
   humano: [
-    new Habilidade(1, "Versátil", Fonte.BASICO, [], []),
+    new Habilidade(1, "Versátil", Fonte.BASICO, treinamentoPericias, []),
     new Habilidade(1, "Versátil", Fonte.BASICO, [], []),
   ],
   anao: [
