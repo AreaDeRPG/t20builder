@@ -41,6 +41,8 @@ import type Ficha from "@/entities/ficha/model/Ficha";
 import { biografias } from "@/entities/biografia";
 import Biografia from "@/entities/biografia/model/Biografia";
 import Utils from "@/entities/util";
+// eslint-disable-next-line
+var _ = require("lodash");
 export default defineComponent({
   name: "BiografiaModal",
   data: () => {
@@ -70,7 +72,8 @@ export default defineComponent({
     },
     escolherBiografia(biografia: Biografia): void {
       // eslint-disable-next-line
-      this.ficha.biografia = Utils.clone(biografia);
+      this.ficha.biografia = _.cloneDeep(biografia);
+      console.log(this.ficha.biografia);
     },
     biografiaId(): number {
       return this.ficha.biografia.id;

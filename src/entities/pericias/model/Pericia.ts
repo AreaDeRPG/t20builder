@@ -3,12 +3,12 @@ import { Treinamento } from "./Treinamento";
 import Modificador from "@/entities/modificadores/model/Modificador";
 import Buff from "@/entities/buff/model/Buff";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
+import { BuffType } from "@/entities/buff/model/BuffType";
 
 export default class Pericia {
   public readonly id: number;
   private _nome: string;
   private _modificador: Modificador;
-  private _treino: Treinamento;
   private _bonus: number[];
   private _caracteristica: Caracteristica;
 
@@ -21,7 +21,6 @@ export default class Pericia {
     this.id = id;
     this._nome = nome;
     this._modificador = modificador;
-    this._treino = Treinamento.Destreinado;
     this._bonus = [];
 
     this._caracteristica = caracteristica;
@@ -43,14 +42,6 @@ export default class Pericia {
     this._modificador = value;
   }
 
-  public get treino(): Treinamento {
-    return this._treino;
-  }
-
-  public set treino(value: Treinamento) {
-    this._treino = value;
-  }
-
   public get bonus(): number[] {
     return this._bonus;
   }
@@ -63,8 +54,9 @@ export default class Pericia {
     return this._caracteristica;
   }
 
-  public getBonusTreinamento(nivel: number): number {
-    if (this._treino === Treinamento.Destreinado) return 0;
+  public getBonusTreinamento(nivel: number, buff?: Buff[]): number {
+    if (!buff) return 0;
+    if (!this.isTreinado(buff)) return 0;
     if (nivel < 7) {
       return 2;
     } else if (nivel < 15) {
@@ -72,6 +64,19 @@ export default class Pericia {
     } else {
       return 6;
     }
+  }
+
+  isTreinado(buffs: Buff[]): boolean {
+    const buff = buffs.filter(
+      (el) => el.caracteristica == this.caracteristica && el.buffType == BuffType.PROFICIENCY
+    )[0];
+    if (
+      buff &&
+      buff.caracteristica == this.caracteristica &&
+      buff.buffType == BuffType.PROFICIENCY
+    )
+      return true;
+    return false;
   }
 
   public sumBonus(buffs: Buff[]): number {
@@ -82,8 +87,9 @@ export default class Pericia {
   }
 
   public getBonus(nivel: number, buffs: Buff[]): number {
+    const bonusTreino = this.getBonusTreinamento(nivel, buffs);
     const mod =
-      this.getBonusTreinamento(nivel) +
+      bonusTreino +
       Utils.meioNivel(nivel) +
       this._modificador.getTotal() +
       this.sumBonus(buffs);
