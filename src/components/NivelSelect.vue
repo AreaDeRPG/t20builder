@@ -97,6 +97,7 @@
       :habilidades="select"
       :active="activeChild"
       :update="update"
+      :tabs="tabs"
     />
   </div>
 </template>
@@ -116,6 +117,7 @@ export default defineComponent({
       activeChild: null as unknown as Habilidade,
       poderselect: 0 as number,
       habilidadeSelect: undefined as unknown as Habilidade,
+      tabs: [] as string[],
     };
   },
   props: {
@@ -156,7 +158,6 @@ export default defineComponent({
       this.select = habilidades;
     },
     update(habilidade: Habilidade): void {
-      //console.log(this.ficha);
       switch (this.poderselect) {
         case 1:
           // eslint-disable-next-line

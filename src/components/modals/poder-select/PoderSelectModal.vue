@@ -5,12 +5,28 @@
     size="xl"
     centered
     scrollable
+    @show="reset"
   >
+    <b-row>
+      <b-nav tabs v-if="getTabs()?.length > 1">
+        <b-nav-item :active="activeBook === 'Todos'" @click="activate('Todos')"
+          >Todos</b-nav-item
+        >
+        <b-nav-item
+          v-for="el in getTabs()"
+          :key="el"
+          :active="activeBook === el"
+          @click="activate(el)"
+          class="text-center"
+          >{{ el }}</b-nav-item
+        >
+      </b-nav>
+    </b-row>
     <b-row>
       <b-col cols="3">
         <b-nav vertical justified pills>
           <b-nav-item
-            v-for="(habilidade, index) in habilidades"
+            v-for="(habilidade, index) in habilidadesFilter()"
             :key="index"
             :active="habilidade === activeLocal"
             @click="setHabilidade(habilidade)"
@@ -27,6 +43,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
+import { Categoria } from "@/entities/categoria/model/Categoria";
 export default defineComponent({
   name: "PoderSelectModal",
   data: () => {
@@ -46,6 +63,10 @@ export default defineComponent({
     update: {
       type: Function,
     },
+    tabs: {
+      type: Array as PropType<string[]>,
+      default: [] as string[],
+    },
   },
   watch: {
     active(value: Habilidade | undefined) {
@@ -53,12 +74,36 @@ export default defineComponent({
     },
   },
   methods: {
+    reset() {
+      this.activeBook = "Todos";
+    },
     activate(newActive: string): void {
       this.activeBook = newActive;
+      console.log(this.habilidades);
     },
     setHabilidade(habilidade: Habilidade): void {
       this.activeLocal = habilidade;
       if (this.update) this.update(habilidade);
+    },
+    getTabs(): Categoria[] {
+      if (this.habilidades) {
+        var categorias: Categoria[] = this.habilidades.map(
+          (el) => el.categoria
+        );
+        return [...new Set(categorias)];
+      }
+      return [] as Categoria[];
+    },
+    habilidadesFilter(): Habilidade[] {
+      if (!this.habilidades) return [];
+
+      if (this.activeBook === "Todos") {
+        return this.habilidades ?? [];
+      } else {
+        return this.habilidades.filter(
+          (el) => el.categoria === this.activeBook
+        );
+      }
     },
   },
 });

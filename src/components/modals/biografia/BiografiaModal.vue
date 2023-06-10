@@ -71,7 +71,6 @@ export default defineComponent({
     escolherBiografia(biografia: Biografia): void {
       // eslint-disable-next-line
       this.ficha.biografia = Utils.deepClone(biografia);
-      //console.log(this.ficha.biografia);
     },
     biografiaId(): number {
       return this.ficha.biografia.id;

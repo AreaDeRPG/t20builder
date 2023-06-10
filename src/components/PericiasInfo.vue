@@ -66,10 +66,9 @@ export default defineComponent({
         var pericias: Pericia[] = this.ficha.pericias;
         var buffs = this.ficha.getBuffs();
         pericias.forEach((el) => {
-          const isTrained = el.isTreinado(buffs);
           res.push(
             new PericiasData(
-              isTrained ? `T` : `D`,
+              el.treinado.charAt(0),
               el.nome,
               el.getBonus(
                 nivel,
@@ -88,7 +87,6 @@ export default defineComponent({
             )
           );
         });
-        console.log(this.ficha.getBuffs());
       }
       return res;
     },

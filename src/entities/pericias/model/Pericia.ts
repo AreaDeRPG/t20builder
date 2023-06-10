@@ -11,6 +11,7 @@ export default class Pericia {
   private _modificador: Modificador;
   private _bonus: number[];
   private _caracteristica: Caracteristica;
+  private _treinado: Treinamento;
 
   constructor(
     id: number,
@@ -22,7 +23,7 @@ export default class Pericia {
     this._nome = nome;
     this._modificador = modificador;
     this._bonus = [];
-
+    this._treinado = Treinamento.Destreinado;
     this._caracteristica = caracteristica;
   }
 
@@ -54,9 +55,14 @@ export default class Pericia {
     return this._caracteristica;
   }
 
+  public get treinado(): Treinamento {
+    return this._treinado;
+  }
+
   public getBonusTreinamento(nivel: number, buff?: Buff[]): number {
     if (!buff) return 0;
     if (!this.isTreinado(buff)) return 0;
+    if (this._treinado == Treinamento.Destreinado) return 0;
     if (nivel < 7) {
       return 2;
     } else if (nivel < 15) {
@@ -76,8 +82,11 @@ export default class Pericia {
       buff &&
       buff.caracteristica == this.caracteristica &&
       buff.buffType == BuffType.PROFICIENCY
-    )
+    ) {
+      this._treinado = Treinamento.Treinado;
       return true;
+    }
+    this._treinado = Treinamento.Destreinado;
     return false;
   }
 

@@ -1,6 +1,7 @@
 import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
+import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
 import Habilidade from "../habilidades/model/Habilidades";
 import Biografia from "./model/Biografia";
@@ -11,203 +12,232 @@ export const treinamentoPericias = [
     "Acrobacia",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.ACROBACIA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.ACROBACIA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Adestramento",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.ADESTRAMENTO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.ADESTRAMENTO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Atletismo",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.ATLETISMO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.ATLETISMO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Atuação",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.ATUACAO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.ATUACAO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Cavalgar",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.CAVALGAR, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.CAVALGAR, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Conhecimento",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.CONHECIMENTO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.CONHECIMENTO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Cura",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.CURA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.CURA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Diplomacia",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.DIPLOMACIA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.DIPLOMACIA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Enganacao",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.ENGANACAO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.ENGANACAO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Fortitude",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.FORTITUDE, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.FORTITUDE, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Furtividade",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.FURTIVIDADE, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.FURTIVIDADE, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Guerra",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.GUERRA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.GUERRA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Iniciativa",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.INICIATIVA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.INICIATIVA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Intimidacao",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.INTIMIDACAO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.INTIMIDACAO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Intuicao",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.INTUICAO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.INTUICAO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Investigacao",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.INVESTIGACAO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.INVESTIGACAO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Jogatina",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.JOGATINA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.JOGATINA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Ladinagem",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.LADINAGEM, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.LADINAGEM, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Luta",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.LUTA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.LUTA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Misticismo",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.MISTICISMO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.MISTICISMO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Nobreza",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.NOBREZA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.NOBREZA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Oficio",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.OFICIO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.OFICIO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Percepcao",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.PERCEPCAO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.PERCEPCAO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Pilotagem",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.PILOTAGEM, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.PILOTAGEM, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Pontaria",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.PONTARIA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.PONTARIA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Reflexos",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.INTIMIDACAO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.INTIMIDACAO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Religião",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.RELIGIAO, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.RELIGIAO, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Sobrevivencia",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.SOBREVIVENCIA, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.SOBREVIVENCIA, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
   new Habilidade(
     1,
     "Vontade",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.VONTADE, 0, BuffType.PROFICIENCY)]
+    [new Buff(Caracteristica.VONTADE, 0, BuffType.PROFICIENCY)],
+    Categoria.Pericia
   ),
 ];
 
