@@ -47,8 +47,4 @@ export default class Biografia {
   public set habilidadeSelect2(value: Habilidade) {
     this._habilidadeSelect2 = value;
   }
-
-  public getHabilidades(value?: Habilidade): Habilidade[] {
-    return this.habilidades.filter((val) => val !== value);
-  }
 }

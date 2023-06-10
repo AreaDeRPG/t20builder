@@ -89,7 +89,8 @@ export default defineComponent({
     },
     reset() {
       this.activeBook = "Todos";
-      this.activeLocal = this.active?.habilidadeSelect;
+      console.log(this.active)
+      this.activeLocal = this.active?.habilidadeSelect ?? this.active;
     },
     activate(newActive: string): void {
       this.activeBook = newActive;

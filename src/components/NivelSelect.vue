@@ -39,9 +39,7 @@
                   set(
                     1,
                     ficha.biografia.habilidadeSelect1,
-                    ficha.biografia.getHabilidades(
-                      ficha.biografia.habilidadeSelect2
-                    )
+                    ficha.biografia.habilidades
                   )
                 "
               >
@@ -61,9 +59,7 @@
                   set(
                     2,
                     ficha.biografia.habilidadeSelect2,
-                    ficha.biografia.getHabilidades(
-                      ficha.biografia.habilidadeSelect1
-                    )
+                    ficha.biografia.habilidades
                   )
                 "
               >
@@ -162,12 +158,6 @@ export default defineComponent({
     set(code: number, habilidade: Habilidade, habilidades: Habilidade[]): void {
       this.poderselect = code;
       this.activeChild = habilidade;
-      /*
-      this.select = habilidades.filter(
-        (obj) => !this.ficha.getHabilidades().some((remove) => remove == obj)
-      ).push(this.activeChild);
-      console.log(this.select.push(this.activeChild));
-      */
       this.select = habilidades;
     },
     update(habilidade: Habilidade): void {
