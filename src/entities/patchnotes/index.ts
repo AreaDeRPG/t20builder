@@ -9,7 +9,6 @@ export const patches: PatchNote[] = [
     "Adicionado bonus na defesa pelo Minotauro e Golem e Trog",
     "Adicionado selecao de poder pela habilidade Versatil de Humano e Proposito de Criacao do golem, mas ainda nao implementado, a selecao eh apenas para testes visuais",
     "Memoria Postuma de Osteon apenas seleciona pericia, poderes virao mais a frente",
-
   ]),
   new PatchNote(3, "v0.7.3", [
     "Adicionada lista de habilidades das biografias (bônus ainda não implementados)",
