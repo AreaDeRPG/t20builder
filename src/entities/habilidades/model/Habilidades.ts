@@ -15,7 +15,7 @@ export default class Habilidade {
     nome: string,
     fonte: Fonte,
     habilidades: Habilidade[],
-    buffs: Buff[] | undefined,
+    buffs?: Buff[],
     categoria?: Categoria
   ) {
     this.id = id;

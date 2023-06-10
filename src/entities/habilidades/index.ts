@@ -15,11 +15,11 @@ interface ListaHabilidadesClasse {
 }
 
 const habilidadesComum = [
-  new Habilidade(1, "Magias (1º Circulo)", Fonte.BASICO, [], []),
-  new Habilidade(1, "Magias (2º Circulo)", Fonte.BASICO, [], []),
-  new Habilidade(1, "Magias (3º Circulo)", Fonte.BASICO, [], []),
-  new Habilidade(1, "Magias (4º Circulo)", Fonte.BASICO, [], []),
-  new Habilidade(1, "Magias (5º Circulo)", Fonte.BASICO, [], []),
+  new Habilidade(1, "Magias (1º Circulo)", Fonte.BASICO, []),
+  new Habilidade(1, "Magias (2º Circulo)", Fonte.BASICO, []),
+  new Habilidade(1, "Magias (3º Circulo)", Fonte.BASICO, []),
+  new Habilidade(1, "Magias (4º Circulo)", Fonte.BASICO, []),
+  new Habilidade(1, "Magias (5º Circulo)", Fonte.BASICO, []),
 ];
 
 const habilidadesArcanista: Habilidade[][] = [
@@ -29,104 +29,104 @@ const habilidadesArcanista: Habilidade[][] = [
       "Caminho do Arcanista",
       Fonte.BASICO,
       [
-        new Habilidade(1, "Caminho do Mago", Fonte.BASICO, [], []),
-        new Habilidade(1, "Caminho do Bruxo", Fonte.BASICO, [], []),
-        new Habilidade(1, "Caminho do Feiticeiro", Fonte.BASICO, [], []),
+        new Habilidade(1, "Caminho do Mago", Fonte.BASICO, []),
+        new Habilidade(1, "Caminho do Bruxo", Fonte.BASICO, []),
+        new Habilidade(1, "Caminho do Feiticeiro", Fonte.BASICO, []),
       ],
       []
     ),
     habilidadesComum[0],
   ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
   [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], []),
+    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
     habilidadesComum[1],
   ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
   [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], []),
+    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
     habilidadesComum[2],
   ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
   [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], []),
+    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
     habilidadesComum[3],
   ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
   [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], []),
+    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
     habilidadesComum[4],
   ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
   [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [], []),
-    new Habilidade(3, "Alta Arcana", Fonte.BASICO, [], []),
+    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
+    new Habilidade(3, "Alta Arcana", Fonte.BASICO, []),
   ],
 ];
 
 const habilidadesBarbaro: Habilidade[][] = [
-  [new Habilidade(2, "Furia +2", Fonte.BASICO, [], [])],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], [])],
+  [new Habilidade(2, "Furia +2", Fonte.BASICO, [])],
+  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
   [
-    new Habilidade(2, "Instinto Selvagem +1", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
+    new Habilidade(2, "Instinto Selvagem +1", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
   ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], [])],
+  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
   [
-    new Habilidade(2, "Redução de Dano 2", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
-  ],
-  [
-    new Habilidade(2, "Fúria +3", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
-  ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], [])],
-  [
-    new Habilidade(2, "Redução de Dano 4", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
+    new Habilidade(2, "Redução de Dano 2", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
   ],
   [
-    new Habilidade(2, "Instinto Selvagem +2", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
+    new Habilidade(2, "Fúria +3", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
   ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], [])],
+  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
   [
-    new Habilidade(2, "Fúria +4", Fonte.BASICO, [], []),
-    new Habilidade(2, "Redução de Dano 6", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
-  ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], [])],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], [])],
-  [
-    new Habilidade(2, "Redução de Dano 8", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
+    new Habilidade(2, "Redução de Dano 4", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
   ],
   [
-    new Habilidade(2, "Instinto Selvagem +3", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
+    new Habilidade(2, "Instinto Selvagem +2", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+  ],
+  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
+  [
+    new Habilidade(2, "Fúria +4", Fonte.BASICO, []),
+    new Habilidade(2, "Redução de Dano 6", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+  ],
+  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
+  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
+  [
+    new Habilidade(2, "Redução de Dano 8", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
   ],
   [
-    new Habilidade(2, "Fúria +5", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
+    new Habilidade(2, "Instinto Selvagem +3", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
   ],
   [
-    new Habilidade(2, "Redução de Dano 10", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
+    new Habilidade(2, "Fúria +5", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
   ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], [])],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], [])],
   [
-    new Habilidade(2, "Fúria Titânica", Fonte.BASICO, [], []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [], []),
+    new Habilidade(2, "Redução de Dano 10", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+  ],
+  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
+  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
+  [
+    new Habilidade(2, "Fúria Titânica", Fonte.BASICO, []),
+    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
   ],
 ];
 
@@ -142,8 +142,14 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
     ),
   ],
   anao: [
-    new Habilidade(1, "Conhecimento das Rochas", Fonte.BASICO, [], []),
-    new Habilidade(1, "Devagar e Sempre", Fonte.BASICO, [], []),
+    new Habilidade(1, "Conhecimento das Rochas", Fonte.BASICO, []),
+    new Habilidade(
+      1,
+      "Devagar e Sempre",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.VELOCIDADE, -3, BuffType.BASE)]
+    ),
     new Habilidade(
       1,
       "Duro como Pedra",
@@ -151,15 +157,21 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
       [],
       [new Buff(Caracteristica.PV, 2, BuffType.BYLEVEL)]
     ),
-    new Habilidade(1, "Tradição de Heredrimm", Fonte.BASICO, [], []),
+    new Habilidade(1, "Tradição de Heredrimm", Fonte.BASICO, []),
   ],
   dahllan: [
-    new Habilidade(1, "Amiga das Plantas", Fonte.BASICO, [], []),
-    new Habilidade(1, "Armadura de Allihanna", Fonte.BASICO, [], []),
-    new Habilidade(1, "Empatia Selvagem", Fonte.BASICO, [], []),
+    new Habilidade(1, "Amiga das Plantas", Fonte.BASICO, []),
+    new Habilidade(1, "Armadura de Allihanna", Fonte.BASICO, []),
+    new Habilidade(1, "Empatia Selvagem", Fonte.BASICO, []),
   ],
   elfo: [
-    new Habilidade(1, "Graça de Glórienn", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Graça de Glórienn",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.VELOCIDADE, 3, BuffType.BASE)]
+    ),
     new Habilidade(
       1,
       "Sangue Mágico",
@@ -180,7 +192,7 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
     ),
   ],
   goblin: [
-    new Habilidade(1, "Engenhoso", Fonte.BASICO, [], []),
+    new Habilidade(1, "Engenhoso", Fonte.BASICO, []),
     new Habilidade(
       1,
       "Espelunqueiro",
@@ -188,7 +200,7 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
       [],
       [new Buff(Caracteristica.VISAONOESCURO, 0, BuffType.BASE)]
     ),
-    new Habilidade(1, "Peste Esguia", Fonte.BASICO, [], []),
+    new Habilidade(1, "Peste Esguia", Fonte.BASICO, []),
     new Habilidade(
       1,
       "Rato das Ruas",
@@ -198,11 +210,11 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
     ),
   ],
   lefou: [
-    new Habilidade(1, "Cria da Tormenta", Fonte.BASICO, [], []),
-    new Habilidade(1, "Deformidade", Fonte.BASICO, [], []),
+    new Habilidade(1, "Cria da Tormenta", Fonte.BASICO, []),
+    new Habilidade(1, "Deformidade", Fonte.BASICO, []),
   ],
   minotauro: [
-    new Habilidade(1, "Chifres", Fonte.BASICO, [], []),
+    new Habilidade(1, "Chifres", Fonte.BASICO, []),
     new Habilidade(
       1,
       "Couro Rígido",
@@ -210,12 +222,19 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
       [],
       [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
     ),
-    new Habilidade(1, "Faro", Fonte.BASICO, [], []),
+    new Habilidade(1, "Faro", Fonte.BASICO, []),
   ],
   qareen: [
-    new Habilidade(1, "Desejos", Fonte.BASICO, [], []),
-    new Habilidade(1, "Resistencia Elemental", Fonte.BASICO, [], []),
-    new Habilidade(1, "Tatuagem Mágica", Fonte.BASICO, [], []),
+    new Habilidade(1, "Desejos", Fonte.BASICO, []),
+    new Habilidade(1, "Resistencia Elemental", Fonte.BASICO, [
+      new Habilidade(1, "Qareen da Agua", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen do Ar", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen do Fogo", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen da Terra", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen da Luz", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen da Trevas", Fonte.BASICO, []),
+    ]),
+    new Habilidade(1, "Tatuagem Mágica", Fonte.BASICO, []),
   ],
   golem: [
     new Habilidade(
@@ -228,47 +247,55 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
         new Buff(Caracteristica.PENALIDADEARMADURA, 2, BuffType.BASE),
       ]
     ),
-    new Habilidade(1, "Criatura Artificial", Fonte.BASICO, [], []),
-    new Habilidade(1, "Propósito de Criação", Fonte.BASICO, [], []),
-    new Habilidade(1, "Fonte Elemental", Fonte.BASICO, [], []),
+    new Habilidade(1, "Criatura Artificial", Fonte.BASICO, []),
+    new Habilidade(
+      1,
+      "Propósito de Criação",
+      Fonte.BASICO,
+      poderes.poderesCombate
+    ),
+    new Habilidade(1, "Fonte Elemental", Fonte.BASICO, []),
   ],
   hynne: [
-    new Habilidade(1, "Arremessador", Fonte.BASICO, [], []),
+    new Habilidade(1, "Arremessador", Fonte.BASICO, []),
     new Habilidade(
       1,
       "Pequeno e Rechonchudo",
       Fonte.BASICO,
       [],
-      [new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE)]
+      [
+        new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE),
+        new Buff(Caracteristica.VELOCIDADE, -3, BuffType.BASE),
+      ]
     ),
-    new Habilidade(1, "Sorte Salvadora", Fonte.BASICO, [], []),
+    new Habilidade(1, "Sorte Salvadora", Fonte.BASICO, []),
   ],
   kliren: [
-    new Habilidade(1, "Híbrido", Fonte.BASICO, [], []),
-    new Habilidade(1, "Engenhosidade", Fonte.BASICO, [], []),
-    new Habilidade(1, "Ossos Frágeis", Fonte.BASICO, [], []),
-    new Habilidade(1, "Vanguardista", Fonte.BASICO, [], []),
+    new Habilidade(1, "Híbrido", Fonte.BASICO, treinamentoPericias),
+    new Habilidade(1, "Engenhosidade", Fonte.BASICO, []),
+    new Habilidade(1, "Ossos Frágeis", Fonte.BASICO, []),
+    new Habilidade(1, "Vanguardista", Fonte.BASICO, []),
   ],
   medusa: [
-    new Habilidade(1, "Cria de Megalokk", Fonte.BASICO, [], []),
-    new Habilidade(1, "Natureza Venenosa", Fonte.BASICO, [], []),
-    new Habilidade(1, "Olhar Atordoante", Fonte.BASICO, [], []),
+    new Habilidade(1, "Cria de Megalokk", Fonte.BASICO, []),
+    new Habilidade(1, "Natureza Venenosa", Fonte.BASICO, []),
+    new Habilidade(1, "Olhar Atordoante", Fonte.BASICO, []),
   ],
   osteon: [
-    new Habilidade(1, "Armadurra Óssea", Fonte.BASICO, [], []),
-    new Habilidade(1, "Memória Póstuma", Fonte.BASICO, [], []),
-    new Habilidade(1, "Tatuagem Natureza Esquelética", Fonte.BASICO, [], []),
-    new Habilidade(1, "Preço da Não-Vida", Fonte.BASICO, [], []),
+    new Habilidade(1, "Armadurra Óssea", Fonte.BASICO, []),
+    new Habilidade(1, "Memória Póstuma", Fonte.BASICO, treinamentoPericias),
+    new Habilidade(1, "Tatuagem Natureza Esquelética", Fonte.BASICO, []),
+    new Habilidade(1, "Preço da Não-Vida", Fonte.BASICO, []),
   ],
   sereiatritao: [
-    new Habilidade(1, "Canção dos Mares", Fonte.BASICO, [], []),
-    new Habilidade(1, "Mestre dos Tridentes", Fonte.BASICO, [], []),
-    new Habilidade(1, "Transformação Anfíbia", Fonte.BASICO, [], []),
+    new Habilidade(1, "Canção dos Mares", Fonte.BASICO, []),
+    new Habilidade(1, "Mestre dos Tridentes", Fonte.BASICO, []),
+    new Habilidade(1, "Transformação Anfíbia", Fonte.BASICO, []),
   ],
   silfide: [
-    new Habilidade(1, "Asas de Borboleta", Fonte.BASICO, [], []),
-    new Habilidade(1, "Espírito da Natureza", Fonte.BASICO, [], []),
-    new Habilidade(1, "Magia das Fadas", Fonte.BASICO, [], []),
+    new Habilidade(1, "Asas de Borboleta", Fonte.BASICO, []),
+    new Habilidade(1, "Espírito da Natureza", Fonte.BASICO, []),
+    new Habilidade(1, "Magia das Fadas", Fonte.BASICO, []),
   ],
   suraggelaggelus: [
     new Habilidade(
@@ -281,10 +308,10 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
         new Buff(Caracteristica.INTUICAO, 2, BuffType.BASE),
       ]
     ),
-    new Habilidade(1, "Luz Sagrada", Fonte.BASICO, [], []),
+    new Habilidade(1, "Luz Sagrada", Fonte.BASICO, []),
   ],
   suraggelsulfure: [
-    new Habilidade(1, "Herança Divina", Fonte.BASICO, [], []),
+    new Habilidade(1, "Herança Divina", Fonte.BASICO, []),
     new Habilidade(
       1,
       "Sombras Profanas",
@@ -297,8 +324,8 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
     ),
   ],
   trog: [
-    new Habilidade(1, "Mau Cheiro", Fonte.BASICO, [], []),
-    new Habilidade(1, "Mordida", Fonte.BASICO, [], []),
+    new Habilidade(1, "Mau Cheiro", Fonte.BASICO, []),
+    new Habilidade(1, "Mordida", Fonte.BASICO, []),
     new Habilidade(
       1,
       "Reptiliano",
@@ -306,7 +333,7 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
       [],
       [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
     ),
-    new Habilidade(1, "Sangue Frio", Fonte.BASICO, [], []),
+    new Habilidade(1, "Sangue Frio", Fonte.BASICO, []),
   ],
 };
 
