@@ -17,7 +17,17 @@
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
             >
-              {{ habilidade.nome }}
+              <div v-if="habilidade.habilidades.length > 0">
+                <b-button
+                  v-b-modal.poderselect
+                  @click="set(3, habilidade, habilidade.habilidades)"
+                >
+                  {{ habilidade.habilidadeSelect?.nome ?? habilidade.nome }}
+                </b-button>
+              </div>
+              <div v-else>
+                {{ habilidade.nome }}
+              </div>
             </div>
             <div
               class="d-flex justify-content-left align-items-center"
@@ -92,6 +102,8 @@
       :habilidades="select"
       :active="activeChild"
       :update="update"
+      :tabs="tabs"
+      :ficha="ficha"
     />
   </div>
 </template>
@@ -103,6 +115,7 @@ import Habilidade from "@/entities/habilidades/model/Habilidades";
 import { defineComponent } from "vue";
 import { PropType } from "vue/types/v3-component-props";
 import PoderSelectModal from "./modals/poder-select/PoderSelectModal.vue";
+import { Categoria } from "@/entities/categoria/model/Categoria";
 export default defineComponent({
   name: "NivelSelect",
   data() {
@@ -111,6 +124,7 @@ export default defineComponent({
       activeChild: null as unknown as Habilidade,
       poderselect: 0 as number,
       habilidadeSelect: undefined as unknown as Habilidade,
+      tabs: [] as Categoria[],
     };
   },
   props: {
@@ -146,9 +160,14 @@ export default defineComponent({
       habilidades.habilidadeSelect = habilidade;
     },
     set(code: number, habilidade: Habilidade, habilidades: Habilidade[]): void {
-      //console.log(code, habilidade, habilidades)
       this.poderselect = code;
       this.activeChild = habilidade;
+      /*
+      this.select = habilidades.filter(
+        (obj) => !this.ficha.getHabilidades().some((remove) => remove == obj)
+      ).push(this.activeChild);
+      console.log(this.select.push(this.activeChild));
+      */
       this.select = habilidades;
     },
     update(habilidade: Habilidade): void {
@@ -161,6 +180,11 @@ export default defineComponent({
         case 2:
           // eslint-disable-next-line
           this.ficha.biografia.habilidadeSelect2 = habilidade;
+          this.$set(this.ficha, 2, habilidade);
+          break;
+        case 3:
+          this.activeChild.habilidadeSelect = habilidade;
+          this.$set(this.ficha, 3, habilidade);
           break;
       }
     },

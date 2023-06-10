@@ -83,7 +83,6 @@ export default defineComponent({
       // eslint-disable-next-line
       this.ficha.raca = raca;
       this.fill();
-      this.ficha.render();
     },
     racaId(): number {
       return this.ficha.raca.id;

@@ -1,6 +1,15 @@
 import PatchNote from "./model/PatchNotes";
 
 export const patches: PatchNote[] = [
+  new PatchNote(4, "v0.7.4", [
+    "Adicionado selecao de pericias treinadas pela biografia (selecao de poderes de biografia disponivel, mas apenas algumas estao implementadas para teste)",
+    "Adicionado selecao de pericias treinadas pela raca (Humano, Kliren e Osteon)",
+    "Adicionado selecao de Resistencia Elemental do Qareen (bonus de resistencia ainda nao implementados",
+    "Adicionado bonus de pericia fixos de raca (bonus como +2 em fortitude de goblin estao implementados, mas o +5 do lefou contra efeitos da tormenta nao) (bonus fixos escolhidos ainda nao implementados, como a deformidade do lefou)",
+    "Adicionado bonus na defesa pelo Minotauro e Golem e Trog",
+    "Adicionado selecao de poder pela habilidade Versatil de Humano e Proposito de Criacao do golem, mas ainda nao implementado, a selecao eh apenas para testes visuais",
+    "Memoria Postuma de Osteon apenas seleciona pericia, poderes virao mais a frente",
+  ]),
   new PatchNote(3, "v0.7.3", [
     "Adicionada lista de habilidades das biografias (bônus ainda não implementados)",
     "Adicionada seleção das habilidades das biografias",

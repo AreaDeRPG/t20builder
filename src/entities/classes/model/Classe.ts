@@ -1,5 +1,6 @@
 import { Fonte } from "@/entities/fonte/fonte";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
+import Pericia from "@/entities/pericias/model/Pericia";
 
 export default class Classe {
   public readonly id: number;
@@ -7,7 +8,7 @@ export default class Classe {
   private _pvInicial: number;
   private _pvNivel: number;
   private _pmNivel: number;
-  private _pericias: string[];
+  private _pericias: Pericia[];
   private _habilidades: Habilidade[][];
   private _fonte: Fonte;
 
@@ -17,7 +18,7 @@ export default class Classe {
     pvInicial: number,
     pvNivel: number,
     pmNivel: number,
-    pericias: string[],
+    pericias: Pericia[],
     habilidades: Habilidade[][],
     fonte: Fonte
   ) {
@@ -63,11 +64,11 @@ export default class Classe {
     this._pmNivel = value;
   }
 
-  public get pericias(): string[] {
+  public get pericias(): Pericia[] {
     return this._pericias;
   }
 
-  public set pericias(value: string[]) {
+  public set pericias(value: Pericia[]) {
     this.pericias = value;
   }
 

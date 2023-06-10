@@ -27,7 +27,6 @@ export default defineComponent({
       // eslint-disable-next-line
       this.ficha.nivel = i;
       this.$bvModal.hide("niveis");
-      this.ficha.render();
     },
   },
 });
