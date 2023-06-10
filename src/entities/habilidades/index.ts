@@ -2,6 +2,7 @@ import { treinamentoPericias } from "../biografia";
 import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
+import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
 import { poderes } from "../poderes";
 import Habilidade from "./model/Habilidades";
@@ -20,6 +21,501 @@ const habilidadesComum = [
   new Habilidade(1, "Magias (3º Circulo)", Fonte.BASICO, []),
   new Habilidade(1, "Magias (4º Circulo)", Fonte.BASICO, []),
   new Habilidade(1, "Magias (5º Circulo)", Fonte.BASICO, []),
+];
+
+const habilidadesHumano: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Versátil",
+    Fonte.BASICO,
+    treinamentoPericias,
+    undefined,
+    Categoria.habilidadesHumano
+  ),
+  new Habilidade(
+    1,
+    "Versátil",
+    Fonte.BASICO,
+    treinamentoPericias.concat(poderes.poderesCombate),
+    undefined,
+    Categoria.habilidadesHumano
+  ),
+];
+
+const habilidadesAnao: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Conhecimento das Rochas",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesAnao
+  ),
+  new Habilidade(
+    1,
+    "Devagar e Sempre",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.VELOCIDADE, -3, BuffType.BASE)],
+    Categoria.habilidadesAnao
+  ),
+  new Habilidade(
+    1,
+    "Duro como Pedra",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.PV, 2, BuffType.BYLEVEL)],
+    Categoria.habilidadesAnao
+  ),
+  new Habilidade(
+    1,
+    "Tradição de Heredrimm",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesAnao
+  ),
+];
+
+const habilidadesDahllan: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Amiga das Plantas",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesDahllan
+  ),
+  new Habilidade(
+    1,
+    "Armadura de Allihanna",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesDahllan
+  ),
+  new Habilidade(
+    1,
+    "Empatia Selvagem",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesDahllan
+  ),
+];
+
+const habilidadesElfo: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Graça de Glórienn",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.VELOCIDADE, 3, BuffType.BASE)],
+    Categoria.habilidadesElfo
+  ),
+  new Habilidade(
+    1,
+    "Sangue Mágico",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.PM, 0, BuffType.BYLEVEL)],
+    Categoria.habilidadesElfo
+  ),
+  new Habilidade(
+    1,
+    "Sentidos Élficos",
+    Fonte.BASICO,
+    [],
+    [
+      new Buff(Caracteristica.PERCEPCAO, 2, BuffType.BASE),
+      new Buff(Caracteristica.MISTICISMO, 2, BuffType.BASE),
+      new Buff(Caracteristica.VISAONAPENUMBRA, 0, BuffType.BASE),
+    ],
+    Categoria.habilidadesElfo
+  ),
+];
+
+const habilidadesGoblin: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Engenhoso",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesGoblin
+  ),
+  new Habilidade(
+    1,
+    "Espelunqueiro",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.VISAONOESCURO, 0, BuffType.BASE)],
+    Categoria.habilidadesGoblin
+  ),
+  new Habilidade(
+    1,
+    "Peste Esguia",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesGoblin
+  ),
+  new Habilidade(
+    1,
+    "Rato das Ruas",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.FORTITUDE, 2, BuffType.BASE)],
+    Categoria.habilidadesGoblin
+  ),
+];
+
+const habilidadesLefou: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Cria da Tormenta",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesLefou
+  ),
+  new Habilidade(
+    1,
+    "Deformidade",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesLefou
+  ),
+];
+
+const habilidadesMinotauro: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Chifres",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesMinotauro
+  ),
+  new Habilidade(
+    1,
+    "Couro Rígido",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)],
+    Categoria.habilidadesMinotauro
+  ),
+  new Habilidade(
+    1,
+    "Faro",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesMinotauro
+  ),
+];
+
+const habilidadesQareen: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Desejos",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesQareen
+  ),
+  new Habilidade(
+    1,
+    "Resistencia Elemental",
+    Fonte.BASICO,
+    [
+      new Habilidade(1, "Qareen da Agua", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen do Ar", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen do Fogo", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen da Terra", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen da Luz", Fonte.BASICO, []),
+      new Habilidade(1, "Qareen da Trevas", Fonte.BASICO, []),
+    ],
+    undefined,
+    Categoria.habilidadesQareen
+  ),
+  new Habilidade(
+    1,
+    "Tatuagem Mágica",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesQareen
+  ),
+];
+
+const habilidadesGolem: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Chassi",
+    Fonte.BASICO,
+    [],
+    [
+      new Buff(Caracteristica.DEFESA, 2, BuffType.BASE),
+      new Buff(Caracteristica.PENALIDADEARMADURA, 2, BuffType.BASE),
+    ],
+    Categoria.habilidadesGolem
+  ),
+  new Habilidade(
+    1,
+    "Criatura Artificial",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesGolem
+  ),
+  new Habilidade(
+    1,
+    "Propósito de Criação",
+    Fonte.BASICO,
+    poderes.poderesCombate,
+    undefined,
+    Categoria.habilidadesGolem
+  ),
+  new Habilidade(
+    1,
+    "Fonte Elemental",
+    Fonte.BASICO,
+    [
+      new Habilidade(1, "Fonte Elemental (Agua)", Fonte.BASICO, []),
+      new Habilidade(1, "Fonte Elemental (Ar)", Fonte.BASICO, []),
+      new Habilidade(1, "Fonte Elemental (Fogo)", Fonte.BASICO, []),
+      new Habilidade(1, "Fonte Elemental (Terra)", Fonte.BASICO, []),
+    ],
+    undefined,
+    Categoria.habilidadesGolem
+  ),
+];
+
+const habilidadesHynne: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Arremessador",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesHynne
+  ),
+  new Habilidade(
+    1,
+    "Pequeno e Rechonchudo",
+    Fonte.BASICO,
+    [],
+    [
+      new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE),
+      new Buff(Caracteristica.VELOCIDADE, -3, BuffType.BASE),
+    ],
+    Categoria.habilidadesHynne
+  ),
+  new Habilidade(
+    1,
+    "Sorte Salvadora",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesHynne
+  ),
+];
+
+const habilidadesKliren: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Híbrido",
+    Fonte.BASICO,
+    treinamentoPericias,
+    undefined,
+    Categoria.habilidadesKliren
+  ),
+  new Habilidade(
+    1,
+    "Engenhosidade",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesKliren
+  ),
+  new Habilidade(
+    1,
+    "Ossos Frágeis",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesKliren
+  ),
+  new Habilidade(
+    1,
+    "Vanguardista",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesKliren
+  ),
+];
+
+const habilidadesMedusa: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Cria de Megalokk",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesMedusa
+  ),
+  new Habilidade(
+    1,
+    "Natureza Venenosa",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesMedusa
+  ),
+  new Habilidade(
+    1,
+    "Olhar Atordoante",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesMedusa
+  ),
+];
+
+const habilidadesSereiaTritao: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Canção dos Mares",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesSereiaTritao
+  ),
+  new Habilidade(
+    1,
+    "Mestre dos Tridentes",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesSereiaTritao
+  ),
+  new Habilidade(
+    1,
+    "Transformação Anfíbia",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesSereiaTritao
+  ),
+];
+
+const habilidadesSilfide: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Asas de Borboleta",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesSilfide
+  ),
+  new Habilidade(
+    1,
+    "Espírito da Natureza",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesSilfide
+  ),
+  new Habilidade(
+    1,
+    "Magia das Fadas",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesSilfide
+  ),
+];
+
+const habilidadesAggelus: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Herança Divina",
+    Fonte.BASICO,
+    [],
+    [
+      new Buff(Caracteristica.DIPLOMACIA, 2, BuffType.BASE),
+      new Buff(Caracteristica.INTUICAO, 2, BuffType.BASE),
+    ],
+    Categoria.habilidadesAggelus
+  ),
+  new Habilidade(
+    1,
+    "Luz Sagrada",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesAggelus
+  ),
+];
+
+const habilidadesSulfure: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Herança Divina",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesSulfure
+  ),
+  new Habilidade(
+    1,
+    "Sombras Profanas",
+    Fonte.BASICO,
+    [],
+    [
+      new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE),
+      new Buff(Caracteristica.FURTIVIDADE, 2, BuffType.BASE),
+    ],
+    Categoria.habilidadesSulfure
+  ),
+];
+
+const habilidadesTrog: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Mau Cheiro",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesTrog
+  ),
+  new Habilidade(
+    1,
+    "Mordida",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesTrog
+  ),
+  new Habilidade(
+    1,
+    "Reptiliano",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)],
+    Categoria.habilidadesTrog
+  ),
+  new Habilidade(
+    1,
+    "Sangue Frio",
+    Fonte.BASICO,
+    [],
+    undefined,
+    Categoria.habilidadesTrog
+  ),
 ];
 
 const habilidadesArcanista: Habilidade[][] = [
@@ -130,211 +626,53 @@ const habilidadesBarbaro: Habilidade[][] = [
   ],
 ];
 
+const habilidadesOsteon: Habilidade[] = [
+  new Habilidade(1, "Armadurra Óssea", Fonte.BASICO, []),
+  new Habilidade(1, "Memória Póstuma", Fonte.BASICO, memoriasPostumas()),
+  new Habilidade(1, "Natureza Esquelética", Fonte.BASICO, []),
+  new Habilidade(1, "Preço da Não-Vida", Fonte.BASICO, []),
+];
+
+function memoriasPostumas(): Habilidade[] {
+  const habilidades: Habilidade[] = treinamentoPericias
+    .concat(habilidadesAnao)
+    .concat(habilidadesDahllan)
+    .concat(habilidadesElfo)
+    .concat(habilidadesGoblin)
+    .concat(habilidadesLefou)
+    .concat(habilidadesMinotauro)
+    .concat(habilidadesQareen)
+    .concat(habilidadesGolem)
+    .concat(habilidadesHynne)
+    .concat(habilidadesKliren)
+    .concat(habilidadesMedusa)
+    .concat(habilidadesSereiaTritao)
+    .concat(habilidadesSilfide)
+    .concat(habilidadesAggelus)
+    .concat(habilidadesSulfure)
+    .concat(habilidadesTrog);
+  return habilidades;
+}
+
 export const habilidadesRaca: ListaHabilidadesRaca = {
-  humano: [
-    new Habilidade(1, "Versátil", Fonte.BASICO, treinamentoPericias, []),
-    new Habilidade(
-      1,
-      "Versátil",
-      Fonte.BASICO,
-      treinamentoPericias.concat(poderes.poderesCombate),
-      []
-    ),
-  ],
-  anao: [
-    new Habilidade(1, "Conhecimento das Rochas", Fonte.BASICO, []),
-    new Habilidade(
-      1,
-      "Devagar e Sempre",
-      Fonte.BASICO,
-      [],
-      [new Buff(Caracteristica.VELOCIDADE, -3, BuffType.BASE)]
-    ),
-    new Habilidade(
-      1,
-      "Duro como Pedra",
-      Fonte.BASICO,
-      [],
-      [new Buff(Caracteristica.PV, 2, BuffType.BYLEVEL)]
-    ),
-    new Habilidade(1, "Tradição de Heredrimm", Fonte.BASICO, []),
-  ],
-  dahllan: [
-    new Habilidade(1, "Amiga das Plantas", Fonte.BASICO, []),
-    new Habilidade(1, "Armadura de Allihanna", Fonte.BASICO, []),
-    new Habilidade(1, "Empatia Selvagem", Fonte.BASICO, []),
-  ],
-  elfo: [
-    new Habilidade(
-      1,
-      "Graça de Glórienn",
-      Fonte.BASICO,
-      [],
-      [new Buff(Caracteristica.VELOCIDADE, 3, BuffType.BASE)]
-    ),
-    new Habilidade(
-      1,
-      "Sangue Mágico",
-      Fonte.BASICO,
-      [],
-      [new Buff(Caracteristica.PM, 0, BuffType.BYLEVEL)]
-    ),
-    new Habilidade(
-      1,
-      "Sentidos Élficos",
-      Fonte.BASICO,
-      [],
-      [
-        new Buff(Caracteristica.PERCEPCAO, 2, BuffType.BASE),
-        new Buff(Caracteristica.MISTICISMO, 2, BuffType.BASE),
-        new Buff(Caracteristica.VISAONAPENUMBRA, 0, BuffType.BASE),
-      ]
-    ),
-  ],
-  goblin: [
-    new Habilidade(1, "Engenhoso", Fonte.BASICO, []),
-    new Habilidade(
-      1,
-      "Espelunqueiro",
-      Fonte.BASICO,
-      [],
-      [new Buff(Caracteristica.VISAONOESCURO, 0, BuffType.BASE)]
-    ),
-    new Habilidade(1, "Peste Esguia", Fonte.BASICO, []),
-    new Habilidade(
-      1,
-      "Rato das Ruas",
-      Fonte.BASICO,
-      [],
-      [new Buff(Caracteristica.FORTITUDE, 2, BuffType.BASE)]
-    ),
-  ],
-  lefou: [
-    new Habilidade(1, "Cria da Tormenta", Fonte.BASICO, []),
-    new Habilidade(1, "Deformidade", Fonte.BASICO, []),
-  ],
-  minotauro: [
-    new Habilidade(1, "Chifres", Fonte.BASICO, []),
-    new Habilidade(
-      1,
-      "Couro Rígido",
-      Fonte.BASICO,
-      [],
-      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
-    ),
-    new Habilidade(1, "Faro", Fonte.BASICO, []),
-  ],
-  qareen: [
-    new Habilidade(1, "Desejos", Fonte.BASICO, []),
-    new Habilidade(1, "Resistencia Elemental", Fonte.BASICO, [
-      new Habilidade(1, "Qareen da Agua", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen do Ar", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen do Fogo", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen da Terra", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen da Luz", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen da Trevas", Fonte.BASICO, []),
-    ]),
-    new Habilidade(1, "Tatuagem Mágica", Fonte.BASICO, []),
-  ],
-  golem: [
-    new Habilidade(
-      1,
-      "Chassi",
-      Fonte.BASICO,
-      [],
-      [
-        new Buff(Caracteristica.DEFESA, 2, BuffType.BASE),
-        new Buff(Caracteristica.PENALIDADEARMADURA, 2, BuffType.BASE),
-      ]
-    ),
-    new Habilidade(1, "Criatura Artificial", Fonte.BASICO, []),
-    new Habilidade(
-      1,
-      "Propósito de Criação",
-      Fonte.BASICO,
-      poderes.poderesCombate
-    ),
-    new Habilidade(1, "Fonte Elemental", Fonte.BASICO, []),
-  ],
-  hynne: [
-    new Habilidade(1, "Arremessador", Fonte.BASICO, []),
-    new Habilidade(
-      1,
-      "Pequeno e Rechonchudo",
-      Fonte.BASICO,
-      [],
-      [
-        new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE),
-        new Buff(Caracteristica.VELOCIDADE, -3, BuffType.BASE),
-      ]
-    ),
-    new Habilidade(1, "Sorte Salvadora", Fonte.BASICO, []),
-  ],
-  kliren: [
-    new Habilidade(1, "Híbrido", Fonte.BASICO, treinamentoPericias),
-    new Habilidade(1, "Engenhosidade", Fonte.BASICO, []),
-    new Habilidade(1, "Ossos Frágeis", Fonte.BASICO, []),
-    new Habilidade(1, "Vanguardista", Fonte.BASICO, []),
-  ],
-  medusa: [
-    new Habilidade(1, "Cria de Megalokk", Fonte.BASICO, []),
-    new Habilidade(1, "Natureza Venenosa", Fonte.BASICO, []),
-    new Habilidade(1, "Olhar Atordoante", Fonte.BASICO, []),
-  ],
-  osteon: [
-    new Habilidade(1, "Armadurra Óssea", Fonte.BASICO, []),
-    new Habilidade(1, "Memória Póstuma", Fonte.BASICO, treinamentoPericias),
-    new Habilidade(1, "Tatuagem Natureza Esquelética", Fonte.BASICO, []),
-    new Habilidade(1, "Preço da Não-Vida", Fonte.BASICO, []),
-  ],
-  sereiatritao: [
-    new Habilidade(1, "Canção dos Mares", Fonte.BASICO, []),
-    new Habilidade(1, "Mestre dos Tridentes", Fonte.BASICO, []),
-    new Habilidade(1, "Transformação Anfíbia", Fonte.BASICO, []),
-  ],
-  silfide: [
-    new Habilidade(1, "Asas de Borboleta", Fonte.BASICO, []),
-    new Habilidade(1, "Espírito da Natureza", Fonte.BASICO, []),
-    new Habilidade(1, "Magia das Fadas", Fonte.BASICO, []),
-  ],
-  suraggelaggelus: [
-    new Habilidade(
-      1,
-      "Herança Divina",
-      Fonte.BASICO,
-      [],
-      [
-        new Buff(Caracteristica.DIPLOMACIA, 2, BuffType.BASE),
-        new Buff(Caracteristica.INTUICAO, 2, BuffType.BASE),
-      ]
-    ),
-    new Habilidade(1, "Luz Sagrada", Fonte.BASICO, []),
-  ],
-  suraggelsulfure: [
-    new Habilidade(1, "Herança Divina", Fonte.BASICO, []),
-    new Habilidade(
-      1,
-      "Sombras Profanas",
-      Fonte.BASICO,
-      [],
-      [
-        new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE),
-        new Buff(Caracteristica.FURTIVIDADE, 2, BuffType.BASE),
-      ]
-    ),
-  ],
-  trog: [
-    new Habilidade(1, "Mau Cheiro", Fonte.BASICO, []),
-    new Habilidade(1, "Mordida", Fonte.BASICO, []),
-    new Habilidade(
-      1,
-      "Reptiliano",
-      Fonte.BASICO,
-      [],
-      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
-    ),
-    new Habilidade(1, "Sangue Frio", Fonte.BASICO, []),
-  ],
+  humano: habilidadesHumano,
+  anao: habilidadesAnao,
+  dahllan: habilidadesDahllan,
+  elfo: habilidadesElfo,
+  goblin: habilidadesGoblin,
+  lefou: habilidadesLefou,
+  minotauro: habilidadesMinotauro,
+  qareen: habilidadesQareen,
+  golem: habilidadesGolem,
+  hynne: habilidadesHynne,
+  kliren: habilidadesKliren,
+  medusa: habilidadesMedusa,
+  osteon: habilidadesOsteon,
+  sereiatritao: habilidadesSereiaTritao,
+  silfide: habilidadesSilfide,
+  suraggelaggelus: habilidadesAggelus,
+  suraggelsulfure: habilidadesSulfure,
+  trog: habilidadesTrog,
 };
 
 export const habilidadesClasse: ListaHabilidadesClasse = {

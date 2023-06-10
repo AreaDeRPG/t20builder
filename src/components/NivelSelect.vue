@@ -24,6 +24,24 @@
                 >
                   {{ habilidade.habilidadeSelect?.nome ?? habilidade.nome }}
                 </b-button>
+                <div
+                  v-if="
+                    habilidade.habilidadeSelect?.habilidades.length ?? 0 > 0
+                  "
+                >
+                  <b-button
+                    v-b-modal.poderselect
+                    @click="
+                      set(
+                        3,
+                        habilidade.habilidadeSelect,
+                        habilidade.habilidadeSelect?.habilidades
+                      )
+                    "
+                  >
+                    {{ habilidade.habilidadeSelect?.habilidadeSelect?.nome ?? habilidade.habilidadeSelect?.nome }}
+                  </b-button>
+                </div>
               </div>
               <div v-else>
                 {{ habilidade.nome }}
