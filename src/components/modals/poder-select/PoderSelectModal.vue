@@ -31,6 +31,7 @@
             :active="habilidade === activeLocal"
             @click="setHabilidade(habilidade)"
             class="text-center"
+            :disabled="isTreinado(habilidade)"
           >
             {{ habilidade.nome }}
           </b-nav-item>
@@ -44,6 +45,7 @@
 import { defineComponent, type PropType } from "vue";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import { Categoria } from "@/entities/categoria/model/Categoria";
+import Ficha from "@/entities/ficha/model/Ficha";
 export default defineComponent({
   name: "PoderSelectModal",
   data: () => {
@@ -64,8 +66,12 @@ export default defineComponent({
       type: Function,
     },
     tabs: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<Categoria[]>,
       default: [] as string[],
+    },
+    ficha: {
+      type: Object as PropType<Ficha>,
+      required: true,
     },
   },
   watch: {
@@ -74,12 +80,19 @@ export default defineComponent({
     },
   },
   methods: {
+    isTreinado(habilidade: Habilidade) {
+      const habilidades = this.ficha.getHabilidades();
+      return habilidades.some(
+        (hab) =>
+          hab === habilidade && this.active?.habilidadeSelect !== habilidade
+      );
+    },
     reset() {
       this.activeBook = "Todos";
+      this.activeLocal = this.active?.habilidadeSelect;
     },
     activate(newActive: string): void {
       this.activeBook = newActive;
-      console.log(this.habilidades);
     },
     setHabilidade(habilidade: Habilidade): void {
       this.activeLocal = habilidade;

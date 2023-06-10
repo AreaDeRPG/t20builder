@@ -231,15 +231,22 @@ export default class Ficha {
     );
   }
 
-  getHabilidades() {
+  private includeSelect(habilidades: Habilidade[]): Habilidade[] {
+    habilidades.forEach((el) => {
+      if (el.habilidadeSelect) habilidades.push(el.habilidadeSelect);
+    });
+    return habilidades;
+  }
+
+  getHabilidades(): Habilidade[] {
     let habilidades: Habilidade[] = [];
     habilidades = habilidades.concat(this.raca.habilidades);
     habilidades.push(this.biografia.habilidadeSelect1);
     habilidades.push(this.biografia.habilidadeSelect2);
-    return habilidades.filter((el) => el !== undefined);
+    return this.includeSelect(habilidades.filter((el) => el !== undefined));
   }
 
-  getBuffs() {
+  getBuffs(): Buff[] {
     const habilidades = this.getHabilidades();
     const buffs: Buff[] = [];
     habilidades.forEach((el) => {

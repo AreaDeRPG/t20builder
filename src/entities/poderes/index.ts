@@ -1,3 +1,4 @@
+import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
 import Poder from "./model/Poder";
 import { PoderTipo } from "./model/PoderTipo";
@@ -13,7 +14,8 @@ const poderesCombate: Poder[] = [
     Fonte.BASICO,
     [],
     [],
-    PoderTipo.PoderCombate
+    PoderTipo.PoderCombate,
+    Categoria.PoderCombate
   ),
   new Poder(
     1,
@@ -21,7 +23,8 @@ const poderesCombate: Poder[] = [
     Fonte.BASICO,
     [],
     [],
-    PoderTipo.PoderCombate
+    PoderTipo.PoderCombate,
+    Categoria.PoderCombate
   ),
   new Poder(
     1,
@@ -29,7 +32,8 @@ const poderesCombate: Poder[] = [
     Fonte.BASICO,
     [],
     [],
-    PoderTipo.PoderCombate
+    PoderTipo.PoderCombate,
+    Categoria.PoderCombate
   ),
   new Poder(
     1,
@@ -37,10 +41,27 @@ const poderesCombate: Poder[] = [
     Fonte.BASICO,
     [],
     [],
-    PoderTipo.PoderCombate
+    PoderTipo.PoderCombate,
+    Categoria.PoderCombate
   ),
-  new Poder(1, "Ataque Pesado", Fonte.BASICO, [], [], PoderTipo.PoderCombate),
-  new Poder(1, "Ataque Poderoso", Fonte.BASICO, [], [], PoderTipo.PoderCombate),
+  new Poder(
+    1,
+    "Ataque Pesado",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderCombate,
+    Categoria.PoderCombate
+  ),
+  new Poder(
+    1,
+    "Ataque Poderoso",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderCombate,
+    Categoria.PoderCombate
+  ),
 ];
 
 const poderesDestino: Poder[] = [

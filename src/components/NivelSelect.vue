@@ -17,12 +17,17 @@
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
             >
-              <b-button
-                v-b-modal.poderselect
-                @click="set(3, habilidade, habilidade.habilidades)"
-              >
-                {{ habilidade.habilidadeSelect?.nome ?? habilidade.nome }}
-              </b-button>
+              <div v-if="habilidade.habilidades.length > 0">
+                <b-button
+                  v-b-modal.poderselect
+                  @click="set(3, habilidade, habilidade.habilidades)"
+                >
+                  {{ habilidade.habilidadeSelect?.nome ?? habilidade.nome }}
+                </b-button>
+              </div>
+              <div v-else>
+                {{ habilidade.nome }}
+              </div>
             </div>
             <div
               class="d-flex justify-content-left align-items-center"
@@ -98,6 +103,7 @@
       :active="activeChild"
       :update="update"
       :tabs="tabs"
+      :ficha="ficha"
     />
   </div>
 </template>
@@ -109,6 +115,7 @@ import Habilidade from "@/entities/habilidades/model/Habilidades";
 import { defineComponent } from "vue";
 import { PropType } from "vue/types/v3-component-props";
 import PoderSelectModal from "./modals/poder-select/PoderSelectModal.vue";
+import { Categoria } from "@/entities/categoria/model/Categoria";
 export default defineComponent({
   name: "NivelSelect",
   data() {
@@ -117,7 +124,7 @@ export default defineComponent({
       activeChild: null as unknown as Habilidade,
       poderselect: 0 as number,
       habilidadeSelect: undefined as unknown as Habilidade,
-      tabs: [] as string[],
+      tabs: [] as Categoria[],
     };
   },
   props: {
@@ -155,6 +162,12 @@ export default defineComponent({
     set(code: number, habilidade: Habilidade, habilidades: Habilidade[]): void {
       this.poderselect = code;
       this.activeChild = habilidade;
+      /*
+      this.select = habilidades.filter(
+        (obj) => !this.ficha.getHabilidades().some((remove) => remove == obj)
+      ).push(this.activeChild);
+      console.log(this.select.push(this.activeChild));
+      */
       this.select = habilidades;
     },
     update(habilidade: Habilidade): void {

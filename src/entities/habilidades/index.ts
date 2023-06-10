@@ -3,6 +3,7 @@ import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
 import { Fonte } from "../fonte/fonte";
+import { poderes } from "../poderes";
 import Habilidade from "./model/Habilidades";
 
 interface ListaHabilidadesRaca {
@@ -136,7 +137,7 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
       1,
       "Versátil",
       Fonte.BASICO,
-      treinamentoPericias.concat(habilidadesComum),
+      treinamentoPericias.concat(poderes.poderesCombate),
       []
     ),
   ],
