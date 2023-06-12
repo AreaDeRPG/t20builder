@@ -129,10 +129,10 @@ export default class Ficha {
   }
 
   public get velocidade(): number {
-    return this._velocidade;
-  }
-  public set velocidade(value: number) {
-    this._velocidade = value;
+    const buffs = this.getBuffs()
+      .filter((el) => el.caracteristica == Caracteristica.VELOCIDADE)
+      .reduce((sum, el) => sum + el.getBonus(this.nivel), 0);
+    return this._velocidade + buffs;
   }
 
   public get xp(): number {
