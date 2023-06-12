@@ -1,28 +1,3 @@
-# project
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 # T20Builder
 T20Builder é uma ferramenta para construção de fichas de personagem do sistema de RPG "Tormenta 20". Ele oferece uma interface intuitiva e funcionalidades para auxiliar os jogadores na criação e gerenciamento de personagens.
 
