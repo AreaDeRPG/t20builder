@@ -1,3 +1,4 @@
+import { Acao } from "@/entities/acao/model/Acao";
 import Buff from "@/entities/buff/model/Buff";
 import { Categoria } from "@/entities/categoria/model/Categoria";
 import { Fonte } from "@/entities/fonte/fonte";
@@ -7,16 +8,19 @@ export default class Habilidade {
   private _nome: string;
   private _fonte: Fonte;
   private _habilidades: Habilidade[];
-  private _habilidadeSelect?: Habilidade;
+  private _select?: Habilidade;
   private _buffs?: Buff[];
   private _categoria: Categoria;
+  private _acao: Acao;
   constructor(
     id: number,
     nome: string,
     fonte: Fonte,
     habilidades: Habilidade[],
     buffs?: Buff[],
-    categoria?: Categoria
+    categoria?: Categoria,
+    acao?: Acao,
+    select?: Habilidade
   ) {
     this.id = id;
     this._nome = nome;
@@ -24,6 +28,8 @@ export default class Habilidade {
     this._habilidades = habilidades;
     this._buffs = buffs;
     this._categoria = categoria ?? Categoria.Outro;
+    this._acao = acao ?? Acao.Livre;
+    this._select = select;
   }
 
   public get nome(): string {
@@ -35,15 +41,15 @@ export default class Habilidade {
   }
 
   public get habilidades(): Habilidade[] {
-    return this._habilidades ?? [];
+    return this._habilidades;
   }
 
-  public get habilidadeSelect(): Habilidade | undefined {
-    return this._habilidadeSelect;
+  public get select(): Habilidade | undefined {
+    return this._select instanceof Habilidade ? this._select : undefined;
   }
 
-  public set habilidadeSelect(value: Habilidade | undefined) {
-    this._habilidadeSelect = value;
+  public set select(value: Habilidade | undefined) {
+    this._select = value;
   }
 
   public get buffs(): Buff[] {
@@ -52,5 +58,9 @@ export default class Habilidade {
 
   public get categoria(): Categoria {
     return this._categoria;
+  }
+
+  public get acao(): Acao {
+    return this._acao;
   }
 }

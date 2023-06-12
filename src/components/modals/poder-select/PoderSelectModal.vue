@@ -83,13 +83,12 @@ export default defineComponent({
     isTreinado(habilidade: Habilidade) {
       const habilidades = this.ficha.getHabilidades();
       return habilidades.some(
-        (hab) =>
-          hab === habilidade && this.active?.habilidadeSelect !== habilidade
+        (hab) => hab === habilidade && this.active?.select !== habilidade
       );
     },
     reset() {
       this.activeBook = "Todos";
-      this.activeLocal = this.active?.habilidadeSelect ?? this.active;
+      this.activeLocal = this.active?.select ?? this.active;
     },
     activate(newActive: string): void {
       this.activeBook = newActive;

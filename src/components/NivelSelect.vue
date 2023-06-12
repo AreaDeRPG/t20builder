@@ -22,24 +22,22 @@
                   v-b-modal.poderselect
                   @click="set(3, habilidade, habilidade.habilidades)"
                 >
-                  {{ habilidade.habilidadeSelect?.nome ?? habilidade.nome }}
+                  {{ habilidade.select?.nome ?? habilidade.nome }}
                 </b-button>
-                <div
-                  v-if="
-                    habilidade.habilidadeSelect?.habilidades.length ?? 0 > 0
-                  "
-                >
+                <div v-if="habilidade.select?.habilidades.length ?? 0 > 0">
                   <b-button
                     v-b-modal.poderselect
                     @click="
                       set(
                         3,
-                        habilidade.habilidadeSelect,
-                        habilidade.habilidadeSelect?.habilidades
+                        habilidade.select,
+                        habilidade.select?.habilidades ?? []
                       )
                     "
                   >
-                    {{ habilidade.habilidadeSelect?.habilidadeSelect?.nome ?? habilidade.habilidadeSelect?.nome }}
+                    {{
+                      habilidade.select?.select?.nome ?? habilidade.select?.nome
+                    }}
                   </b-button>
                 </div>
               </div>
@@ -98,13 +96,13 @@
               <div>
                 {{ habilidades.nome }}
               </div>
-              <div v-if="habilidades.habilidades.length != 0">
+              <div v-if="hasArray(habilidades)">
                 <b-button
                   variant="primary"
                   v-b-modal.poderselect
-                  @click="select = habilidades"
+                  @click="setSelect(habilidades.habilidades)"
                 >
-                  {{ habilidades.habilidadeSelect?.nome ?? `Escolher` }}
+                  {{ getHabilidadeNome(habilidades) }}
                 </b-button>
               </div>
             </div>
@@ -135,7 +133,7 @@ export default defineComponent({
   data() {
     return {
       select: undefined as unknown as Habilidade[],
-      activeChild: null as unknown as Habilidade,
+      activeChild: undefined as unknown as Habilidade | undefined,
       poderselect: 0 as number,
       habilidadeSelect: undefined as unknown as Habilidade,
       tabs: [] as Categoria[],
@@ -171,9 +169,13 @@ export default defineComponent({
       return [];
     },
     selectHabilidade(habilidades: Habilidade, habilidade: Habilidade): void {
-      habilidades.habilidadeSelect = habilidade;
+      habilidades.select = habilidade;
     },
-    set(code: number, habilidade: Habilidade, habilidades: Habilidade[]): void {
+    set(
+      code: number,
+      habilidade: Habilidade | undefined,
+      habilidades: Habilidade[]
+    ): void {
       this.poderselect = code;
       this.activeChild = habilidade;
       this.select = habilidades;
@@ -191,10 +193,23 @@ export default defineComponent({
           this.$set(this.ficha, 2, habilidade);
           break;
         case 3:
-          this.activeChild.habilidadeSelect = habilidade;
+          if (this.activeChild instanceof Habilidade)
+            this.activeChild.select = habilidade;
           this.$set(this.ficha, 3, habilidade);
           break;
       }
+    },
+    getHabilidadeNome(habilidade: Habilidade): string {
+      return habilidade.select?.nome ?? `Escolher`;
+    },
+    hasArray(habilidades: Habilidade) {
+      return habilidades.habilidades?.length != 0;
+    },
+    setSelect(habilidade: Habilidade[]): void {
+      this.select = habilidade;
+    },
+    sortHabilidadesByNome(habilidades: Habilidade[]): Habilidade[] {
+      return habilidades.sort((a, b) => a.nome.localeCompare(b.nome));
     },
   },
   components: { PoderSelectModal },

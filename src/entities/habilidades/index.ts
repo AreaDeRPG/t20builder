@@ -1,10 +1,15 @@
+import { Acao } from "../acao/model/Acao";
+import { Atributos } from "../atributos";
 import { treinamentoPericias } from "../biografia";
 import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
 import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
+import { magias } from "../magia";
+import Magia from "../magia/model/Magia";
 import { poderes } from "../poderes";
+import Utils from "../util";
 import Habilidade from "./model/Habilidades";
 
 interface ListaHabilidadesRaca {
@@ -77,6 +82,15 @@ const habilidadesAnao: Habilidade[] = [
   ),
 ];
 
+const controlarPlantas = magias.primeiroCirculo.filter(
+  (el) => el.nome == "Controlar Plantas"
+)[0];
+
+function setAtributo(magia: Magia, atributo: Atributos) {
+  magia.atributoChave = atributo;
+  return magia;
+}
+
 const habilidadesDahllan: Habilidade[] = [
   new Habilidade(
     1,
@@ -92,7 +106,8 @@ const habilidadesDahllan: Habilidade[] = [
     Fonte.BASICO,
     [],
     undefined,
-    Categoria.habilidadesDahllan
+    Categoria.habilidadesDahllan,
+    Acao.Movimento
   ),
   new Habilidade(
     1,
@@ -100,7 +115,12 @@ const habilidadesDahllan: Habilidade[] = [
     Fonte.BASICO,
     [],
     undefined,
-    Categoria.habilidadesDahllan
+    Categoria.habilidadesDahllan,
+    Acao.Padrão,
+    setAtributo(
+      magias.primeiroCirculo.filter((el) => el.nome == "Controlar Plantas")[0],
+      Atributos.SABEDORIA
+    )
   ),
 ];
 
@@ -244,7 +264,7 @@ const habilidadesQareen: Habilidade[] = [
     1,
     "Tatuagem Mágica",
     Fonte.BASICO,
-    [],
+    magias.primeiroCirculo,
     undefined,
     Categoria.habilidadesQareen
   ),
@@ -385,12 +405,31 @@ const habilidadesMedusa: Habilidade[] = [
   ),
 ];
 
+const cancaoMares: Magia[] = magias.primeiroCirculo.filter((el) =>
+  [
+    "Amedrontar",
+    "Comando",
+    "Despedaçar",
+    "Enfeitiçar",
+    "Hipnotismo",
+    "Sono",
+  ].includes(el.nome)
+);
+
 const habilidadesSereiaTritao: Habilidade[] = [
   new Habilidade(
     1,
     "Canção dos Mares",
     Fonte.BASICO,
-    [],
+    cancaoMares,
+    undefined,
+    Categoria.habilidadesSereiaTritao
+  ),
+  new Habilidade(
+    1,
+    "Canção dos Mares",
+    Fonte.BASICO,
+    cancaoMares,
     undefined,
     Categoria.habilidadesSereiaTritao
   ),
@@ -411,6 +450,10 @@ const habilidadesSereiaTritao: Habilidade[] = [
     Categoria.habilidadesSereiaTritao
   ),
 ];
+
+const magiaFadas: Magia[] = magias.primeiroCirculo.filter((el) =>
+  ["Criar Ilusão", "Enfeitiçar", "Luz", "Sono"].includes(el.nome)
+);
 
 const habilidadesSilfide: Habilidade[] = [
   new Habilidade(
@@ -433,7 +476,15 @@ const habilidadesSilfide: Habilidade[] = [
     1,
     "Magia das Fadas",
     Fonte.BASICO,
-    [],
+    magiaFadas,
+    undefined,
+    Categoria.habilidadesSilfide
+  ),
+  new Habilidade(
+    1,
+    "Magia das Fadas",
+    Fonte.BASICO,
+    magiaFadas,
     undefined,
     Categoria.habilidadesSilfide
   ),
@@ -457,7 +508,9 @@ const habilidadesAggelus: Habilidade[] = [
     Fonte.BASICO,
     [],
     undefined,
-    Categoria.habilidadesAggelus
+    Categoria.habilidadesAggelus,
+    Acao.Padrão,
+    magias.primeiroCirculo.find((el) => ["Luz"].includes(el.nome))
   ),
 ];
 
@@ -479,7 +532,9 @@ const habilidadesSulfure: Habilidade[] = [
       new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE),
       new Buff(Caracteristica.FURTIVIDADE, 2, BuffType.BASE),
     ],
-    Categoria.habilidadesSulfure
+    Categoria.habilidadesSulfure,
+    Acao.Padrão,
+    magias.primeiroCirculo.find((el) => ["Escuridão"].includes(el.nome))
   ),
 ];
 

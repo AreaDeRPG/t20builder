@@ -17,6 +17,7 @@ export enum Categoria {
   habilidadesSulfure = "Suraggel (Sulfure)",
   habilidadesTrog = "Trog",
 
+  Magia = "Magia",
   Pericia = "Pericia",
   PoderGeral = "Poder Geral",
   PoderCombate = "Poder de Combate",
