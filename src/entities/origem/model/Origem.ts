@@ -1,7 +1,7 @@
 import { Fonte } from "@/entities/fonte/fonte";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 
-export default class Biografia {
+export default class Origem {
   public readonly id: number;
   private _nome: string;
   private _fonte: Fonte;

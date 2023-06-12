@@ -1,6 +1,6 @@
 import { Acao } from "../acao/model/Acao";
 import { Atributos } from "../atributos";
-import { treinamentoPericias } from "../biografia";
+import { treinamentoPericias } from "../origem";
 import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";

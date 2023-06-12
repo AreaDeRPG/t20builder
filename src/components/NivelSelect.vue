@@ -48,20 +48,20 @@
             <div
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
-              v-if="!ficha.raca.barrarBiografia"
+              v-if="!ficha.raca.barrarOrigem"
             >
               <b-button
                 v-b-modal.poderselect
                 @click="
                   set(
                     1,
-                    ficha.biografia.habilidadeSelect1,
-                    ficha.biografia.habilidades
+                    ficha.origem.habilidadeSelect1,
+                    ficha.origem.habilidades
                   )
                 "
               >
                 {{
-                  ficha.biografia.habilidadeSelect1?.nome ??
+                  ficha.origem.habilidadeSelect1?.nome ??
                   "Habilidade de Biografia 1"
                 }}
               </b-button>
@@ -69,20 +69,20 @@
             <div
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
-              v-if="!ficha.raca.barrarBiografia"
+              v-if="!ficha.raca.barrarOrigem"
             >
               <b-button
                 v-b-modal.poderselect
                 @click="
                   set(
                     2,
-                    ficha.biografia.habilidadeSelect2,
-                    ficha.biografia.habilidades
+                    ficha.origem.habilidadeSelect2,
+                    ficha.origem.habilidades
                   )
                 "
               >
                 {{
-                  ficha.biografia.habilidadeSelect2?.nome ??
+                  ficha.origem.habilidadeSelect2?.nome ??
                   "Habilidade de Biografia 2"
                 }}
               </b-button>
@@ -188,12 +188,12 @@ export default defineComponent({
       switch (this.poderselect) {
         case 1:
           // eslint-disable-next-line
-          this.ficha.biografia.habilidadeSelect1 = habilidade;
+          this.ficha.origem.habilidadeSelect1 = habilidade;
           this.$set(this.ficha, 1, habilidade);
           break;
         case 2:
           // eslint-disable-next-line
-          this.ficha.biografia.habilidadeSelect2 = habilidade;
+          this.ficha.origem.habilidadeSelect2 = habilidade;
           this.$set(this.ficha, 2, habilidade);
           break;
         case 3:

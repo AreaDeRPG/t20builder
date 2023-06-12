@@ -11,7 +11,7 @@ export default class Raca {
   private _fonte: Fonte;
   private _habilidades: Habilidade[];
   private _criatura?: Caracteristica;
-  private _barrarBiografia: boolean;
+  private _barrarOrigem: boolean;
 
   constructor(
     id: number,
@@ -20,7 +20,7 @@ export default class Raca {
     habilidades: Habilidade[],
     fonte: Fonte,
     criatura?: Caracteristica,
-    barrarBiografia?: boolean
+    barrarOrigem?: boolean
   ) {
     this.id = id;
     this._nome = nome;
@@ -28,7 +28,7 @@ export default class Raca {
     this._habilidades = habilidades;
     this._fonte = fonte;
     this._criatura = criatura ?? Caracteristica.HUMANOIDE;
-    this._barrarBiografia = barrarBiografia ?? false;
+    this._barrarOrigem = barrarOrigem ?? false;
   }
 
   public get nome(): string {
@@ -47,7 +47,7 @@ export default class Raca {
     return this._habilidades;
   }
 
-  public get barrarBiografia(): boolean {
-    return this._barrarBiografia;
+  public get barrarOrigem(): boolean {
+    return this._barrarOrigem;
   }
 }

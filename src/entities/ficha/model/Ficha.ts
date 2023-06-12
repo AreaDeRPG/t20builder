@@ -4,7 +4,7 @@ import Classe from "@/entities/classes/model/Classe";
 import { Tamanho } from "@/entities/Tamanho/model/Tamanho";
 import { Atributos } from "@/entities/atributos";
 import Pericia from "@/entities/pericias/model/Pericia";
-import Biografia from "@/entities/biografia/model/Biografia";
+import Origem from "@/entities/origem/model/Origem";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import Buff from "@/entities/buff/model/Buff";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
@@ -13,7 +13,7 @@ import Magia from "@/entities/magia/model/Magia";
 export default class Ficha {
   public readonly id: number;
   private _raca: Raca;
-  private _biografia: Biografia;
+  private _origem: Origem;
   private _modificadores: Modificador[];
   private _classes: Classe[];
   private _nivel: number;
@@ -27,13 +27,13 @@ export default class Ficha {
   constructor(
     id: number,
     raca: Raca,
-    biografia: Biografia,
+    origem: Origem,
     modificadores: Modificador[],
     pericias: Pericia[]
   ) {
     this.id = id;
     this._raca = raca;
-    this._biografia = biografia;
+    this._origem = origem;
     this._modificadores = modificadores;
     this._classes = [];
     this._nivel = 1;
@@ -157,13 +157,13 @@ export default class Ficha {
     return this._pericias;
   }
 
-  public get biografia(): Biografia {
-    return this._biografia;
+  public get origem(): Origem {
+    return this._origem;
   }
-  public set biografia(biografia: Biografia) {
-    this._biografia.habilidadeSelect1 = undefined;
-    this._biografia.habilidadeSelect2 = undefined;
-    this._biografia = biografia;
+  public set origem(origem: Origem) {
+    this._origem.habilidadeSelect1 = undefined;
+    this._origem.habilidadeSelect2 = undefined;
+    this._origem = origem;
   }
 
   getMeioNivel(): number {
@@ -241,10 +241,10 @@ export default class Ficha {
   getHabilidades(): Habilidade[] {
     let habilidades: Habilidade[] = [];
     habilidades = habilidades.concat(this.raca.habilidades);
-    if (!this.raca.barrarBiografia && this.biografia.habilidadeSelect1)
-      habilidades.push(this.biografia.habilidadeSelect1);
-    if (!this.raca.barrarBiografia && this.biografia.habilidadeSelect2)
-      habilidades.push(this.biografia.habilidadeSelect2);
+    if (!this.raca.barrarOrigem && this.origem.habilidadeSelect1)
+      habilidades.push(this.origem.habilidadeSelect1);
+    if (!this.raca.barrarOrigem && this.origem.habilidadeSelect2)
+      habilidades.push(this.origem.habilidadeSelect2);
     return this.includeSelect(habilidades.filter((el) => el !== undefined));
   }
 
