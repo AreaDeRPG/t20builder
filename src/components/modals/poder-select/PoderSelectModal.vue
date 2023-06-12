@@ -64,6 +64,7 @@ export default defineComponent({
     },
     update: {
       type: Function,
+      required: true,
     },
     tabs: {
       type: Array as PropType<Categoria[]>,
@@ -95,7 +96,7 @@ export default defineComponent({
     },
     setHabilidade(habilidade: Habilidade): void {
       this.activeLocal = habilidade;
-      if (this.update) this.update(habilidade);
+      this.update(habilidade);
     },
     getTabs(): Categoria[] {
       if (this.habilidades) {

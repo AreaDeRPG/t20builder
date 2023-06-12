@@ -9,7 +9,6 @@ import { Fonte } from "../fonte/fonte";
 import { magias } from "../magia";
 import Magia from "../magia/model/Magia";
 import { poderes } from "../poderes";
-import Utils from "../util";
 import Habilidade from "./model/Habilidades";
 
 interface ListaHabilidadesRaca {
@@ -20,12 +19,44 @@ interface ListaHabilidadesClasse {
   [key: string]: Habilidade[][];
 }
 
+function filterMagiaPrimeiroCirculo(...magias_: string[]): Magia[] {
+  return magias.primeiroCirculo.filter((el) => magias_.includes(el.nome));
+}
+
+function setAtributo(magia: Magia, atributo: Atributos) {
+  magia.atributoChave = atributo;
+  return magia;
+}
+
+function memoriasPostumas(): Habilidade[] {
+  const habilidades: Habilidade[] = treinamentoPericias
+    .concat(habilidadesAnao)
+    .concat(habilidadesDahllan)
+    .concat(habilidadesElfo)
+    .concat(habilidadesGoblin)
+    .concat(habilidadesMinotauro)
+    .concat(habilidadesQareen)
+    .concat(habilidadesHynne)
+    .concat(habilidadesKliren)
+    .concat(habilidadesSereiaTritao)
+    .concat(habilidadesTrog);
+  return habilidades;
+}
+
 const habilidadesComum = [
   new Habilidade(1, "Magias (1º Circulo)", Fonte.BASICO, []),
   new Habilidade(1, "Magias (2º Circulo)", Fonte.BASICO, []),
   new Habilidade(1, "Magias (3º Circulo)", Fonte.BASICO, []),
   new Habilidade(1, "Magias (4º Circulo)", Fonte.BASICO, []),
   new Habilidade(1, "Magias (5º Circulo)", Fonte.BASICO, []),
+  new Habilidade(
+    1,
+    "Herança Divina",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.VISAONOESCURO, 0, BuffType.BASE)],
+    Categoria.habilidadesSuraggel
+  ),
 ];
 
 const habilidadesHumano: Habilidade[] = [
@@ -82,15 +113,6 @@ const habilidadesAnao: Habilidade[] = [
   ),
 ];
 
-const controlarPlantas = magias.primeiroCirculo.filter(
-  (el) => el.nome == "Controlar Plantas"
-)[0];
-
-function setAtributo(magia: Magia, atributo: Atributos) {
-  magia.atributoChave = atributo;
-  return magia;
-}
-
 const habilidadesDahllan: Habilidade[] = [
   new Habilidade(
     1,
@@ -117,10 +139,7 @@ const habilidadesDahllan: Habilidade[] = [
     undefined,
     Categoria.habilidadesDahllan,
     Acao.Padrão,
-    setAtributo(
-      magias.primeiroCirculo.filter((el) => el.nome == "Controlar Plantas")[0],
-      Atributos.SABEDORIA
-    )
+    filterMagiaPrimeiroCirculo("Controlar Plantas")[0]
   ),
 ];
 
@@ -190,6 +209,241 @@ const habilidadesGoblin: Habilidade[] = [
   ),
 ];
 
+const deformidade: Habilidade[] = [
+  new Habilidade(
+    1,
+    "Acrobacia",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.ACROBACIA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Adestramento",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.ADESTRAMENTO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Atletismo",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.ATLETISMO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Atuação",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.ATUACAO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Cavalgar",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.CAVALGAR, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Conhecimento",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.CONHECIMENTO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Cura",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.CURA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Diplomacia",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.DIPLOMACIA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Enganacao",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.ENGANACAO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Fortitude",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.FORTITUDE, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Furtividade",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.FURTIVIDADE, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Guerra",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.GUERRA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Iniciativa",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.INICIATIVA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Intimidacao",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.INTIMIDACAO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Intuicao",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.INTUICAO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Investigacao",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.INVESTIGACAO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Jogatina",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.JOGATINA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Ladinagem",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.LADINAGEM, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Luta",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.LUTA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Misticismo",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.MISTICISMO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Nobreza",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.NOBREZA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Oficio",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.OFICIO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Percepcao",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.PERCEPCAO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Pilotagem",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.PILOTAGEM, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Pontaria",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.PONTARIA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Reflexos",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.INTIMIDACAO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Religião",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.RELIGIAO, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Sobrevivencia",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.SOBREVIVENCIA, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+  new Habilidade(
+    1,
+    "Vontade",
+    Fonte.BASICO,
+    [],
+    [new Buff(Caracteristica.VONTADE, 2, BuffType.BASE)],
+    Categoria.Pericia
+  ),
+];
+
 const habilidadesLefou: Habilidade[] = [
   new Habilidade(
     1,
@@ -203,7 +457,15 @@ const habilidadesLefou: Habilidade[] = [
     1,
     "Deformidade",
     Fonte.BASICO,
-    [],
+    deformidade,
+    undefined,
+    Categoria.habilidadesLefou
+  ),
+  new Habilidade(
+    1,
+    "Deformidade",
+    Fonte.BASICO,
+    deformidade.concat(poderes.poderesTormenta),
     undefined,
     Categoria.habilidadesLefou
   ),
@@ -405,23 +667,19 @@ const habilidadesMedusa: Habilidade[] = [
   ),
 ];
 
-const cancaoMares: Magia[] = magias.primeiroCirculo.filter((el) =>
-  [
-    "Amedrontar",
-    "Comando",
-    "Despedaçar",
-    "Enfeitiçar",
-    "Hipnotismo",
-    "Sono",
-  ].includes(el.nome)
-);
-
 const habilidadesSereiaTritao: Habilidade[] = [
   new Habilidade(
     1,
     "Canção dos Mares",
     Fonte.BASICO,
-    cancaoMares,
+    filterMagiaPrimeiroCirculo(
+      "Amedrontar",
+      "Comando",
+      "Despedaçar",
+      "Enfeitiçar",
+      "Hipnotismo",
+      "Sono"
+    ),
     undefined,
     Categoria.habilidadesSereiaTritao
   ),
@@ -429,7 +687,14 @@ const habilidadesSereiaTritao: Habilidade[] = [
     1,
     "Canção dos Mares",
     Fonte.BASICO,
-    cancaoMares,
+    filterMagiaPrimeiroCirculo(
+      "Amedrontar",
+      "Comando",
+      "Despedaçar",
+      "Enfeitiçar",
+      "Hipnotismo",
+      "Sono"
+    ),
     undefined,
     Categoria.habilidadesSereiaTritao
   ),
@@ -450,10 +715,6 @@ const habilidadesSereiaTritao: Habilidade[] = [
     Categoria.habilidadesSereiaTritao
   ),
 ];
-
-const magiaFadas: Magia[] = magias.primeiroCirculo.filter((el) =>
-  ["Criar Ilusão", "Enfeitiçar", "Luz", "Sono"].includes(el.nome)
-);
 
 const habilidadesSilfide: Habilidade[] = [
   new Habilidade(
@@ -476,7 +737,7 @@ const habilidadesSilfide: Habilidade[] = [
     1,
     "Magia das Fadas",
     Fonte.BASICO,
-    magiaFadas,
+    filterMagiaPrimeiroCirculo("Criar Ilusão", "Enfeitiçar", "Luz", "Sono"),
     undefined,
     Categoria.habilidadesSilfide
   ),
@@ -484,30 +745,23 @@ const habilidadesSilfide: Habilidade[] = [
     1,
     "Magia das Fadas",
     Fonte.BASICO,
-    magiaFadas,
+    filterMagiaPrimeiroCirculo("Criar Ilusão", "Enfeitiçar", "Luz", "Sono"),
     undefined,
     Categoria.habilidadesSilfide
   ),
 ];
 
 const habilidadesAggelus: Habilidade[] = [
+  habilidadesComum.filter((el) => ["Herança Divina"].includes(el.nome))[0],
   new Habilidade(
     1,
-    "Herança Divina",
+    "Luz Sagrada",
     Fonte.BASICO,
     [],
     [
       new Buff(Caracteristica.DIPLOMACIA, 2, BuffType.BASE),
       new Buff(Caracteristica.INTUICAO, 2, BuffType.BASE),
     ],
-    Categoria.habilidadesAggelus
-  ),
-  new Habilidade(
-    1,
-    "Luz Sagrada",
-    Fonte.BASICO,
-    [],
-    undefined,
     Categoria.habilidadesAggelus,
     Acao.Padrão,
     magias.primeiroCirculo.find((el) => ["Luz"].includes(el.nome))
@@ -515,14 +769,7 @@ const habilidadesAggelus: Habilidade[] = [
 ];
 
 const habilidadesSulfure: Habilidade[] = [
-  new Habilidade(
-    1,
-    "Herança Divina",
-    Fonte.BASICO,
-    [],
-    undefined,
-    Categoria.habilidadesSulfure
-  ),
+  habilidadesComum.filter((el) => ["Herança Divina"].includes(el.nome))[0],
   new Habilidade(
     1,
     "Sombras Profanas",
@@ -687,27 +934,6 @@ const habilidadesOsteon: Habilidade[] = [
   new Habilidade(1, "Natureza Esquelética", Fonte.BASICO, []),
   new Habilidade(1, "Preço da Não-Vida", Fonte.BASICO, []),
 ];
-
-function memoriasPostumas(): Habilidade[] {
-  const habilidades: Habilidade[] = treinamentoPericias
-    .concat(habilidadesAnao)
-    .concat(habilidadesDahllan)
-    .concat(habilidadesElfo)
-    .concat(habilidadesGoblin)
-    .concat(habilidadesLefou)
-    .concat(habilidadesMinotauro)
-    .concat(habilidadesQareen)
-    .concat(habilidadesGolem)
-    .concat(habilidadesHynne)
-    .concat(habilidadesKliren)
-    .concat(habilidadesMedusa)
-    .concat(habilidadesSereiaTritao)
-    .concat(habilidadesSilfide)
-    .concat(habilidadesAggelus)
-    .concat(habilidadesSulfure)
-    .concat(habilidadesTrog);
-  return habilidades;
-}
 
 export const habilidadesRaca: ListaHabilidadesRaca = {
   humano: habilidadesHumano,

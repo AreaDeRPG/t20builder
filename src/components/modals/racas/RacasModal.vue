@@ -82,7 +82,6 @@ export default defineComponent({
     escolherRaca(raca: Raca): void {
       // eslint-disable-next-line
       this.ficha.raca = raca;
-      this.ficha.getMagias();
       this.fill();
     },
     racaId(): number {

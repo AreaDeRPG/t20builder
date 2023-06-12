@@ -257,7 +257,6 @@ export default class Ficha {
     const magias = habilidades.filter(
       (el) => el !== undefined && el instanceof Magia
     );
-    console.log("magias", magias);
     return [] as Magia[];
   }
 
@@ -266,9 +265,6 @@ export default class Ficha {
     const buffs: Buff[] = [];
     habilidades.forEach((el) => {
       buffs.push(...el.buffs);
-      if (el.select) {
-        buffs.push(...el.select.buffs);
-      }
     });
     return buffs.filter((el) => el !== undefined);
   }

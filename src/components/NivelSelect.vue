@@ -179,6 +179,8 @@ export default defineComponent({
       this.poderselect = code;
       this.activeChild = habilidade;
       this.select = habilidades;
+      console.log("active", this.activeChild);
+      console.log(this.ficha.getHabilidades());
     },
     update(habilidade: Habilidade): void {
       switch (this.poderselect) {

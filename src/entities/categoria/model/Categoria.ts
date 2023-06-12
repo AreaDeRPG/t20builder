@@ -13,6 +13,7 @@ export enum Categoria {
   habilidadesMedusa = "Medusa",
   habilidadesSereiaTritao = "Sereia/Tritao",
   habilidadesSilfide = "Silfide",
+  habilidadesSuraggel = "Suraggel",
   habilidadesAggelus = "Suraggel (Aggelus)",
   habilidadesSulfure = "Suraggel (Sulfure)",
   habilidadesTrog = "Trog",
@@ -21,5 +22,6 @@ export enum Categoria {
   Pericia = "Pericia",
   PoderGeral = "Poder Geral",
   PoderCombate = "Poder de Combate",
+  PoderTormenta = "Poder da Tormenta",
   Outro = "Outro",
 }

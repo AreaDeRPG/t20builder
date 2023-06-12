@@ -75,7 +75,29 @@ const poderesDestino: Poder[] = [
   ),
 ];
 
+const poderesTormenta: Poder[] = [
+  new Poder(
+    1,
+    "Anatomia Insana",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderTormenta,
+    Categoria.PoderTormenta
+  ),
+  new Poder(
+    1,
+    "Antenas",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderTormenta,
+    Categoria.PoderTormenta
+  ),
+];
+
 export const poderes: ListaPoderes = {
   poderesCombate: poderesCombate,
   poderesDestino: poderesDestino,
+  poderesTormenta: poderesTormenta,
 };
