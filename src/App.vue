@@ -19,6 +19,7 @@
                 cols="12"
                 class="d-flex justify-content-center"
                 style="margin: 0.5em"
+                v-if="!ficha.raca.barrarBiografia"
               >
                 <b-button
                   variant="primary"

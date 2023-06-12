@@ -48,6 +48,7 @@
             <div
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
+              v-if="!ficha.raca.barrarBiografia"
             >
               <b-button
                 v-b-modal.poderselect
@@ -68,6 +69,7 @@
             <div
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
+              v-if="!ficha.raca.barrarBiografia"
             >
               <b-button
                 v-b-modal.poderselect

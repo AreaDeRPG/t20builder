@@ -541,6 +541,7 @@ const habilidadesGolem: Habilidade[] = [
     [
       new Buff(Caracteristica.DEFESA, 2, BuffType.BASE),
       new Buff(Caracteristica.PENALIDADEARMADURA, 2, BuffType.BASE),
+      new Buff(Caracteristica.VELOCIDADE, -3, BuffType.BASE),
     ],
     Categoria.habilidadesGolem
   ),
@@ -549,7 +550,10 @@ const habilidadesGolem: Habilidade[] = [
     "Criatura Artificial",
     Fonte.BASICO,
     [],
-    undefined,
+    [
+      new Buff(Caracteristica.VISAONOESCURO),
+      new Buff(Caracteristica.VISAONOESCURO),
+    ],
     Categoria.habilidadesGolem
   ),
   new Habilidade(

@@ -8,9 +8,6 @@ import Biografia from "@/entities/biografia/model/Biografia";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import Buff from "@/entities/buff/model/Buff";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
-import { BuffType } from "@/entities/buff/model/BuffType";
-import { Treinamento } from "@/entities/pericias/model/Treinamento";
-import Utils from "@/entities/util";
 import Magia from "@/entities/magia/model/Magia";
 
 export default class Ficha {
@@ -81,7 +78,7 @@ export default class Ficha {
       this._defesa +
       this.getBuffs()
         .filter((el) => el.caracteristica == Caracteristica.DEFESA)
-        .reduce((sum, el) => sum + el.bonus, 0)
+        .reduce((sum, el) => sum + el.getBonus(this.nivel), 0)
     );
   }
 
@@ -244,9 +241,9 @@ export default class Ficha {
   getHabilidades(): Habilidade[] {
     let habilidades: Habilidade[] = [];
     habilidades = habilidades.concat(this.raca.habilidades);
-    if (this.biografia.habilidadeSelect1)
+    if (!this.raca.barrarBiografia && this.biografia.habilidadeSelect1)
       habilidades.push(this.biografia.habilidadeSelect1);
-    if (this.biografia.habilidadeSelect2)
+    if (!this.raca.barrarBiografia && this.biografia.habilidadeSelect2)
       habilidades.push(this.biografia.habilidadeSelect2);
     return this.includeSelect(habilidades.filter((el) => el !== undefined));
   }

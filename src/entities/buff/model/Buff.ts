@@ -3,13 +3,13 @@ import { BuffType } from "./BuffType";
 
 export default class Buff {
   caracteristica: Caracteristica;
-  bonus: number;
-  buffType: BuffType;
+  bonus?: number;
+  buffType?: BuffType;
 
   constructor(
     caracteristica: Caracteristica,
-    bonus: number,
-    buffType: BuffType
+    bonus?: number,
+    buffType?: BuffType
   ) {
     this.caracteristica = caracteristica;
     this.bonus = bonus;
@@ -26,21 +26,21 @@ export default class Buff {
         return this.getBonusPlusHalfLevel(level);
       case BuffType.BYRANK:
         return this.getBonusPlusRank(level);
-      case BuffType.PROFICIENCY:
+      default:
         return 0;
     }
   }
 
   private getBonusBase(): number {
-    return this.bonus;
+    return this.bonus ?? 0;
   }
 
   private getBonusPlusLevel(level: number): number {
-    return this.bonus + level;
+    return (this.bonus ?? 0) + level;
   }
 
   private getBonusPlusHalfLevel(level: number): number {
-    return this.bonus + Math.floor(level / 2);
+    return (this.bonus ?? 0) + Math.floor(level / 2);
   }
 
   private getBonusPlusRank(level: number): number {

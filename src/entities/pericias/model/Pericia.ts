@@ -90,10 +90,10 @@ export default class Pericia {
     return false;
   }
 
-  public sumBonus(buffs: Buff[]): number {
+  public sumBonus(buffs: Buff[], level: number): number {
     return (
       this._bonus.reduce((sum, el) => sum + el, 0) +
-      buffs.reduce((sum, el) => sum + el.bonus, 0)
+      buffs.reduce((sum, el) => sum + el.getBonus(level), 0)
     );
   }
 
@@ -103,7 +103,7 @@ export default class Pericia {
       bonusTreino +
       Utils.meioNivel(nivel) +
       this._modificador.getTotal() +
-      this.sumBonus(buffs);
+      this.sumBonus(buffs, nivel);
     return mod;
   }
 }
