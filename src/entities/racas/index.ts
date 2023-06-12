@@ -1,4 +1,5 @@
 import { Atributos } from "../atributos";
+import { Caracteristica } from "../caracteristica/model/Caracteristica";
 import { Fonte } from "../fonte/fonte";
 import { habilidadesRaca } from "../habilidades";
 import Modificador from "../modificadores/model/Modificador";
@@ -70,7 +71,8 @@ export const racas: Raca[] = [
       new Modificador(Atributos.CARISMA, 0, -1, 0),
     ],
     habilidadesRaca.lefou,
-    Fonte.BASICO
+    Fonte.BASICO,
+    Caracteristica.MONSTRO
   ),
   new Raca(
     7,
@@ -114,7 +116,9 @@ export const racas: Raca[] = [
       new Modificador(Atributos.CARISMA, 0, -1, 0),
     ],
     habilidadesRaca.golem,
-    Fonte.BASICO
+    Fonte.BASICO,
+    Caracteristica.CONSTRUTO,
+    true
   ),
   new Raca(
     11,
@@ -135,7 +139,8 @@ export const racas: Raca[] = [
       new Modificador(Atributos.CARISMA, 0, 1, 0),
     ],
     habilidadesRaca.medusa,
-    Fonte.BASICO
+    Fonte.BASICO,
+    Caracteristica.MONSTRO
   ),
   new Raca(
     13,
@@ -147,7 +152,8 @@ export const racas: Raca[] = [
       new Modificador(Atributos.CONSTITUICAO, 0, -1, 0),
     ],
     habilidadesRaca.osteon,
-    Fonte.BASICO
+    Fonte.BASICO,
+    Caracteristica.MORTOVIVO
   ),
   new Raca(
     14,
@@ -169,7 +175,8 @@ export const racas: Raca[] = [
       new Modificador(Atributos.FORCA, 0, -2, 0),
     ],
     habilidadesRaca.silfide,
-    Fonte.BASICO
+    Fonte.BASICO,
+    Caracteristica.ESPIRITO
   ),
   new Raca(
     16,
@@ -179,7 +186,8 @@ export const racas: Raca[] = [
       new Modificador(Atributos.CARISMA, 0, 1, 0),
     ],
     habilidadesRaca.suraggelaggelus,
-    Fonte.BASICO
+    Fonte.BASICO,
+    Caracteristica.ESPIRITO
   ),
   new Raca(
     17,
@@ -189,7 +197,8 @@ export const racas: Raca[] = [
       new Modificador(Atributos.INTELIGENCIA, 0, 1, 0),
     ],
     habilidadesRaca.suraggelsulfure,
-    Fonte.BASICO
+    Fonte.BASICO,
+    Caracteristica.ESPIRITO
   ),
   new Raca(
     18,
@@ -200,6 +209,7 @@ export const racas: Raca[] = [
       new Modificador(Atributos.INTELIGENCIA, 0, -1, 0),
     ],
     habilidadesRaca.trog,
-    Fonte.BASICO
+    Fonte.BASICO,
+    Caracteristica.MONSTRO
   ),
 ];

@@ -6,8 +6,8 @@ export default class Biografia {
   private _nome: string;
   private _fonte: Fonte;
   private _habilidades: Habilidade[];
-  private _habilidadeSelect1: Habilidade;
-  private _habilidadeSelect2: Habilidade;
+  private _habilidadeSelect1?: Habilidade;
+  private _habilidadeSelect2?: Habilidade;
   constructor(
     id: number,
     nome: string,
@@ -34,21 +34,17 @@ export default class Biografia {
     return this._habilidades;
   }
 
-  public get habilidadeSelect1(): Habilidade {
+  public get habilidadeSelect1(): Habilidade | undefined {
     return this._habilidadeSelect1;
   }
-  public set habilidadeSelect1(value: Habilidade) {
+  public set habilidadeSelect1(value: Habilidade | undefined) {
     this._habilidadeSelect1 = value;
   }
 
-  public get habilidadeSelect2(): Habilidade {
+  public get habilidadeSelect2(): Habilidade | undefined {
     return this._habilidadeSelect2;
   }
-  public set habilidadeSelect2(value: Habilidade) {
+  public set habilidadeSelect2(value: Habilidade | undefined) {
     this._habilidadeSelect2 = value;
-  }
-
-  public getHabilidades(value?: Habilidade): Habilidade[] {
-    return this.habilidades.filter((val) => val !== value);
   }
 }

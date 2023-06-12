@@ -1,5 +1,7 @@
+import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 import type { Fonte } from "@/entities/fonte/fonte";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
+import Magia from "@/entities/magia/model/Magia";
 import Modificador from "@/entities/modificadores/model/Modificador";
 
 export default class Raca {
@@ -8,50 +10,44 @@ export default class Raca {
   private _modificadores: Modificador[];
   private _fonte: Fonte;
   private _habilidades: Habilidade[];
+  private _criatura?: Caracteristica;
+  private _barrarBiografia: boolean;
 
   constructor(
     id: number,
     nome: string,
     modificadores: Modificador[],
     habilidades: Habilidade[],
-    fonte: Fonte
+    fonte: Fonte,
+    criatura?: Caracteristica,
+    barrarBiografia?: boolean
   ) {
     this.id = id;
     this._nome = nome;
     this._modificadores = modificadores;
     this._habilidades = habilidades;
     this._fonte = fonte;
+    this._criatura = criatura ?? Caracteristica.HUMANOIDE;
+    this._barrarBiografia = barrarBiografia ?? false;
   }
 
   public get nome(): string {
     return this._nome;
   }
 
-  public set nome(value: string) {
-    this._nome = value;
-  }
-
   public get modificadores(): Modificador[] {
     return this._modificadores;
-  }
-
-  public set modificadores(value: Modificador[]) {
-    this._modificadores = value;
   }
 
   public get fonte(): Fonte {
     return this._fonte;
   }
 
-  public set fonte(value: Fonte) {
-    this._fonte = value;
-  }
-
   public get habilidades(): Habilidade[] {
     return this._habilidades;
   }
 
-  public set habilidades(value: Habilidade[]) {
-    this._habilidades = value;
+  public get barrarBiografia(): boolean {
+    return this._barrarBiografia;
   }
 }

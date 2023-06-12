@@ -1,6 +1,6 @@
 import { Atributos } from "./atributos";
 // eslint-disable-next-line
-var _ = require("lodash");
+const _ = require("lodash");
 export default class Utils {
   static getAbreviacao(atributo: Atributos): string {
     switch (atributo) {

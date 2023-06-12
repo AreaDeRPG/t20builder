@@ -64,6 +64,7 @@ export default defineComponent({
     },
     update: {
       type: Function,
+      required: true,
     },
     tabs: {
       type: Array as PropType<Categoria[]>,
@@ -83,20 +84,19 @@ export default defineComponent({
     isTreinado(habilidade: Habilidade) {
       const habilidades = this.ficha.getHabilidades();
       return habilidades.some(
-        (hab) =>
-          hab === habilidade && this.active?.habilidadeSelect !== habilidade
+        (hab) => hab === habilidade && this.active?.select !== habilidade
       );
     },
     reset() {
       this.activeBook = "Todos";
-      this.activeLocal = this.active?.habilidadeSelect;
+      this.activeLocal = this.active?.select ?? this.active;
     },
     activate(newActive: string): void {
       this.activeBook = newActive;
     },
     setHabilidade(habilidade: Habilidade): void {
       this.activeLocal = habilidade;
-      if (this.update) this.update(habilidade);
+      this.update(habilidade);
     },
     getTabs(): Categoria[] {
       if (this.habilidades) {

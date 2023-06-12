@@ -53,7 +53,7 @@
           <template #prepend>
             <b-input-group-text>Velocidade</b-input-group-text>
           </template>
-          <b-form-input :value="ficha?.velocidade"></b-form-input>
+          <b-form-input :value="ficha?.velocidade" disabled></b-form-input>
         </b-input-group>
       </b-col>
       <b-col cols="1"></b-col>

@@ -42,7 +42,10 @@ class PericiasData {
 export default defineComponent({
   name: "PericiasInfo",
   props: {
-    ficha: Object as PropType<Ficha>,
+    ficha: {
+      type: Object as PropType<Ficha>,
+      required: true,
+    },
   },
   data: () => {
     return {
@@ -60,34 +63,33 @@ export default defineComponent({
   methods: {
     getData() {
       var res: PericiasData[] = [];
-      if (this.ficha) {
-        var nivel: number = this.ficha.nivel;
-        var meioNivel: number = this.ficha.getMeioNivel();
-        var pericias: Pericia[] = this.ficha.pericias;
-        var buffs = this.ficha.getBuffs();
-        pericias.forEach((el) => {
-          res.push(
-            new PericiasData(
-              el.treinado.charAt(0),
-              el.nome,
-              el.getBonus(
-                nivel,
-                this.ficha!.getBuffs().filter(
-                  (el_) => el_.caracteristica == el.caracteristica
-                )
-              ),
-              meioNivel,
-              el.modificador.getTotal(),
-              el.getBonusTreinamento(nivel, buffs),
-              el.sumBonus(
-                this.ficha!.getBuffs().filter(
-                  (el_) => el_.caracteristica == el.caracteristica
-                )
+      var nivel: number = this.ficha.nivel;
+      var meioNivel: number = this.ficha.getMeioNivel();
+      var pericias: Pericia[] = this.ficha.pericias;
+      var buffs = this.ficha.getBuffs();
+      pericias.forEach((el) => {
+        res.push(
+          new PericiasData(
+            el.treinado.charAt(0),
+            el.nome,
+            el.getBonus(
+              nivel,
+              this.ficha!.getBuffs().filter(
+                (el_) => el_.caracteristica == el.caracteristica
               )
+            ),
+            meioNivel,
+            el.modificador.getTotal(),
+            el.getBonusTreinamento(nivel, buffs),
+            el.sumBonus(
+              this.ficha
+                .getBuffs()
+                .filter((el_) => el_.caracteristica == el.caracteristica),
+              this.ficha.nivel
             )
-          );
-        });
-      }
+          )
+        );
+      });
       return res;
     },
   },

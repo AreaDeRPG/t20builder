@@ -8,9 +8,7 @@ import Biografia from "@/entities/biografia/model/Biografia";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import Buff from "@/entities/buff/model/Buff";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
-import { BuffType } from "@/entities/buff/model/BuffType";
-import { Treinamento } from "@/entities/pericias/model/Treinamento";
-import Utils from "@/entities/util";
+import Magia from "@/entities/magia/model/Magia";
 
 export default class Ficha {
   public readonly id: number;
@@ -80,7 +78,7 @@ export default class Ficha {
       this._defesa +
       this.getBuffs()
         .filter((el) => el.caracteristica == Caracteristica.DEFESA)
-        .reduce((sum, el) => sum + el.bonus, 0)
+        .reduce((sum, el) => sum + el.getBonus(this.nivel), 0)
     );
   }
 
@@ -128,10 +126,10 @@ export default class Ficha {
   }
 
   public get velocidade(): number {
-    return this._velocidade;
-  }
-  public set velocidade(value: number) {
-    this._velocidade = value;
+    const buffs = this.getBuffs()
+      .filter((el) => el.caracteristica == Caracteristica.VELOCIDADE)
+      .reduce((sum, el) => sum + el.getBonus(this.nivel), 0);
+    return this._velocidade + buffs;
   }
 
   public get xp(): number {
@@ -163,6 +161,8 @@ export default class Ficha {
     return this._biografia;
   }
   public set biografia(biografia: Biografia) {
+    this._biografia.habilidadeSelect1 = undefined;
+    this._biografia.habilidadeSelect2 = undefined;
     this._biografia = biografia;
   }
 
@@ -233,7 +233,7 @@ export default class Ficha {
 
   private includeSelect(habilidades: Habilidade[]): Habilidade[] {
     habilidades.forEach((el) => {
-      if (el.habilidadeSelect) habilidades.push(el.habilidadeSelect);
+      if (el.select) habilidades.push(el.select);
     });
     return habilidades;
   }
@@ -241,9 +241,20 @@ export default class Ficha {
   getHabilidades(): Habilidade[] {
     let habilidades: Habilidade[] = [];
     habilidades = habilidades.concat(this.raca.habilidades);
-    habilidades.push(this.biografia.habilidadeSelect1);
-    habilidades.push(this.biografia.habilidadeSelect2);
+    if (!this.raca.barrarBiografia && this.biografia.habilidadeSelect1)
+      habilidades.push(this.biografia.habilidadeSelect1);
+    if (!this.raca.barrarBiografia && this.biografia.habilidadeSelect2)
+      habilidades.push(this.biografia.habilidadeSelect2);
     return this.includeSelect(habilidades.filter((el) => el !== undefined));
+  }
+
+  getMagias(): Magia[] {
+    console.log("here");
+    const habilidades = this.getHabilidades();
+    const magias = habilidades.filter(
+      (el) => el !== undefined && el instanceof Magia
+    );
+    return [] as Magia[];
   }
 
   getBuffs(): Buff[] {
@@ -251,9 +262,6 @@ export default class Ficha {
     const buffs: Buff[] = [];
     habilidades.forEach((el) => {
       buffs.push(...el.buffs);
-      if (el.habilidadeSelect) {
-        buffs.push(...el.habilidadeSelect.buffs);
-      }
     });
     return buffs.filter((el) => el !== undefined);
   }
