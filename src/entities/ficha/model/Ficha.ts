@@ -249,7 +249,6 @@ export default class Ficha {
   }
 
   getMagias(): Magia[] {
-    console.log("here");
     const habilidades = this.getHabilidades();
     const magias = habilidades.filter(
       (el) => el !== undefined && el instanceof Magia

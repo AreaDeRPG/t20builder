@@ -70,7 +70,7 @@ import Navbar from "./components/Navbar.vue";
 import { racas } from "@/entities/racas/index";
 import { modificadores } from "./entities/modificadores/index";
 import { pericias } from "./entities/pericias";
-import { biografias } from "./entities/origem";
+import { origens } from "./entities/origem";
 import ClassesModal from "./components/modals/classes/ClassesModal.vue";
 import RacasModal from "./components/modals/racas/RacasModal.vue";
 import PontosModal from "./components/modals/pontos/PontosModal.vue";
@@ -84,7 +84,7 @@ export default defineComponent({
   name: "App",
   data: () => {
     return {
-      ficha: new Ficha(1, racas[0], biografias[0], modificadores, pericias),
+      ficha: new Ficha(1, racas[0], origens[0], modificadores, pericias),
       nivel: 0,
       habilidades: [] as Habilidade[],
     };

@@ -72,7 +72,10 @@ const habilidadesHumano: Habilidade[] = [
     1,
     "Versátil",
     Fonte.BASICO,
-    treinamentoPericias.concat(poderes.poderesCombate),
+    treinamentoPericias
+      .concat(poderes.poderesCombate)
+      .concat(poderes.poderesDestino)
+      .concat(poderes.poderesTormenta),
     undefined,
     Categoria.habilidadesHumano
   ),

@@ -22,6 +22,7 @@ export enum Categoria {
   Pericia = "Pericia",
   PoderGeral = "Poder Geral",
   PoderCombate = "Poder de Combate",
+  PoderDestino = "Poder de Destino",
   PoderTormenta = "Poder da Tormenta",
   Outro = "Outro",
 }

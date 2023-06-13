@@ -38,7 +38,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import type Ficha from "@/entities/ficha/model/Ficha";
-import { biografias } from "@/entities/origem";
+import { origens } from "@/entities/origem";
 import Origem from "@/entities/origem/model/Origem";
 import Utils from "@/entities/util";
 export default defineComponent({
@@ -60,8 +60,8 @@ export default defineComponent({
       this.activeBook = newActive;
     },
     find(id: number): Origem {
-      var biografia: Origem = biografias[0];
-      biografias.forEach((el: Origem) => {
+      var biografia: Origem = origens[0];
+      origens.forEach((el: Origem) => {
         if (el.id == id) {
           biografia = el;
         }
@@ -76,7 +76,7 @@ export default defineComponent({
       return this.ficha.origem.id;
     },
     filter(): Origem[] {
-      return biografias.filter(
+      return origens.filter(
         (el) => el.fonte == this.activeBook || this.activeBook == "Todos"
       );
     },
