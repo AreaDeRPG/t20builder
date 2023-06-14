@@ -74,6 +74,9 @@ export default defineComponent({
       type: Object as PropType<Ficha>,
       required: true,
     },
+    i: {
+      type: Number,
+    },
   },
   watch: {
     active(value: Habilidade | undefined) {
@@ -82,7 +85,7 @@ export default defineComponent({
   },
   methods: {
     isTreinado(habilidade: Habilidade) {
-      const habilidades = this.ficha.getHabilidades();
+      const habilidades = this.ficha.getHabilidades(this.ficha.nivel);
       return habilidades.some(
         (hab) => hab === habilidade && this.active?.select !== habilidade
       );
@@ -96,7 +99,7 @@ export default defineComponent({
     },
     setHabilidade(habilidade: Habilidade): void {
       this.activeLocal = habilidade;
-      this.update(habilidade);
+      this.update(habilidade, this.i);
     },
     getTabs(): Categoria[] {
       if (this.habilidades) {

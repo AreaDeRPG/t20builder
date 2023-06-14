@@ -1,6 +1,5 @@
 import { Acao } from "../acao/model/Acao";
 import { Atributos } from "../atributos";
-import { treinamentoPericias } from "../origem";
 import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
@@ -8,6 +7,7 @@ import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
 import { magias } from "../magia";
 import Magia from "../magia/model/Magia";
+import { treinamentoPericias } from "../pericias";
 import { poderes } from "../poderes";
 import Habilidade from "./model/Habilidades";
 

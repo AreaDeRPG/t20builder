@@ -121,7 +121,7 @@ export default defineComponent({
   methods: {
     updateTamanho(tamanho: Tamanho): void {
       // eslint-disable-next-line
-      this.ficha.tamanho = tamanho;
+      //this.ficha.tamanho = tamanho;
     },
   },
 });

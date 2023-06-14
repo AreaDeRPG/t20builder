@@ -66,7 +66,7 @@ export default defineComponent({
       var nivel: number = this.ficha.nivel;
       var meioNivel: number = this.ficha.getMeioNivel();
       var pericias: Pericia[] = this.ficha.pericias;
-      var buffs = this.ficha.getBuffs();
+      var buffs = this.ficha.getBuffs(this.ficha.nivel);
       pericias.forEach((el) => {
         res.push(
           new PericiasData(
@@ -74,7 +74,7 @@ export default defineComponent({
             el.nome,
             el.getBonus(
               nivel,
-              this.ficha!.getBuffs().filter(
+              this.ficha!.getBuffs(this.ficha.nivel).filter(
                 (el_) => el_.caracteristica == el.caracteristica
               )
             ),
@@ -83,7 +83,7 @@ export default defineComponent({
             el.getBonusTreinamento(nivel, buffs),
             el.sumBonus(
               this.ficha
-                .getBuffs()
+                .getBuffs(this.ficha.nivel)
                 .filter((el_) => el_.caracteristica == el.caracteristica),
               this.ficha.nivel
             )

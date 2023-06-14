@@ -131,6 +131,21 @@
                 </b-button>
               </div>
             </div>
+            <div
+              v-for="k in ficha.classes[0]?.periciasTreinadas"
+              :key="ficha.classes[0].periciasExtrasTreinadas[k - 1]?.nome"
+            >
+              <b-button
+                variant="primary"
+                v-b-modal.poderselect
+                @click="setPericiaClasse(ficha.classes[0].periciasExtras, k)"
+              >
+                {{
+                  ficha.classes[0]?.periciasExtrasTreinadas[k - 1]?.nome ??
+                  "Pericia de Classe"
+                }}
+              </b-button>
+            </div>
           </b-row>
           <b-row>
             <div
@@ -162,6 +177,7 @@
       :update="update"
       :tabs="tabs"
       :ficha="ficha"
+      :i="k"
     />
   </div>
 </template>
@@ -183,6 +199,7 @@ export default defineComponent({
       poderselect: 0 as number,
       habilidadeSelect: undefined as unknown as Habilidade,
       tabs: [] as Categoria[],
+      k: undefined as unknown as number,
     };
   },
   props: {
@@ -258,12 +275,18 @@ export default defineComponent({
             this.$set(this.ficha, 5, habilidade);
           }
           break;
+        case 6:
+          if (this.ficha.classes[0] && this.k)
+            // eslint-disable-next-line
+            this.ficha.classes[0].periciasExtrasTreinadas[this.k - 1] = habilidade;
+          this.$set(this.ficha.classes, 6, habilidade);
+          break;
       }
     },
     getHabilidadeNome(habilidade: Habilidade): string {
       return habilidade.select?.nome ?? `Escolher`;
     },
-    hasArray(habilidades: Habilidade) {
+    hasArray(habilidades: Habilidade): boolean {
       return habilidades.habilidades?.length != 0;
     },
     setSelect(habilidade: Habilidade[]): void {
@@ -272,11 +295,17 @@ export default defineComponent({
     sortHabilidadesByNome(habilidades: Habilidade[]): Habilidade[] {
       return habilidades.sort((a, b) => a.nome.localeCompare(b.nome));
     },
-    getHabilidadeBiografia(habilidade?: Habilidade) {
+    getHabilidadeBiografia(habilidade?: Habilidade): boolean {
       if (habilidade) {
         return habilidade.habilidades.length > 0;
       }
       return false;
+    },
+    setPericiaClasse(habilidades: Habilidade[], k: number): void {
+      this.select = habilidades;
+      this.activeChild = this.ficha.classes[0].periciasExtrasTreinadas[k - 1];
+      this.poderselect = 6;
+      this.k = k;
     },
   },
   components: { PoderSelectModal },
