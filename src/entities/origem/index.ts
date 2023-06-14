@@ -246,7 +246,7 @@ const poderCombate = new Habilidade(
   1,
   "Um poder de combate",
   Fonte.BASICO,
-  poderes.poderCombate
+  poderes.poderesCombate
 );
 
 export const origens = [
@@ -276,9 +276,16 @@ export const origens = [
     new Habilidade(1, "Amigo Especial", Fonte.BASICO, [], []),
   ]),
   new Origem(3, "Amnésico", Fonte.BASICO, [
-    new Habilidade(1, "Pericia Livre", Fonte.BASICO, treinamentoPericias, []),
-    new Habilidade(1, "Poder Geral Livre", Fonte.BASICO, [], []),
-    new Habilidade(1, "Lembranças Graduais", Fonte.BASICO, [], []),
+    new Habilidade(1, "Pericia Livre", Fonte.BASICO, treinamentoPericias),
+    new Habilidade(
+      1,
+      "Poder Geral Livre",
+      Fonte.BASICO,
+      poderes.poderesCombate
+        .concat(poderes.poderesDestino)
+        .concat(poderes.poderesTormenta)
+    ),
+    new Habilidade(1, "Lembranças Graduais", Fonte.BASICO, []),
   ]),
   new Origem(4, "Aristocrata", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -311,7 +318,13 @@ export const origens = [
       (el) => el.buffs[0].caracteristica == Caracteristica.ENGANACAO
     )[0],
     poderes.poderesDestino.filter((el) => ["Atraente"].includes(el.nome))[0],
-    new Habilidade(1, "Dom Artístico", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Dom Artístico",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.ATUACAO, 2, BuffType.BASE)]
+    ),
     poderes.poderesDestino.filter((el) => ["Sortudo"].includes(el.nome))[0],
     poderes.poderesDestino.filter((el) => ["Torcida"].includes(el.nome))[0],
   ]),
@@ -531,7 +544,13 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.OFICIO
     )[0],
-    new Habilidade(1, "Coração Heroico", Fonte.BASICO, [], []),
+    new Habilidade(
+      1,
+      "Coração Heroico",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.PM, 3, BuffType.BYRANK)]
+    ),
     poderes.poderesDestino.filter((el) => ["Sortudo"].includes(el.nome))[0],
     poderes.poderesDestino.filter((el) =>
       ["Surto Heroico"].includes(el.nome)

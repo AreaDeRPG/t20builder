@@ -44,7 +44,10 @@ const poderesCombate: Poder[] = [
     "Vitalidade",
     Fonte.BASICO,
     [],
-    [new Buff(Caracteristica.PV, 0, BuffType.BYLEVEL)],
+    [
+      new Buff(Caracteristica.PV, 0, BuffType.BYLEVEL),
+      new Buff(Caracteristica.FORTITUDE, 2, BuffType.BASE),
+    ],
     PoderTipo.PoderCombate,
     Categoria.PoderCombate
   ),

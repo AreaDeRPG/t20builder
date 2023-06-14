@@ -99,8 +99,6 @@ export default defineComponent({
       this.update(habilidade);
     },
     getTabs(): Categoria[] {
-      console.log("habilidades", this.habilidades);
-      console.log("getHabilidades", this.ficha.getHabilidades());
       if (this.habilidades) {
         var categorias: Categoria[] = this.habilidades.map(
           (el) => el.categoria

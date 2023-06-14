@@ -65,6 +65,28 @@
                   "Habilidade de Biografia 1"
                 }}
               </b-button>
+              <div
+                v-if="
+                  ficha.origem.habilidadeSelect1 &&
+                  ficha.origem.habilidadeSelect1.habilidades.length > 0
+                "
+              >
+                <b-button
+                  v-b-modal.poderselect
+                  @click="
+                    set(
+                      4,
+                      ficha.origem.habilidadeSelect1.select,
+                      ficha.origem.habilidadeSelect1.habilidades
+                    )
+                  "
+                >
+                  {{
+                    ficha.origem.habilidadeSelect1?.select?.nome ??
+                    ficha.origem.habilidadeSelect1.nome
+                  }}
+                </b-button>
+              </div>
             </div>
             <div
               class="d-flex justify-content-left align-items-center"
@@ -86,6 +108,28 @@
                   "Habilidade de Biografia 2"
                 }}
               </b-button>
+              <div
+                v-if="
+                  ficha.origem.habilidadeSelect2 &&
+                  ficha.origem.habilidadeSelect2.habilidades.length > 0
+                "
+              >
+                <b-button
+                  v-b-modal.poderselect
+                  @click="
+                    set(
+                      5,
+                      ficha.origem.habilidadeSelect2.select,
+                      ficha.origem.habilidadeSelect2.habilidades
+                    )
+                  "
+                >
+                  {{
+                    ficha.origem.habilidadeSelect2?.select?.nome ??
+                    ficha.origem.habilidadeSelect2.nome
+                  }}
+                </b-button>
+              </div>
             </div>
           </b-row>
           <b-row>
@@ -178,6 +222,7 @@ export default defineComponent({
       habilidade: Habilidade | undefined,
       habilidades: Habilidade[]
     ): void {
+      console.log(habilidade);
       this.poderselect = code;
       this.activeChild = habilidade;
       this.select = habilidades;
@@ -199,6 +244,20 @@ export default defineComponent({
             this.activeChild.select = habilidade;
           this.$set(this.ficha, 3, habilidade);
           break;
+        case 4:
+          if (this.ficha.origem.habilidadeSelect1) {
+            // eslint-disable-next-line
+            this.ficha.origem.habilidadeSelect1.select = habilidade;
+            this.$set(this.ficha, 4, habilidade);
+          }
+          break;
+        case 5:
+          if (this.ficha.origem.habilidadeSelect2) {
+            // eslint-disable-next-line
+            this.ficha.origem.habilidadeSelect2.select = habilidade;
+            this.$set(this.ficha, 5, habilidade);
+          }
+          break;
       }
     },
     getHabilidadeNome(habilidade: Habilidade): string {
@@ -212,6 +271,12 @@ export default defineComponent({
     },
     sortHabilidadesByNome(habilidades: Habilidade[]): Habilidade[] {
       return habilidades.sort((a, b) => a.nome.localeCompare(b.nome));
+    },
+    getHabilidadeBiografia(habilidade?: Habilidade) {
+      if (habilidade) {
+        return habilidade.habilidades.length > 0;
+      }
+      return false;
     },
   },
   components: { PoderSelectModal },
