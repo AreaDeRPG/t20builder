@@ -12,7 +12,6 @@ interface ListaPoderes {
 
 const poderesCombate: Poder[] = [
   new Poder(
-    1,
     "Ataque Poderoso",
     Fonte.BASICO,
     [],
@@ -21,7 +20,6 @@ const poderesCombate: Poder[] = [
     Categoria.PoderCombate
   ),
   new Poder(
-    1,
     "Estilo de Disparo",
     Fonte.BASICO,
     [],
@@ -30,7 +28,6 @@ const poderesCombate: Poder[] = [
     Categoria.PoderCombate
   ),
   new Poder(
-    1,
     "Proficiência",
     Fonte.BASICO,
     [],
@@ -40,7 +37,6 @@ const poderesCombate: Poder[] = [
   ),
 
   new Poder(
-    1,
     "Vitalidade",
     Fonte.BASICO,
     [],
@@ -53,7 +49,6 @@ const poderesCombate: Poder[] = [
   ),
 
   new Poder(
-    1,
     "Ginete",
     Fonte.BASICO,
     [],
@@ -65,7 +60,6 @@ const poderesCombate: Poder[] = [
 
 const poderesDestino: Poder[] = [
   new Poder(
-    1,
     "Medicina",
     Fonte.BASICO,
     [],
@@ -74,7 +68,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Vontade de Ferro",
     Fonte.BASICO,
     [],
@@ -86,7 +79,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Comandar",
     Fonte.BASICO,
     [],
@@ -95,7 +87,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Sortudo",
     Fonte.BASICO,
     [],
@@ -104,7 +95,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Atraente",
     Fonte.BASICO,
     [],
@@ -113,7 +103,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Torcida",
     Fonte.BASICO,
     [],
@@ -122,7 +111,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Venefício",
     Fonte.BASICO,
     [],
@@ -131,7 +119,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Sentidos Aguçados",
     Fonte.BASICO,
     [],
@@ -140,7 +127,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Aparência Inofensiva",
     Fonte.BASICO,
     [],
@@ -149,7 +135,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Acrobático",
     Fonte.BASICO,
     [],
@@ -158,7 +143,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Lobo Solitário",
     Fonte.BASICO,
     [],
@@ -167,7 +151,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Investigador",
     Fonte.BASICO,
     [],
@@ -176,7 +159,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Surto Heroico",
     Fonte.BASICO,
     [],
@@ -185,7 +167,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Foco em Perícia",
     Fonte.BASICO,
     [],
@@ -194,7 +175,6 @@ const poderesDestino: Poder[] = [
     Categoria.PoderDestino
   ),
   new Poder(
-    1,
     "Atlético",
     Fonte.BASICO,
     [],
@@ -209,7 +189,6 @@ const poderesDestino: Poder[] = [
 
 const poderesTormenta: Poder[] = [
   new Poder(
-    1,
     "Anatomia Insana",
     Fonte.BASICO,
     [],
@@ -218,7 +197,6 @@ const poderesTormenta: Poder[] = [
     Categoria.PoderTormenta
   ),
   new Poder(
-    1,
     "Antenas",
     Fonte.BASICO,
     [],

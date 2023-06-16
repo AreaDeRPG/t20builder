@@ -7,7 +7,6 @@ import { Categoria } from "@/entities/categoria/model/Categoria";
 export default class Poder extends Habilidade {
   tipo: PoderTipo;
   constructor(
-    id: number,
     nome: string,
     fonte: Fonte,
     habilidades: Habilidade[],
@@ -15,7 +14,7 @@ export default class Poder extends Habilidade {
     tipo: PoderTipo,
     categoria?: Categoria
   ) {
-    super(id, nome, fonte, habilidades, buffs, categoria);
+    super(nome, fonte, habilidades, buffs, categoria);
     this.tipo = tipo;
   }
 }

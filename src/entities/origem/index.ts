@@ -1,7 +1,6 @@
 import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
-import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
 import Habilidade from "../habilidades/model/Habilidades";
 import { treinamentoPericias } from "../pericias";
@@ -9,7 +8,6 @@ import { poderes } from "../poderes";
 import Origem from "./model/Origem";
 
 const poderCombate = new Habilidade(
-  1,
   "Um poder de combate",
   Fonte.BASICO,
   poderes.poderesCombate
@@ -27,7 +25,7 @@ export const origens = [
       (el) => el.buffs[0].caracteristica == Caracteristica.VONTADE
     )[0],
     poderes.poderesDestino.filter((el) => ["Medicina"].includes(el.nome))[0],
-    new Habilidade(1, "Membro da Igreja", Fonte.BASICO, [], []),
+    new Habilidade("Membro da Igreja", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) =>
       ["Vontade de Ferro"].includes(el.nome)
     )[0],
@@ -39,19 +37,18 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.CAVALGAR
     )[0],
-    new Habilidade(1, "Amigo Especial", Fonte.BASICO, [], []),
+    new Habilidade("Amigo Especial", Fonte.BASICO, [], []),
   ]),
   new Origem(3, "Amnésico", Fonte.BASICO, [
-    new Habilidade(1, "Pericia Livre", Fonte.BASICO, treinamentoPericias),
+    new Habilidade("Pericia Livre", Fonte.BASICO, treinamentoPericias),
     new Habilidade(
-      1,
       "Poder Geral Livre",
       Fonte.BASICO,
       poderes.poderesCombate
         .concat(poderes.poderesDestino)
         .concat(poderes.poderesTormenta)
     ),
-    new Habilidade(1, "Lembranças Graduais", Fonte.BASICO, []),
+    new Habilidade("Lembranças Graduais", Fonte.BASICO, []),
   ]),
   new Origem(4, "Aristocrata", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -64,7 +61,7 @@ export const origens = [
       (el) => el.buffs[0].caracteristica == Caracteristica.NOBREZA
     )[0],
     poderes.poderesDestino.filter((el) => ["Comandar"].includes(el.nome))[0],
-    new Habilidade(1, "Sangue Azul", Fonte.BASICO, [], []),
+    new Habilidade("Sangue Azul", Fonte.BASICO, [], []),
   ]),
   new Origem(6, "Artesão", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -73,7 +70,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.VONTADE
     )[0],
-    new Habilidade(1, "Frutos do Trabalho", Fonte.BASICO, [], []),
+    new Habilidade("Frutos do Trabalho", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) => ["Sortudo"].includes(el.nome))[0],
   ]),
   new Origem(7, "Artista", Fonte.BASICO, [
@@ -85,7 +82,6 @@ export const origens = [
     )[0],
     poderes.poderesDestino.filter((el) => ["Atraente"].includes(el.nome))[0],
     new Habilidade(
-      1,
       "Dom Artístico",
       Fonte.BASICO,
       [],
@@ -102,7 +98,6 @@ export const origens = [
       (el) => el.buffs[0].caracteristica == Caracteristica.MISTICISMO
     )[0],
     new Habilidade(
-      1,
       "Esse Cheiro...",
       Fonte.BASICO,
       [],
@@ -121,7 +116,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.SOBREVIVENCIA
     )[0],
-    new Habilidade(1, "À Prova de Tudo", Fonte.BASICO, [], []),
+    new Habilidade("À Prova de Tudo", Fonte.BASICO, [], []),
     poderes.poderesCombate.filter((el) =>
       ["Estilo de Disparo"].includes(el.nome)
     )[0],
@@ -136,7 +131,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.INTIMIDACAO
     )[0],
-    new Habilidade(1, "Confissão", Fonte.BASICO, [], []),
+    new Habilidade("Confissão", Fonte.BASICO, [], []),
     poderCombate,
   ]),
   new Origem(11, "Charlatão", Fonte.BASICO, [
@@ -146,7 +141,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.JOGATINA
     )[0],
-    new Habilidade(1, "Alpinista Social", Fonte.BASICO, [], []),
+    new Habilidade("Alpinista Social", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) =>
       ["Aparência Inofensiva"].includes(el.nome)
     )[0],
@@ -164,7 +159,7 @@ export const origens = [
     )[0],
     poderes.poderesDestino.filter((el) => ["Acrobático"].includes(el.nome))[0],
     poderes.poderesDestino.filter((el) => ["Torcida"].includes(el.nome))[0],
-    new Habilidade(1, "Truque de Mágica", Fonte.BASICO, [], []),
+    new Habilidade("Truque de Mágica", Fonte.BASICO, [], []),
   ]),
   new Origem(13, "Criminoso", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -176,7 +171,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.LADINAGEM
     )[0],
-    new Habilidade(1, "Punguista", Fonte.BASICO, [], []),
+    new Habilidade("Punguista", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) => ["Venefício"].includes(el.nome))[0],
   ]),
   new Origem(14, "Curandeiro", Fonte.BASICO, [
@@ -188,7 +183,7 @@ export const origens = [
     )[0],
 
     poderes.poderesDestino.filter((el) => ["Medicina"].includes(el.nome))[0],
-    new Habilidade(1, "Medico de Campo", Fonte.BASICO, [], []),
+    new Habilidade("Medico de Campo", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) => ["Venefício"].includes(el.nome))[0],
   ]),
   new Origem(15, "Eremita", Fonte.BASICO, [
@@ -201,7 +196,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.SOBREVIVENCIA
     )[0],
-    new Habilidade(1, "Busca Interior", Fonte.BASICO, [], []),
+    new Habilidade("Busca Interior", Fonte.BASICO, [], []),
     poderes.poderesCombate.filter((el) =>
       ["Lobo Solitário"].includes(el.nome)
     )[0],
@@ -216,7 +211,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.FURTIVIDADE
     )[0],
-    new Habilidade(1, "Desejo de Liberdade", Fonte.BASICO, [], []),
+    new Habilidade("Desejo de Liberdade", Fonte.BASICO, [], []),
     poderes.poderesCombate.filter((el) => ["Vitalidade"].includes(el.nome))[0],
   ]),
   new Origem(17, "Estudioso", Fonte.BASICO, [
@@ -232,7 +227,7 @@ export const origens = [
     poderes.poderesDestino.filter((el) =>
       ["Aparência Inofensiva"].includes(el.nome)
     )[0],
-    new Habilidade(1, "Palpite Fundamentado", Fonte.BASICO, [], []),
+    new Habilidade("Palpite Fundamentado", Fonte.BASICO, [], []),
   ]),
   new Origem(18, "Fazendeiro", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -247,7 +242,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.SOBREVIVENCIA
     )[0],
-    new Habilidade(1, "Água no Feijão", Fonte.BASICO, [], []),
+    new Habilidade("Água no Feijão", Fonte.BASICO, [], []),
     poderes.poderesCombate.filter((el) => ["Ginete"].includes(el.nome))[0],
   ]),
   new Origem(19, "Forasteiro", Fonte.BASICO, [
@@ -260,7 +255,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.SOBREVIVENCIA
     )[0],
-    new Habilidade(1, "Cultura Exótica", Fonte.BASICO, [], []),
+    new Habilidade("Cultura Exótica", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) =>
       ["Lobo Solitário"].includes(el.nome)
     )[0],
@@ -273,7 +268,7 @@ export const origens = [
       (el) => el.buffs[0].caracteristica == Caracteristica.LUTA
     )[0],
     poderes.poderesDestino.filter((el) => ["Atraente"].includes(el.nome))[0],
-    new Habilidade(1, "Pão e Circo", Fonte.BASICO, [], []),
+    new Habilidade("Pão e Circo", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) => ["Torcida"].includes(el.nome))[0],
     poderCombate,
   ]),
@@ -287,7 +282,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.PERCEPCAO
     )[0],
-    new Habilidade(1, "Detetive", Fonte.BASICO, [], []),
+    new Habilidade("Detetive", Fonte.BASICO, [], []),
     poderCombate,
   ]),
   new Origem(22, "Herdeiro", Fonte.BASICO, [
@@ -301,7 +296,7 @@ export const origens = [
       (el) => el.buffs[0].caracteristica == Caracteristica.OFICIO
     )[0],
     poderes.poderesDestino.filter((el) => ["Comandar"].includes(el.nome))[0],
-    new Habilidade(1, "Herança", Fonte.BASICO, [], []),
+    new Habilidade("Herança", Fonte.BASICO, [], []),
   ]),
   new Origem(23, "Herói Camponês", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -311,7 +306,6 @@ export const origens = [
       (el) => el.buffs[0].caracteristica == Caracteristica.OFICIO
     )[0],
     new Habilidade(
-      1,
       "Coração Heroico",
       Fonte.BASICO,
       [],
@@ -334,7 +328,7 @@ export const origens = [
       (el) => el.buffs[0].caracteristica == Caracteristica.PILOTAGEM
     )[0],
     poderes.poderesDestino.filter((el) => ["Acrobático"].includes(el.nome))[0],
-    new Habilidade(1, "Passagem de Navio", Fonte.BASICO, [], []),
+    new Habilidade("Passagem de Navio", Fonte.BASICO, [], []),
   ]),
   new Origem(25, "Mateiro", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -352,7 +346,7 @@ export const origens = [
     poderes.poderesDestino.filter((el) =>
       ["Sentidos Aguçados"].includes(el.nome)
     )[0],
-    new Habilidade(1, "Vendedor de Carcaças", Fonte.BASICO, [], []),
+    new Habilidade("Vendedor de Carcaças", Fonte.BASICO, [], []),
   ]),
   new Origem(26, "Membro de Guilda", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -370,7 +364,7 @@ export const origens = [
     poderes.poderesDestino.filter((el) =>
       ["Foco em Perícia"].includes(el.nome)
     )[0],
-    new Habilidade(1, "Rede de Contatos", Fonte.BASICO, [], []),
+    new Habilidade("Rede de Contatos", Fonte.BASICO, [], []),
   ]),
   new Origem(27, "Mercador", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -382,7 +376,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.OFICIO
     )[0],
-    new Habilidade(1, "Negocio", Fonte.BASICO, [], []),
+    new Habilidade("Negocio", Fonte.BASICO, [], []),
     poderes.poderesCombate.filter((el) =>
       ["Proficiência"].includes(el.nome)
     )[0],
@@ -401,7 +395,7 @@ export const origens = [
     poderes.poderesCombate.filter((el) =>
       ["Ataque Poderoso"].includes(el.nome)
     )[0],
-    new Habilidade(1, "Escavador", Fonte.BASICO, [], []),
+    new Habilidade("Escavador", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) =>
       ["Sentidos Aguçados"].includes(el.nome)
     )[0],
@@ -419,7 +413,7 @@ export const origens = [
     poderes.poderesDestino.filter((el) =>
       ["Lobo Solitário"].includes(el.nome)
     )[0],
-    new Habilidade(1, "Mochileiro", Fonte.BASICO, [], []),
+    new Habilidade("Mochileiro", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) =>
       ["Sentidos Aguçados"].includes(el.nome)
     )[0],
@@ -438,7 +432,7 @@ export const origens = [
     poderes.poderesDestino.filter((el) =>
       ["Aparência Inofensiva"].includes(el.nome)
     )[0],
-    new Habilidade(1, "Quebra-Galho", Fonte.BASICO, [], []),
+    new Habilidade("Quebra-Galho", Fonte.BASICO, [], []),
   ]),
   new Origem(31, "Refugiado", Fonte.BASICO, [
     treinamentoPericias.filter(
@@ -450,7 +444,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.VONTADE
     )[0],
-    new Habilidade(1, "Estoico", Fonte.BASICO, [], []),
+    new Habilidade("Estoico", Fonte.BASICO, [], []),
     poderes.poderesDestino.filter((el) =>
       ["Vontade de Ferro"].includes(el.nome)
     )[0],
@@ -462,7 +456,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.OFICIO
     )[0],
-    new Habilidade(1, "Antigo Mestre", Fonte.BASICO, [], []),
+    new Habilidade("Antigo Mestre", Fonte.BASICO, [], []),
     poderes.poderesCombate.filter((el) =>
       ["Proficiência"].includes(el.nome)
     )[0],
@@ -483,7 +477,7 @@ export const origens = [
     poderes.poderesDestino.filter((el) =>
       ["Lobo Solitário"].includes(el.nome)
     )[0],
-    new Habilidade(1, "Vida Rústica", Fonte.BASICO, [], []),
+    new Habilidade("Vida Rústica", Fonte.BASICO, [], []),
     poderes.poderesCombate.filter((el) => ["Vitalidade"].includes(el.nome))[0],
   ]),
   new Origem(34, "Soldado", Fonte.BASICO, [
@@ -499,7 +493,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.PONTARIA
     )[0],
-    new Habilidade(1, "Influência Militar", Fonte.BASICO, [], []),
+    new Habilidade("Influência Militar", Fonte.BASICO, [], []),
     poderCombate,
   ]),
   new Origem(35, "Taverneiro", Fonte.BASICO, [
@@ -512,7 +506,7 @@ export const origens = [
     treinamentoPericias.filter(
       (el) => el.buffs[0].caracteristica == Caracteristica.OFICIO
     )[0],
-    new Habilidade(1, "Gororoba", Fonte.BASICO, [], []),
+    new Habilidade("Gororoba", Fonte.BASICO, [], []),
     poderes.poderesCombate.filter((el) =>
       ["Proficiência"].includes(el.nome)
     )[0],
@@ -526,6 +520,6 @@ export const origens = [
       (el) => el.buffs[0].caracteristica == Caracteristica.FORTITUDE
     )[0],
     poderes.poderesDestino.filter((el) => ["Atlético"].includes(el.nome))[0],
-    new Habilidade(1, "Esforçado", Fonte.BASICO, [], []),
+    new Habilidade("Esforçado", Fonte.BASICO, [], []),
   ]),
 ];

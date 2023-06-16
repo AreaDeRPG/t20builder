@@ -9,7 +9,6 @@ import { BuffType } from "../buff/model/BuffType";
 
 export const treinamentoPericias = [
   new Habilidade(
-    1,
     "Acrobacia",
     Fonte.BASICO,
     [],
@@ -17,7 +16,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Adestramento",
     Fonte.BASICO,
     [],
@@ -25,7 +23,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Atletismo",
     Fonte.BASICO,
     [],
@@ -33,7 +30,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Atuação",
     Fonte.BASICO,
     [],
@@ -41,7 +37,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Cavalgar",
     Fonte.BASICO,
     [],
@@ -49,7 +44,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Conhecimento",
     Fonte.BASICO,
     [],
@@ -57,7 +51,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Cura",
     Fonte.BASICO,
     [],
@@ -65,7 +58,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Diplomacia",
     Fonte.BASICO,
     [],
@@ -73,7 +65,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Enganação",
     Fonte.BASICO,
     [],
@@ -81,7 +72,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Fortitude",
     Fonte.BASICO,
     [],
@@ -89,7 +79,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Furtividade",
     Fonte.BASICO,
     [],
@@ -97,7 +86,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Guerra",
     Fonte.BASICO,
     [],
@@ -105,7 +93,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Iniciativa",
     Fonte.BASICO,
     [],
@@ -113,7 +100,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Intimidação",
     Fonte.BASICO,
     [],
@@ -121,7 +107,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Intuição",
     Fonte.BASICO,
     [],
@@ -129,7 +114,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Investigação",
     Fonte.BASICO,
     [],
@@ -137,7 +121,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Jogatina",
     Fonte.BASICO,
     [],
@@ -145,7 +128,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Ladinagem",
     Fonte.BASICO,
     [],
@@ -153,7 +135,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Luta",
     Fonte.BASICO,
     [],
@@ -161,7 +142,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Misticismo",
     Fonte.BASICO,
     [],
@@ -169,7 +149,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Nobreza",
     Fonte.BASICO,
     [],
@@ -177,7 +156,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Ofício",
     Fonte.BASICO,
     [],
@@ -185,7 +163,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Percepção",
     Fonte.BASICO,
     [],
@@ -193,7 +170,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Pilotagem",
     Fonte.BASICO,
     [],
@@ -201,7 +177,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Pontaria",
     Fonte.BASICO,
     [],
@@ -209,7 +184,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Reflexos",
     Fonte.BASICO,
     [],
@@ -217,7 +191,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Religião",
     Fonte.BASICO,
     [],
@@ -225,7 +198,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Sobrevivência",
     Fonte.BASICO,
     [],
@@ -233,7 +205,6 @@ export const treinamentoPericias = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Vontade",
     Fonte.BASICO,
     [],

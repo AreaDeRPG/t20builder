@@ -4,7 +4,8 @@ import { Categoria } from "@/entities/categoria/model/Categoria";
 import { Fonte } from "@/entities/fonte/fonte";
 
 export default class Habilidade {
-  public readonly id: number;
+  private _id: number;
+  private static i = 1;
   private _nome: string;
   private _fonte: Fonte;
   private _habilidades: Habilidade[];
@@ -13,7 +14,6 @@ export default class Habilidade {
   private _categoria: Categoria;
   private _acao: Acao;
   constructor(
-    id: number,
     nome: string,
     fonte: Fonte,
     habilidades: Habilidade[],
@@ -22,7 +22,7 @@ export default class Habilidade {
     acao?: Acao,
     select?: Habilidade
   ) {
-    this.id = id;
+    this._id = this.i;
     this._nome = nome;
     this._fonte = fonte;
     this._habilidades = habilidades;
@@ -62,5 +62,33 @@ export default class Habilidade {
 
   public get acao(): Acao {
     return this._acao;
+  }
+
+  private get i(): number {
+    const ret = Habilidade.i;
+    Habilidade.i++;
+    return ret;
+  }
+
+  public get id(): number {
+    return this._id;
+  }
+
+  private set id(id: number) {
+    this._id = id;
+  }
+
+  public get clone(): Habilidade {
+    const hab = new Habilidade(
+      this.nome,
+      this.fonte,
+      this.habilidades,
+      this.buffs,
+      this.categoria,
+      this.acao,
+      this.select
+    );
+    hab.id = this._id;
+    return hab;
   }
 }

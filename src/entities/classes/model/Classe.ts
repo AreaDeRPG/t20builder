@@ -12,6 +12,9 @@ export default class Classe {
   private _periciasExtras: Habilidade[];
   private _periciasExtrasTreinadas: Habilidade[];
   private _periciasTreinadas: number;
+  private _periciasFixasEscolhida: Habilidade[];
+  private _periciaFixaEscolhida?: Habilidade;
+
   private _habilidades: Habilidade[][];
   private _fonte: Fonte;
 
@@ -25,7 +28,8 @@ export default class Classe {
     periciasExtras: Habilidade[],
     periciasTreinadas: number,
     habilidades: Habilidade[][],
-    fonte: Fonte
+    fonte: Fonte,
+    periciasFixasEscolhida?: Habilidade[]
   ) {
     this.id = id;
     this._nome = nome;
@@ -38,6 +42,7 @@ export default class Classe {
     this._periciasExtrasTreinadas = [];
     this._habilidades = habilidades;
     this._fonte = fonte;
+    this._periciasFixasEscolhida = periciasFixasEscolhida ?? [];
   }
 
   public get nome(): string {
@@ -82,6 +87,18 @@ export default class Classe {
 
   public get periciasExtras(): Habilidade[] {
     return this._periciasExtras ?? [];
+  }
+
+  public get periciasFixasEscolhida(): Habilidade[] {
+    return this._periciasFixasEscolhida;
+  }
+
+  public get periciaFixaEscolhida(): Habilidade | undefined {
+    return this._periciaFixaEscolhida;
+  }
+
+  public set periciaFixaEscolhida(periciaFixa: Habilidade | undefined) {
+    this._periciaFixaEscolhida = periciaFixa;
   }
 
   public get periciasExtrasTreinadas(): Habilidade[] {

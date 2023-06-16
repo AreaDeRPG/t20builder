@@ -1,4 +1,6 @@
 import { Fonte } from "../fonte/fonte";
+import { habilidadesClasse } from "../habilidades";
+import Habilidade from "../habilidades/model/Habilidades";
 import { treinamentoPericias } from "../pericias";
 import Classe from "./model/Classe";
 
@@ -27,7 +29,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     2,
-    [],
+    habilidadesClasse.arcanista,
     Fonte.BASICO
   ),
   new Classe(
@@ -37,7 +39,19 @@ export const classes: Classe[] = [
     6,
     3,
     treinamentoPericias.filter((el) => ["Fortitude", "Luta"].includes(el.nome)),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Adestramento",
+        "Atletismo",
+        "Cavalgar",
+        "Iniciativa",
+        "Intimidação",
+        "Percepção",
+        "Pontaria",
+        "Sobrevivência",
+        "Vontade",
+      ].includes(el.nome)
+    ),
     4,
     [],
     Fonte.BASICO
@@ -51,7 +65,26 @@ export const classes: Classe[] = [
     treinamentoPericias.filter((el) =>
       ["Atuação", "Reflexos"].includes(el.nome)
     ),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Acrobacia",
+        "Cavalgar",
+        "Conhecimento",
+        "Diplomacia",
+        "Enganação",
+        "Iniciativa",
+        "Intuição",
+        "Investigação",
+        "Jogatina",
+        "Ladinagem",
+        "Luta",
+        "Misticismo",
+        "Nobreza",
+        "Percepção",
+        "Pontaria",
+        "Vontade",
+      ].includes(el.nome)
+    ),
     6,
     [],
     Fonte.BASICO
@@ -66,7 +99,8 @@ export const classes: Classe[] = [
     [],
     4,
     [],
-    Fonte.BASICO
+    Fonte.BASICO,
+    treinamentoPericias.filter((el) => ["Luta", "Pontaria"].includes(el.nome))
   ),
   new Classe(
     5,
@@ -78,7 +112,8 @@ export const classes: Classe[] = [
     [],
     6,
     [],
-    Fonte.BASICO
+    Fonte.BASICO,
+    treinamentoPericias.filter((el) => ["Luta", "Pontaria"].includes(el.nome))
   ),
   new Classe(
     6,
@@ -130,7 +165,8 @@ export const classes: Classe[] = [
     [],
     2,
     [],
-    Fonte.BASICO
+    Fonte.BASICO,
+    treinamentoPericias.filter((el) => ["Luta", "Pontaria"].includes(el.nome))
   ),
   new Classe(
     10,
@@ -180,7 +216,10 @@ export const classes: Classe[] = [
     [],
     4,
     [],
-    Fonte.BASICO
+    Fonte.BASICO,
+    treinamentoPericias.filter((el) =>
+      ["Diplomacia", "Intimidação"].includes(el.nome)
+    )
   ),
   new Classe(
     14,

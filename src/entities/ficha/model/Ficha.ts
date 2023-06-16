@@ -276,6 +276,8 @@ export default class Ficha {
       habilidades.push(...this.classes[0].periciasFixas);
       habilidades.push(...this.classes[0].periciasExtrasTreinadas);
     }
+    if (this.classes[0].periciaFixaEscolhida)
+      habilidades.push(this.classes[0].periciaFixaEscolhida);
     console.log("classe", this.classes[0]);
     console.log("habilidades", habilidades);
     return this.includeSelect(habilidades.filter((el) => el !== undefined));

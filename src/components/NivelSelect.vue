@@ -132,6 +132,27 @@
               </div>
             </div>
             <div
+              class="d-flex justify-content-left align-items-center"
+              style="width: 100%"
+              v-if="ficha.classes[0]?.periciasFixasEscolhida?.length > 0"
+            >
+              <b-button
+                v-b-modal.poderselect
+                @click="
+                  set(
+                    7,
+                    ficha.classes[0].periciaFixaEscolhida,
+                    ficha.classes[0].periciasFixasEscolhida
+                  )
+                "
+              >
+                {{
+                  ficha.classes[0].periciaFixaEscolhida?.nome ??
+                  "Pericia de Classe"
+                }}
+              </b-button>
+            </div>
+            <div
               v-for="k in ficha.classes[0]?.periciasTreinadas"
               :key="ficha.classes[0].periciasExtrasTreinadas[k - 1]?.nome"
             >
@@ -280,6 +301,12 @@ export default defineComponent({
             // eslint-disable-next-line
             this.ficha.classes[0].periciasExtrasTreinadas[this.k - 1] = habilidade;
           this.$set(this.ficha.classes, 6, habilidade);
+          break;
+        case 7:
+          if (this.ficha.classes[0])
+            // eslint-disable-next-line
+          this.ficha.classes[0].periciaFixaEscolhida = habilidade
+          this.$set(this.ficha.classes, 7, habilidade);
           break;
       }
     },
