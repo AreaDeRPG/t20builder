@@ -38,8 +38,8 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import type Ficha from "@/entities/ficha/model/Ficha";
-import { biografias } from "@/entities/biografia";
-import Biografia from "@/entities/biografia/model/Biografia";
+import { origens } from "@/entities/origem";
+import Origem from "@/entities/origem/model/Origem";
 import Utils from "@/entities/util";
 export default defineComponent({
   name: "BiografiaModal",
@@ -59,24 +59,24 @@ export default defineComponent({
     activate(newActive: string) {
       this.activeBook = newActive;
     },
-    find(id: number): Biografia {
-      var biografia: Biografia = biografias[0];
-      biografias.forEach((el: Biografia) => {
+    find(id: number): Origem {
+      var biografia: Origem = origens[0];
+      origens.forEach((el: Origem) => {
         if (el.id == id) {
           biografia = el;
         }
       });
       return biografia;
     },
-    escolherBiografia(biografia: Biografia): void {
+    escolherBiografia(biografia: Origem): void {
       // eslint-disable-next-line
-      this.ficha.biografia = biografia;
+      this.ficha.origem = biografia;
     },
     biografiaId(): number {
-      return this.ficha.biografia.id;
+      return this.ficha.origem.id;
     },
-    filter(): Biografia[] {
-      return biografias.filter(
+    filter(): Origem[] {
+      return origens.filter(
         (el) => el.fonte == this.activeBook || this.activeBook == "Todos"
       );
     },

@@ -1,6 +1,5 @@
 import { Acao } from "../acao/model/Acao";
 import { Atributos } from "../atributos";
-import { treinamentoPericias } from "../biografia";
 import Buff from "../buff/model/Buff";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
@@ -8,6 +7,7 @@ import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
 import { magias } from "../magia";
 import Magia from "../magia/model/Magia";
+import { treinamentoPericias } from "../pericias";
 import { poderes } from "../poderes";
 import Habilidade from "./model/Habilidades";
 
@@ -44,13 +44,12 @@ function memoriasPostumas(): Habilidade[] {
 }
 
 const habilidadesComum = [
-  new Habilidade(1, "Magias (1º Circulo)", Fonte.BASICO, []),
-  new Habilidade(1, "Magias (2º Circulo)", Fonte.BASICO, []),
-  new Habilidade(1, "Magias (3º Circulo)", Fonte.BASICO, []),
-  new Habilidade(1, "Magias (4º Circulo)", Fonte.BASICO, []),
-  new Habilidade(1, "Magias (5º Circulo)", Fonte.BASICO, []),
+  new Habilidade("Magias (1º Circulo)", Fonte.BASICO, []),
+  new Habilidade("Magias (2º Circulo)", Fonte.BASICO, []),
+  new Habilidade("Magias (3º Circulo)", Fonte.BASICO, []),
+  new Habilidade("Magias (4º Circulo)", Fonte.BASICO, []),
+  new Habilidade("Magias (5º Circulo)", Fonte.BASICO, []),
   new Habilidade(
-    1,
     "Herança Divina",
     Fonte.BASICO,
     [],
@@ -61,7 +60,6 @@ const habilidadesComum = [
 
 const habilidadesHumano: Habilidade[] = [
   new Habilidade(
-    1,
     "Versátil",
     Fonte.BASICO,
     treinamentoPericias,
@@ -69,10 +67,12 @@ const habilidadesHumano: Habilidade[] = [
     Categoria.habilidadesHumano
   ),
   new Habilidade(
-    1,
     "Versátil",
     Fonte.BASICO,
-    treinamentoPericias.concat(poderes.poderesCombate),
+    treinamentoPericias
+      .concat(poderes.poderesCombate)
+      .concat(poderes.poderesDestino)
+      .concat(poderes.poderesTormenta),
     undefined,
     Categoria.habilidadesHumano
   ),
@@ -80,7 +80,6 @@ const habilidadesHumano: Habilidade[] = [
 
 const habilidadesAnao: Habilidade[] = [
   new Habilidade(
-    1,
     "Conhecimento das Rochas",
     Fonte.BASICO,
     [],
@@ -88,7 +87,6 @@ const habilidadesAnao: Habilidade[] = [
     Categoria.habilidadesAnao
   ),
   new Habilidade(
-    1,
     "Devagar e Sempre",
     Fonte.BASICO,
     [],
@@ -96,7 +94,6 @@ const habilidadesAnao: Habilidade[] = [
     Categoria.habilidadesAnao
   ),
   new Habilidade(
-    1,
     "Duro como Pedra",
     Fonte.BASICO,
     [],
@@ -104,7 +101,6 @@ const habilidadesAnao: Habilidade[] = [
     Categoria.habilidadesAnao
   ),
   new Habilidade(
-    1,
     "Tradição de Heredrimm",
     Fonte.BASICO,
     [],
@@ -115,7 +111,6 @@ const habilidadesAnao: Habilidade[] = [
 
 const habilidadesDahllan: Habilidade[] = [
   new Habilidade(
-    1,
     "Amiga das Plantas",
     Fonte.BASICO,
     [],
@@ -123,7 +118,6 @@ const habilidadesDahllan: Habilidade[] = [
     Categoria.habilidadesDahllan
   ),
   new Habilidade(
-    1,
     "Armadura de Allihanna",
     Fonte.BASICO,
     [],
@@ -132,7 +126,6 @@ const habilidadesDahllan: Habilidade[] = [
     Acao.Movimento
   ),
   new Habilidade(
-    1,
     "Empatia Selvagem",
     Fonte.BASICO,
     [],
@@ -145,7 +138,6 @@ const habilidadesDahllan: Habilidade[] = [
 
 const habilidadesElfo: Habilidade[] = [
   new Habilidade(
-    1,
     "Graça de Glórienn",
     Fonte.BASICO,
     [],
@@ -153,7 +145,6 @@ const habilidadesElfo: Habilidade[] = [
     Categoria.habilidadesElfo
   ),
   new Habilidade(
-    1,
     "Sangue Mágico",
     Fonte.BASICO,
     [],
@@ -161,7 +152,6 @@ const habilidadesElfo: Habilidade[] = [
     Categoria.habilidadesElfo
   ),
   new Habilidade(
-    1,
     "Sentidos Élficos",
     Fonte.BASICO,
     [],
@@ -176,7 +166,6 @@ const habilidadesElfo: Habilidade[] = [
 
 const habilidadesGoblin: Habilidade[] = [
   new Habilidade(
-    1,
     "Engenhoso",
     Fonte.BASICO,
     [],
@@ -184,7 +173,6 @@ const habilidadesGoblin: Habilidade[] = [
     Categoria.habilidadesGoblin
   ),
   new Habilidade(
-    1,
     "Espelunqueiro",
     Fonte.BASICO,
     [],
@@ -192,7 +180,6 @@ const habilidadesGoblin: Habilidade[] = [
     Categoria.habilidadesGoblin
   ),
   new Habilidade(
-    1,
     "Peste Esguia",
     Fonte.BASICO,
     [],
@@ -200,7 +187,6 @@ const habilidadesGoblin: Habilidade[] = [
     Categoria.habilidadesGoblin
   ),
   new Habilidade(
-    1,
     "Rato das Ruas",
     Fonte.BASICO,
     [],
@@ -211,7 +197,6 @@ const habilidadesGoblin: Habilidade[] = [
 
 const deformidade: Habilidade[] = [
   new Habilidade(
-    1,
     "Acrobacia",
     Fonte.BASICO,
     [],
@@ -219,7 +204,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Adestramento",
     Fonte.BASICO,
     [],
@@ -227,7 +211,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Atletismo",
     Fonte.BASICO,
     [],
@@ -235,7 +218,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Atuação",
     Fonte.BASICO,
     [],
@@ -243,7 +225,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Cavalgar",
     Fonte.BASICO,
     [],
@@ -251,7 +232,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Conhecimento",
     Fonte.BASICO,
     [],
@@ -259,7 +239,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Cura",
     Fonte.BASICO,
     [],
@@ -267,7 +246,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Diplomacia",
     Fonte.BASICO,
     [],
@@ -275,7 +253,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Enganacao",
     Fonte.BASICO,
     [],
@@ -283,7 +260,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Fortitude",
     Fonte.BASICO,
     [],
@@ -291,7 +267,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Furtividade",
     Fonte.BASICO,
     [],
@@ -299,7 +274,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Guerra",
     Fonte.BASICO,
     [],
@@ -307,7 +281,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Iniciativa",
     Fonte.BASICO,
     [],
@@ -315,7 +288,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Intimidacao",
     Fonte.BASICO,
     [],
@@ -323,7 +295,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Intuicao",
     Fonte.BASICO,
     [],
@@ -331,7 +302,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Investigacao",
     Fonte.BASICO,
     [],
@@ -339,7 +309,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Jogatina",
     Fonte.BASICO,
     [],
@@ -347,7 +316,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Ladinagem",
     Fonte.BASICO,
     [],
@@ -355,7 +323,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Luta",
     Fonte.BASICO,
     [],
@@ -363,7 +330,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Misticismo",
     Fonte.BASICO,
     [],
@@ -371,7 +337,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Nobreza",
     Fonte.BASICO,
     [],
@@ -379,7 +344,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Oficio",
     Fonte.BASICO,
     [],
@@ -387,7 +351,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Percepcao",
     Fonte.BASICO,
     [],
@@ -395,7 +358,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Pilotagem",
     Fonte.BASICO,
     [],
@@ -403,7 +365,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Pontaria",
     Fonte.BASICO,
     [],
@@ -411,7 +372,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Reflexos",
     Fonte.BASICO,
     [],
@@ -419,7 +379,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Religião",
     Fonte.BASICO,
     [],
@@ -427,7 +386,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Sobrevivencia",
     Fonte.BASICO,
     [],
@@ -435,7 +393,6 @@ const deformidade: Habilidade[] = [
     Categoria.Pericia
   ),
   new Habilidade(
-    1,
     "Vontade",
     Fonte.BASICO,
     [],
@@ -446,7 +403,6 @@ const deformidade: Habilidade[] = [
 
 const habilidadesLefou: Habilidade[] = [
   new Habilidade(
-    1,
     "Cria da Tormenta",
     Fonte.BASICO,
     [],
@@ -454,7 +410,6 @@ const habilidadesLefou: Habilidade[] = [
     Categoria.habilidadesLefou
   ),
   new Habilidade(
-    1,
     "Deformidade",
     Fonte.BASICO,
     deformidade,
@@ -462,7 +417,6 @@ const habilidadesLefou: Habilidade[] = [
     Categoria.habilidadesLefou
   ),
   new Habilidade(
-    1,
     "Deformidade",
     Fonte.BASICO,
     deformidade.concat(poderes.poderesTormenta),
@@ -473,7 +427,6 @@ const habilidadesLefou: Habilidade[] = [
 
 const habilidadesMinotauro: Habilidade[] = [
   new Habilidade(
-    1,
     "Chifres",
     Fonte.BASICO,
     [],
@@ -481,7 +434,6 @@ const habilidadesMinotauro: Habilidade[] = [
     Categoria.habilidadesMinotauro
   ),
   new Habilidade(
-    1,
     "Couro Rígido",
     Fonte.BASICO,
     [],
@@ -489,7 +441,6 @@ const habilidadesMinotauro: Habilidade[] = [
     Categoria.habilidadesMinotauro
   ),
   new Habilidade(
-    1,
     "Faro",
     Fonte.BASICO,
     [],
@@ -500,7 +451,6 @@ const habilidadesMinotauro: Habilidade[] = [
 
 const habilidadesQareen: Habilidade[] = [
   new Habilidade(
-    1,
     "Desejos",
     Fonte.BASICO,
     [],
@@ -508,22 +458,20 @@ const habilidadesQareen: Habilidade[] = [
     Categoria.habilidadesQareen
   ),
   new Habilidade(
-    1,
     "Resistencia Elemental",
     Fonte.BASICO,
     [
-      new Habilidade(1, "Qareen da Agua", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen do Ar", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen do Fogo", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen da Terra", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen da Luz", Fonte.BASICO, []),
-      new Habilidade(1, "Qareen da Trevas", Fonte.BASICO, []),
+      new Habilidade("Qareen da Agua", Fonte.BASICO, []),
+      new Habilidade("Qareen do Ar", Fonte.BASICO, []),
+      new Habilidade("Qareen do Fogo", Fonte.BASICO, []),
+      new Habilidade("Qareen da Terra", Fonte.BASICO, []),
+      new Habilidade("Qareen da Luz", Fonte.BASICO, []),
+      new Habilidade("Qareen da Trevas", Fonte.BASICO, []),
     ],
     undefined,
     Categoria.habilidadesQareen
   ),
   new Habilidade(
-    1,
     "Tatuagem Mágica",
     Fonte.BASICO,
     magias.primeiroCirculo,
@@ -534,7 +482,6 @@ const habilidadesQareen: Habilidade[] = [
 
 const habilidadesGolem: Habilidade[] = [
   new Habilidade(
-    1,
     "Chassi",
     Fonte.BASICO,
     [],
@@ -546,7 +493,6 @@ const habilidadesGolem: Habilidade[] = [
     Categoria.habilidadesGolem
   ),
   new Habilidade(
-    1,
     "Criatura Artificial",
     Fonte.BASICO,
     [],
@@ -557,7 +503,6 @@ const habilidadesGolem: Habilidade[] = [
     Categoria.habilidadesGolem
   ),
   new Habilidade(
-    1,
     "Propósito de Criação",
     Fonte.BASICO,
     poderes.poderesCombate,
@@ -565,14 +510,13 @@ const habilidadesGolem: Habilidade[] = [
     Categoria.habilidadesGolem
   ),
   new Habilidade(
-    1,
     "Fonte Elemental",
     Fonte.BASICO,
     [
-      new Habilidade(1, "Fonte Elemental (Agua)", Fonte.BASICO, []),
-      new Habilidade(1, "Fonte Elemental (Ar)", Fonte.BASICO, []),
-      new Habilidade(1, "Fonte Elemental (Fogo)", Fonte.BASICO, []),
-      new Habilidade(1, "Fonte Elemental (Terra)", Fonte.BASICO, []),
+      new Habilidade("Fonte Elemental (Agua)", Fonte.BASICO, []),
+      new Habilidade("Fonte Elemental (Ar)", Fonte.BASICO, []),
+      new Habilidade("Fonte Elemental (Fogo)", Fonte.BASICO, []),
+      new Habilidade("Fonte Elemental (Terra)", Fonte.BASICO, []),
     ],
     undefined,
     Categoria.habilidadesGolem
@@ -581,7 +525,6 @@ const habilidadesGolem: Habilidade[] = [
 
 const habilidadesHynne: Habilidade[] = [
   new Habilidade(
-    1,
     "Arremessador",
     Fonte.BASICO,
     [],
@@ -589,7 +532,6 @@ const habilidadesHynne: Habilidade[] = [
     Categoria.habilidadesHynne
   ),
   new Habilidade(
-    1,
     "Pequeno e Rechonchudo",
     Fonte.BASICO,
     [],
@@ -600,7 +542,6 @@ const habilidadesHynne: Habilidade[] = [
     Categoria.habilidadesHynne
   ),
   new Habilidade(
-    1,
     "Sorte Salvadora",
     Fonte.BASICO,
     [],
@@ -611,7 +552,6 @@ const habilidadesHynne: Habilidade[] = [
 
 const habilidadesKliren: Habilidade[] = [
   new Habilidade(
-    1,
     "Híbrido",
     Fonte.BASICO,
     treinamentoPericias,
@@ -619,7 +559,6 @@ const habilidadesKliren: Habilidade[] = [
     Categoria.habilidadesKliren
   ),
   new Habilidade(
-    1,
     "Engenhosidade",
     Fonte.BASICO,
     [],
@@ -627,7 +566,6 @@ const habilidadesKliren: Habilidade[] = [
     Categoria.habilidadesKliren
   ),
   new Habilidade(
-    1,
     "Ossos Frágeis",
     Fonte.BASICO,
     [],
@@ -635,7 +573,6 @@ const habilidadesKliren: Habilidade[] = [
     Categoria.habilidadesKliren
   ),
   new Habilidade(
-    1,
     "Vanguardista",
     Fonte.BASICO,
     [],
@@ -646,7 +583,6 @@ const habilidadesKliren: Habilidade[] = [
 
 const habilidadesMedusa: Habilidade[] = [
   new Habilidade(
-    1,
     "Cria de Megalokk",
     Fonte.BASICO,
     [],
@@ -654,7 +590,6 @@ const habilidadesMedusa: Habilidade[] = [
     Categoria.habilidadesMedusa
   ),
   new Habilidade(
-    1,
     "Natureza Venenosa",
     Fonte.BASICO,
     [],
@@ -662,7 +597,6 @@ const habilidadesMedusa: Habilidade[] = [
     Categoria.habilidadesMedusa
   ),
   new Habilidade(
-    1,
     "Olhar Atordoante",
     Fonte.BASICO,
     [],
@@ -673,7 +607,6 @@ const habilidadesMedusa: Habilidade[] = [
 
 const habilidadesSereiaTritao: Habilidade[] = [
   new Habilidade(
-    1,
     "Canção dos Mares",
     Fonte.BASICO,
     filterMagiaPrimeiroCirculo(
@@ -688,7 +621,6 @@ const habilidadesSereiaTritao: Habilidade[] = [
     Categoria.habilidadesSereiaTritao
   ),
   new Habilidade(
-    1,
     "Canção dos Mares",
     Fonte.BASICO,
     filterMagiaPrimeiroCirculo(
@@ -703,7 +635,6 @@ const habilidadesSereiaTritao: Habilidade[] = [
     Categoria.habilidadesSereiaTritao
   ),
   new Habilidade(
-    1,
     "Mestre dos Tridentes",
     Fonte.BASICO,
     [],
@@ -711,7 +642,6 @@ const habilidadesSereiaTritao: Habilidade[] = [
     Categoria.habilidadesSereiaTritao
   ),
   new Habilidade(
-    1,
     "Transformação Anfíbia",
     Fonte.BASICO,
     [],
@@ -722,7 +652,6 @@ const habilidadesSereiaTritao: Habilidade[] = [
 
 const habilidadesSilfide: Habilidade[] = [
   new Habilidade(
-    1,
     "Asas de Borboleta",
     Fonte.BASICO,
     [],
@@ -730,7 +659,6 @@ const habilidadesSilfide: Habilidade[] = [
     Categoria.habilidadesSilfide
   ),
   new Habilidade(
-    1,
     "Espírito da Natureza",
     Fonte.BASICO,
     [],
@@ -738,7 +666,6 @@ const habilidadesSilfide: Habilidade[] = [
     Categoria.habilidadesSilfide
   ),
   new Habilidade(
-    1,
     "Magia das Fadas",
     Fonte.BASICO,
     filterMagiaPrimeiroCirculo("Criar Ilusão", "Enfeitiçar", "Luz", "Sono"),
@@ -746,7 +673,6 @@ const habilidadesSilfide: Habilidade[] = [
     Categoria.habilidadesSilfide
   ),
   new Habilidade(
-    1,
     "Magia das Fadas",
     Fonte.BASICO,
     filterMagiaPrimeiroCirculo("Criar Ilusão", "Enfeitiçar", "Luz", "Sono"),
@@ -758,7 +684,6 @@ const habilidadesSilfide: Habilidade[] = [
 const habilidadesAggelus: Habilidade[] = [
   habilidadesComum.filter((el) => ["Herança Divina"].includes(el.nome))[0],
   new Habilidade(
-    1,
     "Luz Sagrada",
     Fonte.BASICO,
     [],
@@ -775,7 +700,6 @@ const habilidadesAggelus: Habilidade[] = [
 const habilidadesSulfure: Habilidade[] = [
   habilidadesComum.filter((el) => ["Herança Divina"].includes(el.nome))[0],
   new Habilidade(
-    1,
     "Sombras Profanas",
     Fonte.BASICO,
     [],
@@ -791,7 +715,6 @@ const habilidadesSulfure: Habilidade[] = [
 
 const habilidadesTrog: Habilidade[] = [
   new Habilidade(
-    1,
     "Mau Cheiro",
     Fonte.BASICO,
     [],
@@ -799,7 +722,6 @@ const habilidadesTrog: Habilidade[] = [
     Categoria.habilidadesTrog
   ),
   new Habilidade(
-    1,
     "Mordida",
     Fonte.BASICO,
     [],
@@ -807,7 +729,6 @@ const habilidadesTrog: Habilidade[] = [
     Categoria.habilidadesTrog
   ),
   new Habilidade(
-    1,
     "Reptiliano",
     Fonte.BASICO,
     [],
@@ -815,7 +736,6 @@ const habilidadesTrog: Habilidade[] = [
     Categoria.habilidadesTrog
   ),
   new Habilidade(
-    1,
     "Sangue Frio",
     Fonte.BASICO,
     [],
@@ -827,116 +747,103 @@ const habilidadesTrog: Habilidade[] = [
 const habilidadesArcanista: Habilidade[][] = [
   [
     new Habilidade(
-      1,
       "Caminho do Arcanista",
       Fonte.BASICO,
       [
-        new Habilidade(1, "Caminho do Mago", Fonte.BASICO, []),
-        new Habilidade(1, "Caminho do Bruxo", Fonte.BASICO, []),
-        new Habilidade(1, "Caminho do Feiticeiro", Fonte.BASICO, []),
+        new Habilidade("Caminho do Mago", Fonte.BASICO, []),
+        new Habilidade("Caminho do Bruxo", Fonte.BASICO, []),
+        new Habilidade("Caminho do Feiticeiro", Fonte.BASICO, []),
       ],
       []
     ),
     habilidadesComum[0],
   ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, []), habilidadesComum[1]],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, []), habilidadesComum[2]],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, []), habilidadesComum[3]],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, []), habilidadesComum[4]],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
   [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
-    habilidadesComum[1],
-  ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
-    habilidadesComum[2],
-  ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
-    habilidadesComum[3],
-  ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
-    habilidadesComum[4],
-  ],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, [])],
-  [
-    new Habilidade(3, "Poder de Arcanista", Fonte.BASICO, []),
-    new Habilidade(3, "Alta Arcana", Fonte.BASICO, []),
+    new Habilidade("Poder de Arcanista", Fonte.BASICO, []),
+    new Habilidade("Alta Arcana", Fonte.BASICO, []),
   ],
 ];
 
 const habilidadesBarbaro: Habilidade[][] = [
-  [new Habilidade(2, "Furia +2", Fonte.BASICO, [])],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
+  [new Habilidade("Furia +2", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
   [
-    new Habilidade(2, "Instinto Selvagem +1", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade("Instinto Selvagem +1", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
   ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
   [
-    new Habilidade(2, "Redução de Dano 2", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
-  ],
-  [
-    new Habilidade(2, "Fúria +3", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
-  ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
-  [
-    new Habilidade(2, "Redução de Dano 4", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade("Redução de Dano 2", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
   ],
   [
-    new Habilidade(2, "Instinto Selvagem +2", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade("Fúria +3", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
   ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
   [
-    new Habilidade(2, "Fúria +4", Fonte.BASICO, []),
-    new Habilidade(2, "Redução de Dano 6", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
-  ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
-  [
-    new Habilidade(2, "Redução de Dano 8", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade("Redução de Dano 4", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
   ],
   [
-    new Habilidade(2, "Instinto Selvagem +3", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade("Instinto Selvagem +2", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+  ],
+  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  [
+    new Habilidade("Fúria +4", Fonte.BASICO, []),
+    new Habilidade("Redução de Dano 6", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+  ],
+  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  [
+    new Habilidade("Redução de Dano 8", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
   ],
   [
-    new Habilidade(2, "Fúria +5", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade("Instinto Selvagem +3", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
   ],
   [
-    new Habilidade(2, "Redução de Dano 10", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade("Fúria +5", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
   ],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
-  [new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, [])],
   [
-    new Habilidade(2, "Fúria Titânica", Fonte.BASICO, []),
-    new Habilidade(2, "Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade("Redução de Dano 10", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+  ],
+  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  [
+    new Habilidade("Fúria Titânica", Fonte.BASICO, []),
+    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
   ],
 ];
 
 const habilidadesOsteon: Habilidade[] = [
-  new Habilidade(1, "Armadurra Óssea", Fonte.BASICO, []),
-  new Habilidade(1, "Memória Póstuma", Fonte.BASICO, memoriasPostumas()),
-  new Habilidade(1, "Natureza Esquelética", Fonte.BASICO, []),
-  new Habilidade(1, "Preço da Não-Vida", Fonte.BASICO, []),
+  new Habilidade("Armadurra Óssea", Fonte.BASICO, []),
+  new Habilidade("Memória Póstuma", Fonte.BASICO, memoriasPostumas()),
+  new Habilidade("Natureza Esquelética", Fonte.BASICO, []),
+  new Habilidade("Preço da Não-Vida", Fonte.BASICO, []),
 ];
 
 export const habilidadesRaca: ListaHabilidadesRaca = {
@@ -961,8 +868,8 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
 };
 
 export const habilidadesClasse: ListaHabilidadesClasse = {
-  arcanista: habilidadesArcanista,
-  barbaro: habilidadesBarbaro,
+  arcanista: [],
+  barbaro: [],
   bardo: [],
   bucaneiro: [],
   cacador: [],

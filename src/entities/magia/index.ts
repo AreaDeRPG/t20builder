@@ -10,7 +10,6 @@ interface ListaMagias {
 
 const magiasPrimeiroCirculo: Magia[] = [
   new Magia(
-    1,
     "Alarme",
     Fonte.BASICO,
     [],
@@ -19,7 +18,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ABJURACAO
   ),
   new Magia(
-    1,
     "Armadura Arcana",
 
     Fonte.BASICO,
@@ -29,7 +27,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ABJURACAO
   ),
   new Magia(
-    1,
     "Resistência a Energia",
 
     Fonte.BASICO,
@@ -39,7 +36,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ABJURACAO
   ),
   new Magia(
-    1,
     "Tranca Arcana",
 
     Fonte.BASICO,
@@ -50,7 +46,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ABJURACAO
   ),
   new Magia(
-    1,
     "Aviso",
 
     Fonte.BASICO,
@@ -60,7 +55,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ADIVINHACAO
   ),
   new Magia(
-    1,
     "Concentração de Combate",
     Fonte.BASICO,
     [],
@@ -69,7 +63,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ADIVINHACAO
   ),
   new Magia(
-    1,
     "Área Escorregadia",
     Fonte.BASICO,
     [],
@@ -78,7 +71,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.CONVOCACAO
   ),
   new Magia(
-    1,
     "Conjurar Monstro",
     Fonte.BASICO,
     [],
@@ -87,7 +79,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.CONVOCACAO
   ),
   new Magia(
-    1,
     "Névoa",
     Fonte.BASICO,
     [],
@@ -96,7 +87,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.CONVOCACAO
   ),
   new Magia(
-    1,
     "Teia",
     Fonte.BASICO,
     [],
@@ -105,7 +95,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.CONVOCACAO
   ),
   new Magia(
-    1,
     "Adaga Mental",
     Fonte.BASICO,
     [],
@@ -114,7 +103,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ENCANTAMENTO
   ),
   new Magia(
-    1,
     "Enfeitiçar",
     Fonte.BASICO,
     [],
@@ -123,7 +111,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ENCANTAMENTO
   ),
   new Magia(
-    1,
     "Hipnotismo",
     Fonte.BASICO,
     [],
@@ -132,7 +119,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ENCANTAMENTO
   ),
   new Magia(
-    1,
     "Sono",
     Fonte.BASICO,
     [],
@@ -141,7 +127,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ENCANTAMENTO
   ),
   new Magia(
-    1,
     "Explosão de Chamas",
     Fonte.BASICO,
     [],
@@ -150,7 +135,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.EVOCACAO
   ),
   new Magia(
-    1,
     "Luz",
     Fonte.BASICO,
     [],
@@ -159,7 +143,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.EVOCACAO
   ),
   new Magia(
-    1,
     "Seta Infalível",
     Fonte.BASICO,
     [],
@@ -168,7 +151,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.EVOCACAO
   ),
   new Magia(
-    1,
     "Toque Chocante",
     Fonte.BASICO,
     [],
@@ -177,7 +159,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.EVOCACAO
   ),
   new Magia(
-    1,
     "Criar Ilusão",
     Fonte.BASICO,
     [],
@@ -186,7 +167,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ILUSAO
   ),
   new Magia(
-    1,
     "Disfarce Ilusório",
     Fonte.BASICO,
     [],
@@ -195,7 +175,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ILUSAO
   ),
   new Magia(
-    1,
     "Imagem Espelhada",
     Fonte.BASICO,
     [],
@@ -204,7 +183,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ILUSAO
   ),
   new Magia(
-    1,
     "Leque Cromático",
     Fonte.BASICO,
     [],
@@ -213,7 +191,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ILUSAO
   ),
   new Magia(
-    1,
     "Amedrontar",
     Fonte.BASICO,
     [],
@@ -222,7 +199,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.NECROMANCIA
   ),
   new Magia(
-    1,
     "Escuridão",
     Fonte.BASICO,
     [],
@@ -231,7 +207,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.NECROMANCIA
   ),
   new Magia(
-    1,
     "Raio do Enfraquecimento",
     Fonte.BASICO,
     [],
@@ -240,7 +215,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.NECROMANCIA
   ),
   new Magia(
-    1,
     "Vitalidade Fantasma",
     Fonte.BASICO,
     [],
@@ -249,7 +223,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.NECROMANCIA
   ),
   new Magia(
-    1,
     "Arma Mágica",
     Fonte.BASICO,
     [],
@@ -258,7 +231,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.TRANSMUTACAO
   ),
   new Magia(
-    1,
     "Primor Atlético",
     Fonte.BASICO,
     [],
@@ -267,7 +239,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.TRANSMUTACAO
   ),
   new Magia(
-    1,
     "Queda Suave",
     Fonte.BASICO,
     [],
@@ -276,7 +247,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.TRANSMUTACAO
   ),
   new Magia(
-    1,
     "Transmutar Objetos",
     Fonte.BASICO,
     [],
@@ -286,7 +256,6 @@ const magiasPrimeiroCirculo: Magia[] = [
   ),
 
   new Magia(
-    1,
     "Escudo da Fé",
     Fonte.BASICO,
     [],
@@ -295,7 +264,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ABJURACAO
   ),
   new Magia(
-    1,
     "Proteção Divina",
     Fonte.BASICO,
     [],
@@ -304,7 +272,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ABJURACAO
   ),
   new Magia(
-    1,
     "Santuário",
     Fonte.BASICO,
     [],
@@ -313,7 +280,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ABJURACAO
   ),
   new Magia(
-    1,
     "Suporte Ambiental",
     Fonte.BASICO,
     [],
@@ -322,7 +288,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ABJURACAO
   ),
   new Magia(
-    1,
     "Compreensão",
     Fonte.BASICO,
     [],
@@ -331,7 +296,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ADIVINHACAO
   ),
   new Magia(
-    1,
     "Detectar Ameaças",
     Fonte.BASICO,
     [],
@@ -340,7 +304,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ADIVINHACAO
   ),
   new Magia(
-    1,
     "Orientação",
     Fonte.BASICO,
     [],
@@ -349,7 +312,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ADIVINHACAO
   ),
   new Magia(
-    1,
     "Visão Mística",
     Fonte.BASICO,
     [],
@@ -358,7 +320,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ADIVINHACAO
   ),
   new Magia(
-    1,
     "Arma Espiritual",
     Fonte.BASICO,
     [],
@@ -367,7 +328,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.CONVOCACAO
   ),
   new Magia(
-    1,
     "Caminhos da Natureza",
     Fonte.BASICO,
     [],
@@ -376,7 +336,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.CONVOCACAO
   ),
   new Magia(
-    1,
     "Criar Elementos",
     Fonte.BASICO,
     [],
@@ -385,7 +344,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.CONVOCACAO
   ),
   new Magia(
-    1,
     "Acalmar Animal",
     Fonte.BASICO,
     [],
@@ -394,7 +352,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ENCANTAMENTO
   ),
   new Magia(
-    1,
     "Bênção",
     Fonte.BASICO,
     [],
@@ -403,7 +360,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ENCANTAMENTO
   ),
   new Magia(
-    1,
     "Comando",
     Fonte.BASICO,
     [],
@@ -412,7 +368,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ENCANTAMENTO
   ),
   new Magia(
-    1,
     "Tranquilidade",
     Fonte.BASICO,
     [],
@@ -421,7 +376,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.ENCANTAMENTO
   ),
   new Magia(
-    1,
     "Consagrar",
     Fonte.BASICO,
     [],
@@ -430,7 +384,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.EVOCACAO
   ),
   new Magia(
-    1,
     "Curar Ferimentos",
     Fonte.BASICO,
     [],
@@ -439,7 +392,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.EVOCACAO
   ),
   new Magia(
-    1,
     "Despedaçar",
     Fonte.BASICO,
     [],
@@ -448,7 +400,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.EVOCACAO
   ),
   new Magia(
-    1,
     "Infligir Ferimentos",
     Fonte.BASICO,
     [],
@@ -457,7 +408,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.NECROMANCIA
   ),
   new Magia(
-    1,
     "Perdição",
     Fonte.BASICO,
     [],
@@ -466,7 +416,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.NECROMANCIA
   ),
   new Magia(
-    1,
     "Profanar",
     Fonte.BASICO,
     [],
@@ -475,7 +424,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.NECROMANCIA
   ),
   new Magia(
-    1,
     "Abençoar Alimentos",
     Fonte.BASICO,
     [],
@@ -484,7 +432,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.TRANSMUTACAO
   ),
   new Magia(
-    1,
     "Armamento da Natureza",
     Fonte.BASICO,
     [],
@@ -493,7 +440,6 @@ const magiasPrimeiroCirculo: Magia[] = [
     Escola.TRANSMUTACAO
   ),
   new Magia(
-    1,
     "Controlar Plantas",
     Fonte.BASICO,
     [],
@@ -508,7 +454,6 @@ const magiasPrimeiroCirculo: Magia[] = [
 
 const magiasSegundoCirculo: Magia[] = [
   new Magia(
-    1,
     "Círculo da Justiça",
     Fonte.BASICO,
     [],

@@ -64,9 +64,10 @@ export default defineComponent({
     },
     escolherClasse(classe: Classe): void {
       // eslint-disable-next-line
-      this.ficha.classes[this.nivel - 1] = classe;
+      //this.ficha.classes[this.nivel - 1] = classe;
+      this.ficha.setClasse(this.nivel - 1, classe);
       this.$set(this.ficha.classes, this.nivel - 1, classe);
-      this.ficha.getBuffs();
+      this.ficha.getBuffs(this.nivel);
     },
     filter(): Classe[] {
       if (this.activeBook === "Todos") {

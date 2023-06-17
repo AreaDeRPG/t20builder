@@ -13,7 +13,6 @@ export default class Magia extends Habilidade {
   private _atributoChave: Atributos;
 
   constructor(
-    id: number,
     nome: string,
     fonte: Fonte,
     magias: Magia[],
@@ -22,7 +21,7 @@ export default class Magia extends Habilidade {
     escola: Escola,
     atributoChave?: Atributos
   ) {
-    super(id, nome, fonte, magias, undefined, Categoria.Magia);
+    super(nome, fonte, magias, undefined, Categoria.Magia);
     this._circulo = circulo;
     this._tradicao = tradicao;
     this._escola = escola;

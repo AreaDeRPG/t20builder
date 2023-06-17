@@ -8,7 +8,13 @@ export default class Classe {
   private _pvInicial: number;
   private _pvNivel: number;
   private _pmNivel: number;
-  private _pericias: Pericia[];
+  private _periciasFixas: Habilidade[];
+  private _periciasExtras: Habilidade[];
+  private _periciasExtrasTreinadas: Habilidade[];
+  private _periciasTreinadas: number;
+  private _periciasFixasEscolhida: Habilidade[];
+  private _periciaFixaEscolhida?: Habilidade;
+
   private _habilidades: Habilidade[][];
   private _fonte: Fonte;
 
@@ -18,18 +24,25 @@ export default class Classe {
     pvInicial: number,
     pvNivel: number,
     pmNivel: number,
-    pericias: Pericia[],
+    periciasFixas: Habilidade[],
+    periciasExtras: Habilidade[],
+    periciasTreinadas: number,
     habilidades: Habilidade[][],
-    fonte: Fonte
+    fonte: Fonte,
+    periciasFixasEscolhida?: Habilidade[]
   ) {
     this.id = id;
     this._nome = nome;
     this._pvInicial = pvInicial;
     this._pvNivel = pvNivel;
     this._pmNivel = pmNivel;
-    this._pericias = pericias;
+    this._periciasFixas = periciasFixas;
+    this._periciasTreinadas = periciasTreinadas;
+    this._periciasExtras = periciasExtras;
+    this._periciasExtrasTreinadas = [];
     this._habilidades = habilidades;
     this._fonte = fonte;
+    this._periciasFixasEscolhida = periciasFixasEscolhida ?? [];
   }
 
   public get nome(): string {
@@ -44,47 +57,51 @@ export default class Classe {
     return this._pvInicial;
   }
 
-  public set pvInicial(value: number) {
-    this._pvInicial = value;
-  }
-
   public get pvNivel(): number {
     return this._pvNivel;
-  }
-
-  public set pvNivel(value: number) {
-    this._pvNivel = value;
   }
 
   public get pmNivel(): number {
     return this._pmNivel;
   }
 
-  public set pmNivel(value: number) {
-    this._pmNivel = value;
-  }
-
   public get pericias(): Pericia[] {
-    return this._pericias;
-  }
-
-  public set pericias(value: Pericia[]) {
-    this.pericias = value;
+    return this.pericias;
   }
 
   public get habilidades(): Habilidade[][] {
     return this._habilidades;
   }
 
-  public set habilidades(value: Habilidade[][]) {
-    this._habilidades = value;
-  }
-
   public get fonte(): Fonte {
     return this._fonte;
   }
 
-  public set fonte(value: Fonte) {
-    this.fonte = value;
+  public get periciasTreinadas(): number {
+    return this._periciasTreinadas;
+  }
+
+  public get periciasFixas(): Habilidade[] {
+    return this._periciasFixas;
+  }
+
+  public get periciasExtras(): Habilidade[] {
+    return this._periciasExtras ?? [];
+  }
+
+  public get periciasFixasEscolhida(): Habilidade[] {
+    return this._periciasFixasEscolhida;
+  }
+
+  public get periciaFixaEscolhida(): Habilidade | undefined {
+    return this._periciaFixaEscolhida;
+  }
+
+  public set periciaFixaEscolhida(periciaFixa: Habilidade | undefined) {
+    this._periciaFixaEscolhida = periciaFixa;
+  }
+
+  public get periciasExtrasTreinadas(): Habilidade[] {
+    return this._periciasExtrasTreinadas;
   }
 }

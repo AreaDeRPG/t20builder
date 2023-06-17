@@ -4,7 +4,7 @@ import Classe from "@/entities/classes/model/Classe";
 import { Tamanho } from "@/entities/Tamanho/model/Tamanho";
 import { Atributos } from "@/entities/atributos";
 import Pericia from "@/entities/pericias/model/Pericia";
-import Biografia from "@/entities/biografia/model/Biografia";
+import Origem from "@/entities/origem/model/Origem";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import Buff from "@/entities/buff/model/Buff";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
@@ -13,7 +13,7 @@ import Magia from "@/entities/magia/model/Magia";
 export default class Ficha {
   public readonly id: number;
   private _raca: Raca;
-  private _biografia: Biografia;
+  private _origem: Origem;
   private _modificadores: Modificador[];
   private _classes: Classe[];
   private _nivel: number;
@@ -23,17 +23,18 @@ export default class Ficha {
   private _nome: string;
   private _tamanho: Tamanho;
   private _pericias: Pericia[];
+  private _periciasInt: Habilidade[];
 
   constructor(
     id: number,
     raca: Raca,
-    biografia: Biografia,
+    origem: Origem,
     modificadores: Modificador[],
     pericias: Pericia[]
   ) {
     this.id = id;
     this._raca = raca;
-    this._biografia = biografia;
+    this._origem = origem;
     this._modificadores = modificadores;
     this._classes = [];
     this._nivel = 1;
@@ -43,6 +44,7 @@ export default class Ficha {
     this._nome = "";
     this._tamanho = Tamanho.MEDIO;
     this._pericias = pericias;
+    this._periciasInt = [];
   }
 
   public get raca(): Raca {
@@ -64,6 +66,24 @@ export default class Ficha {
   }
   public setClasse(i: number, value: Classe) {
     this._classes[i] = value;
+    console.log("value", value);
+    if (i == 0) {
+      const periciasFixas: Habilidade[] = value.periciasFixas;
+      if (
+        this.origem.habilidadeSelect1 &&
+        periciasFixas.includes(this.origem.habilidadeSelect1)
+      )
+        this.origem.habilidadeSelect1 = undefined;
+      if (
+        this.origem.habilidadeSelect2 &&
+        periciasFixas.includes(this.origem.habilidadeSelect2)
+      )
+        this.origem.habilidadeSelect2 = undefined;
+      this.raca.habilidades.forEach((el) => {
+        if (el.select && periciasFixas.includes(el.select))
+          el.select = undefined;
+      });
+    }
   }
 
   public get nivel(): number {
@@ -76,7 +96,7 @@ export default class Ficha {
   public get defesa(): number {
     return (
       this._defesa +
-      this.getBuffs()
+      this.getBuffs(this.nivel)
         .filter((el) => el.caracteristica == Caracteristica.DEFESA)
         .reduce((sum, el) => sum + el.getBonus(this.nivel), 0)
     );
@@ -95,7 +115,7 @@ export default class Ficha {
         pv_ += pvNivel;
       }
     }
-    const buffs: Buff[] = this.getBuffs().filter(
+    const buffs: Buff[] = this.getBuffs(this.nivel).filter(
       (el: Buff) => el.caracteristica == Caracteristica.PV
     );
     const sum = buffs.reduce(
@@ -108,7 +128,7 @@ export default class Ficha {
 
   public get pm(): number {
     let pm_ = 0;
-    const buffs: Buff[] = this.getBuffs().filter(
+    const buffs: Buff[] = this.getBuffs(this.nivel).filter(
       (el: Buff) => el.caracteristica == Caracteristica.PM
     );
     for (let i = 0; i < this.nivel; i++) {
@@ -126,7 +146,7 @@ export default class Ficha {
   }
 
   public get velocidade(): number {
-    const buffs = this.getBuffs()
+    const buffs = this.getBuffs(this._nivel)
       .filter((el) => el.caracteristica == Caracteristica.VELOCIDADE)
       .reduce((sum, el) => sum + el.getBonus(this.nivel), 0);
     return this._velocidade + buffs;
@@ -149,21 +169,28 @@ export default class Ficha {
   public get tamanho(): Tamanho {
     return this._tamanho;
   }
-  public set tamanho(value: Tamanho) {
-    this._tamanho = value;
-  }
 
   public get pericias(): Pericia[] {
     return this._pericias;
   }
 
-  public get biografia(): Biografia {
-    return this._biografia;
+  public get origem(): Origem {
+    return this._origem;
   }
-  public set biografia(biografia: Biografia) {
-    this._biografia.habilidadeSelect1 = undefined;
-    this._biografia.habilidadeSelect2 = undefined;
-    this._biografia = biografia;
+  public set origem(origem: Origem) {
+    this._origem.habilidadeSelect1 = undefined;
+    this._origem.habilidadeSelect2 = undefined;
+    this._origem = origem;
+  }
+
+  public get periciasInt(): Habilidade[] {
+    return this._periciasInt;
+  }
+
+  public setPericiaInt(i: number, habilidade: Habilidade) {
+    if (i < this._modificadores[3].getTotal()) {
+      this.periciasInt[i] = habilidade;
+    }
   }
 
   getMeioNivel(): number {
@@ -238,27 +265,35 @@ export default class Ficha {
     return habilidades;
   }
 
-  getHabilidades(): Habilidade[] {
+  getHabilidades(level: number): Habilidade[] {
     let habilidades: Habilidade[] = [];
     habilidades = habilidades.concat(this.raca.habilidades);
-    if (!this.raca.barrarBiografia && this.biografia.habilidadeSelect1)
-      habilidades.push(this.biografia.habilidadeSelect1);
-    if (!this.raca.barrarBiografia && this.biografia.habilidadeSelect2)
-      habilidades.push(this.biografia.habilidadeSelect2);
+    if (!this.raca.barrarOrigem && this.origem.habilidadeSelect1)
+      habilidades.push(this.origem.habilidadeSelect1);
+    if (!this.raca.barrarOrigem && this.origem.habilidadeSelect2)
+      habilidades.push(this.origem.habilidadeSelect2);
+    if (this.classes[0]) {
+      habilidades.push(...this.classes[0].periciasFixas);
+      habilidades.push(...this.classes[0].periciasExtrasTreinadas);
+      if (this.classes[0].periciaFixaEscolhida)
+        habilidades.push(this.classes[0].periciaFixaEscolhida);
+    }
+    habilidades.push(...this.periciasInt);
+    console.log("classe", this.classes[0]);
+    console.log("habilidades", habilidades);
     return this.includeSelect(habilidades.filter((el) => el !== undefined));
   }
 
-  getMagias(): Magia[] {
-    console.log("here");
-    const habilidades = this.getHabilidades();
+  getMagias(level: number): Magia[] {
+    const habilidades = this.getHabilidades(level);
     const magias = habilidades.filter(
       (el) => el !== undefined && el instanceof Magia
     );
     return [] as Magia[];
   }
 
-  getBuffs(): Buff[] {
-    const habilidades = this.getHabilidades();
+  getBuffs(level: number): Buff[] {
+    const habilidades = this.getHabilidades(level);
     const buffs: Buff[] = [];
     habilidades.forEach((el) => {
       buffs.push(...el.buffs);
