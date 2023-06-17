@@ -167,6 +167,18 @@
                 }}
               </b-button>
             </div>
+            <div
+              v-for="k in ficha.modificadores[3].getTotal()"
+              :key="ficha.periciasInt[k]?.nome"
+            >
+              <b-button
+                variant="primary"
+                v-b-modal.poderselect
+                @click="setPericiaInt(getTreinamentoPericias(), k)"
+              >
+                {{ ficha.periciasInt[k]?.nome ?? "Pericia de Inteligencia" }}
+              </b-button>
+            </div>
           </b-row>
           <b-row>
             <div
@@ -211,6 +223,7 @@ import { defineComponent } from "vue";
 import { PropType } from "vue/types/v3-component-props";
 import PoderSelectModal from "./modals/poder-select/PoderSelectModal.vue";
 import { Categoria } from "@/entities/categoria/model/Categoria";
+import { treinamentoPericias } from "@/entities/pericias";
 export default defineComponent({
   name: "NivelSelect",
   data() {
@@ -308,6 +321,10 @@ export default defineComponent({
           this.ficha.classes[0].periciaFixaEscolhida = habilidade
           this.$set(this.ficha.classes, 7, habilidade);
           break;
+        case 8:
+          // eslint-disable-next-line
+          this.ficha.periciasInt[this.k] = habilidade;
+          this.$set(this.ficha.periciasInt, 8, habilidade);
       }
     },
     getHabilidadeNome(habilidade: Habilidade): string {
@@ -333,6 +350,15 @@ export default defineComponent({
       this.activeChild = this.ficha.classes[0].periciasExtrasTreinadas[k - 1];
       this.poderselect = 6;
       this.k = k;
+    },
+    setPericiaInt(habilidades: Habilidade[], k: number): void {
+      this.select = habilidades;
+      this.activeChild = this.ficha.periciasInt[k];
+      this.poderselect = 8;
+      this.k = k;
+    },
+    getTreinamentoPericias(): Habilidade[] {
+      return treinamentoPericias;
     },
   },
   components: { PoderSelectModal },

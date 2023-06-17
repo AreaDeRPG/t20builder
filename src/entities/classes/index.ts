@@ -96,7 +96,24 @@ export const classes: Classe[] = [
     4,
     4,
     treinamentoPericias.filter((el) => ["Reflexos"].includes(el.nome)),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Acrobacia",
+        "Atletismo",
+        "Atuação",
+        "Enganação",
+        "Fortitude",
+        "Furtividade",
+        "Iniciativa",
+        "Intimidação",
+        "Jogatina",
+        "Luta",
+        "Oficio",
+        "Percepção",
+        "Pilotagem",
+        "Pontaria",
+      ].includes(el.nome)
+    ),
     4,
     [],
     Fonte.BASICO,
@@ -109,7 +126,24 @@ export const classes: Classe[] = [
     4,
     4,
     treinamentoPericias.filter((el) => ["Sobrevivência"].includes(el.nome)),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Adestramento",
+        "Atletismo",
+        "Cavalgar",
+        "Cura",
+        "Fortitude",
+        "Furtividade",
+        "Iniciativa",
+        "Iniciativa",
+        "Investigação",
+        "Luta",
+        "Oficio",
+        "Percepção",
+        "Pontaria",
+        "Reflexos",
+      ].includes(el.nome)
+    ),
     6,
     [],
     Fonte.BASICO,
@@ -122,7 +156,20 @@ export const classes: Classe[] = [
     5,
     3,
     treinamentoPericias.filter((el) => ["Fortitude", "Luta"].includes(el.nome)),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Adestramento",
+        "Atletismo",
+        "Cavalgar",
+        "Diplomacia",
+        "Guerra",
+        "Iniciativa",
+        "Intimidação",
+        "Nobreza",
+        "Percepção",
+        "Vontade",
+      ].includes(el.nome)
+    ),
     2,
     [],
     Fonte.BASICO
@@ -136,7 +183,21 @@ export const classes: Classe[] = [
     treinamentoPericias.filter((el) =>
       ["Religião", "Vontade"].includes(el.nome)
     ),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Conhecimento",
+        "Cura",
+        "Diplomacia",
+        "Fortitude",
+        "Iniciativa",
+        "Intuição",
+        "Luta",
+        "Misticismo",
+        "Nobreza",
+        "Oficio",
+        "Percepção",
+      ].includes(el.nome)
+    ),
     2,
     [],
     Fonte.BASICO
@@ -150,7 +211,23 @@ export const classes: Classe[] = [
     treinamentoPericias.filter((el) =>
       ["Sobrevivência", "Vontade"].includes(el.nome)
     ),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Adestramento",
+        "Atletismo",
+        "Cavalgar",
+        "Conhecimento",
+        "Cura",
+        "Fortitude",
+        "Iniciativa",
+        "Intuição",
+        "Luta",
+        "Misticismo",
+        "Oficio",
+        "Percepção",
+        "Religião",
+      ].includes(el.nome)
+    ),
     4,
     [],
     Fonte.BASICO
@@ -162,7 +239,21 @@ export const classes: Classe[] = [
     5,
     3,
     treinamentoPericias.filter((el) => ["Fortitude"].includes(el.nome)),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Adestramento",
+        "Atletismo",
+        "Cavalgar",
+        "Guerra",
+        "Iniciativa",
+        "Intimidação",
+        "Luta",
+        "Oficio",
+        "Percepção",
+        "Pontaria",
+        "Reflexos",
+      ].includes(el.nome)
+    ),
     2,
     [],
     Fonte.BASICO,
@@ -175,7 +266,22 @@ export const classes: Classe[] = [
     3,
     4,
     treinamentoPericias.filter((el) => ["Vontade"].includes(el.nome)),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Conhecimento",
+        "Cura",
+        "Diplomacia",
+        "Fortitude",
+        "Iniciativa",
+        "Investigação",
+        "Luta",
+        "Misticismo",
+        "Oficio",
+        "Pilotagem",
+        "Percepção",
+        "Pontaria",
+      ].includes(el.nome)
+    ),
     4,
     [],
     Fonte.BASICO
@@ -189,7 +295,28 @@ export const classes: Classe[] = [
     treinamentoPericias.filter((el) =>
       ["Ladinagem", "Reflexos"].includes(el.nome)
     ),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Acrobacia",
+        "Atletismo",
+        "Atuação",
+        "Cavalgar",
+        "Conhecimento",
+        "Diplomacia",
+        "Enganação",
+        "Furtividade",
+        "Iniciativa",
+        "Intimidação",
+        "Intuição",
+        "Investigação",
+        "Jogatina",
+        "Luta",
+        "Oficio",
+        "Percepção",
+        "Pilotagem",
+        "Pontaria",
+      ].includes(el.nome)
+    ),
     8,
     [],
     Fonte.BASICO
@@ -201,7 +328,21 @@ export const classes: Classe[] = [
     5,
     3,
     treinamentoPericias.filter((el) => ["Fortitude", "Luta"].includes(el.nome)),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Acrobacia",
+        "Adestramento",
+        "Atletismo",
+        "Enganação",
+        "Furtividade",
+        "Iniciativa",
+        "Intimidação",
+        "Oficio",
+        "Percepção",
+        "Pontaria",
+        "Reflexos",
+      ].includes(el.nome)
+    ),
     4,
     [],
     Fonte.BASICO
@@ -213,7 +354,28 @@ export const classes: Classe[] = [
     4,
     4,
     treinamentoPericias.filter((el) => ["Vontade"].includes(el.nome)),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Adestramento",
+        "Atuação",
+        "Cavalgar",
+        "Conhecimento",
+        "Diplomacia",
+        "Enganação",
+        "Fortitude",
+        "Guerra",
+        "Iniciativa",
+        "Intimidação",
+        "Intuição",
+        "Investigação",
+        "Jogatina",
+        "Luta",
+        "Nobreza",
+        "Oficio",
+        "Percepção",
+        "Pontaria",
+      ].includes(el.nome)
+    ),
     4,
     [],
     Fonte.BASICO,
@@ -228,7 +390,22 @@ export const classes: Classe[] = [
     5,
     3,
     treinamentoPericias.filter((el) => ["Luta", "Vontade"].includes(el.nome)),
-    [],
+    treinamentoPericias.filter((el) =>
+      [
+        "Adestramento",
+        "Atletismo",
+        "Cavalgar",
+        "Cura",
+        "Diplomacia",
+        "Fortitude",
+        "Guerra",
+        "Iniciativa",
+        "Intuição",
+        "Nobreza",
+        "Percepção",
+        "Religião",
+      ].includes(el.nome)
+    ),
     2,
     [],
     Fonte.BASICO
