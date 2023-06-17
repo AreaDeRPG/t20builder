@@ -1,6 +1,13 @@
 import PatchNote from "./model/PatchNotes";
 
 export const patches: PatchNote[] = [
+  new PatchNote(6, "v0.7.6", [
+    "Treinamento de pericias por raca",
+    "Treinamento de pericias por origem",
+    "Treinamento de pericias fixas de classe",
+    "Treinamento de pericias de classe",
+    "Treinamento de pericias de inteligencia",
+  ]),
   new PatchNote(5, "v0.7.5", [
     "A maioria das habilidades de raça foi implementada, no entanto, algumas ainda estão faltando. Essas habilidades serão adicionadas em futuras atualizações conforme o restante da ficha for desenvolvida. Abaixo estão algumas habilidades que ainda não foram implementadas. Qualquer habilidade não mencionada está funcional e habilitada, de acordo com meus testes. Caso encontre algum erro, por favor, informe-me no privado do Discord:",
     "Humano: Versátil => Lista de poderes gerais não implementada",

@@ -868,8 +868,8 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
 };
 
 export const habilidadesClasse: ListaHabilidadesClasse = {
-  arcanista: habilidadesArcanista,
-  barbaro: habilidadesBarbaro,
+  arcanista: [],
+  barbaro: [],
   bardo: [],
   bucaneiro: [],
   cacador: [],
