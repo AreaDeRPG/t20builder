@@ -5,11 +5,8 @@
 </template>
 
 <script lang="ts">
-import Buff from "@/entities/buff/model/Buff";
-import { BuffType } from "@/entities/buff/model/BuffType";
 import Ficha from "@/entities/ficha/model/Ficha";
 import Pericia from "@/entities/pericias/model/Pericia";
-import { Treinamento } from "@/entities/pericias/model/Treinamento";
 import { defineComponent, type PropType } from "vue";
 
 class PericiasData {

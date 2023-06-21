@@ -2,11 +2,9 @@
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark">
       <div class="d-flex justify-content-center">
-        <b-button variant="dark" v-b-toggle.sidebar>
-          <b-icon-list></b-icon-list>
-        </b-button>
-        <a class="navbar-brand" style="margin-left: 1rem">Menu</a>
+        <MenuButton />
         <span style="border-right: 1px solid white"></span>
+
         <a class="navbar-brand" style="margin-left: 1rem">
           T20Builder / Discord
           <a href="https://discord.gg/areaderpg">Area de RPG</a></a
@@ -40,15 +38,11 @@
         </div>
       </template>
       <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-        <li class="text-center">
-          <b-button
-            variant="outline-light"
-            v-b-modal.patchnotes
-            style="width: 10em"
-          >
-            Patch Notes
-          </b-button>
-        </li>
+        <SidebarButton
+          modal="patchnotes"
+          text="Patch Notes"
+          variant="outline-light"
+        />
       </ul>
     </b-sidebar>
     <PatchNotesModal />
@@ -59,7 +53,8 @@
 import { defineComponent } from "vue";
 import PatchNotesModal from "./modals/patchnotes/PatchNotesModal.vue";
 import { patches } from "@/entities/patchnotes";
-import Utils from "@/entities/util";
+import MenuButton from "./props/MenuButton.vue";
+import SidebarButton from "./props/SidebarButton.vue";
 export default defineComponent({
   name: "nav-bar",
   data: () => {
@@ -67,20 +62,9 @@ export default defineComponent({
       patchversion: patches[0].versao as string,
     };
   },
-  components: { PatchNotesModal },
+  components: { PatchNotesModal, MenuButton, SidebarButton },
   methods: {},
 });
 </script>
 
-<style scoped>
-button {
-  border: 0;
-  background-color: none;
-}
-.close {
-  border-radius: 0;
-}
-.row {
-  --bs-gutter-x: 0;
-}
-</style>
+<style scoped></style>

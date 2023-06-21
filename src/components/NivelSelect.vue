@@ -273,7 +273,6 @@ export default defineComponent({
       habilidade: Habilidade | undefined,
       habilidades: Habilidade[]
     ): void {
-      console.log(habilidade);
       this.poderselect = code;
       this.activeChild = habilidade;
       this.select = habilidades;

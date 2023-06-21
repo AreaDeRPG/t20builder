@@ -66,7 +66,6 @@ export default class Ficha {
   }
   public setClasse(i: number, value: Classe) {
     this._classes[i] = value;
-    console.log("value", value);
     if (i == 0) {
       const periciasFixas: Habilidade[] = value.periciasFixas;
       if (
@@ -268,6 +267,9 @@ export default class Ficha {
   getHabilidades(level: number): Habilidade[] {
     let habilidades: Habilidade[] = [];
     habilidades = habilidades.concat(this.raca.habilidades);
+    habilidades.forEach((el) => {
+      if (el.select) habilidades.push(el.select);
+    });
     if (!this.raca.barrarOrigem && this.origem.habilidadeSelect1)
       habilidades.push(this.origem.habilidadeSelect1);
     if (!this.raca.barrarOrigem && this.origem.habilidadeSelect2)
@@ -279,8 +281,6 @@ export default class Ficha {
         habilidades.push(this.classes[0].periciaFixaEscolhida);
     }
     habilidades.push(...this.periciasInt);
-    console.log("classe", this.classes[0]);
-    console.log("habilidades", habilidades);
     return this.includeSelect(habilidades.filter((el) => el !== undefined));
   }
 
