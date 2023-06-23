@@ -11,21 +11,15 @@
 </template>
 
 <script lang="ts">
-import Ficha from "@/entities/ficha/model/Ficha";
+import { activeFicha as ficha } from "@/entities/ficha";
 import { defineComponent, PropType } from "vue";
-
 export default defineComponent({
   name: "SelectNivelModal",
-  props: {
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
-  },
+  props: {},
   methods: {
     setNivel(i: number): void {
       // eslint-disable-next-line
-      this.ficha.nivel = i;
+      ficha.nivel = i;
       this.$bvModal.hide("niveis");
     },
   },

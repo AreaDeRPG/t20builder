@@ -1,12 +1,14 @@
 import { Acao } from "../acao/model/Acao";
 import { Atributos } from "../atributos";
 import Buff from "../buff/model/Buff";
+import { BuffStack } from "../buff/model/BuffStack";
 import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
 import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
 import { magias } from "../magia";
 import Magia from "../magia/model/Magia";
+import { modificadores } from "../modificadores";
 import { treinamentoPericias } from "../pericias";
 import { poderes } from "../poderes";
 import Habilidade from "./model/Habilidades";
@@ -21,11 +23,6 @@ interface ListaHabilidadesClasse {
 
 function filterMagiaPrimeiroCirculo(...magias_: string[]): Magia[] {
   return magias.primeiroCirculo.filter((el) => magias_.includes(el.nome));
-}
-
-function setAtributo(magia: Magia, atributo: Atributos) {
-  magia.atributoChave = atributo;
-  return magia;
 }
 
 function memoriasPostumas(): Habilidade[] {
@@ -744,7 +741,15 @@ const habilidadesTrog: Habilidade[] = [
   ),
 ];
 
+const habilidadesOsteon: Habilidade[] = [
+  new Habilidade("Armadurra Óssea", Fonte.BASICO, []),
+  new Habilidade("Memória Póstuma", Fonte.BASICO, memoriasPostumas()),
+  new Habilidade("Natureza Esquelética", Fonte.BASICO, []),
+  new Habilidade("Preço da Não-Vida", Fonte.BASICO, []),
+];
+
 const habilidadesArcanista: Habilidade[][] = [
+  //Nivel 1
   [
     new Habilidade(
       "Caminho do Arcanista",
@@ -758,92 +763,739 @@ const habilidadesArcanista: Habilidade[][] = [
     ),
     habilidadesComum[0],
   ],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, []), habilidadesComum[1]],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, []), habilidadesComum[2]],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, []), habilidadesComum[3]],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, []), habilidadesComum[4]],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Arcanista", Fonte.BASICO, [])],
-  [
-    new Habilidade("Poder de Arcanista", Fonte.BASICO, []),
-    new Habilidade("Alta Arcana", Fonte.BASICO, []),
-  ],
+  //Nivel 2
+  [],
+  //Nivel 3
+  [],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [habilidadesComum[1]],
+  //Nivel 6
+  [],
+  //Nivel 7
+  [],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [habilidadesComum[2]],
+  //Nivel 10
+  [],
+  //Nivel 11
+  [],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [habilidadesComum[3]],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [habilidadesComum[4]],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Alta Arcana", Fonte.BASICO, [])],
 ];
 
 const habilidadesBarbaro: Habilidade[][] = [
+  //Nivel 1
   [new Habilidade("Furia +2", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  //Nivel 2
+  [],
+  //Nivel 3
   [
-    new Habilidade("Instinto Selvagem +1", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade(
+      "Instinto Selvagem +1",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DANO, 1, BuffType.BASE),
+        new Buff(Caracteristica.PERCEPCAO, 1, BuffType.BASE),
+        new Buff(Caracteristica.REFLEXOS, 1, BuffType.BASE),
+      ]
+    ),
   ],
-  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  //Nivel 4
+  [],
+  //Nivel 5
   [
-    new Habilidade("Redução de Dano 2", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade(
+      "Redução de Dano 2",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.RD, 2, BuffType.BASE)]
+    ),
   ],
+  //Nivel 6
+  [new Habilidade("Fúria +3", Fonte.BASICO, [])],
+  //Nivel 7
+  [],
+  //Nivel 8
   [
-    new Habilidade("Fúria +3", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade(
+      "Redução de Dano 4",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.RD, 2, BuffType.BASE)]
+    ),
   ],
-  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  //Nivel 9
   [
-    new Habilidade("Redução de Dano 4", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade(
+      "Instinto Selvagem +2",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DANO, 1, BuffType.BASE),
+        new Buff(Caracteristica.PERCEPCAO, 1, BuffType.BASE),
+        new Buff(Caracteristica.REFLEXOS, 1, BuffType.BASE),
+      ]
+    ),
   ],
-  [
-    new Habilidade("Instinto Selvagem +2", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
-  ],
-  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  //Nivel 10
+  [],
+  //Nivel 11
   [
     new Habilidade("Fúria +4", Fonte.BASICO, []),
-    new Habilidade("Redução de Dano 6", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade(
+      "Redução de Dano 6",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.RD, 2, BuffType.BASE)]
+    ),
   ],
-  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [],
+  //Nivel 14
   [
-    new Habilidade("Redução de Dano 8", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade(
+      "Redução de Dano 8",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.RD, 2, BuffType.BASE)]
+    ),
   ],
+  //Nivel 15
   [
-    new Habilidade("Instinto Selvagem +3", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade(
+      "Instinto Selvagem +3",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DANO, 1, BuffType.BASE),
+        new Buff(Caracteristica.PERCEPCAO, 1, BuffType.BASE),
+        new Buff(Caracteristica.REFLEXOS, 1, BuffType.BASE),
+      ]
+    ),
   ],
+  //Nivel 16
+  [new Habilidade("Fúria +5", Fonte.BASICO, [])],
+  //Nivel 17
   [
-    new Habilidade("Fúria +5", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
+    new Habilidade(
+      "Redução de Dano 10",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.RD, 2, BuffType.BASE)]
+    ),
   ],
-  [
-    new Habilidade("Redução de Dano 10", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
-  ],
-  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
-  [new Habilidade("Poder de Bárbaro", Fonte.BASICO, [])],
-  [
-    new Habilidade("Fúria Titânica", Fonte.BASICO, []),
-    new Habilidade("Poder de Bárbaro", Fonte.BASICO, []),
-  ],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Fúria Titânica", Fonte.BASICO, [])],
 ];
 
-const habilidadesOsteon: Habilidade[] = [
-  new Habilidade("Armadurra Óssea", Fonte.BASICO, []),
-  new Habilidade("Memória Póstuma", Fonte.BASICO, memoriasPostumas()),
-  new Habilidade("Natureza Esquelética", Fonte.BASICO, []),
-  new Habilidade("Preço da Não-Vida", Fonte.BASICO, []),
+const habilidadesBardo: Habilidade[][] = [
+  //Nivel 1
+  [new Habilidade("Inspiracao +1", Fonte.BASICO, []), habilidadesComum[0]],
+  //Nivel 2
+  [new Habilidade("Eclético", Fonte.BASICO, [])],
+  //Nivel 3
+  [],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [new Habilidade("Inspiracao +2", Fonte.BASICO, [])],
+  //Nivel 6
+  [habilidadesComum[1]],
+  //Nivel 7
+  [],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [new Habilidade("Inspiracao +3", Fonte.BASICO, [])],
+  //Nivel 10
+  [habilidadesComum[2]],
+  //Nivel 11
+  [],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [new Habilidade("Inspiracao +3", Fonte.BASICO, [])],
+  //Nivel 14
+  [habilidadesComum[3]],
+  //Nivel 15
+  [],
+  //Nivel 16
+  [new Habilidade("Fúria +5", Fonte.BASICO, [])],
+  //Nivel 17
+  [new Habilidade("Inspiracao +3", Fonte.BASICO, [])],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Artista Completo", Fonte.BASICO, [])],
+];
+
+const habilidadesBucaneiro: Habilidade[][] = [
+  //Nivel 1
+  [
+    new Habilidade("Audácia", Fonte.BASICO, []),
+    new Habilidade("Insolência", Fonte.BASICO, []),
+  ],
+  //Nivel 2
+  [new Habilidade("Evasão", Fonte.BASICO, [])],
+  //Nivel 3
+  [
+    new Habilidade(
+      "Esquiva Sagaz +1",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DEFESA, 1, BuffType.BASE),
+        new Buff(Caracteristica.REFLEXOS, 1, BuffType.BASE),
+      ]
+    ),
+  ],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [new Habilidade("Panache", Fonte.BASICO, [])],
+  //Nivel 6
+  [],
+  //Nivel 7
+  [
+    new Habilidade(
+      "Esquiva Sagaz +2",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DEFESA, 1, BuffType.BASE),
+        new Buff(Caracteristica.REFLEXOS, 1, BuffType.BASE),
+      ]
+    ),
+  ],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [],
+  //Nivel 10
+  [new Habilidade("Evasão Aprimorada", Fonte.BASICO, [])],
+  //Nivel 11
+  [
+    new Habilidade(
+      "Esquiva Sagaz +3",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DEFESA, 1, BuffType.BASE),
+        new Buff(Caracteristica.REFLEXOS, 1, BuffType.BASE),
+      ]
+    ),
+  ],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [
+    new Habilidade(
+      "Esquiva Sagaz +4",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DEFESA, 1, BuffType.BASE),
+        new Buff(Caracteristica.REFLEXOS, 1, BuffType.BASE),
+      ]
+    ),
+  ],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [
+    new Habilidade(
+      "Esquiva Sagaz +5",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(Caracteristica.DEFESA, 1, BuffType.BASE),
+        new Buff(Caracteristica.REFLEXOS, 1, BuffType.BASE),
+      ]
+    ),
+  ],
+  //Nivel 20
+  [new Habilidade("Sorte de Nimb", Fonte.BASICO, [])],
+];
+
+const habilidadesCacador: Habilidade[][] = [
+  //Nivel 1
+  [
+    new Habilidade("Marca da Presa +1d4", Fonte.BASICO, []),
+    new Habilidade(
+      "Rastreador",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.SOBREVIVENCIA, 2, BuffType.BASE)]
+    ),
+  ],
+  //Nivel 2
+  [],
+  //Nivel 3
+  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [
+    new Habilidade("Caminho do Explorador", Fonte.BASICO, []),
+    new Habilidade("Marca da Presa +1d8", Fonte.BASICO, []),
+  ],
+  //Nivel 6
+  [],
+  //Nivel 7
+  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [new Habilidade("Marca da Presa +1d12", Fonte.BASICO, [])],
+  //Nivel 10
+  [],
+  //Nivel 11
+  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [new Habilidade("Marca da Presa +2d8", Fonte.BASICO, [])],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [new Habilidade("Marca da Presa +2d10", Fonte.BASICO, [])],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  //Nivel 20
+  [new Habilidade("Mestre Caçador", Fonte.BASICO, [])],
+];
+
+const habilidadesCavaleiro: Habilidade[][] = [
+  //Nivel 1
+  [
+    new Habilidade("Baluarte +2", Fonte.BASICO, []),
+    new Habilidade("Codigo de Honra", Fonte.BASICO, []),
+  ],
+  //Nivel 2
+  [new Habilidade("Duelo +2", Fonte.BASICO, [])],
+  //Nivel 3
+  [],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [
+    new Habilidade("Caminho do Cavaleiro", Fonte.BASICO, [
+      new Habilidade("Bastião", Fonte.BASICO, []),
+      new Habilidade("Montaria", Fonte.BASICO, []),
+    ]),
+    new Habilidade("Baluarte +4", Fonte.BASICO, []),
+  ],
+  //Nivel 6
+  [],
+  //Nivel 7
+  [
+    new Habilidade("Baluarte (Aliados Adjacentes)", Fonte.BASICO, []),
+    new Habilidade("Duelo +3", Fonte.BASICO, []),
+  ],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [new Habilidade("Baluarte +6", Fonte.BASICO, [])],
+  //Nivel 10
+  [],
+  //Nivel 11
+  [new Habilidade("Resoluto", Fonte.BASICO, [])],
+  //Nivel 12
+  [new Habilidade("Duelo +4", Fonte.BASICO, [])],
+  //Nivel 13
+  [new Habilidade("Baluarte +8", Fonte.BASICO, [])],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [new Habilidade("Baluarte (Aliados em Alcance Curto)", Fonte.BASICO, [])],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [
+    new Habilidade("Baluarte +10", Fonte.BASICO, []),
+    new Habilidade("Duelo +5", Fonte.BASICO, []),
+  ],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Bravura Final", Fonte.BASICO, [])],
+];
+
+const habilidadesClerigo: Habilidade[][] = [
+  //Nivel 1
+  [new Habilidade("Devoto", Fonte.BASICO, []), habilidadesComum[0]],
+  //Nivel 2
+  [],
+  //Nivel 3
+  [],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [habilidadesComum[1]],
+  //Nivel 6
+  [],
+  //Nivel 7
+  [],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [habilidadesComum[2]],
+  //Nivel 10
+  [],
+  //Nivel 11
+  [],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [habilidadesComum[3]],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [habilidadesComum[4]],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Mão da Divindade", Fonte.BASICO, [])],
+];
+
+const habilidadesDruida: Habilidade[][] = [
+  //Nivel 1
+  [
+    new Habilidade("Devoto", Fonte.BASICO, []),
+    new Habilidade("Empatia Selvagem", Fonte.BASICO, []),
+    habilidadesComum[0],
+  ],
+  //Nivel 2
+  [new Habilidade("Caminho dos Ermos", Fonte.BASICO, []), habilidadesComum[0]],
+  //Nivel 3
+  [],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [],
+  //Nivel 6
+  [habilidadesComum[1]],
+  //Nivel 7
+  [],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [],
+  //Nivel 10
+  [habilidadesComum[2]],
+  //Nivel 11
+  [],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [],
+  //Nivel 14
+  [habilidadesComum[3]],
+  //Nivel 15
+  [],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Força da Natureza", Fonte.BASICO, [])],
+];
+
+const habilidadesGuerreiro: Habilidade[][] = [
+  //Nivel 1
+  [new Habilidade("Ataque Especial +4", Fonte.BASICO, [])],
+  //Nivel 2
+  [],
+  //Nivel 3
+  [new Habilidade("Durão", Fonte.BASICO, [])],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [new Habilidade("Ataque Especial +8", Fonte.BASICO, [])],
+  //Nivel 6
+  [new Habilidade("Ataque Extra", Fonte.BASICO, [])],
+  //Nivel 7
+  [],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [new Habilidade("Ataque Especial +12", Fonte.BASICO, [])],
+  //Nivel 10
+  [],
+  //Nivel 11
+  [],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [new Habilidade("Ataque Especial +16", Fonte.BASICO, [])],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [new Habilidade("Ataque Especial +20", Fonte.BASICO, [])],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Campeão", Fonte.BASICO, [])],
+];
+
+const habilidadesInventor: Habilidade[][] = [
+  //Nivel 1
+  [
+    new Habilidade("Engenhosidade", Fonte.BASICO, []),
+    new Habilidade("Protótipo", Fonte.BASICO, []),
+  ],
+  //Nivel 2
+  [new Habilidade("Fabricar Item Superior (1 Melhoria)", Fonte.BASICO, [])],
+  //Nivel 3
+  [new Habilidade("Comerciante", Fonte.BASICO, [])],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [new Habilidade("Fabricar Item Superior (2 Melhorias)", Fonte.BASICO, [])],
+  [],
+  //Nivel 6
+  [],
+  //Nivel 7
+  [new Habilidade("Encontrar Fraqueza", Fonte.BASICO, [])],
+  //Nivel 8
+  [new Habilidade("Fabricar Item Superior (3 Melhorias)", Fonte.BASICO, [])],
+  //Nivel 9
+  [new Habilidade("Fabricar Item Mágico (Menor)", Fonte.BASICO, [])],
+  //Nivel 10
+  [new Habilidade("Olho do Dragão", Fonte.BASICO, [])],
+  //Nivel 11
+  [new Habilidade("Fabricar Item Superior (4 Melhorias)", Fonte.BASICO, [])],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [new Habilidade("Fabricar Item Mágico (Médio)", Fonte.BASICO, [])],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [new Habilidade("Fabricar Item Mágico (Maior)", Fonte.BASICO, [])],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Obra-Prima", Fonte.BASICO, [])],
+];
+
+const habilidadesLadino: Habilidade[][] = [
+  //Nivel 1
+  [
+    new Habilidade("Ataque Furtivo +1d6", Fonte.BASICO, []),
+    new Habilidade("Especialista", Fonte.BASICO, []),
+  ],
+  //Nivel 2
+  [new Habilidade("Evasão", Fonte.BASICO, [])],
+  //Nivel 3
+  [new Habilidade("Ataque Furtivo +2d6", Fonte.BASICO, [])],
+  //Nivel 4
+  [new Habilidade("Esquiva Sobrenatural", Fonte.BASICO, [])],
+  //Nivel 5
+  [new Habilidade("Ataque Furtivo +3d6", Fonte.BASICO, [])],
+  //Nivel 6
+  [],
+  //Nivel 7
+  [new Habilidade("Ataque Furtivo +4d6", Fonte.BASICO, [])],
+  //Nivel 8
+  [new Habilidade("Olho nas Costas", Fonte.BASICO, [])],
+  //Nivel 9
+  [new Habilidade("Ataque Furtivo +5d6", Fonte.BASICO, [])],
+  //Nivel 10
+  [new Habilidade("Evasão Aprimorada", Fonte.BASICO, [])],
+  //Nivel 11
+  [new Habilidade("Ataque Furtivo +6d6", Fonte.BASICO, [])],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [new Habilidade("Ataque Furtivo +7d6", Fonte.BASICO, [])],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [new Habilidade("Ataque Furtivo +8d6", Fonte.BASICO, [])],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [new Habilidade("Ataque Furtivo +9d6", Fonte.BASICO, [])],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [new Habilidade("Ataque Furtivo +10d6", Fonte.BASICO, [])],
+  //Nivel 20
+  [new Habilidade("A Pessoa Certa Para o Trabalho", Fonte.BASICO, [])],
+];
+
+const habilidadesLutador: Habilidade[][] = [
+  //Nivel 1
+  [
+    new Habilidade("Briga (1d6)", Fonte.BASICO, []),
+    new Habilidade("Golpe Relâmpago", Fonte.BASICO, []),
+  ],
+  //Nivel 2
+  [],
+  //Nivel 3
+  [
+    new Habilidade(
+      "Casca Grossa (Con)",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(
+          Caracteristica.DEFESA,
+          Atributos.CONSTITUICAO,
+          BuffType.BASE,
+          BuffStack.ATRIBUTO
+        ),
+      ]
+    ),
+  ],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [
+    new Habilidade("Briga (1d8)", Fonte.BASICO, []),
+    new Habilidade("Golpe Cruel", Fonte.BASICO, []),
+  ],
+  //Nivel 6
+  [],
+  //Nivel 7
+  [new Habilidade("Casca Grossa (Con + 1)", Fonte.BASICO, [])],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [new Habilidade("Briga (1d10)", Fonte.BASICO, [])],
+  //Nivel 10
+  [],
+  //Nivel 11
+  [new Habilidade("Casca Grossa (Con + 2)", Fonte.BASICO, [])],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [new Habilidade("Briga (2d6)", Fonte.BASICO, [])],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [new Habilidade("Casca Grossa (Con + 3)", Fonte.BASICO, [])],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [new Habilidade("Briga (2d8)", Fonte.BASICO, [])],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [new Habilidade("Casga Grossa (Con + 4)", Fonte.BASICO, [])],
+  //Nivel 20
+  [new Habilidade("Briga (2d10)", Fonte.BASICO, [])],
+];
+
+const habilidadesTemplate: Habilidade[][] = [
+  //Nivel 1
+  [],
+  //Nivel 2
+  [],
+  //Nivel 3
+  [],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [],
+  //Nivel 6
+  [],
+  //Nivel 7
+  [],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [],
+  //Nivel 10
+  [],
+  //Nivel 11
+  [],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [],
+  //Nivel 14
+  [],
+  //Nivel 15
+  [],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [],
+  //Nivel 18
+  [],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [],
 ];
 
 export const habilidadesRaca: ListaHabilidadesRaca = {
@@ -868,18 +1520,18 @@ export const habilidadesRaca: ListaHabilidadesRaca = {
 };
 
 export const habilidadesClasse: ListaHabilidadesClasse = {
-  arcanista: [],
-  barbaro: [],
-  bardo: [],
-  bucaneiro: [],
-  cacador: [],
-  cavaleiro: [],
-  clerigo: [],
-  druida: [],
-  guerreiro: [],
-  inventor: [],
-  ladino: [],
-  lutador: [],
+  arcanista: habilidadesArcanista,
+  barbaro: habilidadesBarbaro,
+  bardo: habilidadesBardo,
+  bucaneiro: habilidadesBucaneiro,
+  cacador: habilidadesCacador,
+  cavaleiro: habilidadesCavaleiro,
+  clerigo: habilidadesClerigo,
+  druida: habilidadesDruida,
+  guerreiro: habilidadesGuerreiro,
+  inventor: habilidadesInventor,
+  ladino: habilidadesLadino,
+  lutador: habilidadesLutador,
   nobre: [],
   paladino: [],
 };

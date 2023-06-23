@@ -53,7 +53,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     4,
-    [],
+    habilidadesClasse.barbaro,
     Fonte.BASICO
   ),
   new Classe(
@@ -86,7 +86,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     6,
-    [],
+    habilidadesClasse.bardo,
     Fonte.BASICO
   ),
   new Classe(
@@ -115,7 +115,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     4,
-    [],
+    habilidadesClasse.bucaneiro,
     Fonte.BASICO,
     treinamentoPericias.filter((el) => ["Luta", "Pontaria"].includes(el.nome))
   ),
@@ -145,7 +145,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     6,
-    [],
+    habilidadesClasse.cacador,
     Fonte.BASICO,
     treinamentoPericias.filter((el) => ["Luta", "Pontaria"].includes(el.nome))
   ),
@@ -171,7 +171,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     2,
-    [],
+    habilidadesClasse.cavaleiro,
     Fonte.BASICO
   ),
   new Classe(
@@ -199,7 +199,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     2,
-    [],
+    habilidadesClasse.clerigo,
     Fonte.BASICO
   ),
   new Classe(
@@ -229,7 +229,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     4,
-    [],
+    habilidadesClasse.druida,
     Fonte.BASICO
   ),
   new Classe(
@@ -255,7 +255,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     2,
-    [],
+    habilidadesClasse.guerreiro,
     Fonte.BASICO,
     treinamentoPericias.filter((el) => ["Luta", "Pontaria"].includes(el.nome))
   ),
@@ -283,7 +283,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     4,
-    [],
+    habilidadesClasse.inventor,
     Fonte.BASICO
   ),
   new Classe(
@@ -318,7 +318,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     8,
-    [],
+    habilidadesClasse.ladino,
     Fonte.BASICO
   ),
   new Classe(
@@ -344,7 +344,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     4,
-    [],
+    habilidadesClasse.lutador,
     Fonte.BASICO
   ),
   new Classe(
@@ -377,7 +377,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     4,
-    [],
+    habilidadesClasse.nobre,
     Fonte.BASICO,
     treinamentoPericias.filter((el) =>
       ["Diplomacia", "Intimidação"].includes(el.nome)
@@ -407,7 +407,7 @@ export const classes: Classe[] = [
       ].includes(el.nome)
     ),
     2,
-    [],
+    habilidadesClasse.paladino,
     Fonte.BASICO
   ),
 ];

@@ -1,15 +1,17 @@
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 import { BuffType } from "./BuffType";
 import { BuffStack } from "./BuffStack";
+import { Atributos } from "@/entities/atributos";
+import { activeFicha as ficha } from "@/entities/ficha";
 
 export default class Buff {
   private _caracteristica: Caracteristica;
-  private _bonus: number;
+  private _bonus: number | Atributos;
   private _buffType: BuffType;
   private _buffStack: BuffStack;
   constructor(
     caracteristica: Caracteristica,
-    bonus?: number,
+    bonus?: number | Atributos,
     buffType?: BuffType,
     buffStack?: BuffStack
   ) {
@@ -24,6 +26,10 @@ export default class Buff {
   }
 
   public get bonus(): number {
+    if (typeof this._bonus === "string") {
+      console.log(ficha);
+      return 0;
+    }
     return this._bonus;
   }
 

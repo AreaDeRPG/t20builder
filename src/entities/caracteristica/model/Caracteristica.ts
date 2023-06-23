@@ -1,4 +1,5 @@
 export enum Caracteristica {
+  //Estatisticas
   PV = "PV",
   PM = "PM",
   VELOCIDADE = "VELOCIDADE",
@@ -7,16 +8,24 @@ export enum Caracteristica {
   VISAONORMAL = "Visao Normal",
   VISAONAPENUMBRA = "Visao na Penumbra",
   VISAONOESCURO = "Visao no Escuro",
+  RD = "RD",
+
+  //Tipo Criatura
   HUMANOIDE = "Humanoide",
   MONSTRO = "Monstro",
   ESPIRITO = "Espirito",
   CONSTRUTO = "Construto",
   MORTOVIVO = "Morto-Vivo",
-  FOR = "FORCA",
-  DES = "DESTREZA",
-  CON = "CONSTITUICAO",
-  INT = "INTELIGENCIA",
-  CAR = "CARISMA",
+
+  //Atributos
+  FOR = "Força",
+  DES = "Destreza",
+  CON = "Constituição",
+  INT = "Inteligência",
+  SAB = "Sabedoria",
+  CAR = "Carisma",
+
+  //Pericias
   FORTITUDE = "Fortitude",
   REFLEXOS = "Reflexos",
   VONTADE = "Vontade",
@@ -45,5 +54,8 @@ export enum Caracteristica {
   PILOTAGEM = "Pilotagem",
   PONTARIA = "Pontaria",
   RELIGIAO = "Religiao",
-  SOBREVIVENCIA = "Sobrevivencia",
+  SOBREVIVENCIA = "Sobrevivência",
+
+  //Rolagens
+  DANO = "Dano",
 }

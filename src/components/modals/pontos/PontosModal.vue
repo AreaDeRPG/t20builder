@@ -88,17 +88,14 @@
 </template>
 
 <script lang="ts">
+import { activeFicha as ficha } from "@/entities/ficha";
 import Ficha from "@/entities/ficha/model/Ficha";
 import Modificador from "@/entities/modificadores/model/Modificador";
-import { defineComponent, PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  props: {
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
-  },
+  name: "PontosModal",
+  props: {},
   data() {
     return {
       pontos: 0,
@@ -106,10 +103,13 @@ export default defineComponent({
   },
   computed: {
     totalCusto(): number {
-      return this.ficha.modificadores.reduce(
+      return ficha.modificadores.reduce(
         (total, mod) => total + this.calcularCusto(mod.base),
         0
       );
+    },
+    ficha(): Ficha {
+      return ficha;
     },
   },
   methods: {

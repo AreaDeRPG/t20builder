@@ -44,7 +44,7 @@
         <InputValueProp text="PV" :total="ficha?.pv" />
       </b-col>
       <b-col cols="3">
-        <InputValueProp text="PM" :total="ficha?.pv" />
+        <InputValueProp text="PM" :total="ficha?.pm" />
       </b-col>
     </b-row>
   </div>
@@ -52,26 +52,27 @@
 
 <script lang="ts">
 import { Tamanho } from "@/entities/Tamanho/model/Tamanho";
-import type Ficha from "@/entities/ficha/model/Ficha";
 import InputValueProp from "./props/InputValueProp.vue";
 import InputButtonProp from "./props/InputButtonProp.vue";
-import { defineComponent, type PropType } from "vue";
+import { defineComponent } from "vue";
+import { activeFicha as ficha } from "@/entities/ficha";
+import Ficha from "@/entities/ficha/model/Ficha";
 export default defineComponent({
   name: "FichaInfo",
   components: {
     InputValueProp,
     InputButtonProp,
   },
-  props: {
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
-  },
+  props: {},
   data: () => {
     return {
       tamanhos: Object.values(Tamanho),
     };
+  },
+  computed: {
+    ficha(): Ficha {
+      return ficha;
+    },
   },
 });
 </script>
