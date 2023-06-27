@@ -1,15 +1,18 @@
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 import { BuffType } from "./BuffType";
 import { BuffStack } from "./BuffStack";
+import { Atributos } from "@/entities/atributos";
+import { activeFicha as ficha } from "@/entities/ficha";
+import { modificadores } from "@/entities/modificadores";
 
 export default class Buff {
   private _caracteristica: Caracteristica;
-  private _bonus: number;
+  private _bonus: number | Atributos;
   private _buffType: BuffType;
   private _buffStack: BuffStack;
   constructor(
     caracteristica: Caracteristica,
-    bonus?: number,
+    bonus?: number | Atributos,
     buffType?: BuffType,
     buffStack?: BuffStack
   ) {
@@ -24,7 +27,18 @@ export default class Buff {
   }
 
   public get bonus(): number {
+    if (typeof this._bonus === "string") {
+      return (
+        modificadores.find((el) => el.atributo == this._bonus)?.getTotal() ?? 0
+      );
+    }
     return this._bonus;
+  }
+
+  public get atributo(): Atributos | undefined {
+    if (typeof this._bonus === "string") {
+      return this._bonus;
+    }
   }
 
   public get buffType(): BuffType {

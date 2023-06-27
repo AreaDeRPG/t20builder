@@ -36,18 +36,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
-import Ficha from "@/entities/ficha/model/Ficha";
+import { defineComponent } from "vue";
 import Classe from "@/entities/classes/model/Classe";
 import { classes } from "@/entities/classes";
+import { activeFicha as ficha } from "@/entities/ficha";
+import Ficha from "@/entities/ficha/model/Ficha";
 
 export default defineComponent({
   name: "ClasseModal",
   props: {
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
     nivel: {
       type: Number,
       required: true,
@@ -63,11 +60,8 @@ export default defineComponent({
       this.activeBook = newActive;
     },
     escolherClasse(classe: Classe): void {
-      // eslint-disable-next-line
-      //this.ficha.classes[this.nivel - 1] = classe;
-      this.ficha.setClasse(this.nivel - 1, classe);
-      this.$set(this.ficha.classes, this.nivel - 1, classe);
-      this.ficha.getBuffs(this.nivel);
+      ficha.setClasse(this.nivel - 1, classe);
+      this.$set(ficha.classes, this.nivel - 1, classe);
     },
     filter(): Classe[] {
       if (this.activeBook === "Todos") {
@@ -77,7 +71,12 @@ export default defineComponent({
       }
     },
     isActive(classe: Classe): boolean {
-      return (this.ficha.classes[this.nivel - 1]?.id ?? -1) === classe.id;
+      return (ficha.classes[this.nivel - 1]?.id ?? -1) === classe.id;
+    },
+  },
+  computed: {
+    ficha(): Ficha {
+      return ficha;
     },
   },
 });

@@ -1,3 +1,4 @@
+import Buff from "@/entities/buff/model/Buff";
 import Modificador from "@/entities/modificadores/model/Modificador";
 import Raca from "@/entities/racas/model/Racas";
 import Classe from "@/entities/classes/model/Classe";
@@ -6,7 +7,6 @@ import { Atributos } from "@/entities/atributos";
 import Pericia from "@/entities/pericias/model/Pericia";
 import Origem from "@/entities/origem/model/Origem";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
-import Buff from "@/entities/buff/model/Buff";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 import Magia from "@/entities/magia/model/Magia";
 
@@ -66,7 +66,6 @@ export default class Ficha {
   }
   public setClasse(i: number, value: Classe) {
     this._classes[i] = value;
-    console.log("value", value);
     if (i == 0) {
       const periciasFixas: Habilidade[] = value.periciasFixas;
       if (
@@ -96,7 +95,10 @@ export default class Ficha {
   public get defesa(): number {
     return (
       this._defesa +
-      this.getBuffs(this.nivel)
+      (this._modificadores
+        .find((el) => el.atributo === this.getAtributoDefesa())
+        ?.getTotal() ?? 0) +
+      this.getBuffs()
         .filter((el) => el.caracteristica == Caracteristica.DEFESA)
         .reduce((sum, el) => sum + el.getBonus(this.nivel), 0)
     );
@@ -115,7 +117,7 @@ export default class Ficha {
         pv_ += pvNivel;
       }
     }
-    const buffs: Buff[] = this.getBuffs(this.nivel).filter(
+    const buffs: Buff[] = this.getBuffs().filter(
       (el: Buff) => el.caracteristica == Caracteristica.PV
     );
     const sum = buffs.reduce(
@@ -128,7 +130,7 @@ export default class Ficha {
 
   public get pm(): number {
     let pm_ = 0;
-    const buffs: Buff[] = this.getBuffs(this.nivel).filter(
+    const buffs: Buff[] = this.getBuffs().filter(
       (el: Buff) => el.caracteristica == Caracteristica.PM
     );
     for (let i = 0; i < this.nivel; i++) {
@@ -146,7 +148,7 @@ export default class Ficha {
   }
 
   public get velocidade(): number {
-    const buffs = this.getBuffs(this._nivel)
+    const buffs = this.getBuffs()
       .filter((el) => el.caracteristica == Caracteristica.VELOCIDADE)
       .reduce((sum, el) => sum + el.getBonus(this.nivel), 0);
     return this._velocidade + buffs;
@@ -202,6 +204,14 @@ export default class Ficha {
       (el: Modificador) => el.atributo === atributo
     );
     return modificador?.getTotal() ?? 0;
+  }
+
+  getAtributoDefesa(): Atributos {
+    const atributo: Atributos | undefined = this.getBuffs().find(
+      (el) => el.caracteristica === Caracteristica.ATRIBUTODEFESA
+    )?.atributo;
+    if (atributo) return atributo;
+    return Atributos.DESTREZA;
   }
 
   parseModificicadoresValues(): void {
@@ -265,9 +275,12 @@ export default class Ficha {
     return habilidades;
   }
 
-  getHabilidades(level: number): Habilidade[] {
+  getHabilidades(): Habilidade[] {
     let habilidades: Habilidade[] = [];
     habilidades = habilidades.concat(this.raca.habilidades);
+    habilidades.forEach((el) => {
+      if (el.select) habilidades.push(el.select);
+    });
     if (!this.raca.barrarOrigem && this.origem.habilidadeSelect1)
       habilidades.push(this.origem.habilidadeSelect1);
     if (!this.raca.barrarOrigem && this.origem.habilidadeSelect2)
@@ -279,21 +292,28 @@ export default class Ficha {
         habilidades.push(this.classes[0].periciaFixaEscolhida);
     }
     habilidades.push(...this.periciasInt);
-    console.log("classe", this.classes[0]);
-    console.log("habilidades", habilidades);
-    return this.includeSelect(habilidades.filter((el) => el !== undefined));
+    const classes = this.classes.slice(0, this.nivel);
+    classes.forEach((el) => {
+      const niveis = classes.filter((el_) => el_ == el).length;
+      habilidades.push(
+        ...this.includeSelect(el.habilidades.slice(0, niveis).flat())
+      );
+    });
+    return Array.from(
+      new Set(this.includeSelect(habilidades.filter((el) => el !== undefined)))
+    );
   }
 
-  getMagias(level: number): Magia[] {
-    const habilidades = this.getHabilidades(level);
+  getMagias(): Magia[] {
+    const habilidades = this.getHabilidades();
     const magias = habilidades.filter(
       (el) => el !== undefined && el instanceof Magia
     );
     return [] as Magia[];
   }
 
-  getBuffs(level: number): Buff[] {
-    const habilidades = this.getHabilidades(level);
+  getBuffs(): Buff[] {
+    const habilidades = this.getHabilidades();
     const buffs: Buff[] = [];
     habilidades.forEach((el) => {
       buffs.push(...el.buffs);

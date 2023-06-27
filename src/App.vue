@@ -45,32 +45,23 @@
             </b-row>
           </div>
         </b-card>
-        <NivelSelect
-          :ficha="ficha"
-          :setNivel="setNivel"
-          :habilidades="habilidades"
-        />
+        <NivelSelect :setNivel="setNivel" :habilidades="habilidades" />
       </b-col>
 
-      <FichaInfoTab :ficha="ficha" />
+      <FichaInfoTab />
     </b-row>
 
-    <ClassesModal :ficha="ficha" :nivel="nivel" />
-    <RacasModal :ficha="ficha" />
-    <PontosModal :ficha="ficha" />
-    <SelectNivelModal :ficha="ficha" />
-    <BiografiaModal :ficha="ficha" />
+    <ClassesModal :nivel="nivel" />
+    <RacasModal />
+    <PontosModal />
+    <SelectNivelModal />
+    <BiografiaModal />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Ficha from "./entities/ficha/model/Ficha";
 import Navbar from "./components/Navbar.vue";
-import { racas } from "@/entities/racas/index";
-import { modificadores } from "./entities/modificadores/index";
-import { pericias } from "./entities/pericias";
-import { origens } from "./entities/origem";
 import ClassesModal from "./components/modals/classes/ClassesModal.vue";
 import RacasModal from "./components/modals/racas/RacasModal.vue";
 import PontosModal from "./components/modals/pontos/PontosModal.vue";
@@ -79,12 +70,13 @@ import BiografiaModal from "./components/modals/biografia/BiografiaModal.vue";
 import FichaInfoTab from "./components/FichaInfoTab.vue";
 import NivelSelect from "./components/NivelSelect.vue";
 import Habilidade from "./entities/habilidades/model/Habilidades";
+import { activeFicha } from "./entities/ficha";
 
 export default defineComponent({
   name: "App",
   data: () => {
     return {
-      ficha: new Ficha(1, racas[0], origens[0], modificadores, pericias),
+      ficha: activeFicha,
       nivel: 0,
       habilidades: [] as Habilidade[],
     };

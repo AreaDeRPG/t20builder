@@ -45,7 +45,8 @@
 import { defineComponent, type PropType } from "vue";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import { Categoria } from "@/entities/categoria/model/Categoria";
-import Ficha from "@/entities/ficha/model/Ficha";
+import { activeFicha as ficha } from "@/entities/ficha";
+
 export default defineComponent({
   name: "PoderSelectModal",
   data: () => {
@@ -70,10 +71,6 @@ export default defineComponent({
       type: Array as PropType<Categoria[]>,
       default: [] as string[],
     },
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
     i: {
       type: Number,
     },
@@ -85,7 +82,7 @@ export default defineComponent({
   },
   methods: {
     isTreinado(habilidade: Habilidade) {
-      const habilidades = this.ficha.getHabilidades(this.ficha.nivel);
+      const habilidades = ficha.getHabilidades();
       return habilidades.some(
         (hab) => hab === habilidade && this.active?.select !== habilidade
       );

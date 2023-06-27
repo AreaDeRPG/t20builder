@@ -25,21 +25,22 @@
 
 <script lang="ts">
 import Ficha from "@/entities/ficha/model/Ficha";
-import { PropType, defineComponent } from "vue";
+import { defineComponent } from "vue";
 import FichaInfo from "./FichaInfo.vue";
 import PericiasInfo from "./PericiasInfo.vue";
+import { activeFicha as ficha } from "@/entities/ficha";
 
 export default defineComponent({
   name: "FichaInfoTab",
-  props: {
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
-  },
+  props: {},
   components: {
     FichaInfo,
     PericiasInfo,
+  },
+  computed: {
+    ficha(): Ficha {
+      return ficha;
+    },
   },
 });
 </script>

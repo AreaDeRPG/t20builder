@@ -37,10 +37,10 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
-import type Ficha from "@/entities/ficha/model/Ficha";
 import { origens } from "@/entities/origem";
 import Origem from "@/entities/origem/model/Origem";
-import Utils from "@/entities/util";
+import { activeFicha as ficha } from "@/entities/ficha";
+
 export default defineComponent({
   name: "BiografiaModal",
   data: () => {
@@ -49,12 +49,7 @@ export default defineComponent({
     };
   },
   components: {},
-  props: {
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
-  },
+  props: {},
   methods: {
     activate(newActive: string) {
       this.activeBook = newActive;
@@ -70,10 +65,10 @@ export default defineComponent({
     },
     escolherBiografia(biografia: Origem): void {
       // eslint-disable-next-line
-      this.ficha.origem = biografia;
+      ficha.origem = biografia;
     },
     biografiaId(): number {
-      return this.ficha.origem.id;
+      return ficha.origem.id;
     },
     filter(): Origem[] {
       return origens.filter(

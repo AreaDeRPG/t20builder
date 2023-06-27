@@ -3,8 +3,8 @@
     <div v-for="i in 20" :key="i">
       <div class="d-flex justify-content-center">
         <h4>Nível {{ i }}:</h4>
-        <b-button variant="primary" v-b-modal.classes @click="setNivel(i)">
-          {{ getClasseNome(i) }}
+        <b-button variant="primary" v-b-modal.classes @click="nivel = i">
+          {{ ficha.classes[i]?.nome ?? "Classe" }}
         </b-button>
       </div>
     </div>
@@ -26,16 +26,9 @@ export default defineComponent({
     };
   },
   props: {
-    ficha: Object as PropType<Ficha>,
-  },
-  methods: {
-    setNivel(i: number): void {
-      this.nivel = i;
-    },
-    getClasseNome(i: number) {
-      var res = "Classe";
-      if (this.ficha && this.ficha.classes[i]) res = this.ficha.classes[i].nome;
-      return res;
+    ficha: {
+      type: Object as PropType<Ficha>,
+      required: true,
     },
   },
   components: { ClassesModal },

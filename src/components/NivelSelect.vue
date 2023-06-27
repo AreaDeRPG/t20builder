@@ -12,19 +12,19 @@
           </b-button>
           <b-row v-if="i == 1">
             <div
-              v-for="(habilidade, index) in ficha.raca.habilidades"
-              :key="index"
+              v-for="habilidade in ficha.raca.habilidades"
+              :key="habilidade.id"
               class="d-flex justify-content-left align-items-center"
               style="width: 100%"
             >
-              <div v-if="habilidade.habilidades.length > 0">
+              <div v-if="(habilidade.habilidades?.length ?? 0) > 0">
                 <b-button
                   v-b-modal.poderselect
                   @click="set(3, habilidade, habilidade.habilidades)"
                 >
                   {{ habilidade.select?.nome ?? habilidade.nome }}
                 </b-button>
-                <div v-if="habilidade.select?.habilidades.length ?? 0 > 0">
+                <div v-if="(habilidade.select?.habilidades?.length ?? 0) > 0">
                   <b-button
                     v-b-modal.poderselect
                     @click="
@@ -168,8 +168,8 @@
               </b-button>
             </div>
             <div
-              v-for="k in ficha.modificadores[3].getTotal()"
-              :key="ficha.periciasInt[k]?.nome"
+              v-for="k in Math.max(ficha.modificadores[3].getTotal(), 0)"
+              :key="ficha.periciasInt[k]?.id"
             >
               <b-button
                 variant="primary"
@@ -209,7 +209,6 @@
       :active="activeChild"
       :update="update"
       :tabs="tabs"
-      :ficha="ficha"
       :i="k"
     />
   </div>
@@ -217,13 +216,14 @@
 
 <script lang="ts">
 import Classe from "@/entities/classes/model/Classe";
-import Ficha from "@/entities/ficha/model/Ficha";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import { defineComponent } from "vue";
-import { PropType } from "vue/types/v3-component-props";
 import PoderSelectModal from "./modals/poder-select/PoderSelectModal.vue";
 import { Categoria } from "@/entities/categoria/model/Categoria";
 import { treinamentoPericias } from "@/entities/pericias";
+import { activeFicha as ficha } from "@/entities/ficha";
+import Ficha from "@/entities/ficha/model/Ficha";
+
 export default defineComponent({
   name: "NivelSelect",
   data() {
@@ -237,10 +237,6 @@ export default defineComponent({
     };
   },
   props: {
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
     setNivel: {
       type: Function,
       required: true,
@@ -251,9 +247,9 @@ export default defineComponent({
       return `Nível ` + i;
     },
     filterHabilidades(i: number): Habilidade[] {
-      const classe = this.ficha.classes[i - 1];
+      const classe = ficha.classes[i - 1];
       if (classe && classe.habilidades) {
-        const count = this.ficha.classes
+        const count = ficha.classes
           .slice(0, i)
           .reduce((accumulator: number, current: Classe) => {
             if (current === classe) {
@@ -273,7 +269,6 @@ export default defineComponent({
       habilidade: Habilidade | undefined,
       habilidades: Habilidade[]
     ): void {
-      console.log(habilidade);
       this.poderselect = code;
       this.activeChild = habilidade;
       this.select = habilidades;
@@ -282,56 +277,56 @@ export default defineComponent({
       switch (this.poderselect) {
         case 1:
           // eslint-disable-next-line
-          this.ficha.origem.habilidadeSelect1 = habilidade;
-          this.$set(this.ficha, 1, habilidade);
+          ficha.origem.habilidadeSelect1 = habilidade;
+          this.$set(ficha, 1, habilidade);
           break;
         case 2:
           // eslint-disable-next-line
-          this.ficha.origem.habilidadeSelect2 = habilidade;
-          this.$set(this.ficha, 2, habilidade);
+          ficha.origem.habilidadeSelect2 = habilidade;
+          this.$set(ficha, 2, habilidade);
           break;
         case 3:
           if (this.activeChild instanceof Habilidade)
             this.activeChild.select = habilidade;
-          this.$set(this.ficha, 3, habilidade);
+          this.$set(ficha, 3, habilidade);
           break;
         case 4:
-          if (this.ficha.origem.habilidadeSelect1) {
+          if (ficha.origem.habilidadeSelect1) {
             // eslint-disable-next-line
-            this.ficha.origem.habilidadeSelect1.select = habilidade;
-            this.$set(this.ficha, 4, habilidade);
+            ficha.origem.habilidadeSelect1.select = habilidade;
+            this.$set(ficha, 4, habilidade);
           }
           break;
         case 5:
-          if (this.ficha.origem.habilidadeSelect2) {
+          if (ficha.origem.habilidadeSelect2) {
             // eslint-disable-next-line
-            this.ficha.origem.habilidadeSelect2.select = habilidade;
-            this.$set(this.ficha, 5, habilidade);
+            ficha.origem.habilidadeSelect2.select = habilidade;
+            this.$set(ficha, 5, habilidade);
           }
           break;
         case 6:
-          if (this.ficha.classes[0] && this.k)
+          if (ficha.classes[0] && this.k)
             // eslint-disable-next-line
-            this.ficha.classes[0].periciasExtrasTreinadas[this.k - 1] = habilidade;
-          this.$set(this.ficha.classes, 6, habilidade);
+            ficha.classes[0].periciasExtrasTreinadas[this.k - 1] = habilidade;
+          this.$set(ficha.classes, 6, habilidade);
           break;
         case 7:
-          if (this.ficha.classes[0])
+          if (ficha.classes[0])
             // eslint-disable-next-line
-          this.ficha.classes[0].periciaFixaEscolhida = habilidade
-          this.$set(this.ficha.classes, 7, habilidade);
+          ficha.classes[0].periciaFixaEscolhida = habilidade
+          this.$set(ficha.classes, 7, habilidade);
           break;
         case 8:
           // eslint-disable-next-line
-          this.ficha.periciasInt[this.k] = habilidade;
-          this.$set(this.ficha.periciasInt, 8, habilidade);
+          ficha.periciasInt[this.k] = habilidade;
+          this.$set(ficha.periciasInt, 8, habilidade);
       }
     },
     getHabilidadeNome(habilidade: Habilidade): string {
       return habilidade.select?.nome ?? `Escolher`;
     },
     hasArray(habilidades: Habilidade): boolean {
-      return habilidades.habilidades?.length != 0;
+      return (habilidades.habilidades?.length ?? 0) != 0;
     },
     setSelect(habilidade: Habilidade[]): void {
       this.select = habilidade;
@@ -347,18 +342,23 @@ export default defineComponent({
     },
     setPericiaClasse(habilidades: Habilidade[], k: number): void {
       this.select = habilidades;
-      this.activeChild = this.ficha.classes[0].periciasExtrasTreinadas[k - 1];
+      this.activeChild = ficha.classes[0].periciasExtrasTreinadas[k - 1];
       this.poderselect = 6;
       this.k = k;
     },
     setPericiaInt(habilidades: Habilidade[], k: number): void {
       this.select = habilidades;
-      this.activeChild = this.ficha.periciasInt[k];
+      this.activeChild = ficha.periciasInt[k];
       this.poderselect = 8;
       this.k = k;
     },
     getTreinamentoPericias(): Habilidade[] {
       return treinamentoPericias;
+    },
+  },
+  computed: {
+    ficha(): Ficha {
+      return ficha;
     },
   },
   components: { PoderSelectModal },

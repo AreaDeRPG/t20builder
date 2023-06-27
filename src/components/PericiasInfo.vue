@@ -5,12 +5,9 @@
 </template>
 
 <script lang="ts">
-import Buff from "@/entities/buff/model/Buff";
-import { BuffType } from "@/entities/buff/model/BuffType";
-import Ficha from "@/entities/ficha/model/Ficha";
+import { activeFicha as ficha } from "@/entities/ficha";
 import Pericia from "@/entities/pericias/model/Pericia";
-import { Treinamento } from "@/entities/pericias/model/Treinamento";
-import { defineComponent, type PropType } from "vue";
+import { defineComponent } from "vue";
 
 class PericiasData {
   treinamento: string;
@@ -41,12 +38,7 @@ class PericiasData {
 
 export default defineComponent({
   name: "PericiasInfo",
-  props: {
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
-  },
+  props: {},
   data: () => {
     return {
       fields: [
@@ -63,10 +55,10 @@ export default defineComponent({
   methods: {
     getData() {
       var res: PericiasData[] = [];
-      var nivel: number = this.ficha.nivel;
-      var meioNivel: number = this.ficha.getMeioNivel();
-      var pericias: Pericia[] = this.ficha.pericias;
-      var buffs = this.ficha.getBuffs(this.ficha.nivel);
+      var nivel: number = ficha.nivel;
+      var meioNivel: number = ficha.getMeioNivel();
+      var pericias: Pericia[] = ficha.pericias;
+      var buffs = ficha.getBuffs();
       pericias.forEach((el) => {
         res.push(
           new PericiasData(
@@ -74,18 +66,18 @@ export default defineComponent({
             el.nome,
             el.getBonus(
               nivel,
-              this.ficha!.getBuffs(this.ficha.nivel).filter(
-                (el_) => el_.caracteristica == el.caracteristica
-              )
+              ficha!
+                .getBuffs()
+                .filter((el_) => el_.caracteristica == el.caracteristica)
             ),
             meioNivel,
             el.modificador.getTotal(),
             el.getBonusTreinamento(nivel, buffs),
             el.sumBonus(
-              this.ficha
-                .getBuffs(this.ficha.nivel)
+              ficha
+                .getBuffs()
                 .filter((el_) => el_.caracteristica == el.caracteristica),
-              this.ficha.nivel
+              ficha.nivel
             )
           )
         );

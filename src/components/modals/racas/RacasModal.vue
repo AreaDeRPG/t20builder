@@ -38,8 +38,9 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import type Raca from "@/entities/racas/model/Racas";
-import type Ficha from "@/entities/ficha/model/Ficha";
 import { racas } from "@/entities/racas";
+import { activeFicha as ficha } from "@/entities/ficha";
+
 export default defineComponent({
   name: "RacasModal",
   data: () => {
@@ -48,22 +49,17 @@ export default defineComponent({
     };
   },
   components: {},
-  props: {
-    ficha: {
-      type: Object as PropType<Ficha>,
-      required: true,
-    },
-  },
+  props: {},
   methods: {
     activate(newActive: string) {
       this.activeBook = newActive;
     },
     fill(): void {
-      this.ficha.modificadores.forEach((el) => {
+      ficha.modificadores.forEach((el) => {
         el.raca = 0;
       });
-      this.ficha.raca.modificadores.forEach((el1) => {
-        this.ficha.modificadores.forEach((el2) => {
+      ficha.raca.modificadores.forEach((el1) => {
+        ficha.modificadores.forEach((el2) => {
           if (el1.atributo == el2.atributo) {
             el2.raca = el1.getTotal();
           }
@@ -81,11 +77,11 @@ export default defineComponent({
     },
     escolherRaca(raca: Raca): void {
       // eslint-disable-next-line
-      this.ficha.raca = raca;
+      ficha.raca = raca;
       this.fill();
     },
     racaId(): number {
-      return this.ficha.raca.id;
+      return ficha.raca.id;
     },
     filter(): Raca[] {
       return racas.filter(
