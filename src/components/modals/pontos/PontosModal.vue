@@ -38,19 +38,18 @@
                 inputmode="numeric"
                 class="campoTabela"
                 v-model.number="mod.base"
-                @input="updateValues(mod, index)"
+                @input="updateTotalCusto"
               />
             </td>
             <td>
               <input
                 type="text"
-                :disabled="ficha?.isLivre(mod.nome)"
+                :disabled="ficha?.isLivre(mod.atributo)"
                 min="-1"
                 pattern="\d*"
                 inputmode="numeric"
                 class="campoTabela"
                 v-model.number="mod.raca"
-                @input="updateTotalCusto"
               />
             </td>
             <td>
@@ -61,7 +60,6 @@
                 inputmode="numeric"
                 class="campoTabela"
                 v-model.number="mod.bonus"
-                @input="updateTotalCusto"
               />
             </td>
             <td>
@@ -90,7 +88,6 @@
 <script lang="ts">
 import { activeFicha as ficha } from "@/entities/ficha";
 import Ficha from "@/entities/ficha/model/Ficha";
-import Modificador from "@/entities/modificadores/model/Modificador";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -98,7 +95,7 @@ export default defineComponent({
   props: {},
   data() {
     return {
-      pontos: 0,
+      pontos: 10 as number,
     };
   },
   computed: {
@@ -113,11 +110,10 @@ export default defineComponent({
     },
   },
   methods: {
-    updateValues(mod: Modificador, index: number): void {
-      this.updateTotalCusto();
-    },
     updateTotalCusto(): void {
-      this.pontos = this.totalCusto;
+      this.pontos = 10 - this.totalCusto;
+      console.log("totalcusto", this.totalCusto);
+      console.log("pontos", this.pontos);
     },
     calcularCusto(valor: number): number {
       let custo: number;
@@ -148,6 +144,10 @@ export default defineComponent({
 
       return custo;
     },
+  },
+  mounted() {
+    console.log("totalcusto", this.totalCusto);
+    console.log("pontos", this.pontos);
   },
 });
 </script>

@@ -58,4 +58,7 @@ export enum Caracteristica {
 
   //Rolagens
   DANO = "Dano",
+
+  //Outros
+  ATRIBUTODEFESA = "Atributo Defesa",
 }

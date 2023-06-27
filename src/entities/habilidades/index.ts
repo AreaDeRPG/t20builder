@@ -8,7 +8,6 @@ import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
 import { magias } from "../magia";
 import Magia from "../magia/model/Magia";
-import { modificadores } from "../modificadores";
 import { treinamentoPericias } from "../pericias";
 import { poderes } from "../poderes";
 import Habilidade from "./model/Habilidades";
@@ -1426,7 +1425,14 @@ const habilidadesLutador: Habilidade[][] = [
   //Nivel 6
   [],
   //Nivel 7
-  [new Habilidade("Casca Grossa (Con + 1)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Casca Grossa (Con + 1)",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE, BuffStack.ATRIBUTO)]
+    ),
+  ],
   //Nivel 8
   [],
   //Nivel 9
@@ -1434,7 +1440,14 @@ const habilidadesLutador: Habilidade[][] = [
   //Nivel 10
   [],
   //Nivel 11
-  [new Habilidade("Casca Grossa (Con + 2)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Casca Grossa (Con + 2)",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE, BuffStack.ATRIBUTO)]
+    ),
+  ],
   //Nivel 12
   [],
   //Nivel 13
@@ -1442,7 +1455,14 @@ const habilidadesLutador: Habilidade[][] = [
   //Nivel 14
   [],
   //Nivel 15
-  [new Habilidade("Casca Grossa (Con + 3)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Casca Grossa (Con + 3)",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE, BuffStack.ATRIBUTO)]
+    ),
+  ],
   //Nivel 16
   [],
   //Nivel 17
@@ -1450,9 +1470,123 @@ const habilidadesLutador: Habilidade[][] = [
   //Nivel 18
   [],
   //Nivel 19
-  [new Habilidade("Casga Grossa (Con + 4)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Casga Grossa (Con + 4)",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE, BuffStack.ATRIBUTO)]
+    ),
+  ],
   //Nivel 20
   [new Habilidade("Briga (2d10)", Fonte.BASICO, [])],
+];
+
+const habilidadesNobre: Habilidade[][] = [
+  //Nivel 1
+  [
+    new Habilidade(
+      "Autoconfiança",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.ATRIBUTODEFESA, Atributos.CARISMA)]
+    ),
+    new Habilidade("Espólio", Fonte.BASICO, []),
+    new Habilidade("Orgulho", Fonte.BASICO, []),
+  ],
+  //Nivel 2
+  [new Habilidade("Palavras Afiadas (2d6)", Fonte.BASICO, [])],
+  //Nivel 3
+  [new Habilidade("Riqueza", Fonte.BASICO, [])],
+  //Nivel 4
+  [new Habilidade("Gritar Ordens", Fonte.BASICO, [])],
+  //Nivel 5
+  [new Habilidade("Presença Aristocrática", Fonte.BASICO, [])],
+  //Nivel 6
+  [new Habilidade("Palavras Afiadas (4d6)", Fonte.BASICO, [])],
+  //Nivel 7
+  [],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [],
+  //Nivel 10
+  [new Habilidade("Palavras Afiadas (6d6)", Fonte.BASICO, [])],
+  //Nivel 11
+  [],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [],
+  //Nivel 14
+  [new Habilidade("Palavras Afiadas (8d6)", Fonte.BASICO, [])],
+  //Nivel 15
+  [],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [],
+  //Nivel 18
+  [new Habilidade("Palavras Afiadas (10d6)", Fonte.BASICO, [])],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Realeza", Fonte.BASICO, [])],
+];
+
+const habilidadesPaladino: Habilidade[][] = [
+  //Nivel 1
+  [
+    new Habilidade(
+      "Abençoado",
+      Fonte.BASICO,
+      [],
+      [new Buff(Caracteristica.PM, Atributos.CARISMA, BuffType.BASE)]
+    ),
+    new Habilidade("Código do Herói", Fonte.BASICO, []),
+    new Habilidade("Golpe Divino (+1d8)", Fonte.BASICO, []),
+  ],
+  //Nivel 2
+  [new Habilidade("Cura pelas Mãos (1d8+1 PV)", Fonte.BASICO, [])],
+  //Nivel 3
+  [new Habilidade("Aura Sagrada", Fonte.BASICO, [])],
+  //Nivel 4
+  [],
+  //Nivel 5
+  [
+    new Habilidade("Benção da Justiça", Fonte.BASICO, []),
+    new Habilidade("Golpe Divino (+2d8)", Fonte.BASICO, []),
+  ],
+  //Nivel 6
+  [new Habilidade("Cura pelas Mãos (2d8+2 PV)", Fonte.BASICO, [])],
+  //Nivel 7
+  [],
+  //Nivel 8
+  [],
+  //Nivel 9
+  [new Habilidade("Golpe Divino (+3d8)", Fonte.BASICO, [])],
+  //Nivel 10
+  [new Habilidade("Cura pelas Mãos (3d8+3 PV)", Fonte.BASICO, [])],
+  //Nivel 11
+  [],
+  //Nivel 12
+  [],
+  //Nivel 13
+  [new Habilidade("Golpe Divino (+4d8)", Fonte.BASICO, [])],
+  //Nivel 14
+  [new Habilidade("Cura pelas Mãos (4d8+4 PV)", Fonte.BASICO, [])],
+  //Nivel 15
+  [],
+  //Nivel 16
+  [],
+  //Nivel 17
+  [new Habilidade("Golpe Divino (+5d8)", Fonte.BASICO, [])],
+  //Nivel 18
+  [new Habilidade("Cura pelas Mãos (5d8+5 PV)", Fonte.BASICO, [])],
+  //Nivel 19
+  [],
+  //Nivel 20
+  [new Habilidade("Vingador Sagrado", Fonte.BASICO, [])],
 ];
 
 const habilidadesTemplate: Habilidade[][] = [
@@ -1532,6 +1666,6 @@ export const habilidadesClasse: ListaHabilidadesClasse = {
   inventor: habilidadesInventor,
   ladino: habilidadesLadino,
   lutador: habilidadesLutador,
-  nobre: [],
-  paladino: [],
+  nobre: habilidadesNobre,
+  paladino: habilidadesPaladino,
 };

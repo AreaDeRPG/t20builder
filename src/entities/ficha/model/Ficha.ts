@@ -1,3 +1,4 @@
+import Buff from "@/entities/buff/model/Buff";
 import Modificador from "@/entities/modificadores/model/Modificador";
 import Raca from "@/entities/racas/model/Racas";
 import Classe from "@/entities/classes/model/Classe";
@@ -6,7 +7,6 @@ import { Atributos } from "@/entities/atributos";
 import Pericia from "@/entities/pericias/model/Pericia";
 import Origem from "@/entities/origem/model/Origem";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
-import Buff from "@/entities/buff/model/Buff";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 import Magia from "@/entities/magia/model/Magia";
 
@@ -95,6 +95,9 @@ export default class Ficha {
   public get defesa(): number {
     return (
       this._defesa +
+      (this._modificadores
+        .find((el) => el.atributo === this.getAtributoDefesa())
+        ?.getTotal() ?? 0) +
       this.getBuffs()
         .filter((el) => el.caracteristica == Caracteristica.DEFESA)
         .reduce((sum, el) => sum + el.getBonus(this.nivel), 0)
@@ -203,6 +206,14 @@ export default class Ficha {
     return modificador?.getTotal() ?? 0;
   }
 
+  getAtributoDefesa(): Atributos {
+    const atributo: Atributos | undefined = this.getBuffs().find(
+      (el) => el.caracteristica === Caracteristica.ATRIBUTODEFESA
+    )?.atributo;
+    if (atributo) return atributo;
+    return Atributos.DESTREZA;
+  }
+
   parseModificicadoresValues(): void {
     for (const modificador of this.modificadores) {
       modificador.base = +modificador.base;
@@ -284,7 +295,9 @@ export default class Ficha {
     const classes = this.classes.slice(0, this.nivel);
     classes.forEach((el) => {
       const niveis = classes.filter((el_) => el_ == el).length;
-      habilidades.push(...el.habilidades.slice(0, niveis).flat());
+      habilidades.push(
+        ...this.includeSelect(el.habilidades.slice(0, niveis).flat())
+      );
     });
     return Array.from(
       new Set(this.includeSelect(habilidades.filter((el) => el !== undefined)))

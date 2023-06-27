@@ -1,6 +1,10 @@
 import PatchNote from "./model/PatchNotes";
 
 export const patches: PatchNote[] = [
+  new PatchNote(7, "v0.7.7", [
+    "Adicionadas habilidades de classe (Poderes ainda nao inclusos)",
+    "Correções de detalhes menores (como destreza na defesa)",
+  ]),
   new PatchNote(6, "v0.7.6", [
     "Treinamento de pericias por raca",
     "Treinamento de pericias por origem",
