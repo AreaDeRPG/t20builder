@@ -6,5 +6,10 @@ export enum BuffStack {
   PARCEIRO = "Parceiro",
   ARMADURA = "Armadura",
   ESCUDO = "Escudo",
-  ATRIBUTO = "Atributo",
+  ATRIBUTO_CARISMA = "Atributo Carisma",
+  ATRIBUTO_SABEDORIA = "Atributo Sabedoria",
+  ATRIBUTO_INTELIGENCIA = "Atributo Inteligencia",
+  ATRIBUTO_CONSTITUICAO = "Atributo Constituicao",
+  ATRIBUTO_DESTREZA = "Atributo Destreza",
+  ATRIBUTO_FORCA = "Atributo Forca",
 }

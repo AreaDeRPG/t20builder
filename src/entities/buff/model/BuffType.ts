@@ -3,5 +3,6 @@ export enum BuffType {
   PROFICIENCY = "Proficiencia",
   BYLEVEL = "By Level",
   BYHALFLEVEL = "By Half Level",
+  BYHALFLEVELCEIL = "By Half Level Ceiling",
   BYRANK = "By Rank",
 }

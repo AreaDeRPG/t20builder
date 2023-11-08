@@ -4,4 +4,5 @@ export enum PoderTipo {
   PoderMagia = "Poder de Magia",
   PoderConcedido = "Poder Concedido",
   PoderTormenta = "Poder da Tormenta",
+  PoderClasse = "Poder de Classe",
 }

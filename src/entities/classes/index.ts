@@ -1,6 +1,5 @@
 import { Fonte } from "../fonte/fonte";
 import { habilidadesClasse } from "../habilidades";
-import Habilidade from "../habilidades/model/Habilidades";
 import { treinamentoPericias } from "../pericias";
 import Classe from "./model/Classe";
 

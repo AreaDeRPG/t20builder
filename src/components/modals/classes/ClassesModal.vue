@@ -22,8 +22,8 @@
         <b-nav vertical justified pills>
           <b-nav-item
             v-for="classe in filter()"
-            :key="classe.id"
-            :active="(ficha.classes[nivel - 1]?.id ?? -1) === classe.id"
+            :key="classe?.id"
+            :active="ficha.classes[nivel - 1]?.id === classe.id"
             @click="escolherClasse(classe)"
             class="text-center"
           >
@@ -39,29 +39,31 @@
 import { defineComponent } from "vue";
 import Classe from "@/entities/classes/model/Classe";
 import { classes } from "@/entities/classes";
-import { activeFicha as ficha } from "@/entities/ficha";
 import Ficha from "@/entities/ficha/model/Ficha";
+import { activeFicha, currentLevel as nivel } from "@/entities/ficha";
 
 export default defineComponent({
   name: "ClasseModal",
-  props: {
-    nivel: {
-      type: Number,
-      required: true,
-    },
-  },
   data() {
     return {
       activeBook: "Todos" as string,
     };
+  },
+  computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
+    },
+    nivel(): number {
+      return nivel.value;
+    },
   },
   methods: {
     activate(newActive: string): void {
       this.activeBook = newActive;
     },
     escolherClasse(classe: Classe): void {
-      ficha.setClasse(this.nivel - 1, classe);
-      this.$set(ficha.classes, this.nivel - 1, classe);
+      this.ficha.setClasse(this.nivel - 1, classe);
+      this.$set(this.ficha.classes, this.nivel - 1, classe);
     },
     filter(): Classe[] {
       if (this.activeBook === "Todos") {
@@ -71,12 +73,7 @@ export default defineComponent({
       }
     },
     isActive(classe: Classe): boolean {
-      return (ficha.classes[this.nivel - 1]?.id ?? -1) === classe.id;
-    },
-  },
-  computed: {
-    ficha(): Ficha {
-      return ficha;
+      return this.ficha.classes[this.nivel - 1]?.id === classe.id;
     },
   },
 });

@@ -2,7 +2,6 @@ import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 import { BuffType } from "./BuffType";
 import { BuffStack } from "./BuffStack";
 import { Atributos } from "@/entities/atributos";
-import { activeFicha as ficha } from "@/entities/ficha";
 import { modificadores } from "@/entities/modificadores";
 
 export default class Buff {
@@ -28,9 +27,9 @@ export default class Buff {
 
   public get bonus(): number {
     if (typeof this._bonus === "string") {
-      return (
-        modificadores.find((el) => el.atributo == this._bonus)?.getTotal() ?? 0
-      );
+      const mod = modificadores.find((el) => el.atributo == this._bonus);
+      if (!mod) return 0;
+      else return mod.getTotal();
     }
     return this._bonus;
   }
@@ -57,6 +56,8 @@ export default class Buff {
         return this.getBonusPlusLevel(level);
       case BuffType.BYHALFLEVEL:
         return this.getBonusPlusHalfLevel(level);
+      case BuffType.BYHALFLEVELCEIL:
+        return this.getBonusPlusHalfLevelCeil(level);
       case BuffType.BYRANK:
         return this.getBonusPlusRank(level);
       default:
@@ -74,6 +75,10 @@ export default class Buff {
 
   private getBonusPlusHalfLevel(level: number): number {
     return (this.bonus ?? 0) + Math.floor(level / 2);
+  }
+
+  private getBonusPlusHalfLevelCeil(level: number): number {
+    return (this.bonus ?? 0) + Math.ceil(level / 2);
   }
 
   private getRank(level: number): number {

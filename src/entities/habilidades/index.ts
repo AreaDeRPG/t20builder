@@ -68,6 +68,8 @@ const habilidadesHumano: Habilidade[] = [
     treinamentoPericias
       .concat(poderes.poderesCombate)
       .concat(poderes.poderesDestino)
+      .concat(poderes.poderesMagia)
+      .concat(poderes.poderesConcedidos)
       .concat(poderes.poderesTormenta),
     undefined,
     Categoria.habilidadesHumano
@@ -754,61 +756,269 @@ const habilidadesArcanista: Habilidade[][] = [
       "Caminho do Arcanista",
       Fonte.BASICO,
       [
-        new Habilidade("Caminho do Mago", Fonte.BASICO, []),
-        new Habilidade("Caminho do Bruxo", Fonte.BASICO, []),
-        new Habilidade("Caminho do Feiticeiro", Fonte.BASICO, []),
+        new Habilidade(
+          "Caminho do Mago",
+          Fonte.BASICO,
+          [],
+          [
+            new Buff(
+              Caracteristica.PM,
+              Atributos.INTELIGENCIA,
+              BuffType.BASE,
+              BuffStack.ATRIBUTO_INTELIGENCIA
+            ),
+          ]
+        ),
+        new Habilidade(
+          "Caminho do Bruxo",
+          Fonte.BASICO,
+          [],
+          [
+            new Buff(
+              Caracteristica.PM,
+              Atributos.INTELIGENCIA,
+              BuffType.BASE,
+              BuffStack.ATRIBUTO_INTELIGENCIA
+            ),
+          ]
+        ),
+        new Habilidade(
+          "Caminho do Feiticeiro",
+          Fonte.BASICO,
+          [],
+          [
+            new Buff(
+              Caracteristica.PM,
+              Atributos.CARISMA,
+              BuffType.BASE,
+              BuffStack.ATRIBUTO_CARISMA
+            ),
+          ]
+        ),
       ],
       []
     ),
     habilidadesComum[0],
   ],
   //Nivel 2
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 3
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 5
-  [habilidadesComum[1]],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+    habilidadesComum[1],
+  ],
   //Nivel 6
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 7
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 9
-  [habilidadesComum[2]],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+    habilidadesComum[2],
+  ],
   //Nivel 10
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 11
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 13
-  [habilidadesComum[3]],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+    habilidadesComum[3],
+  ],
   //Nivel 14
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 15
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 17
-  [habilidadesComum[4]],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+    habilidadesComum[4],
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Alta Arcana", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Arcanista",
+      Fonte.BASICO,
+      poderes.poderesArcanista,
+      undefined,
+      Categoria.habilidadesArcanista
+    ),
+    new Habilidade("Alta Arcana", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesBarbaro: Habilidade[][] = [
   //Nivel 1
   [new Habilidade("Furia +2", Fonte.BASICO, [])],
   //Nivel 2
-  [],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+  ],
   //Nivel 3
   [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
     new Habilidade(
       "Instinto Selvagem +1",
       Fonte.BASICO,
@@ -821,9 +1031,24 @@ const habilidadesBarbaro: Habilidade[][] = [
     ),
   ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+  ],
   //Nivel 5
   [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
     new Habilidade(
       "Redução de Dano 2",
       Fonte.BASICO,
@@ -832,11 +1057,35 @@ const habilidadesBarbaro: Habilidade[][] = [
     ),
   ],
   //Nivel 6
-  [new Habilidade("Fúria +3", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+    new Habilidade("Fúria +3", Fonte.BASICO, []),
+  ],
   //Nivel 7
-  [],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+  ],
   //Nivel 8
   [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
     new Habilidade(
       "Redução de Dano 4",
       Fonte.BASICO,
@@ -846,6 +1095,13 @@ const habilidadesBarbaro: Habilidade[][] = [
   ],
   //Nivel 9
   [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
     new Habilidade(
       "Instinto Selvagem +2",
       Fonte.BASICO,
@@ -858,9 +1114,24 @@ const habilidadesBarbaro: Habilidade[][] = [
     ),
   ],
   //Nivel 10
-  [],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+  ],
   //Nivel 11
   [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
     new Habilidade("Fúria +4", Fonte.BASICO, []),
     new Habilidade(
       "Redução de Dano 6",
@@ -870,11 +1141,34 @@ const habilidadesBarbaro: Habilidade[][] = [
     ),
   ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+  ],
   //Nivel 13
-  [],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+  ],
   //Nivel 14
   [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
     new Habilidade(
       "Redução de Dano 8",
       Fonte.BASICO,
@@ -884,6 +1178,13 @@ const habilidadesBarbaro: Habilidade[][] = [
   ],
   //Nivel 15
   [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
     new Habilidade(
       "Instinto Selvagem +3",
       Fonte.BASICO,
@@ -896,9 +1197,25 @@ const habilidadesBarbaro: Habilidade[][] = [
     ),
   ],
   //Nivel 16
-  [new Habilidade("Fúria +5", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+    new Habilidade("Fúria +5", Fonte.BASICO, []),
+  ],
   //Nivel 17
   [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
     new Habilidade(
       "Redução de Dano 10",
       Fonte.BASICO,
@@ -907,54 +1224,241 @@ const habilidadesBarbaro: Habilidade[][] = [
     ),
   ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Fúria Titânica", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Barbaro",
+      Fonte.BASICO,
+      poderes.poderesBarbaro,
+      undefined,
+      Categoria.habilidadesBarbaro
+    ),
+    new Habilidade("Fúria Titânica", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesBardo: Habilidade[][] = [
   //Nivel 1
   [new Habilidade("Inspiracao +1", Fonte.BASICO, []), habilidadesComum[0]],
   //Nivel 2
-  [new Habilidade("Eclético", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    new Habilidade("Eclético", Fonte.BASICO, []),
+  ],
   //Nivel 3
-  [],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+  ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+  ],
   //Nivel 5
-  [new Habilidade("Inspiracao +2", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    new Habilidade("Inspiracao +2", Fonte.BASICO, []),
+  ],
   //Nivel 6
-  [habilidadesComum[1]],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    habilidadesComum[1],
+  ],
   //Nivel 7
-  [],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+  ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+  ],
   //Nivel 9
-  [new Habilidade("Inspiracao +3", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    new Habilidade("Inspiracao +3", Fonte.BASICO, []),
+  ],
   //Nivel 10
-  [habilidadesComum[2]],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    habilidadesComum[2],
+  ],
   //Nivel 11
-  [],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+  ],
   //Nivel 13
-  [new Habilidade("Inspiracao +3", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    new Habilidade("Inspiracao +4", Fonte.BASICO, []),
+  ],
   //Nivel 14
-  [habilidadesComum[3]],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    habilidadesComum[3],
+  ],
   //Nivel 15
-  [],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+  ],
   //Nivel 16
-  [new Habilidade("Fúria +5", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    new Habilidade("Fúria +5", Fonte.BASICO, []),
+  ],
   //Nivel 17
-  [new Habilidade("Inspiracao +3", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    new Habilidade("Inspiracao +5", Fonte.BASICO, []),
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Artista Completo", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bardo",
+      Fonte.BASICO,
+      poderes.poderesBardo,
+      undefined,
+      Categoria.habilidadesBardo
+    ),
+    new Habilidade("Artista Completo", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesBucaneiro: Habilidade[][] = [
@@ -964,9 +1468,25 @@ const habilidadesBucaneiro: Habilidade[][] = [
     new Habilidade("Insolência", Fonte.BASICO, []),
   ],
   //Nivel 2
-  [new Habilidade("Evasão", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+    new Habilidade("Evasão", Fonte.BASICO, []),
+  ],
   //Nivel 3
   [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
     new Habilidade(
       "Esquiva Sagaz +1",
       Fonte.BASICO,
@@ -978,13 +1498,45 @@ const habilidadesBucaneiro: Habilidade[][] = [
     ),
   ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 5
-  [new Habilidade("Panache", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+    new Habilidade("Panache", Fonte.BASICO, []),
+  ],
   //Nivel 6
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 7
   [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
     new Habilidade(
       "Esquiva Sagaz +2",
       Fonte.BASICO,
@@ -996,13 +1548,45 @@ const habilidadesBucaneiro: Habilidade[][] = [
     ),
   ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 9
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 10
-  [new Habilidade("Evasão Aprimorada", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+    new Habilidade("Evasão Aprimorada", Fonte.BASICO, []),
+  ],
   //Nivel 11
   [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
     new Habilidade(
       "Esquiva Sagaz +3",
       Fonte.BASICO,
@@ -1014,13 +1598,44 @@ const habilidadesBucaneiro: Habilidade[][] = [
     ),
   ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 13
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 14
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 15
   [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
     new Habilidade(
       "Esquiva Sagaz +4",
       Fonte.BASICO,
@@ -1032,13 +1647,44 @@ const habilidadesBucaneiro: Habilidade[][] = [
     ),
   ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 17
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+  ],
   //Nivel 19
   [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
     new Habilidade(
       "Esquiva Sagaz +5",
       Fonte.BASICO,
@@ -1050,7 +1696,16 @@ const habilidadesBucaneiro: Habilidade[][] = [
     ),
   ],
   //Nivel 20
-  [new Habilidade("Sorte de Nimb", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Bucaneiro",
+      Fonte.BASICO,
+      poderes.poderesBucaneiro,
+      undefined,
+      Categoria.habilidadesBucaneiro
+    ),
+    new Habilidade("Sorte de Nimb", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesCacador: Habilidade[][] = [
@@ -1065,46 +1720,206 @@ const habilidadesCacador: Habilidade[][] = [
     ),
   ],
   //Nivel 2
-  [],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+  ],
   //Nivel 3
-  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+    new Habilidade("Explorador", Fonte.BASICO, []),
+  ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+  ],
   //Nivel 5
   [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
     new Habilidade("Caminho do Explorador", Fonte.BASICO, []),
     new Habilidade("Marca da Presa +1d8", Fonte.BASICO, []),
   ],
   //Nivel 6
-  [],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+  ],
   //Nivel 7
-  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+    new Habilidade("Explorador", Fonte.BASICO, []),
+  ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+  ],
   //Nivel 9
-  [new Habilidade("Marca da Presa +1d12", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+    new Habilidade("Marca da Presa +1d12", Fonte.BASICO, []),
+  ],
   //Nivel 10
-  [],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+  ],
   //Nivel 11
-  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+    new Habilidade("Explorador", Fonte.BASICO, []),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+  ],
   //Nivel 13
-  [new Habilidade("Marca da Presa +2d8", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+    new Habilidade("Marca da Presa +2d8", Fonte.BASICO, []),
+  ],
   //Nivel 14
-  [],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+  ],
   //Nivel 15
-  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+    new Habilidade("Explorador", Fonte.BASICO, []),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+  ],
   //Nivel 17
-  [new Habilidade("Marca da Presa +2d10", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+    new Habilidade("Marca da Presa +2d10", Fonte.BASICO, []),
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+  ],
   //Nivel 19
-  [new Habilidade("Explorador", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+    new Habilidade("Explorador", Fonte.BASICO, []),
+  ],
   //Nivel 20
-  [new Habilidade("Mestre Caçador", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Caçador",
+      Fonte.BASICO,
+      poderes.poderesCacador,
+      undefined,
+      Categoria.habilidadesCacador
+    ),
+    new Habilidade("Mestre Caçador", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesCavaleiro: Habilidade[][] = [
@@ -1114,13 +1929,45 @@ const habilidadesCavaleiro: Habilidade[][] = [
     new Habilidade("Codigo de Honra", Fonte.BASICO, []),
   ],
   //Nivel 2
-  [new Habilidade("Duelo +2", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+    new Habilidade("Duelo +2", Fonte.BASICO, []),
+  ],
   //Nivel 3
-  [],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+  ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+  ],
   //Nivel 5
   [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
     new Habilidade("Caminho do Cavaleiro", Fonte.BASICO, [
       new Habilidade("Bastião", Fonte.BASICO, []),
       new Habilidade("Montaria", Fonte.BASICO, []),
@@ -1128,84 +1975,380 @@ const habilidadesCavaleiro: Habilidade[][] = [
     new Habilidade("Baluarte +4", Fonte.BASICO, []),
   ],
   //Nivel 6
-  [],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+  ],
   //Nivel 7
   [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
     new Habilidade("Baluarte (Aliados Adjacentes)", Fonte.BASICO, []),
     new Habilidade("Duelo +3", Fonte.BASICO, []),
   ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+  ],
   //Nivel 9
-  [new Habilidade("Baluarte +6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+    new Habilidade("Baluarte +6", Fonte.BASICO, []),
+  ],
   //Nivel 10
-  [],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+  ],
   //Nivel 11
-  [new Habilidade("Resoluto", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+    new Habilidade("Resoluto", Fonte.BASICO, []),
+  ],
   //Nivel 12
-  [new Habilidade("Duelo +4", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+    new Habilidade("Duelo +4", Fonte.BASICO, []),
+  ],
   //Nivel 13
-  [new Habilidade("Baluarte +8", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+    new Habilidade("Baluarte +8", Fonte.BASICO, []),
+  ],
   //Nivel 14
-  [],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+  ],
   //Nivel 15
-  [new Habilidade("Baluarte (Aliados em Alcance Curto)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+    new Habilidade("Baluarte (Aliados em Alcance Curto)", Fonte.BASICO, []),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+  ],
   //Nivel 17
   [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
     new Habilidade("Baluarte +10", Fonte.BASICO, []),
     new Habilidade("Duelo +5", Fonte.BASICO, []),
   ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Bravura Final", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Cavaleiro",
+      Fonte.BASICO,
+      poderes.poderesCavaleiro,
+      undefined,
+      Categoria.habilidadesCavaleiro
+    ),
+    new Habilidade("Bravura Final", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesClerigo: Habilidade[][] = [
   //Nivel 1
-  [new Habilidade("Devoto", Fonte.BASICO, []), habilidadesComum[0]],
+  [
+    new Habilidade(
+      "Devoto",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(
+          Caracteristica.PM,
+          Atributos.SABEDORIA,
+          BuffType.BASE,
+          BuffStack.ATRIBUTO_SABEDORIA
+        ),
+      ]
+    ),
+    habilidadesComum[0],
+  ],
   //Nivel 2
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 3
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 5
-  [habilidadesComum[1]],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+    habilidadesComum[1],
+  ],
   //Nivel 6
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 7
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 9
-  [habilidadesComum[2]],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+    habilidadesComum[2],
+  ],
   //Nivel 10
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 11
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 13
-  [habilidadesComum[3]],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+    habilidadesComum[3],
+  ],
   //Nivel 14
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 15
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 17
-  [habilidadesComum[4]],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+    habilidadesComum[4],
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Mão da Divindade", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Clérigo",
+      Fonte.BASICO,
+      poderes.poderesClerigo,
+      undefined,
+      Categoria.habilidadesClerigo
+    ),
+    new Habilidade("Mão da Divindade", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesDruida: Habilidade[][] = [
@@ -1216,86 +2359,403 @@ const habilidadesDruida: Habilidade[][] = [
     habilidadesComum[0],
   ],
   //Nivel 2
-  [new Habilidade("Caminho dos Ermos", Fonte.BASICO, []), habilidadesComum[0]],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+    new Habilidade("Caminho dos Ermos", Fonte.BASICO, []),
+    habilidadesComum[0],
+  ],
   //Nivel 3
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 5
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 6
-  [habilidadesComum[1]],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+    habilidadesComum[1],
+  ],
   //Nivel 7
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 9
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 10
-  [habilidadesComum[2]],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+    habilidadesComum[2],
+  ],
   //Nivel 11
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 13
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 14
-  [habilidadesComum[3]],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+    habilidadesComum[3],
+  ],
   //Nivel 15
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 17
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Força da Natureza", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Druida",
+      Fonte.BASICO,
+      poderes.poderesDruida,
+      undefined,
+      Categoria.habilidadesDruida
+    ),
+    new Habilidade("Força da Natureza", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesGuerreiro: Habilidade[][] = [
   //Nivel 1
   [new Habilidade("Ataque Especial +4", Fonte.BASICO, [])],
   //Nivel 2
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 3
-  [new Habilidade("Durão", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+    new Habilidade("Durão", Fonte.BASICO, []),
+  ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 5
-  [new Habilidade("Ataque Especial +8", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+    new Habilidade("Ataque Especial +8", Fonte.BASICO, []),
+  ],
   //Nivel 6
-  [new Habilidade("Ataque Extra", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+    new Habilidade("Ataque Extra", Fonte.BASICO, []),
+  ],
   //Nivel 7
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 9
-  [new Habilidade("Ataque Especial +12", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+    new Habilidade("Ataque Especial +12", Fonte.BASICO, []),
+  ],
   //Nivel 10
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 11
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 13
-  [new Habilidade("Ataque Especial +16", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+    new Habilidade("Ataque Especial +16", Fonte.BASICO, []),
+  ],
   //Nivel 14
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 15
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 17
-  [new Habilidade("Ataque Especial +20", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+    new Habilidade("Ataque Especial +20", Fonte.BASICO, []),
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Campeão", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Guerreiro",
+      Fonte.BASICO,
+      poderes.poderesGuerreiro,
+      undefined,
+      Categoria.habilidadesGuerreiro
+    ),
+    new Habilidade("Campeão", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesInventor: Habilidade[][] = [
@@ -1305,44 +2765,215 @@ const habilidadesInventor: Habilidade[][] = [
     new Habilidade("Protótipo", Fonte.BASICO, []),
   ],
   //Nivel 2
-  [new Habilidade("Fabricar Item Superior (1 Melhoria)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Fabricar Item Superior (1 Melhoria)", Fonte.BASICO, []),
+  ],
   //Nivel 3
-  [new Habilidade("Comerciante", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Comerciante", Fonte.BASICO, []),
+  ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+  ],
   //Nivel 5
-  [new Habilidade("Fabricar Item Superior (2 Melhorias)", Fonte.BASICO, [])],
-  [],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Fabricar Item Superior (2 Melhorias)", Fonte.BASICO, []),
+  ],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+  ],
   //Nivel 6
-  [],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+  ],
   //Nivel 7
-  [new Habilidade("Encontrar Fraqueza", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Encontrar Fraqueza", Fonte.BASICO, []),
+  ],
   //Nivel 8
-  [new Habilidade("Fabricar Item Superior (3 Melhorias)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Fabricar Item Superior (3 Melhorias)", Fonte.BASICO, []),
+  ],
   //Nivel 9
-  [new Habilidade("Fabricar Item Mágico (Menor)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Fabricar Item Mágico (Menor)", Fonte.BASICO, []),
+  ],
   //Nivel 10
-  [new Habilidade("Olho do Dragão", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Olho do Dragão", Fonte.BASICO, []),
+  ],
   //Nivel 11
-  [new Habilidade("Fabricar Item Superior (4 Melhorias)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Fabricar Item Superior (4 Melhorias)", Fonte.BASICO, []),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+  ],
   //Nivel 13
-  [new Habilidade("Fabricar Item Mágico (Médio)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Fabricar Item Mágico (Médio)", Fonte.BASICO, []),
+  ],
   //Nivel 14
-  [],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+  ],
   //Nivel 15
-  [],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+  ],
   //Nivel 17
-  [new Habilidade("Fabricar Item Mágico (Maior)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Fabricar Item Mágico (Maior)", Fonte.BASICO, []),
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Obra-Prima", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Inventor",
+      Fonte.BASICO,
+      poderes.poderesInventor,
+      undefined,
+      Categoria.habilidadesInventor
+    ),
+    new Habilidade("Obra-Prima", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesLadino: Habilidade[][] = [
@@ -1352,43 +2983,209 @@ const habilidadesLadino: Habilidade[][] = [
     new Habilidade("Especialista", Fonte.BASICO, []),
   ],
   //Nivel 2
-  [new Habilidade("Evasão", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Evasão", Fonte.BASICO, []),
+  ],
   //Nivel 3
-  [new Habilidade("Ataque Furtivo +2d6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Ataque Furtivo +2d6", Fonte.BASICO, []),
+  ],
   //Nivel 4
-  [new Habilidade("Esquiva Sobrenatural", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Esquiva Sobrenatural", Fonte.BASICO, []),
+  ],
   //Nivel 5
-  [new Habilidade("Ataque Furtivo +3d6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Ataque Furtivo +3d6", Fonte.BASICO, []),
+  ],
   //Nivel 6
-  [],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+  ],
   //Nivel 7
-  [new Habilidade("Ataque Furtivo +4d6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Ataque Furtivo +4d6", Fonte.BASICO, []),
+  ],
   //Nivel 8
-  [new Habilidade("Olho nas Costas", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Olho nas Costas", Fonte.BASICO, []),
+  ],
   //Nivel 9
-  [new Habilidade("Ataque Furtivo +5d6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Ataque Furtivo +5d6", Fonte.BASICO, []),
+  ],
   //Nivel 10
-  [new Habilidade("Evasão Aprimorada", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Evasão Aprimorada", Fonte.BASICO, []),
+  ],
   //Nivel 11
-  [new Habilidade("Ataque Furtivo +6d6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Ataque Furtivo +6d6", Fonte.BASICO, []),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+  ],
   //Nivel 13
-  [new Habilidade("Ataque Furtivo +7d6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Ataque Furtivo +7d6", Fonte.BASICO, []),
+  ],
   //Nivel 14
-  [],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+  ],
   //Nivel 15
-  [new Habilidade("Ataque Furtivo +8d6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Ataque Furtivo +8d6", Fonte.BASICO, []),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+  ],
   //Nivel 17
-  [new Habilidade("Ataque Furtivo +9d6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Ataque Furtivo +9d6", Fonte.BASICO, []),
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+  ],
   //Nivel 19
-  [new Habilidade("Ataque Furtivo +10d6", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("Ataque Furtivo +10d6", Fonte.BASICO, []),
+  ],
   //Nivel 20
-  [new Habilidade("A Pessoa Certa Para o Trabalho", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Ladino",
+      Fonte.BASICO,
+      poderes.poderesLadino,
+      undefined,
+      Categoria.habilidadesLadino
+    ),
+    new Habilidade("A Pessoa Certa Para o Trabalho", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesLutador: Habilidade[][] = [
@@ -1398,9 +3195,24 @@ const habilidadesLutador: Habilidade[][] = [
     new Habilidade("Golpe Relâmpago", Fonte.BASICO, []),
   ],
   //Nivel 2
-  [],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+  ],
   //Nivel 3
   [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
     new Habilidade(
       "Casca Grossa (Con)",
       Fonte.BASICO,
@@ -1410,76 +3222,203 @@ const habilidadesLutador: Habilidade[][] = [
           Caracteristica.DEFESA,
           Atributos.CONSTITUICAO,
           BuffType.BASE,
-          BuffStack.ATRIBUTO
+          BuffStack.ATRIBUTO_CONSTITUICAO
         ),
       ]
     ),
   ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+  ],
   //Nivel 5
   [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
     new Habilidade("Briga (1d8)", Fonte.BASICO, []),
     new Habilidade("Golpe Cruel", Fonte.BASICO, []),
   ],
   //Nivel 6
-  [],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+  ],
   //Nivel 7
   [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
     new Habilidade(
       "Casca Grossa (Con + 1)",
       Fonte.BASICO,
       [],
-      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE, BuffStack.ATRIBUTO)]
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
     ),
   ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+  ],
   //Nivel 9
-  [new Habilidade("Briga (1d10)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+    new Habilidade("Briga (1d10)", Fonte.BASICO, []),
+  ],
   //Nivel 10
-  [],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+  ],
   //Nivel 11
   [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
     new Habilidade(
       "Casca Grossa (Con + 2)",
       Fonte.BASICO,
       [],
-      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE, BuffStack.ATRIBUTO)]
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
     ),
   ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+  ],
   //Nivel 13
-  [new Habilidade("Briga (2d6)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+    new Habilidade("Briga (2d6)", Fonte.BASICO, []),
+  ],
   //Nivel 14
   [],
   //Nivel 15
   [
     new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+    new Habilidade(
       "Casca Grossa (Con + 3)",
       Fonte.BASICO,
       [],
-      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE, BuffStack.ATRIBUTO)]
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
     ),
   ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+  ],
   //Nivel 17
-  [new Habilidade("Briga (2d8)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+    new Habilidade("Briga (2d8)", Fonte.BASICO, []),
+  ],
   //Nivel 18
-  [],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+  ],
   //Nivel 19
   [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
     new Habilidade(
       "Casga Grossa (Con + 4)",
       Fonte.BASICO,
       [],
-      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE, BuffStack.ATRIBUTO)]
+      [new Buff(Caracteristica.DEFESA, 1, BuffType.BASE)]
     ),
   ],
   //Nivel 20
-  [new Habilidade("Briga (2d10)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Lutador",
+      Fonte.BASICO,
+      poderes.poderesLutador,
+      undefined,
+      Categoria.habilidadesLutador
+    ),
+    new Habilidade("Briga (2d10)", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesNobre: Habilidade[][] = [
@@ -1495,43 +3434,204 @@ const habilidadesNobre: Habilidade[][] = [
     new Habilidade("Orgulho", Fonte.BASICO, []),
   ],
   //Nivel 2
-  [new Habilidade("Palavras Afiadas (2d6)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+    new Habilidade("Palavras Afiadas (2d6)", Fonte.BASICO, []),
+  ],
   //Nivel 3
-  [new Habilidade("Riqueza", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+    new Habilidade("Riqueza", Fonte.BASICO, []),
+  ],
   //Nivel 4
-  [new Habilidade("Gritar Ordens", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+    new Habilidade("Gritar Ordens", Fonte.BASICO, []),
+  ],
   //Nivel 5
-  [new Habilidade("Presença Aristocrática", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+    new Habilidade("Presença Aristocrática", Fonte.BASICO, []),
+  ],
   //Nivel 6
-  [new Habilidade("Palavras Afiadas (4d6)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+    new Habilidade("Palavras Afiadas (4d6)", Fonte.BASICO, []),
+  ],
   //Nivel 7
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 9
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 10
-  [new Habilidade("Palavras Afiadas (6d6)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+    new Habilidade("Palavras Afiadas (6d6)", Fonte.BASICO, []),
+  ],
   //Nivel 11
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 13
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 14
-  [new Habilidade("Palavras Afiadas (8d6)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+    new Habilidade("Palavras Afiadas (8d6)", Fonte.BASICO, []),
+  ],
   //Nivel 15
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 17
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 18
-  [new Habilidade("Palavras Afiadas (10d6)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+    new Habilidade("Palavras Afiadas (10d6)", Fonte.BASICO, []),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Realeza", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Nobre",
+      Fonte.BASICO,
+      poderes.poderesNobre,
+      undefined,
+      Categoria.habilidadesNobre
+    ),
+    new Habilidade("Realeza", Fonte.BASICO, []),
+  ],
 ];
 
 const habilidadesPaladino: Habilidade[][] = [
@@ -1541,54 +3641,223 @@ const habilidadesPaladino: Habilidade[][] = [
       "Abençoado",
       Fonte.BASICO,
       [],
-      [new Buff(Caracteristica.PM, Atributos.CARISMA, BuffType.BASE)]
+      [
+        new Buff(
+          Caracteristica.PM,
+          Atributos.CARISMA,
+          BuffType.BASE,
+          BuffStack.ATRIBUTO_CARISMA
+        ),
+      ]
     ),
     new Habilidade("Código do Herói", Fonte.BASICO, []),
     new Habilidade("Golpe Divino (+1d8)", Fonte.BASICO, []),
   ],
   //Nivel 2
-  [new Habilidade("Cura pelas Mãos (1d8+1 PV)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Cura pelas Mãos (1d8+1 PV)", Fonte.BASICO, []),
+  ],
   //Nivel 3
-  [new Habilidade("Aura Sagrada", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Aura Sagrada", Fonte.BASICO, []),
+  ],
   //Nivel 4
-  [],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+  ],
   //Nivel 5
   [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
     new Habilidade("Benção da Justiça", Fonte.BASICO, []),
     new Habilidade("Golpe Divino (+2d8)", Fonte.BASICO, []),
   ],
   //Nivel 6
-  [new Habilidade("Cura pelas Mãos (2d8+2 PV)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Cura pelas Mãos (2d8+2 PV)", Fonte.BASICO, []),
+  ],
   //Nivel 7
-  [],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+  ],
   //Nivel 8
-  [],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+  ],
   //Nivel 9
-  [new Habilidade("Golpe Divino (+3d8)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Golpe Divino (+3d8)", Fonte.BASICO, []),
+  ],
   //Nivel 10
-  [new Habilidade("Cura pelas Mãos (3d8+3 PV)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Cura pelas Mãos (3d8+3 PV)", Fonte.BASICO, []),
+  ],
   //Nivel 11
-  [],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+  ],
   //Nivel 12
-  [],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+  ],
   //Nivel 13
-  [new Habilidade("Golpe Divino (+4d8)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Golpe Divino (+4d8)", Fonte.BASICO, []),
+  ],
   //Nivel 14
-  [new Habilidade("Cura pelas Mãos (4d8+4 PV)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Cura pelas Mãos (4d8+4 PV)", Fonte.BASICO, []),
+  ],
   //Nivel 15
-  [],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+  ],
   //Nivel 16
-  [],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+  ],
   //Nivel 17
-  [new Habilidade("Golpe Divino (+5d8)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Golpe Divino (+5d8)", Fonte.BASICO, []),
+  ],
   //Nivel 18
-  [new Habilidade("Cura pelas Mãos (5d8+5 PV)", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Cura pelas Mãos (5d8+5 PV)", Fonte.BASICO, []),
+  ],
   //Nivel 19
-  [],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+  ],
   //Nivel 20
-  [new Habilidade("Vingador Sagrado", Fonte.BASICO, [])],
+  [
+    new Habilidade(
+      "Poder de Paladino",
+      Fonte.BASICO,
+      poderes.poderesPaladino,
+      undefined,
+      Categoria.habilidadesPaladino
+    ),
+    new Habilidade("Vingador Sagrado", Fonte.BASICO, []),
+  ],
 ];
 
+// eslint-disable-next-line
 const habilidadesTemplate: Habilidade[][] = [
   //Nivel 1
   [],

@@ -1,7 +1,6 @@
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 import type { Fonte } from "@/entities/fonte/fonte";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
-import Magia from "@/entities/magia/model/Magia";
 import Modificador from "@/entities/modificadores/model/Modificador";
 
 export default class Raca {
@@ -10,7 +9,7 @@ export default class Raca {
   private _modificadores: Modificador[];
   private _fonte: Fonte;
   private _habilidades: Habilidade[];
-  private _criatura?: Caracteristica;
+  private _criatura: Caracteristica;
   private _barrarOrigem: boolean;
 
   constructor(

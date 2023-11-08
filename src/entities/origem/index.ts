@@ -149,13 +149,13 @@ export const origens = [
   ]),
   new Origem(12, "Circense", Fonte.BASICO, [
     treinamentoPericias.filter(
-      (el) => el.buffs[0]?.caracteristica == Caracteristica.ACROBACIA
+      (el) => el.buffs[0].caracteristica == Caracteristica.ACROBACIA
     )[0],
     treinamentoPericias.filter(
-      (el) => el.buffs[0]?.caracteristica == Caracteristica.ATUACAO
+      (el) => el.buffs[0].caracteristica == Caracteristica.ATUACAO
     )[0],
     treinamentoPericias.filter(
-      (el) => el.buffs[0]?.caracteristica == Caracteristica.REFLEXOS
+      (el) => el.buffs[0].caracteristica == Caracteristica.REFLEXOS
     )[0],
     poderes.poderesDestino.filter((el) => ["Acrobático"].includes(el.nome))[0],
     poderes.poderesDestino.filter((el) => ["Torcida"].includes(el.nome))[0],

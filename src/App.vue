@@ -45,13 +45,12 @@
             </b-row>
           </div>
         </b-card>
-        <NivelSelect :setNivel="setNivel" :habilidades="habilidades" />
+        <NivelSelect />
       </b-col>
 
       <FichaInfoTab />
     </b-row>
-
-    <ClassesModal :nivel="nivel" />
+    <ClassesModal />
     <RacasModal />
     <PontosModal />
     <SelectNivelModal />
@@ -69,16 +68,14 @@ import SelectNivelModal from "./components/modals/nivel/SelectNivelModal.vue";
 import BiografiaModal from "./components/modals/biografia/BiografiaModal.vue";
 import FichaInfoTab from "./components/FichaInfoTab.vue";
 import NivelSelect from "./components/NivelSelect.vue";
-import Habilidade from "./entities/habilidades/model/Habilidades";
 import { activeFicha } from "./entities/ficha";
+import Ficha from "./entities/ficha/model/Ficha";
 
 export default defineComponent({
   name: "App",
   data: () => {
     return {
-      ficha: activeFicha,
-      nivel: 0,
-      habilidades: [] as Habilidade[],
+      nivel: 0 as number,
     };
   },
   components: {
@@ -92,11 +89,13 @@ export default defineComponent({
     NivelSelect,
   },
   methods: {
-    getClasseButtonLabel(nome: string | undefined): string {
+    getClasseButtonLabel(nome?: string): string {
       return nome ?? "Classe";
     },
-    setNivel(i: number): void {
-      this.nivel = i;
+  },
+  computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
     },
   },
 });

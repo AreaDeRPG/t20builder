@@ -5,7 +5,8 @@
 </template>
 
 <script lang="ts">
-import { activeFicha as ficha } from "@/entities/ficha";
+import { activeFicha } from "@/entities/ficha";
+import Ficha from "@/entities/ficha/model/Ficha";
 import Pericia from "@/entities/pericias/model/Pericia";
 import { defineComponent } from "vue";
 
@@ -38,7 +39,6 @@ class PericiasData {
 
 export default defineComponent({
   name: "PericiasInfo",
-  props: {},
   data: () => {
     return {
       fields: [
@@ -55,10 +55,10 @@ export default defineComponent({
   methods: {
     getData() {
       var res: PericiasData[] = [];
-      var nivel: number = ficha.nivel;
-      var meioNivel: number = ficha.getMeioNivel();
-      var pericias: Pericia[] = ficha.pericias;
-      var buffs = ficha.getBuffs();
+      var nivel: number = this.ficha.nivel;
+      var meioNivel: number = this.ficha.getMeioNivel();
+      var pericias: Pericia[] = this.ficha.pericias;
+      var buffs = this.ficha.getBuffs();
       pericias.forEach((el) => {
         res.push(
           new PericiasData(
@@ -66,7 +66,7 @@ export default defineComponent({
             el.nome,
             el.getBonus(
               nivel,
-              ficha!
+              this.ficha
                 .getBuffs()
                 .filter((el_) => el_.caracteristica == el.caracteristica)
             ),
@@ -74,15 +74,20 @@ export default defineComponent({
             el.modificador.getTotal(),
             el.getBonusTreinamento(nivel, buffs),
             el.sumBonus(
-              ficha
+              this.ficha
                 .getBuffs()
                 .filter((el_) => el_.caracteristica == el.caracteristica),
-              ficha.nivel
+              this.ficha.nivel
             )
           )
         );
       });
       return res;
+    },
+  },
+  computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
     },
   },
 });

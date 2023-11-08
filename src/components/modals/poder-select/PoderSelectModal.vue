@@ -8,7 +8,7 @@
     @show="reset"
   >
     <b-row>
-      <b-nav tabs v-if="getTabs()?.length > 1">
+      <b-nav tabs v-if="getTabs().length > 1">
         <b-nav-item :active="activeBook === 'Todos'" @click="activate('Todos')"
           >Todos</b-nav-item
         >
@@ -26,8 +26,8 @@
       <b-col cols="3">
         <b-nav vertical justified pills>
           <b-nav-item
-            v-for="(habilidade, index) in habilidadesFilter()"
-            :key="index"
+            v-for="habilidade in habilidadesFilter()"
+            :key="habilidade.id"
             :active="habilidade === activeLocal"
             @click="setHabilidade(habilidade)"
             class="text-center"
@@ -45,7 +45,8 @@
 import { defineComponent, type PropType } from "vue";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import { Categoria } from "@/entities/categoria/model/Categoria";
-import { activeFicha as ficha } from "@/entities/ficha";
+import Ficha from "@/entities/ficha/model/Ficha";
+import { activeFicha } from "@/entities/ficha";
 
 export default defineComponent({
   name: "PoderSelectModal",
@@ -76,15 +77,16 @@ export default defineComponent({
     },
   },
   watch: {
-    active(value: Habilidade | undefined) {
+    active(value?: Habilidade) {
       this.activeLocal = value;
     },
   },
   methods: {
-    isTreinado(habilidade: Habilidade) {
-      const habilidades = ficha.getHabilidades();
+    isTreinado(habilidade: Habilidade): boolean {
+      const habilidades = this.ficha.getHabilidades();
       return habilidades.some(
-        (hab) => hab === habilidade && this.active?.select !== habilidade
+        (hab: Habilidade) =>
+          hab === habilidade && this.active?.select !== habilidade
       );
     },
     reset() {
@@ -110,13 +112,14 @@ export default defineComponent({
     habilidadesFilter(): Habilidade[] {
       if (!this.habilidades) return [];
 
-      if (this.activeBook === "Todos") {
-        return this.habilidades ?? [];
-      } else {
-        return this.habilidades.filter(
-          (el) => el.categoria === this.activeBook
-        );
-      }
+      if (this.activeBook === "Todos") return this.habilidades;
+
+      return this.habilidades.filter((el) => el.categoria === this.activeBook);
+    },
+  },
+  computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
     },
   },
 });

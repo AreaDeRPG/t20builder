@@ -36,10 +36,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { defineComponent } from "vue";
 import { origens } from "@/entities/origem";
 import Origem from "@/entities/origem/model/Origem";
-import { activeFicha as ficha } from "@/entities/ficha";
+import Ficha from "@/entities/ficha/model/Ficha";
+import { activeFicha } from "@/entities/ficha";
 
 export default defineComponent({
   name: "BiografiaModal",
@@ -48,8 +49,11 @@ export default defineComponent({
       activeBook: "Todos",
     };
   },
-  components: {},
-  props: {},
+  computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
+    },
+  },
   methods: {
     activate(newActive: string) {
       this.activeBook = newActive;
@@ -65,10 +69,11 @@ export default defineComponent({
     },
     escolherBiografia(biografia: Origem): void {
       // eslint-disable-next-line
-      ficha.origem = biografia;
+      this.ficha.origem = biografia;
+      this.$set(this.ficha.origem, 1, biografia);
     },
     biografiaId(): number {
-      return ficha.origem.id;
+      return this.ficha.origem.id;
     },
     filter(): Origem[] {
       return origens.filter(

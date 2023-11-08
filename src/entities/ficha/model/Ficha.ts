@@ -9,6 +9,7 @@ import Origem from "@/entities/origem/model/Origem";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 import Magia from "@/entities/magia/model/Magia";
+import { BuffStack } from "@/entities/buff/model/BuffStack";
 
 export default class Ficha {
   public readonly id: number;
@@ -27,17 +28,18 @@ export default class Ficha {
 
   constructor(
     id: number,
+    nivel: number,
     raca: Raca,
     origem: Origem,
     modificadores: Modificador[],
     pericias: Pericia[]
   ) {
     this.id = id;
+    this._nivel = nivel;
     this._raca = raca;
     this._origem = origem;
     this._modificadores = modificadores;
     this._classes = [];
-    this._nivel = 1;
     this._defesa = 10;
     this._velocidade = 9;
     this._xp = 0;
@@ -93,11 +95,13 @@ export default class Ficha {
   }
 
   public get defesa(): number {
+    const mod = this._modificadores.find(
+      (el) => el.atributo === this.getAtributoDefesa()
+    );
+    const modValue: number = mod ? mod.getTotal() : 0;
     return (
       this._defesa +
-      (this._modificadores
-        .find((el) => el.atributo === this.getAtributoDefesa())
-        ?.getTotal() ?? 0) +
+      modValue +
       this.getBuffs()
         .filter((el) => el.caracteristica == Caracteristica.DEFESA)
         .reduce((sum, el) => sum + el.getBonus(this.nivel), 0)
@@ -106,7 +110,7 @@ export default class Ficha {
 
   public get pv(): number {
     let pv_ = 0;
-    const modcon = this.modificadores[2]?.getTotal() ?? 0;
+    const modcon = this.modificadores[2].getTotal();
     if (this.classes[0]) {
       pv_ = this.classes[0].pvInicial + modcon;
     }
@@ -117,12 +121,28 @@ export default class Ficha {
         pv_ += pvNivel;
       }
     }
+
     const buffs: Buff[] = this.getBuffs().filter(
       (el: Buff) => el.caracteristica == Caracteristica.PV
     );
-    const sum = buffs.reduce(
-      (accumulator, currentValue) =>
-        accumulator + currentValue.getBonus(this.nivel),
+    const uniqueElements: Map<BuffStack, number> = new Map<BuffStack, number>();
+
+    buffs.forEach((item) => {
+      if (
+        !uniqueElements.has(item.buffStack) ||
+        item.bonus > (uniqueElements.get(item.buffStack) ?? 0)
+      ) {
+        item.buffStack === BuffStack.HABILIDADE
+          ? uniqueElements.set(
+              item.buffStack,
+              (uniqueElements.get(item.buffStack) ?? 0) +
+                item.getBonus(this._nivel)
+            )
+          : uniqueElements.set(item.buffStack, item.getBonus(this._nivel));
+      }
+    });
+    const sum: number = Array.from(uniqueElements.values()).reduce(
+      (accumulator: number, currentValue: number) => accumulator + currentValue,
       0
     );
     return pv_ + sum;
@@ -133,15 +153,31 @@ export default class Ficha {
     const buffs: Buff[] = this.getBuffs().filter(
       (el: Buff) => el.caracteristica == Caracteristica.PM
     );
-    for (let i = 0; i < this.nivel; i++) {
+    for (let i = 0; i < this._nivel; i++) {
       const classe = this.classes[i];
       if (classe) {
         pm_ += classe.pmNivel;
       }
     }
-    const sum = buffs.reduce(
-      (accumulator, currentValue) =>
-        accumulator + currentValue.getBonus(this.nivel),
+
+    const uniqueElements: Map<BuffStack, number> = new Map<BuffStack, number>();
+
+    buffs.forEach((item) => {
+      if (
+        !uniqueElements.has(item.buffStack) ||
+        item.bonus > (uniqueElements.get(item.buffStack) ?? 0)
+      ) {
+        item.buffStack === BuffStack.HABILIDADE
+          ? uniqueElements.set(
+              item.buffStack,
+              (uniqueElements.get(item.buffStack) ?? 0) +
+                item.getBonus(this._nivel)
+            )
+          : uniqueElements.set(item.buffStack, item.getBonus(this._nivel));
+      }
+    });
+    const sum: number = Array.from(uniqueElements.values()).reduce(
+      (accumulator: number, currentValue: number) => accumulator + currentValue,
       0
     );
     return pm_ + sum;
@@ -195,26 +231,30 @@ export default class Ficha {
     }
   }
 
-  getMeioNivel(): number {
+  public getMeioNivel(): number {
     return Math.floor(this.nivel / 2);
   }
 
-  getTotalBonus(atributo: Atributos): number {
-    const modificador = this.modificadores?.find(
+  public getTotalBonus(atributo: Atributos): number {
+    const modificador = this.modificadores.find(
       (el: Modificador) => el.atributo === atributo
     );
-    return modificador?.getTotal() ?? 0;
+
+    if (!modificador) return 0;
+    return modificador.getTotal();
   }
 
-  getAtributoDefesa(): Atributos {
-    const atributo: Atributos | undefined = this.getBuffs().find(
+  private getAtributoDefesa(): Atributos {
+    const buff: Buff | undefined = this.getBuffs().find(
       (el) => el.caracteristica === Caracteristica.ATRIBUTODEFESA
-    )?.atributo;
-    if (atributo) return atributo;
-    return Atributos.DESTREZA;
+    );
+    if (!buff) return Atributos.DESTREZA;
+    const atributo = buff.atributo;
+    if (!atributo) return Atributos.DESTREZA;
+    return atributo;
   }
 
-  parseModificicadoresValues(): void {
+  public parseModificicadoresValues(): void {
     for (const modificador of this.modificadores) {
       modificador.base = +modificador.base;
       modificador.raca = +modificador.raca;
@@ -222,7 +262,7 @@ export default class Ficha {
     }
   }
 
-  updateModificadorValue(valname: string, value: number): void {
+  public updateModificadorValue(valname: string, value: number): void {
     const indexMap: { [key: string]: number } = {
       for: 0,
       des: 1,
@@ -238,7 +278,7 @@ export default class Ficha {
     }
   }
 
-  validateValues(valname: string, value: number): void {
+  public validateValues(valname: string, value: number): void {
     switch (valname) {
       case "for":
         this.modificadores[0].validateBaseValue(value);
@@ -261,7 +301,7 @@ export default class Ficha {
     }
   }
 
-  isLivre(atributo: string): boolean {
+  public isLivre(atributo: string): boolean {
     return (
       !this.raca.modificadores.some((el) => el.atributo === Atributos.LIVRE) ||
       this.raca.modificadores.some((el) => el.atributo === atributo)
@@ -275,7 +315,7 @@ export default class Ficha {
     return habilidades;
   }
 
-  getHabilidades(): Habilidade[] {
+  public getHabilidades(): Habilidade[] {
     let habilidades: Habilidade[] = [];
     habilidades = habilidades.concat(this.raca.habilidades);
     habilidades.forEach((el) => {
@@ -292,27 +332,29 @@ export default class Ficha {
         habilidades.push(this.classes[0].periciaFixaEscolhida);
     }
     habilidades.push(...this.periciasInt);
-    const classes = this.classes.slice(0, this.nivel);
-    classes.forEach((el) => {
-      const niveis = classes.filter((el_) => el_ == el).length;
+    console.log(habilidades);
+    this.classes.forEach((el) => {
+      const niveis = this.classes.filter((el_) => el_ == el).length;
       habilidades.push(
         ...this.includeSelect(el.habilidades.slice(0, niveis).flat())
       );
     });
+    console.log(habilidades);
     return Array.from(
       new Set(this.includeSelect(habilidades.filter((el) => el !== undefined)))
     );
   }
 
-  getMagias(): Magia[] {
+  public getMagias(): Magia[] {
     const habilidades = this.getHabilidades();
+    // eslint-disable-next-line
     const magias = habilidades.filter(
       (el) => el !== undefined && el instanceof Magia
     );
     return [] as Magia[];
   }
 
-  getBuffs(): Buff[] {
+  public getBuffs(): Buff[] {
     const habilidades = this.getHabilidades();
     const buffs: Buff[] = [];
     habilidades.forEach((el) => {

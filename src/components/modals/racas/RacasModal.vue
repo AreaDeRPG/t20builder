@@ -36,10 +36,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { defineComponent } from "vue";
 import type Raca from "@/entities/racas/model/Racas";
 import { racas } from "@/entities/racas";
-import { activeFicha as ficha } from "@/entities/ficha";
+import Ficha from "@/entities/ficha/model/Ficha";
+import { activeFicha } from "@/entities/ficha";
 
 export default defineComponent({
   name: "RacasModal",
@@ -49,17 +50,16 @@ export default defineComponent({
     };
   },
   components: {},
-  props: {},
   methods: {
     activate(newActive: string) {
       this.activeBook = newActive;
     },
     fill(): void {
-      ficha.modificadores.forEach((el) => {
+      this.ficha.modificadores.forEach((el) => {
         el.raca = 0;
       });
-      ficha.raca.modificadores.forEach((el1) => {
-        ficha.modificadores.forEach((el2) => {
+      this.ficha.raca.modificadores.forEach((el1) => {
+        this.ficha.modificadores.forEach((el2) => {
           if (el1.atributo == el2.atributo) {
             el2.raca = el1.getTotal();
           }
@@ -77,16 +77,21 @@ export default defineComponent({
     },
     escolherRaca(raca: Raca): void {
       // eslint-disable-next-line
-      ficha.raca = raca;
+      this.ficha.raca = raca;
       this.fill();
     },
     racaId(): number {
-      return ficha.raca.id;
+      return this.ficha.raca.id;
     },
     filter(): Raca[] {
       return racas.filter(
         (el) => el.fonte == this.activeBook || this.activeBook == "Todos"
       );
+    },
+  },
+  computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
     },
   },
 });

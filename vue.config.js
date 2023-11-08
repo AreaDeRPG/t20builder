@@ -11,11 +11,4 @@ module.exports = defineConfig({
       });
   },
   outputDir: "docs",
-  configureWebpack: {
-    resolve: {
-      fallback: {
-        fs: false,
-      },
-    },
-  },
 });

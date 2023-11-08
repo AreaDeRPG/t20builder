@@ -1,10 +1,10 @@
 <template>
   <b-col cols="9">
-    <FichaInfo :ficha="ficha" />
+    <FichaInfo />
     <div>
       <b-tabs>
         <b-tab title="Pericias" active>
-          <PericiasInfo :ficha="ficha" />
+          <PericiasInfo />
         </b-tab>
         <b-tab title="Equipamento" disabled>
           <p>I'm the second tab</p>
@@ -28,18 +28,17 @@ import Ficha from "@/entities/ficha/model/Ficha";
 import { defineComponent } from "vue";
 import FichaInfo from "./FichaInfo.vue";
 import PericiasInfo from "./PericiasInfo.vue";
-import { activeFicha as ficha } from "@/entities/ficha";
+import { activeFicha } from "@/entities/ficha";
 
 export default defineComponent({
   name: "FichaInfoTab",
-  props: {},
   components: {
     FichaInfo,
     PericiasInfo,
   },
   computed: {
     ficha(): Ficha {
-      return ficha;
+      return activeFicha as Ficha;
     },
   },
 });

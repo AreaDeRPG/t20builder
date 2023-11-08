@@ -44,7 +44,7 @@
             <td>
               <input
                 type="text"
-                :disabled="ficha?.isLivre(mod.atributo)"
+                :disabled="ficha.isLivre(mod.atributo)"
                 min="-1"
                 pattern="\d*"
                 inputmode="numeric"
@@ -86,34 +86,33 @@
 </template>
 
 <script lang="ts">
-import { activeFicha as ficha } from "@/entities/ficha";
+import { activeFicha } from "@/entities/ficha";
 import Ficha from "@/entities/ficha/model/Ficha";
+import Modificador from "@/entities/modificadores/model/Modificador";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "PontosModal",
-  props: {},
   data() {
     return {
       pontos: 10 as number,
     };
   },
   computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
+    },
     totalCusto(): number {
-      return ficha.modificadores.reduce(
-        (total, mod) => total + this.calcularCusto(mod.base),
+      return this.ficha.modificadores.reduce(
+        (total: number, mod: Modificador) =>
+          total + this.calcularCusto(mod.base),
         0
       );
-    },
-    ficha(): Ficha {
-      return ficha;
     },
   },
   methods: {
     updateTotalCusto(): void {
       this.pontos = 10 - this.totalCusto;
-      console.log("totalcusto", this.totalCusto);
-      console.log("pontos", this.pontos);
     },
     calcularCusto(valor: number): number {
       let custo: number;
@@ -144,10 +143,6 @@ export default defineComponent({
 
       return custo;
     },
-  },
-  mounted() {
-    console.log("totalcusto", this.totalCusto);
-    console.log("pontos", this.pontos);
   },
 });
 </script>

@@ -2,32 +2,32 @@
   <div>
     <b-row>
       <b-col cols="2">
-        <InputButtonProp modal="niveis" :nivel="ficha?.nivel" text="Nivel" />
+        <InputButtonProp modal="niveis" :nivel="ficha.nivel" text="Nivel" />
       </b-col>
       <b-col cols="2">
-        <InputValueProp text="XP" :total="ficha?.xp" />
+        <InputValueProp text="XP" :total="ficha.xp" />
       </b-col>
       <b-col cols="1"></b-col>
       <b-col cols="6">
-        <InputValueProp text="Nome" :total="ficha?.nome" :disabled="false" />
+        <InputValueProp text="Nome" :total="ficha.nome" :disabled="false" />
       </b-col>
       <b-col cols="1"></b-col>
     </b-row>
     <b-row>
       <b-col cols="2">
-        <InputValueProp text="Tamanho" :total="ficha?.tamanho" />
+        <InputValueProp text="Tamanho" :total="ficha.tamanho" />
       </b-col>
       <b-col cols="2">
         <InputValueProp
           text="Velocidade"
-          :total="ficha?.velocidade"
+          :total="ficha.velocidade"
           desc=" Metros"
         />
       </b-col>
       <b-col cols="1"></b-col>
       <b-col
         cols="1"
-        v-for="modificador in ficha?.modificadores"
+        v-for="modificador in ficha.modificadores"
         :key="modificador.atributo"
       >
         <InputValueProp
@@ -38,13 +38,13 @@
     </b-row>
     <b-row>
       <b-col cols="3">
-        <InputValueProp text="Defesa" :total="ficha?.defesa" />
+        <InputValueProp text="Defesa" :total="ficha.defesa" />
       </b-col>
       <b-col cols="3">
-        <InputValueProp text="PV" :total="ficha?.pv" />
+        <InputValueProp text="PV" :total="ficha.pv" />
       </b-col>
       <b-col cols="3">
-        <InputValueProp text="PM" :total="ficha?.pm" />
+        <InputValueProp text="PM" :total="ficha.pm" />
       </b-col>
     </b-row>
   </div>
@@ -55,24 +55,23 @@ import { Tamanho } from "@/entities/Tamanho/model/Tamanho";
 import InputValueProp from "./props/InputValueProp.vue";
 import InputButtonProp from "./props/InputButtonProp.vue";
 import { defineComponent } from "vue";
-import { activeFicha as ficha } from "@/entities/ficha";
 import Ficha from "@/entities/ficha/model/Ficha";
+import { activeFicha } from "@/entities/ficha";
 export default defineComponent({
   name: "FichaInfo",
   components: {
     InputValueProp,
     InputButtonProp,
   },
-  props: {},
+  computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
+    },
+  },
   data: () => {
     return {
       tamanhos: Object.values(Tamanho),
     };
-  },
-  computed: {
-    ficha(): Ficha {
-      return ficha;
-    },
   },
 });
 </script>
