@@ -1,8 +1,8 @@
 <template>
   <div>
     <div
-      v-for="habilidade in ficha.raca.habilidades"
-      :key="habilidade.id"
+      v-for="(habilidade, index) in ficha.raca.habilidades"
+      :key="index"
       class="d-flex justify-content-left align-items-center"
       style="width: 100%"
     >

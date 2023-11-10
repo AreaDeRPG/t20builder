@@ -21,7 +21,7 @@
       <b-col cols="3">
         <b-nav vertical justified pills>
           <b-nav-item
-            v-for="classe in filter()"
+            v-for="classe in filter"
             :key="classe?.id"
             :active="ficha.classes[nivel - 1]?.id === classe.id"
             @click="escolherClasse(classe)"
@@ -56,6 +56,13 @@ export default defineComponent({
     nivel(): number {
       return nivel.value;
     },
+    filter(): Classe[] {
+      if (this.activeBook === "Todos") {
+        return classes;
+      } else {
+        return classes.filter((el) => el.fonte === this.activeBook);
+      }
+    },
   },
   methods: {
     activate(newActive: string): void {
@@ -64,13 +71,6 @@ export default defineComponent({
     escolherClasse(classe: Classe): void {
       this.ficha.setClasse(this.nivel - 1, classe);
       this.$set(this.ficha.classes, this.nivel - 1, classe);
-    },
-    filter(): Classe[] {
-      if (this.activeBook === "Todos") {
-        return classes;
-      } else {
-        return classes.filter((el) => el.fonte === this.activeBook);
-      }
     },
     isActive(classe: Classe): boolean {
       return this.ficha.classes[this.nivel - 1]?.id === classe.id;

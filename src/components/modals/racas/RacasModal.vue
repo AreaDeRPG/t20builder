@@ -21,9 +21,9 @@
       <b-col cols="3">
         <b-nav vertical justified pills>
           <b-nav-item
-            v-for="raca_ in filter()"
+            v-for="raca_ in filter"
             :key="raca_.id"
-            :active="racaId() === raca_.id"
+            :active="racaId === raca_.id"
             @click="escolherRaca(raca_)"
             class="text-center"
           >
@@ -49,7 +49,6 @@ export default defineComponent({
       activeBook: "Todos",
     };
   },
-  components: {},
   methods: {
     activate(newActive: string) {
       this.activeBook = newActive;
@@ -80,6 +79,11 @@ export default defineComponent({
       this.ficha.raca = raca;
       this.fill();
     },
+  },
+  computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
+    },
     racaId(): number {
       return this.ficha.raca.id;
     },
@@ -87,11 +91,6 @@ export default defineComponent({
       return racas.filter(
         (el) => el.fonte == this.activeBook || this.activeBook == "Todos"
       );
-    },
-  },
-  computed: {
-    ficha(): Ficha {
-      return activeFicha as Ficha;
     },
   },
 });

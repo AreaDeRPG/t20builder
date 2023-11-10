@@ -5,6 +5,7 @@ import { BuffType } from "../buff/model/BuffType";
 import { Caracteristica } from "../caracteristica/model/Caracteristica";
 import { Categoria } from "../categoria/model/Categoria";
 import { Fonte } from "../fonte/fonte";
+import Habilidade from "../habilidades/model/Habilidades";
 import { magias } from "../magia";
 import Poder from "./model/Poder";
 import PoderClasse from "./model/PoderClasse";
@@ -14,10 +15,125 @@ import PoderDestino from "./model/PoderDestino";
 import PoderMagia from "./model/PoderMagia";
 import { PoderTipo } from "./model/PoderTipo";
 import PoderTormenta from "./model/PoderTormenta";
+import { PreRequisito } from "./model/PreRequisito";
+import { RequisitoAtributo } from "./model/RequisitoAtributo";
 
 interface ListaPoderes {
   [key: string]: Poder[];
 }
+
+const estiloDuasArmas = new PoderCombate(
+  "Estilo de Duas Armas",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate
+);
+
+const estiloArremesso = new PoderCombate(
+  "Estilo de Arremesso",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate
+);
+
+const estiloArmaEscudo = new PoderCombate(
+  "Estilo de Arma e Escudo",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate
+);
+
+const estiloDuasMaos = new PoderCombate(
+  "Estilo de Duas Mãos",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate,
+  [new PreRequisito(new RequisitoAtributo(Atributos.FORCA, 2))]
+);
+
+const estiloUmaArma = new PoderCombate(
+  "Estilo de Uma Arma",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate
+);
+
+const ginete = new PoderCombate(
+  "Ginete",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate
+);
+
+const combateDefensivo = new PoderCombate(
+  "Combate Defensivo",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate,
+  [new PreRequisito(new RequisitoAtributo(Atributos.INTELIGENCIA, 1))]
+);
+
+const estiloDisparo = new PoderCombate(
+  "Estilo de Disparo",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate
+);
+
+const estiloArmaLonga = new PoderCombate(
+  "Estilo de Arma Longa",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate,
+  [new PreRequisito(new RequisitoAtributo(Atributos.FORCA, 1))]
+);
+
+const encouracado = new PoderCombate(
+  "Encouraçado",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate
+);
+
+const disparoPreciso = new PoderCombate(
+  "Disparo Preciso",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate,
+  [new PreRequisito(estiloDisparo, estiloArremesso)]
+);
+
+const ataquePoderoso = new PoderCombate(
+  "Ataque Poderoso",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderCombate,
+  Categoria.PoderCombate,
+  [new PreRequisito(new RequisitoAtributo(Atributos.FORCA, 1))]
+);
 
 const poderesCombate: Poder[] = [
   new PoderCombate(
@@ -26,7 +142,8 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(new RequisitoAtributo(Atributos.DESTREZA, 1))]
   ),
   new PoderCombate(
     "Arma Secundária grande",
@@ -34,7 +151,8 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(estiloDuasArmas)]
   ),
   new PoderCombate(
     "Arremesso Potente",
@@ -42,7 +160,11 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [
+      new PreRequisito(estiloArremesso),
+      new PreRequisito(new RequisitoAtributo(Atributos.FORCA, 1)),
+    ]
   ),
   new PoderCombate(
     "Arremesso Múltiplo",
@@ -50,7 +172,11 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [
+      new PreRequisito(estiloArremesso),
+      new PreRequisito(new RequisitoAtributo(Atributos.DESTREZA, 1)),
+    ]
   ),
   new PoderCombate(
     "Ataque com Escudo",
@@ -58,7 +184,8 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(estiloArmaEscudo)]
   ),
   new PoderCombate(
     "Ataque Pesado",
@@ -66,23 +193,18 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(estiloDuasMaos)]
   ),
-  new PoderCombate(
-    "Ataque Poderoso",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
+  ataquePoderoso,
   new PoderCombate(
     "Ataque Preciso",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(estiloUmaArma)]
   ),
   new PoderCombate(
     "Bloqueio com Escudo",
@@ -90,7 +212,8 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(estiloUmaArma)]
   ),
   new PoderCombate(
     "Carga de Cavalaria",
@@ -98,23 +221,18 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(ginete)]
   ),
-  new PoderCombate(
-    "Combate Defensivo",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
+  combateDefensivo,
   new PoderCombate(
     "Derrubar Aprimorado",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(combateDefensivo)]
   ),
   new PoderCombate(
     "Desarmar Aprimorado",
@@ -122,23 +240,21 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(combateDefensivo)]
   ),
-  new PoderCombate(
-    "Disparo Preciso",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
+  disparoPreciso,
   new PoderCombate(
     "Disparo Rápido",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [
+      new PreRequisito(estiloDisparo),
+      new PreRequisito(new RequisitoAtributo(Atributos.DESTREZA, 1)),
+    ]
   ),
   new PoderCombate(
     "Empunhadura Poderosa",
@@ -146,96 +262,26 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(new RequisitoAtributo(Atributos.FORCA, 3))]
   ),
-  new PoderCombate(
-    "Estilo de Disparo",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
-  new PoderCombate(
-    "Encouraçado",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
+  estiloDisparo,
+  encouracado,
   new PoderCombate(
     "Esquiva",
     Fonte.BASICO,
     [],
     [new Buff(Caracteristica.DEFESA, 2), new Buff(Caracteristica.REFLEXOS, 2)],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(new RequisitoAtributo(Atributos.DESTREZA, 1))]
   ),
-  new PoderCombate(
-    "Estilo de Arma e Escudo",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
-  new PoderCombate(
-    "Estilo de Arma Longa",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
-  new PoderCombate(
-    "Estilo de Arremesso",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
-  new PoderCombate(
-    "Estilo de Disparo",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
-  new PoderCombate(
-    "Estilo de Duas Armas",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
-  new PoderCombate(
-    "Estilo de Duas Mãos",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
-  new PoderCombate(
-    "Estilo de Uma Arma",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
-  new PoderCombate(
-    "Estilo de Uma Arma",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
+  estiloArmaEscudo,
+  estiloArmaLonga,
+  estiloArremesso,
+  estiloDuasArmas,
+  estiloDuasMaos,
+  estiloUmaArma,
   new PoderCombate(
     "Estilo Desarmado",
     Fonte.BASICO,
@@ -250,7 +296,8 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(encouracado)]
   ),
   new PoderCombate(
     "Finta Aprimorada",
@@ -268,21 +315,15 @@ const poderesCombate: Poder[] = [
     PoderTipo.PoderCombate,
     Categoria.PoderCombate
   ),
-  new PoderCombate(
-    "Ginete",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
+  ginete,
   new PoderCombate(
     "Inexpugnável",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(encouracado)]
   ),
   new PoderCombate(
     "Mira Apurada",
@@ -290,7 +331,11 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [
+      new PreRequisito(disparoPreciso),
+      new PreRequisito(new RequisitoAtributo(Atributos.SABEDORIA, 1)),
+    ]
   ),
   new PoderCombate(
     "Piqueiro",
@@ -298,10 +343,19 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(estiloArmaLonga)]
   ),
   new PoderCombate(
     "Presença Aterradora",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderCombate,
+    Categoria.PoderCombate
+  ),
+  new PoderCombate(
+    "Proficiência",
     Fonte.BASICO,
     [],
     [],
@@ -322,15 +376,8 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
-  ),
-  new PoderCombate(
-    "Proficiência",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(ataquePoderoso)]
   ),
   new PoderCombate(
     "Reflexos de Combate",
@@ -338,7 +385,8 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(new RequisitoAtributo(Atributos.DESTREZA, 1))]
   ),
   new PoderCombate(
     "Saque Rápido",
@@ -354,7 +402,8 @@ const poderesCombate: Poder[] = [
     [],
     [],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(ataquePoderoso)]
   ),
   new PoderCombate(
     "Vitalidade",
@@ -365,7 +414,8 @@ const poderesCombate: Poder[] = [
       new Buff(Caracteristica.FORTITUDE, 2, BuffType.BASE),
     ],
     PoderTipo.PoderCombate,
-    Categoria.PoderCombate
+    Categoria.PoderCombate,
+    [new PreRequisito(new RequisitoAtributo(Atributos.CONSTITUICAO, 1))]
   ),
 ];
 
@@ -1395,6 +1445,97 @@ const poderesMagia: Poder[] = [
   ),
 ];
 
+export const caminhoArcanista: Habilidade = new Habilidade(
+  "Caminho do Arcanista",
+  Fonte.BASICO,
+  [
+    new Habilidade(
+      "Mago",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(
+          Caracteristica.PM,
+          Atributos.INTELIGENCIA,
+          BuffType.BASE,
+          BuffStack.ATRIBUTO_INTELIGENCIA
+        ),
+      ]
+    ),
+    new Habilidade(
+      "Bruxo",
+      Fonte.BASICO,
+      [],
+      [
+        new Buff(
+          Caracteristica.PM,
+          Atributos.INTELIGENCIA,
+          BuffType.BASE,
+          BuffStack.ATRIBUTO_INTELIGENCIA
+        ),
+      ]
+    ),
+    new Habilidade(
+      "Feiticeiro",
+      Fonte.BASICO,
+      [
+        new Habilidade("Linhagem", Fonte.BASICO, [
+          new Habilidade(
+            "Dracônica",
+            Fonte.BASICO,
+            [],
+            [
+              new Buff(
+                Caracteristica.PV,
+                Atributos.CARISMA,
+                BuffType.BASE,
+                BuffStack.ATRIBUTO_CARISMA
+              ),
+            ]
+          ),
+          new Habilidade("Feérica", Fonte.BASICO, []),
+          new Habilidade("Rubra", Fonte.BASICO, []),
+        ]),
+      ],
+      [
+        new Buff(
+          Caracteristica.PM,
+          Atributos.CARISMA,
+          BuffType.BASE,
+          BuffStack.ATRIBUTO_CARISMA
+        ),
+      ]
+    ),
+  ],
+  []
+);
+
+const raioArcano = new PoderClasse(
+  "Arcanista",
+  "Raio Arcano",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse
+);
+
+const especialistaEscola = new PoderClasse(
+  "Arcanista",
+  "Especialista em Escola",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse,
+  [
+    new PreRequisito(
+      caminhoArcanista.habilidades[0],
+      caminhoArcanista.habilidades[1]
+    ),
+  ]
+);
+
 const poderesArcanista: Poder[] = [
   new PoderClasse(
     "Arcanista",
@@ -1421,7 +1562,8 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(caminhoArcanista.habilidades[1])]
   ),
   new PoderClasse(
     "Arcanista",
@@ -1457,17 +1599,10 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(caminhoArcanista.habilidades[0])]
   ),
-  new PoderClasse(
-    "Arcanista",
-    "Especialista em Escola",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  especialistaEscola,
   new PoderClasse(
     "Arcanista",
     "Familiar",
@@ -1484,7 +1619,8 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(10)]
   ),
   new PoderClasse(
     "Arcanista",
@@ -1493,16 +1629,18 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(caminhoArcanista.habilidades[1])]
   ),
   new PoderClasse(
     "Arcanista",
     "Fortalecimento Arcano",
     Fonte.BASICO,
     [],
-    [],
+    [new Buff(Caracteristica.CDMAGIA, 1)],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(5)]
   ),
   new PoderClasse(
     "Arcanista",
@@ -1511,7 +1649,8 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(caminhoArcanista.habilidades[2]), new PreRequisito(6)]
   ),
   new PoderClasse(
     "Arcanista",
@@ -1520,7 +1659,8 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(caminhoArcanista.habilidades[2]), new PreRequisito(11)]
   ),
   new PoderClasse(
     "Arcanista",
@@ -1538,26 +1678,19 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(especialistaEscola), new PreRequisito(8)]
   ),
   new PoderClasse(
     "Arcanista",
     "Poder Mágico",
     Fonte.BASICO,
     [],
-    [],
+    [new Buff(Caracteristica.PM, 0, BuffType.BYLEVEL)],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse
   ),
-  new PoderClasse(
-    "Arcanista",
-    "Raio Arcano",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  raioArcano,
   new PoderClasse(
     "Arcanista",
     "Raio Elemental",
@@ -1565,7 +1698,8 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(raioArcano)]
   ),
   new PoderClasse(
     "Arcanista",
@@ -1574,7 +1708,8 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(raioArcano)]
   ),
   new PoderClasse(
     "Arcanista",
@@ -1583,20 +1718,33 @@ const poderesArcanista: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(caminhoArcanista.habilidades[0])]
   ),
 ];
 
+const almaBronze = new PoderClasse(
+  "Barbaro",
+  "Alma de Bronze",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse
+);
+
+const peleFerro = new PoderClasse(
+  "Barbaro",
+  "Pele de Ferro",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse
+);
+
 const poderesBarbaro: Poder[] = [
-  new PoderClasse(
-    "Barbaro",
-    "Alma de Bronze",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  almaBronze,
   new PoderClasse(
     "Barbaro",
     "Aumento de Atributo",
@@ -1622,7 +1770,8 @@ const poderesBarbaro: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(6)]
   ),
   new PoderClasse(
     "Barbaro",
@@ -1631,7 +1780,8 @@ const poderesBarbaro: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(new RequisitoAtributo(Atributos.FORCA, 1))]
   ),
   new PoderClasse(
     "Barbaro",
@@ -1640,7 +1790,8 @@ const poderesBarbaro: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(almaBronze)]
   ),
   new PoderClasse(
     "Barbaro",
@@ -1721,17 +1872,10 @@ const poderesBarbaro: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(peleFerro), new PreRequisito(8)]
   ),
-  new PoderClasse(
-    "Barbaro",
-    "Pele de Ferro",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  peleFerro,
   new PoderClasse(
     "Barbaro",
     "Sangue dos Inimigos",
@@ -1757,7 +1901,11 @@ const poderesBarbaro: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [
+      new PreRequisito(new RequisitoAtributo(Atributos.SABEDORIA, 1)),
+      new PreRequisito(4),
+    ]
   ),
   new PoderClasse(
     "Barbaro",
@@ -1769,6 +1917,69 @@ const poderesBarbaro: Poder[] = [
     Categoria.PoderClasse
   ),
 ];
+
+const esgrimaMagica = new PoderClasse(
+  "Bardo",
+  "Esgrima Mágica",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse
+);
+
+const golpeMagico = new PoderClasse(
+  "Bardo",
+  "Golpe Mágico",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse,
+  [new PreRequisito(esgrimaMagica)]
+);
+
+const baladaFascinante = new PoderClasse(
+  "Bardo",
+  "Música: Balada Fascinante",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse
+);
+
+const fascinarMassa = new PoderClasse(
+  "Bardo",
+  "Fascinar em Massa",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse,
+  [new PreRequisito(baladaFascinante)]
+);
+
+const manipular = new PoderClasse(
+  "Bardo",
+  "Manipular",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse,
+  [new PreRequisito(baladaFascinante)]
+);
+
+const melodiaCurativa = new PoderClasse(
+  "Bardo",
+  "Música: Melodia Curativa",
+  Fonte.BASICO,
+  [],
+  [],
+  PoderTipo.PoderClasse,
+  Categoria.PoderClasse
+);
 
 const poderesBardo: Poder[] = [
   new PoderClasse(
@@ -1805,17 +2016,10 @@ const poderesBardo: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(esgrimaMagica), new PreRequisito(10)]
   ),
-  new PoderClasse(
-    "Bardo",
-    "Esgrima Mágica",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  esgrimaMagica,
   new PoderClasse(
     "Bardo",
     "Estrelato",
@@ -1823,17 +2027,10 @@ const poderesBardo: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(6)]
   ),
-  new PoderClasse(
-    "Bardo",
-    "Fascinar em Massa",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  fascinarMassa,
   new PoderClasse(
     "Bardo",
     "Golpe Elemental",
@@ -1841,17 +2038,10 @@ const poderesBardo: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(golpeMagico)]
   ),
-  new PoderClasse(
-    "Bardo",
-    "Golpe Mágico",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  golpeMagico,
   new PoderClasse(
     "Bardo",
     "Inspiração Marcial",
@@ -1868,17 +2058,10 @@ const poderesBardo: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(new RequisitoAtributo(Atributos.INTELIGENCIA, 1))]
   ),
-  new PoderClasse(
-    "Bardo",
-    "Manipular",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  manipular,
   new PoderClasse(
     "Bardo",
     "Manipular em Massa",
@@ -1886,17 +2069,14 @@ const poderesBardo: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [
+      new PreRequisito(fascinarMassa),
+      new PreRequisito(manipular),
+      new PreRequisito(10),
+    ]
   ),
-  new PoderClasse(
-    "Bardo",
-    "Música: Balada Fascinante",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  baladaFascinante,
   new PoderClasse(
     "Bardo",
     "Música: Canção Assustadora",
@@ -1906,15 +2086,7 @@ const poderesBardo: Poder[] = [
     PoderTipo.PoderClasse,
     Categoria.PoderClasse
   ),
-  new PoderClasse(
-    "Bardo",
-    "Música: Melodia Curativa",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  melodiaCurativa,
   new PoderClasse(
     "Bardo",
     "Melodia Restauradora",
@@ -1922,7 +2094,11 @@ const poderesBardo: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [
+      new PreRequisito(melodiaCurativa),
+      new PreRequisito(new RequisitoAtributo(Atributos.CARISMA, 1)),
+    ]
   ),
   new PoderClasse(
     "Bardo",
@@ -1949,7 +2125,8 @@ const poderesBardo: Poder[] = [
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(6)]
   ),
 ];
 

@@ -3,29 +3,50 @@
     <div
       v-for="habilidade in filterHabilidades(i)"
       :key="habilidade.id"
-      class="d-flex justify-content-left align-items-center"
-      style="width: 100%"
+      class="row d-flex justify-content-left align-items-center"
     >
-      <div>
-        {{ habilidade.nome }}
+      <div style="width: 100%">
+        <div>
+          {{ habilidade.nome }}
+        </div>
+        <div v-if="hasArray(habilidade)">
+          <b-button
+            variant="primary"
+            v-b-modal.poderselect
+            @click="setHabilidade(habilidade)"
+          >
+            {{ getHabilidadeNome(habilidade) }}
+          </b-button>
+        </div>
       </div>
-      <div v-if="hasArray(habilidade)">
-        <b-button
-          variant="primary"
-          v-b-modal.poderselect
-          @click="set(PoderActiveChild, habilidade, habilidade.habilidades)"
+      <div>
+        <div
+          v-for="child in getChildHabilities(habilidade)"
+          :key="child.id"
+          style="width: 100%"
         >
-          {{ getHabilidadeNome(habilidade) }}
-        </b-button>
+          <div>
+            {{ child.nome }}
+          </div>
+          <div v-if="hasArray(child)">
+            <b-button
+              variant="primary"
+              v-b-modal.poderselect
+              @click="setHabilidade(child)"
+            >
+              {{ getHabilidadeNome(child) }}
+            </b-button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { Ref, defineComponent } from "vue";
 import Ficha from "@/entities/ficha/model/Ficha";
-import { activeFicha } from "@/entities/ficha";
+import { activeFicha, currentLevel } from "@/entities/ficha";
 import Classe from "@/entities/classes/model/Classe";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import { PoderSelect } from "@/entities/PoderSelect";
@@ -48,6 +69,9 @@ export default defineComponent({
     },
     PoderActiveChild(): PoderSelect {
       return PoderSelect.ACTIVE_CHILD;
+    },
+    nivel(): Ref<number> {
+      return currentLevel;
     },
   },
   methods: {
@@ -72,6 +96,16 @@ export default defineComponent({
 
     getHabilidadeNome(habilidade: Habilidade): string {
       return habilidade.select?.nome ?? `Escolher`;
+    },
+
+    getChildHabilities(habilidade: Habilidade): Habilidade[] {
+      if (!habilidade.select) return [];
+      return habilidade.select.habilidades;
+    },
+
+    setHabilidade(child: Habilidade) {
+      this.nivel.value = this.i;
+      this.set(this.PoderActiveChild, child, child.habilidades);
     },
   },
 });

@@ -8,12 +8,12 @@
     @show="reset"
   >
     <b-row>
-      <b-nav tabs v-if="getTabs().length > 1">
+      <b-nav tabs v-if="getTabs.length > 1">
         <b-nav-item :active="activeBook === 'Todos'" @click="activate('Todos')"
           >Todos</b-nav-item
         >
         <b-nav-item
-          v-for="el in getTabs()"
+          v-for="el in getTabs"
           :key="el"
           :active="activeBook === el"
           @click="activate(el)"
@@ -26,12 +26,12 @@
       <b-col cols="3">
         <b-nav vertical justified pills>
           <b-nav-item
-            v-for="habilidade in habilidadesFilter()"
+            v-for="habilidade in habilidadesFilter"
             :key="habilidade.id"
             :active="habilidade === activeLocal"
             @click="setHabilidade(habilidade)"
             class="text-center"
-            :disabled="isTreinado(habilidade)"
+            :disabled="isLivre(habilidade)"
           >
             {{ habilidade.nome }}
           </b-nav-item>
@@ -46,7 +46,9 @@ import { defineComponent, type PropType } from "vue";
 import Habilidade from "@/entities/habilidades/model/Habilidades";
 import { Categoria } from "@/entities/categoria/model/Categoria";
 import Ficha from "@/entities/ficha/model/Ficha";
-import { activeFicha } from "@/entities/ficha";
+import { activeFicha as ficha, currentLevel as nivel } from "@/entities/ficha";
+import Poder from "@/entities/poderes/model/Poder";
+import PoderClasse from "@/entities/poderes/model/PoderClasse";
 
 export default defineComponent({
   name: "PoderSelectModal",
@@ -72,9 +74,6 @@ export default defineComponent({
       type: Array as PropType<Categoria[]>,
       default: [] as string[],
     },
-    i: {
-      type: Number,
-    },
   },
   watch: {
     active(value?: Habilidade) {
@@ -82,23 +81,47 @@ export default defineComponent({
     },
   },
   methods: {
-    isTreinado(habilidade: Habilidade): boolean {
-      const habilidades = this.ficha.getHabilidades();
-      return habilidades.some(
+    isLivre(habilidade: Habilidade): boolean {
+      const habilidades = this.ficha.getHabilidades(this.nivel - 1);
+      const hasAbilitie = habilidades.some(
         (hab: Habilidade) =>
           hab === habilidade && this.active?.select !== habilidade
       );
+      if (hasAbilitie) return hasAbilitie;
+      if (!(habilidade instanceof Poder)) return hasAbilitie;
+      let hasPrerequisites = true;
+      const poder: Poder = habilidade;
+      const classe = poder instanceof PoderClasse ? poder.classe : "";
+      poder.prerequisitos.forEach((el) => {
+        hasPrerequisites =
+          hasPrerequisites &&
+          el.cumprePrerequisito(
+            habilidades,
+            this.ficha.modificadores,
+            this.ficha.nivelClasse(classe, this.nivel)
+          );
+      });
+      return !hasPrerequisites;
     },
-    reset() {
-      this.activeBook = "Todos";
-      this.activeLocal = this.active?.select ?? this.active;
-    },
+
     activate(newActive: string): void {
       this.activeBook = newActive;
     },
     setHabilidade(habilidade: Habilidade): void {
       this.activeLocal = habilidade;
-      this.update(habilidade, this.i);
+      this.update(habilidade);
+    },
+    reset(): void {
+      this.activeBook = "Todos";
+      this.activeLocal = this.active?.select ?? this.active;
+    },
+  },
+  computed: {
+    ficha(): Ficha {
+      return ficha as Ficha;
+    },
+    nivel(): number {
+      return nivel.value;
     },
     getTabs(): Categoria[] {
       if (this.habilidades) {
@@ -115,11 +138,6 @@ export default defineComponent({
       if (this.activeBook === "Todos") return this.habilidades;
 
       return this.habilidades.filter((el) => el.categoria === this.activeBook);
-    },
-  },
-  computed: {
-    ficha(): Ficha {
-      return activeFicha as Ficha;
     },
   },
 });

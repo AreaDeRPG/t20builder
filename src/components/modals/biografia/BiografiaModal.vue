@@ -21,9 +21,9 @@
       <b-col cols="3">
         <b-nav vertical justified pills>
           <b-nav-item
-            v-for="biografia_ in filter()"
+            v-for="biografia_ in filter"
             :key="biografia_.id"
-            :active="biografiaId() === biografia_.id"
+            :active="biografiaId === biografia_.id"
             @click="escolherBiografia(biografia_)"
             class="text-center"
           >
@@ -53,6 +53,14 @@ export default defineComponent({
     ficha(): Ficha {
       return activeFicha as Ficha;
     },
+    biografiaId(): number {
+      return this.ficha.origem.id;
+    },
+    filter(): Origem[] {
+      return origens.filter(
+        (el) => el.fonte == this.activeBook || this.activeBook == "Todos"
+      );
+    },
   },
   methods: {
     activate(newActive: string) {
@@ -71,14 +79,6 @@ export default defineComponent({
       // eslint-disable-next-line
       this.ficha.origem = biografia;
       this.$set(this.ficha.origem, 1, biografia);
-    },
-    biografiaId(): number {
-      return this.ficha.origem.id;
-    },
-    filter(): Origem[] {
-      return origens.filter(
-        (el) => el.fonte == this.activeBook || this.activeBook == "Todos"
-      );
     },
   },
 });

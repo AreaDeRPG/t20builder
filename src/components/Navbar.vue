@@ -63,7 +63,6 @@ export default defineComponent({
     };
   },
   components: { PatchNotesModal, MenuButton, SidebarButton },
-  methods: {},
 });
 </script>
 

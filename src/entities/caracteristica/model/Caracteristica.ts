@@ -61,4 +61,5 @@ export enum Caracteristica {
 
   //Outros
   ATRIBUTODEFESA = "Atributo Defesa",
+  CDMAGIA = "CD Magia",
 }

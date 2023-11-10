@@ -9,7 +9,7 @@ import { Fonte } from "../fonte/fonte";
 import { magias } from "../magia";
 import Magia from "../magia/model/Magia";
 import { treinamentoPericias } from "../pericias";
-import { poderes } from "../poderes";
+import { caminhoArcanista, poderes } from "../poderes";
 import Habilidade from "./model/Habilidades";
 
 interface ListaHabilidadesRaca {
@@ -751,55 +751,7 @@ const habilidadesOsteon: Habilidade[] = [
 
 const habilidadesArcanista: Habilidade[][] = [
   //Nivel 1
-  [
-    new Habilidade(
-      "Caminho do Arcanista",
-      Fonte.BASICO,
-      [
-        new Habilidade(
-          "Caminho do Mago",
-          Fonte.BASICO,
-          [],
-          [
-            new Buff(
-              Caracteristica.PM,
-              Atributos.INTELIGENCIA,
-              BuffType.BASE,
-              BuffStack.ATRIBUTO_INTELIGENCIA
-            ),
-          ]
-        ),
-        new Habilidade(
-          "Caminho do Bruxo",
-          Fonte.BASICO,
-          [],
-          [
-            new Buff(
-              Caracteristica.PM,
-              Atributos.INTELIGENCIA,
-              BuffType.BASE,
-              BuffStack.ATRIBUTO_INTELIGENCIA
-            ),
-          ]
-        ),
-        new Habilidade(
-          "Caminho do Feiticeiro",
-          Fonte.BASICO,
-          [],
-          [
-            new Buff(
-              Caracteristica.PM,
-              Atributos.CARISMA,
-              BuffType.BASE,
-              BuffStack.ATRIBUTO_CARISMA
-            ),
-          ]
-        ),
-      ],
-      []
-    ),
-    habilidadesComum[0],
-  ],
+  [caminhoArcanista, habilidadesComum[0]],
   //Nivel 2
   [
     new Habilidade(

@@ -1,5 +1,6 @@
 export enum BuffType {
   BASE = "Base",
+  DOUBLE = "Double",
   PROFICIENCY = "Proficiencia",
   BYLEVEL = "By Level",
   BYHALFLEVEL = "By Half Level",

@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-table striped hover :items="getData()" :fields="fields"> </b-table>
+    <b-table striped hover :items="getData" :fields="fields"> </b-table>
   </b-row>
 </template>
 
@@ -52,13 +52,16 @@ export default defineComponent({
       ],
     };
   },
-  methods: {
-    getData() {
+  computed: {
+    ficha(): Ficha {
+      return activeFicha as Ficha;
+    },
+    getData(): PericiasData[] {
       var res: PericiasData[] = [];
       var nivel: number = this.ficha.nivel;
       var meioNivel: number = this.ficha.getMeioNivel();
       var pericias: Pericia[] = this.ficha.pericias;
-      var buffs = this.ficha.getBuffs();
+      var buffs = this.ficha.getBuffs(this.ficha.nivel);
       pericias.forEach((el) => {
         res.push(
           new PericiasData(
@@ -67,7 +70,7 @@ export default defineComponent({
             el.getBonus(
               nivel,
               this.ficha
-                .getBuffs()
+                .getBuffs(this.ficha.nivel)
                 .filter((el_) => el_.caracteristica == el.caracteristica)
             ),
             meioNivel,
@@ -75,7 +78,7 @@ export default defineComponent({
             el.getBonusTreinamento(nivel, buffs),
             el.sumBonus(
               this.ficha
-                .getBuffs()
+                .getBuffs(this.ficha.nivel)
                 .filter((el_) => el_.caracteristica == el.caracteristica),
               this.ficha.nivel
             )
@@ -83,11 +86,6 @@ export default defineComponent({
         );
       });
       return res;
-    },
-  },
-  computed: {
-    ficha(): Ficha {
-      return activeFicha as Ficha;
     },
   },
 });

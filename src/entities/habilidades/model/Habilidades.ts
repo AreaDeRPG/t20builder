@@ -5,7 +5,7 @@ import { Fonte } from "@/entities/fonte/fonte";
 
 export default class Habilidade {
   private _id: number;
-  private static i = 1;
+  private static _i = 1;
   private _nome: string;
   private _fonte: Fonte;
   private _habilidades: Habilidade[];
@@ -65,8 +65,8 @@ export default class Habilidade {
   }
 
   private get i(): number {
-    const ret = Habilidade.i;
-    Habilidade.i++;
+    const ret = Habilidade._i;
+    Habilidade._i++;
     return ret;
   }
 

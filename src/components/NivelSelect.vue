@@ -33,7 +33,6 @@
       :active="activeChild"
       :update="update"
       :tabs="tabs"
-      :i="k"
     />
   </div>
 </template>

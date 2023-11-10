@@ -28,7 +28,6 @@ export default defineComponent({
       type: String,
     },
   },
-  methods: {},
 });
 </script>
 
