@@ -3,10 +3,10 @@ import { Fonte } from "@/entities/fonte/fonte";
 import Poder from "../model/Poder";
 import PoderMagia from "../model/PoderMagia";
 import { PoderTipo } from "../model/PoderTipo";
-import { habilidadesComum } from "@/entities/habilidades";
 import { PreRequisito } from "../model/PreRequisito";
 import { treinamentoPericias } from "@/entities/pericias";
 import { PericiaNome } from "@/entities/pericias/model/PericiaNome";
+import Habilidade from "@/entities/habilidades/model/Habilidades";
 
 const misticismo = treinamentoPericias.filter((el) =>
   [PericiaNome.MISTICISMO].includes(el.nome as PericiaNome)
@@ -15,6 +15,14 @@ const misticismo = treinamentoPericias.filter((el) =>
 const religiao = treinamentoPericias.filter((el) =>
   [PericiaNome.RELIGIAO].includes(el.nome as PericiaNome)
 )[0];
+
+export const circuloMagia = [
+  new Habilidade("Magias (1º Circulo)", Fonte.BASICO, []),
+  new Habilidade("Magias (2º Circulo)", Fonte.BASICO, []),
+  new Habilidade("Magias (3º Circulo)", Fonte.BASICO, []),
+  new Habilidade("Magias (4º Circulo)", Fonte.BASICO, []),
+  new Habilidade("Magias (5º Circulo)", Fonte.BASICO, []),
+];
 
 export const poderesMagia: Poder[] = [
   new PoderMagia(
@@ -33,7 +41,7 @@ export const poderesMagia: Poder[] = [
     [],
     PoderTipo.PoderMagia,
     Categoria.PoderMagia,
-    [new PreRequisito(habilidadesComum[1])]
+    [new PreRequisito(circuloMagia[1])]
   ),
   new PoderMagia(
     "Foco em Magia",
@@ -50,7 +58,7 @@ export const poderesMagia: Poder[] = [
     [],
     PoderTipo.PoderMagia,
     Categoria.PoderMagia,
-    [new PreRequisito(habilidadesComum[1])]
+    [new PreRequisito(circuloMagia[1])]
   ),
   new PoderMagia(
     "Magia Ampliada",
@@ -83,6 +91,6 @@ export const poderesMagia: Poder[] = [
     [],
     PoderTipo.PoderMagia,
     Categoria.PoderMagia,
-    [new PreRequisito(habilidadesComum[0])]
+    [new PreRequisito(circuloMagia[0])]
   ),
 ];

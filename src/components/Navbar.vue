@@ -23,10 +23,10 @@
       <template #footer>
         <div></div>
         <div class="d-flex justify-content-center">
-          <b-row>
+          <b-row style="margin: 0; padding: 1em">
             <b-col cols="12" class="text-center">
-              Desenvolvido por Lucas Correia (Discord: Noctus#3529) para a
-              comunidade de jogadores de Tormenta20 do servidor do Discord
+              Desenvolvido por Redthas (Discord: rethas) para a comunidade de
+              jogadores de Tormenta20 do servidor do Discord
               <a href="https://discord.gg/areaderpg"> Área de RPG. </a>
             </b-col>
             <b-col cols="12" class="text-center">

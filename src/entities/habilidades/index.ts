@@ -12,6 +12,7 @@ import { treinamentoPericias } from "../pericias";
 import { poderes } from "../poderes";
 import { caminhoArcanista } from "../poderes/data/poderesArcanista";
 import { caminhoCavaleiro } from "../poderes/data/poderesCavaleiro";
+import { circuloMagia } from "../poderes/data/poderesMagia";
 import Habilidade from "./model/Habilidades";
 
 interface ListaHabilidadesRaca {
@@ -42,11 +43,7 @@ function memoriasPostumas(): Habilidade[] {
 }
 
 export const habilidadesComum = [
-  new Habilidade("Magias (1º Circulo)", Fonte.BASICO, []),
-  new Habilidade("Magias (2º Circulo)", Fonte.BASICO, []),
-  new Habilidade("Magias (3º Circulo)", Fonte.BASICO, []),
-  new Habilidade("Magias (4º Circulo)", Fonte.BASICO, []),
-  new Habilidade("Magias (5º Circulo)", Fonte.BASICO, []),
+  ...circuloMagia,
   new Habilidade(
     "Herança Divina",
     Fonte.BASICO,

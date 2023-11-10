@@ -197,7 +197,6 @@ export default class Ficha {
   }
 
   public get velocidade(): number {
-    console.log(this.nivel);
     const buffs = this.getBuffs(this.nivel);
     const filteredBuffs = buffs.filter(
       (el) => el.caracteristica == Caracteristica.VELOCIDADE
