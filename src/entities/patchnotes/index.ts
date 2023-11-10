@@ -1,6 +1,30 @@
 import PatchNote from "./model/PatchNotes";
 
 export const patches: PatchNote[] = [
+  new PatchNote(8, "v0.7.8", [
+    "Adicionado Poderes de Combate",
+    "Adicionado Poderes de Destino",
+    "Adicionado Poderes Concedidos",
+    "Adicionado Poderes de Tormenta",
+    "Adicionado Poderes de Arcanista",
+    "Adicionado Poderes de Barbaro",
+    "Adicionado Poderes de Bardo",
+    "Adicionado Poderes de Bucaneiro",
+    "Adicionado Poderes de Caçador",
+    "Adicionado Poderes de Cavaleiro",
+    "Adicionado Poderes de Clérigo",
+    "Adicionado Poderes de Druida",
+    "Adicionado Poderes de Guerreiro",
+    "Adicionado Poderes de Inventor",
+    "Adicionado Poderes de Ladino",
+    "Adicionado Poderes de Lutador",
+    "Adicionado Poderes de Nobre",
+    "Adicionado Poderes de Paladino",
+    "Adicionado Pre-requisitos para outros poderes",
+    "Adicionado Pre-requisitos para valores de atributo",
+    "Adicionado Pre-requisitos para niveis de classe",
+    "Bugs/Adições a serei corrigidos/feitos:\n- Trocar Talento de níveis anteriores para possuir talento no nível superior\n- Pre-requisitos para multiplos talentos de tormenta\n- Pre-requisitos baseados em oficio\n- Atualizar valores de poderes baseados em outros talentos ou níveis",
+  ]),
   new PatchNote(7, "v0.7.7", [
     "Adicionadas habilidades de classe (Poderes ainda nao inclusos)",
     "Correções de detalhes menores (como destreza na defesa)",

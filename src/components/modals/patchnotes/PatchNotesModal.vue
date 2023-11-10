@@ -30,10 +30,10 @@ import { patches } from "@/entities/patchnotes";
 import PatchNote from "@/entities/patchnotes/model/PatchNotes";
 export default defineComponent({
   name: "PatchNotesModal",
-  data: () => {
-    return {
-      patchnotes: patches as PatchNote[],
-    };
+  computed: {
+    patchnotes(): PatchNote[] {
+      return patches;
+    },
   },
 });
 </script>
