@@ -8,6 +8,8 @@ import { RequisitoAtributo } from "../model/RequisitoAtributo";
 import { Atributos } from "@/entities/atributos";
 import { PericiaNome } from "@/entities/pericias/model/PericiaNome";
 import { treinamentoPericias } from "@/entities/pericias";
+import Buff from "@/entities/buff/model/Buff";
+import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 
 const adestramento = treinamentoPericias.filter((el) =>
   [PericiaNome.ADESTRAMENTO].includes(el.nome as PericiaNome)
@@ -175,7 +177,7 @@ export const poderesDruida: Poder[] = [
     "Força dos Penhascos",
     Fonte.BASICO,
     [],
-    [],
+    [new Buff(Caracteristica.FORTITUDE, 2)],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse,
     [new PreRequisito(4)]
@@ -208,7 +210,7 @@ export const poderesDruida: Poder[] = [
     "Liberdade da Pradaria",
     Fonte.BASICO,
     [],
-    [],
+    [new Buff(Caracteristica.REFLEXOS, 2)],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse
   ),
@@ -245,7 +247,7 @@ export const poderesDruida: Poder[] = [
     "Tranquilidade dos Lagos",
     Fonte.BASICO,
     [],
-    [],
+    [new Buff(Caracteristica.VONTADE, 2)],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse
   ),

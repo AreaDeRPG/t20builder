@@ -9,6 +9,10 @@ import { RequisitoAtributo } from "../model/RequisitoAtributo";
 import { treinamentoPericias } from "@/entities/pericias";
 import { impeto } from "./PoderesComuns";
 import { PericiaNome } from "@/entities/pericias/model/PericiaNome";
+import Buff from "@/entities/buff/model/Buff";
+import { BuffType } from "@/entities/buff/model/BuffType";
+import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
+import { BuffStack } from "@/entities/buff/model/BuffStack";
 
 const intimidacao = treinamentoPericias.filter((el) =>
   [PericiaNome.INTIMIDACAO].includes(el.nome as PericiaNome)
@@ -29,7 +33,7 @@ const peleFerro = new PoderClasse(
   "Pele de Ferro",
   Fonte.BASICO,
   [],
-  [],
+  [new Buff(Caracteristica.DEFESA, 4)],
   PoderTipo.PoderClasse,
   Categoria.PoderClasse
 );
@@ -117,7 +121,7 @@ export const poderesBarbaro: Poder[] = [
     "Fúria da Savana",
     Fonte.BASICO,
     [],
-    [],
+    [new Buff(Caracteristica.VELOCIDADE, 3)],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse
   ),
@@ -154,7 +158,7 @@ export const poderesBarbaro: Poder[] = [
     "Pele de Aço",
     Fonte.BASICO,
     [],
-    [],
+    [new Buff(Caracteristica.DEFESA, 4)],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse,
     [new PreRequisito(peleFerro), new PreRequisito(8)]
@@ -183,7 +187,14 @@ export const poderesBarbaro: Poder[] = [
     "Totem Espiritual",
     Fonte.BASICO,
     [],
-    [],
+    [
+      new Buff(
+        Caracteristica.PM,
+        Atributos.SABEDORIA,
+        BuffType.BASE,
+        BuffStack.ATRIBUTO_SABEDORIA
+      ),
+    ],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse,
     [

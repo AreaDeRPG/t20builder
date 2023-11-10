@@ -3,10 +3,14 @@ import { Fonte } from "@/entities/fonte/fonte";
 import Poder from "../model/Poder";
 import PoderClasse from "../model/PoderClasse";
 import { PoderTipo } from "../model/PoderTipo";
-import { ambidestria } from "./PoderesComuns";
+import { ambidestria, arqueiro, impeto } from "./PoderesComuns";
 import { PreRequisito } from "../model/PreRequisito";
 import { RequisitoAtributo } from "../model/RequisitoAtributo";
 import { Atributos } from "@/entities/atributos";
+import Buff from "@/entities/buff/model/Buff";
+import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
+import { BuffType } from "@/entities/buff/model/BuffType";
+import { BuffStack } from "@/entities/buff/model/BuffStack";
 
 const escaramuca = new PoderClasse(
   "Caçador",
@@ -70,16 +74,7 @@ export const poderesCacador: Poder[] = [
     Categoria.PoderClasse,
     [new PreRequisito(5)]
   ),
-  new PoderClasse(
-    "Caçador",
-    "Arqueiro",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse,
-    [new PreRequisito(new RequisitoAtributo(Atributos.SABEDORIA, 1))]
-  ),
+  arqueiro,
   new PoderClasse(
     "Caçador",
     "Aumento de Atributo",
@@ -137,7 +132,14 @@ export const poderesCacador: Poder[] = [
     "Elo com a Natureza",
     Fonte.BASICO,
     [],
-    [],
+    [
+      new Buff(
+        Caracteristica.PM,
+        Atributos.SABEDORIA,
+        BuffType.BASE,
+        BuffStack.ATRIBUTO_SABEDORIA
+      ),
+    ],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse,
     [
@@ -192,15 +194,7 @@ export const poderesCacador: Poder[] = [
     PoderTipo.PoderClasse,
     Categoria.PoderClasse
   ),
-  new PoderClasse(
-    "Caçador",
-    "Ímpeto",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
+  impeto,
   new PoderClasse(
     "Caçador",
     "Inimigo de (Criatura)",

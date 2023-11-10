@@ -197,10 +197,16 @@ export default class Ficha {
   }
 
   public get velocidade(): number {
-    const buffs = this.getBuffs(this.nivel)
-      .filter((el) => el.caracteristica == Caracteristica.VELOCIDADE)
-      .reduce((sum, el) => sum + el.getBonus(this.nivel), 0);
-    return this._velocidade + buffs;
+    console.log(this.nivel);
+    const buffs = this.getBuffs(this.nivel);
+    const filteredBuffs = buffs.filter(
+      (el) => el.caracteristica == Caracteristica.VELOCIDADE
+    );
+    const sum = filteredBuffs.reduce(
+      (sum, el) => sum + el.getBonus(this.nivel),
+      0
+    );
+    return this._velocidade + sum;
   }
 
   public get xp(): number {
@@ -356,7 +362,7 @@ export default class Ficha {
       );
     });
     habilidades.forEach((el) => {
-      if (el.select && el.select.habilidades.length > 0) {
+      if (el?.select && el.select.habilidades.length > 0) {
         habilidades.push(...this.includeSelect(el.select.habilidades));
       }
     });

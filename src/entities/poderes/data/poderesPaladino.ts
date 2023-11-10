@@ -4,24 +4,11 @@ import Poder from "../model/Poder";
 import PoderClasse from "../model/PoderClasse";
 import { PoderTipo } from "../model/PoderTipo";
 import { PreRequisito } from "../model/PreRequisito";
-import Habilidade from "@/entities/habilidades/model/Habilidades";
-import { autoridadeFeudal, solidez, titulo } from "./PoderesComuns";
-import Buff from "@/entities/buff/model/Buff";
-import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 
-export const caminhoCavaleiro = new Habilidade(
-  "Caminho do Cavaleiro",
-  Fonte.BASICO,
-  [
-    new Habilidade("Bastião", Fonte.BASICO, []),
-    new Habilidade("Montaria", Fonte.BASICO, []),
-  ]
-);
-
-export const poderesCavaleiro: Poder[] = [
+export const poderesPaladino: Poder[] = [
   new PoderClasse(
-    "Cavaleiro",
-    "Armadura da Honra",
+    "Paladino",
+    "Arma Sagrada",
     Fonte.BASICO,
     [],
     [],
@@ -29,7 +16,7 @@ export const poderesCavaleiro: Poder[] = [
     Categoria.PoderClasse
   ),
   new PoderClasse(
-    "Cavaleiro",
+    "Paladino",
     "Aumento de Atributo",
     Fonte.BASICO,
     [],
@@ -37,107 +24,59 @@ export const poderesCavaleiro: Poder[] = [
     PoderTipo.PoderClasse,
     Categoria.PoderClasse
   ),
-  autoridadeFeudal,
   new PoderClasse(
-    "Cavaleiro",
-    "Desprezar os Covardes",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
-  new PoderClasse(
-    "Cavaleiro",
-    "Escudeiro",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
-  new PoderClasse(
-    "Cavaleiro",
-    "Especialização em Armadura",
+    "Paladino",
+    "Aura Antimagia",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse,
-    [new PreRequisito(12)]
+    [new PreRequisito(14)]
   ),
   new PoderClasse(
-    "Cavaleiro",
-    "Estandarte",
+    "Paladino",
+    "Aura Ardente",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse,
-    [new PreRequisito(titulo), new PreRequisito(14)]
+    [new PreRequisito(10)]
   ),
   new PoderClasse(
-    "Cavaleiro",
-    "Etiqueta",
-    Fonte.BASICO,
-    [],
-    [
-      new Buff(Caracteristica.DIPLOMACIA, 2),
-      new Buff(Caracteristica.NOBREZA, 2),
-    ],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse,
-    [new PreRequisito(titulo), new PreRequisito(14)]
-  ),
-  new PoderClasse(
-    "Cavaleiro",
-    "Investida Destruidora",
-    Fonte.BASICO,
-    [],
-    [],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
-  new PoderClasse(
-    "Cavaleiro",
-    "Montaria Corajosa",
+    "Paladino",
+    "Aura de Cura",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse,
-    [new PreRequisito(caminhoCavaleiro.habilidades[1])]
+    [new PreRequisito(6)]
   ),
   new PoderClasse(
-    "Cavaleiro",
-    "Pajem",
-    Fonte.BASICO,
-    [],
-    [new Buff(Caracteristica.DIPLOMACIA, 2)],
-    PoderTipo.PoderClasse,
-    Categoria.PoderClasse
-  ),
-  new PoderClasse(
-    "Cavaleiro",
-    "Postura de Combate: Aríete Implacável",
+    "Paladino",
+    "Aura de Invencibilidade",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(18)]
   ),
   new PoderClasse(
-    "Cavaleiro",
-    "Postura de Combate: Castigo de Ferro",
+    "Paladino",
+    "Aura Poderosa",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderClasse,
-    Categoria.PoderClasse
+    Categoria.PoderClasse,
+    [new PreRequisito(6)]
   ),
   new PoderClasse(
-    "Cavaleiro",
-    "Postura de Combate: Foco de Batalha",
+    "Paladino",
+    "Fulgor Divino",
     Fonte.BASICO,
     [],
     [],
@@ -145,8 +84,8 @@ export const poderesCavaleiro: Poder[] = [
     Categoria.PoderClasse
   ),
   new PoderClasse(
-    "Cavaleiro",
-    "Postura de Combate: Muralha Intransponível",
+    "Paladino",
+    "Julgamento Divino: Arrependimento",
     Fonte.BASICO,
     [],
     [],
@@ -154,8 +93,8 @@ export const poderesCavaleiro: Poder[] = [
     Categoria.PoderClasse
   ),
   new PoderClasse(
-    "Cavaleiro",
-    "Postura de Combate: Provocação Petulante",
+    "Paladino",
+    "Julgamento Divino: Coragem",
     Fonte.BASICO,
     [],
     [],
@@ -163,19 +102,107 @@ export const poderesCavaleiro: Poder[] = [
     Categoria.PoderClasse
   ),
   new PoderClasse(
-    "Cavaleiro",
-    "Postura de Combate: Torre Inabalável",
+    "Paladino",
+    "Julgamento Divino: Iluminação",
     Fonte.BASICO,
     [],
     [],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse
   ),
-  solidez,
-  titulo,
   new PoderClasse(
-    "Cavaleiro",
-    "Torre Armada",
+    "Paladino",
+    "Julgamento Divino: Justiça",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Julgamento Divino: Libertação",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Julgamento Divino: Salvação",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Julgamento Divino: Vindicação",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Julgamento Divino: Zelo",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Orar",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Virtude Paladinesca: Caridade",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Virtude Paladinesca: Castidade",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Virtude Paladinesca: Compaixão",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Virtude Paladinesca: Humildade",
+    Fonte.BASICO,
+    [],
+    [],
+    PoderTipo.PoderClasse,
+    Categoria.PoderClasse
+  ),
+  new PoderClasse(
+    "Paladino",
+    "Virtude Paladinesca: Temperança",
     Fonte.BASICO,
     [],
     [],

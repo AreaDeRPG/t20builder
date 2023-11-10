@@ -11,6 +11,7 @@ import Magia from "../magia/model/Magia";
 import { treinamentoPericias } from "../pericias";
 import { poderes } from "../poderes";
 import { caminhoArcanista } from "../poderes/data/poderesArcanista";
+import { caminhoCavaleiro } from "../poderes/data/poderesCavaleiro";
 import Habilidade from "./model/Habilidades";
 
 interface ListaHabilidadesRaca {
@@ -40,7 +41,7 @@ function memoriasPostumas(): Habilidade[] {
   return habilidades;
 }
 
-const habilidadesComum = [
+export const habilidadesComum = [
   new Habilidade("Magias (1º Circulo)", Fonte.BASICO, []),
   new Habilidade("Magias (2º Circulo)", Fonte.BASICO, []),
   new Habilidade("Magias (3º Circulo)", Fonte.BASICO, []),
@@ -1921,10 +1922,7 @@ const habilidadesCavaleiro: Habilidade[][] = [
       undefined,
       Categoria.habilidadesCavaleiro
     ),
-    new Habilidade("Caminho do Cavaleiro", Fonte.BASICO, [
-      new Habilidade("Bastião", Fonte.BASICO, []),
-      new Habilidade("Montaria", Fonte.BASICO, []),
-    ]),
+    caminhoCavaleiro,
     new Habilidade("Baluarte +4", Fonte.BASICO, []),
   ],
   //Nivel 6

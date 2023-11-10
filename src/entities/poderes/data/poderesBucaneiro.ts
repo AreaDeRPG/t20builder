@@ -8,6 +8,11 @@ import { RequisitoAtributo } from "../model/RequisitoAtributo";
 import { Atributos } from "@/entities/atributos";
 import { treinamentoPericias } from "@/entities/pericias";
 import { PericiaNome } from "@/entities/pericias/model/PericiaNome";
+import { esgrimista } from "./PoderesComuns";
+import Buff from "@/entities/buff/model/Buff";
+import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
+import { BuffType } from "@/entities/buff/model/BuffType";
+import { BuffStack } from "@/entities/buff/model/BuffStack";
 
 const jogatina = treinamentoPericias.filter((el) =>
   [PericiaNome.JOGATINA].includes(el.nome as PericiaNome)
@@ -18,7 +23,7 @@ const intimidacao = treinamentoPericias.filter((el) =>
 )[0];
 
 const luta = treinamentoPericias.filter((el) =>
-  [PericiaNome.INTIMIDACAO].includes(el.nome as PericiaNome)
+  [PericiaNome.LUTA].includes(el.nome as PericiaNome)
 )[0];
 
 const flageloMares = new PoderClasse(
@@ -30,17 +35,6 @@ const flageloMares = new PoderClasse(
   PoderTipo.PoderClasse,
   Categoria.PoderClasse,
   [new PreRequisito(intimidacao)]
-);
-
-const esgremista = new PoderClasse(
-  "Bucaneiro",
-  "Esgrimista",
-  Fonte.BASICO,
-  [],
-  [],
-  PoderTipo.PoderClasse,
-  Categoria.PoderClasse,
-  [new PreRequisito(new RequisitoAtributo(Atributos.INTELIGENCIA, 1))]
 );
 
 const pistoleiro = new PoderClasse(
@@ -61,7 +55,7 @@ const aparar = new PoderClasse(
   [],
   PoderTipo.PoderClasse,
   Categoria.PoderClasse,
-  [new PreRequisito(esgremista)]
+  [new PreRequisito(esgrimista)]
 );
 
 export const poderesBucaneiro: Poder[] = [
@@ -152,9 +146,9 @@ export const poderesBucaneiro: Poder[] = [
     [],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse,
-    [new PreRequisito(esgremista)]
+    [new PreRequisito(esgrimista)]
   ),
-  esgremista,
+  esgrimista,
   flageloMares,
   new PoderClasse(
     "Bucaneiro",
@@ -181,7 +175,10 @@ export const poderesBucaneiro: Poder[] = [
     "Pernas do Mar",
     Fonte.BASICO,
     [],
-    [],
+    [
+      new Buff(Caracteristica.ACROBACIA, 2),
+      new Buff(Caracteristica.ATLETISMO, 2),
+    ],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse
   ),
@@ -191,7 +188,14 @@ export const poderesBucaneiro: Poder[] = [
     "Presença Paralisante",
     Fonte.BASICO,
     [],
-    [],
+    [
+      new Buff(
+        Caracteristica.INICIATIVA,
+        Atributos.CARISMA,
+        BuffType.BASE,
+        BuffStack.ATRIBUTO_CARISMA
+      ),
+    ],
     PoderTipo.PoderClasse,
     Categoria.PoderClasse,
     [
