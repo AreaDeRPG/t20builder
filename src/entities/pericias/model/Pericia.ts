@@ -4,6 +4,7 @@ import Modificador from "@/entities/modificadores/model/Modificador";
 import Buff from "@/entities/buff/model/Buff";
 import { Caracteristica } from "@/entities/caracteristica/model/Caracteristica";
 import { BuffType } from "@/entities/buff/model/BuffType";
+import { PericiaNome } from "./PericiaNome";
 
 export default class Pericia {
   public readonly id: number;
@@ -15,7 +16,7 @@ export default class Pericia {
 
   constructor(
     id: number,
-    nome: string,
+    nome: PericiaNome,
     modificador: Modificador,
     caracteristica: Caracteristica
   ) {

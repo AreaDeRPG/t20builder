@@ -18,7 +18,6 @@ export class PreRequisito {
     modificadores: Modificador[],
     nivel?: number
   ) {
-    console.log(habilidades);
     if (typeof this.prerequisito === "number") {
       if (nivel) {
         const n: number = this.prerequisito;

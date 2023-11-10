@@ -9,7 +9,8 @@ import { Fonte } from "../fonte/fonte";
 import { magias } from "../magia";
 import Magia from "../magia/model/Magia";
 import { treinamentoPericias } from "../pericias";
-import { caminhoArcanista, poderes } from "../poderes";
+import { poderes } from "../poderes";
+import { caminhoArcanista } from "../poderes/data/poderesArcanista";
 import Habilidade from "./model/Habilidades";
 
 interface ListaHabilidadesRaca {

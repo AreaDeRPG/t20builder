@@ -329,7 +329,8 @@ export default class Ficha {
   }
 
   public getHabilidades(nivel: number): Habilidade[] {
-    const habilidades: Habilidade[] = this.raca.habilidades;
+    const habilidades: Habilidade[] = [] as Habilidade[];
+    habilidades.concat(...this.raca.habilidades);
     habilidades.forEach((el) => {
       if (el.select) habilidades.push(el.select);
     });
@@ -339,8 +340,10 @@ export default class Ficha {
       habilidades.push(this.origem.habilidadeSelect2);
 
     habilidades.push(...this.periciasInt);
-    //const classes = this.classes.slice(0, nivel);
-    const classes = this.classes;
+
+    const classes = this.classes.slice(0, nivel);
+    //const classes = this.classes;
+
     classes.forEach((el: Classe, index: number) => {
       if (index == 0 && el) {
         habilidades.push(...el.periciasFixas);
