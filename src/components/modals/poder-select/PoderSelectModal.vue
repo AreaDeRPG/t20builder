@@ -62,6 +62,7 @@ export default defineComponent({
   props: {
     habilidades: {
       type: Array as PropType<Habilidade[]>,
+      default: [] as Habilidade[],
     },
     active: {
       type: Object as PropType<Habilidade>,
@@ -93,12 +94,13 @@ export default defineComponent({
       const poder: Poder = habilidade;
       const classe = poder instanceof PoderClasse ? poder.classe : "";
       poder.prerequisitos.forEach((el) => {
+        console.log(el);
         hasPrerequisites =
           hasPrerequisites &&
           el.cumprePrerequisito(
             habilidades,
             this.ficha.modificadores,
-            this.ficha.nivelClasse(classe, this.nivel)
+            classe ? this.ficha.nivelClasse(classe, this.nivel) : this.nivel
           );
       });
       return !hasPrerequisites;

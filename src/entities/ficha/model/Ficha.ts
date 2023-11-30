@@ -334,8 +334,9 @@ export default class Ficha {
   }
 
   public getHabilidades(nivel: number): Habilidade[] {
-    const habilidades: Habilidade[] = [] as Habilidade[];
-    habilidades.concat(...this.raca.habilidades);
+    const habilidades: Habilidade[] = ([] as Habilidade[]).concat(
+      ...this.raca.habilidades
+    );
     habilidades.forEach((el) => {
       if (el.select) habilidades.push(el.select);
     });

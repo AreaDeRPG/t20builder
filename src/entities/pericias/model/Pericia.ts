@@ -8,11 +8,10 @@ import { PericiaNome } from "./PericiaNome";
 
 export default class Pericia {
   public readonly id: number;
-  private _nome: string;
+  private _nome: PericiaNome;
   private _modificador: Modificador;
   private _bonus: number[];
   private _caracteristica: Caracteristica;
-  private _treinado: Treinamento;
 
   constructor(
     id: number,
@@ -24,15 +23,14 @@ export default class Pericia {
     this._nome = nome;
     this._modificador = modificador;
     this._bonus = [];
-    this._treinado = Treinamento.Destreinado;
     this._caracteristica = caracteristica;
   }
 
-  public get nome(): string {
+  public get nome(): PericiaNome {
     return this._nome;
   }
 
-  public set nome(value: string) {
+  public set nome(value: PericiaNome) {
     this._nome = value;
   }
 
@@ -56,14 +54,14 @@ export default class Pericia {
     return this._caracteristica;
   }
 
-  public get treinado(): Treinamento {
-    return this._treinado;
+  public treinado(buffs: Buff[]): Treinamento {
+    const isTreinado = this.isTreinado(buffs);
+    if (isTreinado) return Treinamento.Treinado;
+    return Treinamento.Destreinado;
   }
-
   public getBonusTreinamento(nivel: number, buff?: Buff[]): number {
     if (!buff) return 0;
     if (!this.isTreinado(buff)) return 0;
-    if (this._treinado == Treinamento.Destreinado) return 0;
     if (nivel < 7) {
       return 2;
     } else if (nivel < 15) {
@@ -84,10 +82,8 @@ export default class Pericia {
       buff.caracteristica == this.caracteristica &&
       buff.buffType == BuffType.PROFICIENCY
     ) {
-      this._treinado = Treinamento.Treinado;
       return true;
     }
-    this._treinado = Treinamento.Destreinado;
     return false;
   }
 
