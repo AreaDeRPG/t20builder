@@ -9,8 +9,8 @@
         <b-tab title="Atividades">
           <AtividadesInfo />
         </b-tab>
-        <b-tab title="Equipamento" disabled>
-          <p>I'm the second tab</p>
+        <b-tab title="Equipamento">
+          <EquipamentoInfo />
         </b-tab>
         <b-tab title="Magia" disabled>
           <p>I'm a disabled tab!</p>
@@ -33,12 +33,15 @@ import FichaInfo from "./FichaInfo.vue";
 import PericiasInfo from "./PericiasInfo.vue";
 import { activeFicha } from "@/entities/ficha";
 import AtividadesInfo from "./AtividadesInfo.vue";
+import EquipamentoInfo from "./EquipamentoInfo.vue";
+
 export default defineComponent({
   name: "FichaInfoTab",
   components: {
     FichaInfo,
     PericiasInfo,
     AtividadesInfo,
+    EquipamentoInfo,
   },
   computed: {
     ficha(): Ficha {

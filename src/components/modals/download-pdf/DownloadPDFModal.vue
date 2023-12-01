@@ -1,7 +1,11 @@
 <template>
-  <b-modal id="downloadpdf" title="Download PDF" size="xl" centered scrollable>
-    <b-button @click="downloadPdf">teste</b-button>
-  </b-modal>
+  <b-modal
+    id="downloadpdf"
+    title="Download PDF"
+    size="xl"
+    centered
+    scrollable
+  ></b-modal>
 </template>
 
 <script lang="ts">
@@ -10,13 +14,9 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "DownloadPDFModal",
   data: () => {
-    return {
-      dont_care: 0,
-    };
+    return {};
   },
-  methods: {
-    async downloadPdf() {},
-  },
+  methods: {},
 });
 </script>
 
