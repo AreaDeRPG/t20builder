@@ -43,15 +43,22 @@
           text="Patch Notes"
           variant="outline-light"
         />
+        <SidebarButton
+          modal="downloadpdf"
+          text="Download PDF"
+          variant="outline-light"
+        />
       </ul>
     </b-sidebar>
     <PatchNotesModal />
+    <DownloadPDFModal />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import PatchNotesModal from "./modals/patchnotes/PatchNotesModal.vue";
+import DownloadPDFModal from "./modals/download-pdf/DownloadPDFModal.vue";
 import { patches } from "@/entities/patchnotes";
 import MenuButton from "./props/MenuButton.vue";
 import SidebarButton from "./props/SidebarButton.vue";
@@ -62,7 +69,7 @@ export default defineComponent({
       patchversion: patches[0].versao as string,
     };
   },
-  components: { PatchNotesModal, MenuButton, SidebarButton },
+  components: { PatchNotesModal, MenuButton, SidebarButton, DownloadPDFModal },
 });
 </script>
 
